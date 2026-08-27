@@ -61,38 +61,55 @@ desbloqueia a forma, e é por isso que **o par vira ponto** é a raiz e não um
 começo entre outros: até um ângulo precisa de duas dimensões para existir.
 
 ```
-                    par-vira-ponto            a raiz
-              ┌───────────┴───────────┐
-           a taxa       o ângulo → o triângulo → a distância → o círculo
-              └───────────┬───────────┘
-              o desenrolamento → o encontro
+ORDEM DE LEITURA — uma fila
+
+par-vira-ponto → o ângulo → o triângulo → a distância → o círculo
+               → o desenrolamento → a taxa → o encontro
 ```
 
-Depois da raiz a árvore abre em dois ramos — função e medida — que só se
-encontram no fim. O que é livre é o ramo: a taxa pode vir antes ou depois da
-corrente da medida. **A raiz não é livre.**
+**Dependência e ordem de leitura não são a mesma coisa**, e separá-las é o que
+faz esta fila ser honesta. A **taxa** não *depende* da trigonometria — inclinação
+existe sem ângulo nenhum, e o grafo de dependência a mantém num ramo próprio.
+Mas ela **gasta a palavra tangente**, que nomeia dois objetos, e essa ambiguidade
+precisa estar desfeita antes. Por isso a fila a põe em sétimo.
+
+```
+DEPENDÊNCIA — dois ramos, e só aqui a árvore existe
+
+                    par-vira-ponto
+              ┌───────────┴───────────┐
+           a taxa      o ângulo → o triângulo → a distância → o círculo
+              │                    → o desenrolamento
+              └───────────┬───────────┘
+                     o encontro
+```
+
+Isto não foi decidido por argumento: com a taxa em segundo, ela era a **única
+fatia com dívida declarada** no portão — gastava seno, cosseno e π antes de
+qualquer um ser definido. Descendo para sétimo, a dívida zerou, e nenhuma fatia
+deve nada a quem vem depois. **O portão viu o que o argumento não tinha visto.**
 
 | | fatia | o que mostra |
 |---|---|---|
 | 1 | `par-vira-ponto` | duas retas numéricas viram um plano; o gráfico é o rastro dos encontros |
-| 2 | `taxa` | como a saída muda quando a entrada anda; a secante virando tangente |
-| 3 | `o-angulo` | medir uma abertura; graus, radianos, e de onde cai o π |
-| 4 | `o-triangulo` | oposto e adjacente dependem de **qual** ângulo; daí o *co* de cosseno |
-| 5 | `a-distancia` | o círculo é gerado por uma condição, e a condição é Pitágoras |
-| 6 | `o-circulo` | seno, cosseno e tangente como **comprimentos**, sobre um chão que se escolhe |
-| 7 | `desenrolamento` | o círculo virando gráfico: a altura não muda, a entrada muda de lugar |
-| 8 | `o-encontro` | onde os dois ramos se juntam |
+| 2 | `o-angulo` | medir uma abertura; graus, radianos, e de onde cai o π |
+| 3 | `o-triangulo` | oposto e adjacente dependem de **qual** ângulo; daí o *co* de cosseno |
+| 4 | `a-distancia` | o círculo é gerado por uma condição, e a condição é Pitágoras |
+| 5 | `o-circulo` | seno, cosseno e tangente como **comprimentos**, sobre um chão que se escolhe |
+| 6 | `desenrolamento` | o círculo virando gráfico: a altura não muda, a entrada muda de lugar |
+| 7 | `taxa` | como a saída muda quando a entrada anda; a secante virando tangente |
+| 8 | `o-encontro` | onde os dois sentidos da palavra *tangente* se encontram |
 
 | | fatia | o que mostra |
 |---|---|---|
 | 1 | `par-vira-ponto` | duas retas numéricas viram um plano; o gráfico é o rastro dos encontros |
-| 2 | `taxa` | como a saída muda quando a entrada anda; a secante virando tangente |
-| 3 | `o-angulo` | medir uma abertura; graus, radianos, e de onde cai o π |
-| 4 | `o-triangulo` | oposto e adjacente dependem de **qual** ângulo; daí o *co* de cosseno |
-| 5 | `a-distancia` | o círculo é gerado por uma condição, e a condição é Pitágoras |
-| 6 | `o-circulo` | seno, cosseno e tangente como **comprimentos**, sobre um chão que se escolhe |
-| 7 | `desenrolamento` | o círculo virando gráfico: a altura não muda, a entrada muda de lugar |
-| 8 | `o-encontro` | onde os dois ramos se juntam |
+| 2 | `o-angulo` | medir uma abertura; graus, radianos, e de onde cai o π |
+| 3 | `o-triangulo` | oposto e adjacente dependem de **qual** ângulo; daí o *co* de cosseno |
+| 4 | `a-distancia` | o círculo é gerado por uma condição, e a condição é Pitágoras |
+| 5 | `o-circulo` | seno, cosseno e tangente como **comprimentos**, sobre um chão que se escolhe |
+| 6 | `desenrolamento` | o círculo virando gráfico: a altura não muda, a entrada muda de lugar |
+| 7 | `taxa` | como a saída muda quando a entrada anda; a secante virando tangente |
+| 8 | `o-encontro` | onde os dois sentidos da palavra *tangente* se encontram |
 
 ## O lugar no ciclo maior
 
@@ -169,9 +186,9 @@ O que falta, declarado em vez de escondido:
   fundirem bem depois. A fusão ainda não aconteceu, e tem uma pergunta aberta:
   a chave *a onda* do `o-circulo` faz o que o `desenrolamento` faz, e dois
   arquivos desenhando a mesma coisa divergem em silêncio;
-- **o ramo da ordem.** A raiz é fixa; se a `taxa` deve vir antes ou depois da
-  corrente da medida é escolha, e hoje ela vem antes — pagando isso com três
-  empréstimos declarados;
+- ~~o ramo da ordem~~ — **resolvido em 2026-08-27.** A taxa desceu de segundo
+  para sétimo e as três dívidas declaradas dela zeraram. O que resta é a
+  distinção, agora escrita: dependência tem dois ramos, leitura é uma fila;
 - **QA visual humano.** O portão mede o que é mecânico. Nenhuma fatia foi
   julgada por olho humano contra uma régua estética, e isso não se automatiza;
 - **nenhum teste de aprendizagem.** Não se mediu se alguém aprende mais com

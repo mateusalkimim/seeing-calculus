@@ -51,12 +51,12 @@ comprimento, elas têm o mesmo comprimento na tela, e você mede.</p>
 <h2>A ordem</h2>
 <ol>
   <li><a class="fatia" href="par-vira-ponto.html" style="border-left-color:#c9a266"><div class="corpo"><div class="nome">O par vira ponto</div><div class="explica">duas retas numéricas viram um gráfico</div><div class="chamada">A função é uma máquina: entra x, sai y.</div></div></a></li>
-  <li><a class="fatia" href="taxa.html" style="border-left-color:#78c4ff"><div class="corpo"><div class="nome">A taxa</div><div class="explica">a função descrita pela mudança</div><div class="chamada">Um painel só, e tudo nos mesmos eixos: a função, a reta que a toca, e a taxa.</div></div></a></li>
   <li><a class="fatia" href="o-angulo.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">O ângulo</div><div class="explica">em graus, em radianos, e de onde vem o π</div><div class="chamada">Um ângulo é uma abertura entre duas semirretas que saem do mesmo vértice.</div></div></a></li>
   <li><a class="fatia" href="o-triangulo.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">O triângulo</div><div class="explica">oposto, adjacente e hipotenusa dependem de qual ângulo</div><div class="chamada">Oposto e adjacente não são propriedades dos lados — são propriedades da relação entre o lado e o ângulo que você escolheu.</div></div></a></li>
   <li><a class="fatia" href="a-distancia.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">A distância</div><div class="explica">de onde nasce um círculo</div><div class="chamada">Um círculo não é desenhado — ele é gerado por uma condição: são todos os pontos que estão à mesma distância de um centro.</div></div></a></li>
   <li><a class="fatia" href="o-circulo.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">O círculo</div><div class="explica">seno, cosseno e tangente como comprimentos</div><div class="chamada">Seno, cosseno e tangente não são botões de calculadora: são comprimentos, medidos a partir de um chão que alguém escolheu.</div></div></a></li>
-  <li><a class="fatia" href="desenrolamento.html" style="border-left-color:#6fbf6a"><div class="corpo"><div class="nome">O desenrolamento</div><div class="explica">do círculo ao gráfico</div><div class="chamada">A altura do ponto no círculo é transportada para a posição horizontal a.</div></div></a></li>
+  <li><a class="fatia" href="desenrolamento.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">O desenrolamento</div><div class="explica">do círculo ao gráfico</div><div class="chamada">A altura do ponto no círculo é transportada para a posição horizontal a.</div></div></a></li>
+  <li><a class="fatia" href="taxa.html" style="border-left-color:#78c4ff"><div class="corpo"><div class="nome">A taxa</div><div class="explica">a função descrita pela mudança</div><div class="chamada">Um painel só, e tudo nos mesmos eixos: a função, a reta que a toca, e a taxa.</div></div></a></li>
   <li><a class="fatia" href="o-encontro.html" style="border-left-color:#6fbf6a"><div class="corpo"><div class="nome">O encontro</div><div class="explica">a inclinação é uma tangente</div><div class="chamada">A palavra tangente nomeia duas coisas: um comprimento no círculo e a reta que encosta numa curva.</div></div></a></li>
 </ol>
 
@@ -65,13 +65,33 @@ comprimento, elas têm o mesmo comprimento na tela, e você mede.</p>
 desbloqueia a forma, e é por isso que <b>o par vira ponto</b> é a raiz e não um começo
 entre outros: até um ângulo precisa de duas dimensões para existir. Depois da raiz, a
 árvore abre em dois ramos que só se encontram no fim.</p>
-<pre class="arvore">                    par-vira-ponto            a raiz
+<pre class="arvore">   ORDEM DE LEITURA — uma fila
+
+   par-vira-ponto → o ângulo → o triângulo → a distância → o círculo
+                  → o desenrolamento → a taxa → o encontro
+
+
+   DEPENDÊNCIA — dois ramos, e só aqui a árvore existe
+
+                    par-vira-ponto
               ┌───────────┴───────────┐
-           a taxa       o ângulo → o triângulo → a distância → o círculo
+           a taxa      o ângulo → o triângulo → a distância → o círculo
+              │                    → o desenrolamento
               └───────────┬───────────┘
-              o desenrolamento → o encontro</pre>
-<p class="nota">O que é livre é o ramo: a taxa pode vir antes ou depois da corrente da
-medida. O que não é livre é a raiz.</p>
+                     o encontro
+
+   A taxa não DEPENDE da trigonometria: inclinação existe sem ângulo. Mas ela
+   gasta a palavra &quot;tangente&quot;, e essa palavra precisa estar desambiguada antes.
+   Por isso a fila a põe tarde, e o ramo continua sendo verdade.</pre>
+<p class="nota">Dependência e ordem de leitura não são a mesma coisa, e vale separar. A
+<b>taxa</b> não depende da trigonometria — inclinação existe sem ângulo nenhum. Mas ela
+gasta a palavra <b>tangente</b>, que nomeia duas coisas, e essa ambiguidade precisa estar
+desfeita antes. Por isso a fila a põe em sétimo, embora o grafo de dependência a mantenha
+num ramo próprio.</p>
+<p class="nota">Isso não foi teoria: com a taxa em segundo, ela era a <b>única fatia com
+dívida declarada</b> no portão — gastava seno, cosseno e π antes de qualquer um ser
+definido. Descendo para sétimo, a dívida zerou. O portão viu o que o argumento não tinha
+visto.</p>
 
 <h2>Como isto se verifica</h2>
 <p class="nota">Cada fatia declara, num manifesto legível por máquina, a sua ordem e os

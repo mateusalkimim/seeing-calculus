@@ -25,10 +25,18 @@ MANIFESTO = re.compile(
     r"\s*\|\s*declara:\s*(?P<declara>[^|]*)"
     r"(?:\|\s*empresta:\s*(?P<empresta>[^-]*))?-->")
 
-CORRENTE = {  # a que ramo da árvore cada fatia pertence — ver o README
-    "par-vira-ponto": "raiz", "taxa": "função",
+# A ORDEM DE LEITURA É UMA FILA; a DEPENDÊNCIA é que tem dois ramos.
+# Corrigido em 2026-08-27: a taxa estava em 2º e era a única fatia com dívida
+# declarada — ela gastava "tangente", secante, área e duas funções
+# trigonométricas antes de qualquer uma ser definida. Desceu para 7º e a dívida
+# zerou. Ela continua NÃO DEPENDENDO da trigonometria (inclinação existe sem
+# ângulo); o que ela empresta é VOCABULÁRIO, não lógica — e por isso a palavra
+# "tangente" precisa estar desambiguada antes.
+CORRENTE = {
+    "par-vira-ponto": "raiz",
     "o-angulo": "medida", "o-triangulo": "medida", "a-distancia": "medida",
-    "o-circulo": "medida", "desenrolamento": "encontro", "o-encontro": "encontro",
+    "o-circulo": "medida", "desenrolamento": "medida",
+    "taxa": "função", "o-encontro": "encontro",
 }
 COR = {"raiz": "#c9a266", "função": "#78c4ff", "medida": "#e8654f", "encontro": "#6fbf6a"}
 
@@ -121,8 +129,15 @@ desbloqueia a forma, e é por isso que <b>o par vira ponto</b> é a raiz e não 
 entre outros: até um ângulo precisa de duas dimensões para existir. Depois da raiz, a
 árvore abre em dois ramos que só se encontram no fim.</p>
 <pre class="arvore">{arvore}</pre>
-<p class="nota">O que é livre é o ramo: a taxa pode vir antes ou depois da corrente da
-medida. O que não é livre é a raiz.</p>
+<p class="nota">Dependência e ordem de leitura não são a mesma coisa, e vale separar. A
+<b>taxa</b> não depende da trigonometria — inclinação existe sem ângulo nenhum. Mas ela
+gasta a palavra <b>tangente</b>, que nomeia duas coisas, e essa ambiguidade precisa estar
+desfeita antes. Por isso a fila a põe em sétimo, embora o grafo de dependência a mantenha
+num ramo próprio.</p>
+<p class="nota">Isso não foi teoria: com a taxa em segundo, ela era a <b>única fatia com
+dívida declarada</b> no portão — gastava seno, cosseno e π antes de qualquer um ser
+definido. Descendo para sétimo, a dívida zerou. O portão viu o que o argumento não tinha
+visto.</p>
 
 <h2>Como isto se verifica</h2>
 <p class="nota">Cada fatia declara, num manifesto legível por máquina, a sua ordem e os
@@ -148,11 +163,24 @@ crédito.
 </html>
 """
 
-ARVORE = """                    par-vira-ponto            a raiz
+ARVORE = """   ORDEM DE LEITURA — uma fila
+
+   par-vira-ponto → o ângulo → o triângulo → a distância → o círculo
+                  → o desenrolamento → a taxa → o encontro
+
+
+   DEPENDÊNCIA — dois ramos, e só aqui a árvore existe
+
+                    par-vira-ponto
               ┌───────────┴───────────┐
-           a taxa       o ângulo → o triângulo → a distância → o círculo
+           a taxa      o ângulo → o triângulo → a distância → o círculo
+              │                    → o desenrolamento
               └───────────┬───────────┘
-              o desenrolamento → o encontro"""
+                     o encontro
+
+   A taxa não DEPENDE da trigonometria: inclinação existe sem ângulo. Mas ela
+   gasta a palavra "tangente", e essa palavra precisa estar desambiguada antes.
+   Por isso a fila a põe tarde, e o ramo continua sendo verdade."""
 
 
 def main():
