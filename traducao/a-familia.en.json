@@ -1,0 +1,527 @@
+{
+ "atualizado_em": "2026-08-27 13:39:02",
+ "blocos": {
+  "04157e091c": {
+   "en": "line",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "reta",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "0b98cb3433": {
+   "en": "Why are these families, and not others",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Por que são estas famílias, e não outras",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0cff0059da": {
+   "en": "2. The Angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. O ângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "11aba3bd8c": {
+   "en": "correct: 0 of 0",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "acertos: 0 de 0",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "11eef89887": {
+   "en": "the rate is zero — and the height doesn't matter",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa é zero — e a altura não importa",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "1624d90c8d": {
+   "en": "clear the measurements",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "limpar as medidas",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "18364b5056": {
+   "en": "8. The Intersection",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. O encontro",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "1ee79198e4": {
+   "en": "the rate is always the same, and not zero",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa é sempre a mesma, e não é zero",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "251c3c5dc3": {
+   "en": "Because they are <b>the ones the rate doesn't take out of place</b>. A polynomial derives into a polynomial, with the degree dropping by one. The exponential derives into itself. Sine and cosine derive into each other, and return to the start in four steps. A family that the rate would take out of itself would not have a chapter: each calculation would open a new object, and there would be nothing to learn all at once.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Porque são <b>as que a taxa não tira do lugar</b>. Polinômio deriva em polinômio, com o\n  grau caindo de um. A exponencial deriva nela mesma. Seno e cosseno derivam um no outro, e\n  voltam ao começo em quatro passos. Uma família que a taxa levasse para fora dela mesma não\n  teria capítulo: cada conta abriria um objeto novo, e não haveria o que aprender de uma vez.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2880ebde27": {
+   "en": "measure alone",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "medir sozinho",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2eb0169dca": {
+   "en": "where to measure = <input type=\"range\" id=\"onde\" min=\"-2.85\" max=\"2.85\" step=\"0.005\"\n         value=\"-2.85\" style=\"width:280px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "onde medir = <input type=\"range\" id=\"onde\" min=\"-2.85\" max=\"2.85\" step=\"0.005\"\n         value=\"-2.85\" style=\"width:280px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2fd665d5cd": {
+   "en": "Local instrument, self-contained: no network, no external library. The rate <b>f′</b> was already declared in the slice of the rate, two before this — here it is only measured.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Instrumento local, autocontido: sem rede, sem biblioteca externa. A taxa\n  <b>f′</b> já foi declarada na fatia da taxa, duas antes desta — aqui ela só é medida.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3046bdcccf": {
+   "en": "The family — read the curve and say <em>what machine</em> made it",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A família — ler a curva e dizer <em>que máquina</em> a fez",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "31d9b9b056": {
+   "en": "Move the step, and see measure no longer suffice",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Mexa no passo, e veja medir deixar de bastar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "365f0c29f3": {
+   "en": "<b>rate zero</b>, constant. <b>Rate always the same</b> and not zero, line. <b>Rate that is a line</b>, parabola. <b>Rate that is a parabola</b>, cubic. <b>Rate proportional to the curve itself</b>, exponential. <b>Rate of the same family, shifted</b>, sine and cosine. And <b>rate that jumps</b> is no family at all: it's a defect.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>taxa zero</b>, constante. <b>Taxa sempre a mesma</b> e não zero, reta. <b>Taxa que é\n  uma reta</b>, parábola. <b>Taxa que é uma parábola</b>, cúbica. <b>Taxa proporcional à\n  própria curva</b>, exponencial. <b>Taxa da mesma família, deslocada</b>, seno e cosseno.\n  E <b>taxa que salta</b> não é família nenhuma: é defeito.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3d0365630b": {
+   "en": "the measurements fall on a LINE",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "as medidas caem sobre uma RETA",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3deaf1349b": {
+   "en": "1. The Pair Becomes a Point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. O par vira ponto",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "486097ac48": {
+   "en": "3. The Triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. O triângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "4ca155eee4": {
+   "en": "measurement(s) on the frame",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": " medida(s) no quadro",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "4f2267d5d1": {
+   "en": "The family — read the curve and say what machine made it",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A família — ler a curva e dizer que máquina a fez",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "544d038867": {
+   "en": "constant",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "constante",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "569a86eba2": {
+   "en": "the rate is the same wave, advanced",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa é a mesma onda, adiantada",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "5b76fd3bde": {
+   "en": "the rate is always the same, and negative",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa é sempre a mesma, e negativa",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "5d5507cde8": {
+   "en": "4. The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. A distância",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "5e9edfe690": {
+   "en": "The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "5fb1f14c90": {
+   "en": "the measurements fall on a line, descending",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "as medidas caem sobre uma reta, descendo",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "600ccd1b71": {
+   "en": "of",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": " de ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "64c6b15d69": {
+   "en": "<b class=\"ok\">that's it.</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b class=\"ok\">é isso.</b> ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "6a03014e5c": {
+   "en": "the floor — the height zero",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o chão — a altura zero",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "8c04ef34eb": {
+   "en": "the measurements form a PARABOLA — degree one less",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "as medidas formam uma PARÁBOLA — grau um a menos",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "8e25d2feee": {
+   "en": "cubic",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "cúbica",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "8e2de552ce": {
+   "en": "<span class=\"deck\">Move the step h: in a family, the answer almost doesn't change.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": " <span class=\"deck\">Mexa no passo h: numa família, a resposta quase não muda.</span>",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "951ade9de0": {
+   "en": "parabola",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parábola",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a1022370d5": {
+   "en": "This is where measuring stops being enough. <b>Measuring</b> the rate is one thing; <b>proving</b> it is that is another, and it requires the operation that the limit provides.  \n<span class=\"deck\">This is the topic of C2 — <i>before the word limit</i> — and the family's station is there.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "É aqui que medir para de bastar. <b>Medir</b> a taxa é uma coisa; <b>provar</b> que ela é\n  aquela é outra, e precisa da operação que o limite traz.\n  <span class=\"deck\">Este é o assunto do C2 — <i>antes da palavra limite</i> — e a estação da\n  família mora lá.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a11c9ca554": {
+   "en": "the measures are from the same family, displaced",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "as medidas são da mesma família, deslocadas",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a1f18832ba": {
+   "en": "5. The Circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. O círculo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "a37c214ac4": {
+   "en": "← The intersection",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "← O encontro",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a45119bd39": {
+   "en": "the string: step h =",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a cordinha: passo h = ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a488726875": {
+   "en": "the curve, nameless",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a curva, sem nome",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a75b236bd9": {
+   "en": "corrections:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "acertos: ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "ab286945ca": {
+   "en": "There is no number of types of curve, and every catalog is the writer's choice. Memorizing a list of formats is the opposite of reading. What exists is an <b>organizer</b> — what the rate does — and it fits in six lines:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Não existe número de tipos de curva, e todo catálogo é escolha de quem escreve. Decorar\n  uma lista de formatos é o contrário de ler. O que existe é um <b>organizador</b> — o que a\n  taxa faz — e ele cabe em seis linhas:",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "adf6c07c7a": {
+   "en": "The slice of the <b>rate</b> takes the opposite path: you choose the name on a button and see the curve and its rate. Here the curve comes nameless, and the name is your <b>conclusion</b>. The two together close the pair — rule that becomes curve, and curve that becomes rule.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A fatia da <b>taxa</b> faz o caminho contrário: você escolhe o nome num botão e vê a curva\n  e a taxa dela. Aqui a curva vem sem nome, e o nome é a <b>sua conclusão</b>. As duas juntas\n  fecham o par — regra que vira curva, e curva que vira regra.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "aede89de80": {
+   "en": "at the jump, the measured rate SPARKS, and grows without stopping as the step shrinks",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "no salto a taxa medida DISPARA, e cresce sem parar conforme o passo encolhe",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "af3ed2b927": {
+   "en": "the rate is zero everywhere",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa é zero em todo lugar",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "b1eccced01": {
+   "en": "flaw",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "defeito",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "b4b30d53c2": {
+   "en": "<span class=\"deck\">Shrink the step h and look again: what changes is from the instrument, not the curve — and that's where measuring stops being enough.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": " <span class=\"deck\">Encolha o passo h e olhe de novo: o que muda é do instrumento, não da curva — e é aí que medir deixa de bastar.</span>",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "bf70c38178": {
+   "en": "Why is the question this, and not \"what curve is that\"",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Por que a pergunta é esta, e não \"que curva é essa\"",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c253b99e91": {
+   "en": "<b class=\"nao\">no.</b> it was <b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b class=\"nao\">não.</b> era <b>",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "c306db77ba": {
+   "en": "another curve",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "outra curva",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c463014221": {
+   "en": "proportional to the curve itself, with the sign changed",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "proporcional à própria curva, com o sinal trocado",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "c7cd4d4158": {
+   "en": "The <b>eleven family curves</b> of this instrument were verified in code: classifying each one <i>only</i> by what the measured rate does returns the correct label in the eleven, and the answer does not change between <code>h = 0.03</code> and <code>h = 0.6</code>. The two with flaws change — it's the difference the sheet wants you to see.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "As <b>onze curvas de família</b> deste instrumento foram conferidas em código: classificar\n  cada uma <i>só</i> pelo que a taxa medida faz devolve o rótulo certo nas onze, e a resposta não\n  muda entre <code>h = 0,03</code> e <code>h = 0,6</code>. As duas de defeito mudam — é a\n  diferença que a folha quer que se veja.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c9003287e3": {
+   "en": "7. The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "d14b6d1913": {
+   "en": "9 of 9 · the nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "db3d405b10": {
+   "en": "on",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "on",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e13d262ff0": {
+   "en": "step h = <input type=\"range\" id=\"h\" min=\"0.03\" max=\"0.6\" step=\"0.005\" value=\"0.25\"  \n         style=\"width:150px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "passo h = <input type=\"range\" id=\"h\" min=\"0.03\" max=\"0.6\" step=\"0.005\" value=\"0.25\"\n         style=\"width:150px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e1400a7dc2": {
+   "en": "exponential",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "exponencial",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e1415a107f": {
+   "en": "<b>Do:</b> drag <i>where to measure</i> and the red points will trail behind.  \n<i>measure alone</i> sweeps for you, <i>clear measurements</i> restarts. Adjust the <i>step h</i>:  \nin a family it barely changes the answer — at the cusp and the jump, it changes everything. Only then answer.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> arraste <i>onde medir</i> e os pontos vermelhos vão ficando para trás.\n<i>medir sozinho</i> varre por você, <i>limpar as medidas</i> recomeça. Mexa no <i>passo h</i>:\nnuma família ele quase não muda a resposta — no bico e no salto, muda tudo. Só depois responda.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e5cedd6abb": {
+   "en": "rate measured here =",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "taxa medida aqui = ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e91e40328e": {
+   "en": "trigonometric",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "trigonométrica",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e959c3c199": {
+   "en": "6. The Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "e978d422ac": {
+   "en": "Direction matters",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A direção importa",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "ebbffe7d62": {
+   "en": "the measurements follow the curve itself, in scale",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "as medidas acompanham a própria curva, em escala",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "f2700160ff": {
+   "en": "at the cusp the measured rate rises in a RAMP instead of jumping — and the ramp shrinks with the step: it was from the instrument",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "no bico a taxa medida sobe em RAMPA em vez de saltar — e a rampa encolhe com o passo: ela era do instrumento",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "f3c4ee6491": {
+   "en": "You recognize a parabola by eye. But <b>recognizing is not reading</b>, and the  \nshape deceives: two similar curves can come from completely different machines. Here the  \ncurve appears <b>nameless</b>, and the only path to the answer is what it <i>does</i> — the rate.  \nAnd the rate is not ready: you raise it, point by point, with your own hand, until it becomes a  \nsecond curve made of your measurements.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Você reconhece uma parábola de olho. Mas <b>reconhecer não é ler</b>, e o\nformato engana: duas curvas parecidas podem vir de máquinas completamente diferentes. Aqui a\ncurva aparece <b>sem nome</b>, e o único caminho até a resposta é o que ela <i>faz</i> — a taxa.\nE a taxa não vem pronta: você a levanta, ponto a ponto, com a própria mão, até ela virar uma\nsegunda curva feita das suas medidas.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f93b9d10a8": {
+   "en": "The <code>h</code> is the step of the measure: <code>Δf</code> divided by <code>2h</code>, the  \nslope of a string centered on the point. In families, changing the step barely changes the  \nanswer. At the <b>cusp</b>, it changes everything: the measured rate rises in a ramp instead of jumping, and the ramp  \nbecomes narrower as the step shrinks — the ramp was from the <b>instrument</b>, not the curve. At the <b>jump</b>, the measured value skyrockets and grows without end as the step shrinks.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O <code>h</code> é o passo da medida: <code>Δf</code> dividido por <code>2h</code>, a\n  inclinação de uma cordinha centrada no ponto. Nas famílias, mudar o passo quase não muda a\n  resposta. No <b>bico</b>, muda tudo: a taxa medida sobe em rampa em vez de saltar, e a rampa\n  fica mais estreita conforme o passo diminui — a rampa era do <b>instrumento</b>, não da\n  curva. No <b>salto</b>, o valor medido dispara e cresce sem parar quando o passo encolhe.",
+   "qa": "ok",
+   "tipo": "prosa"
+  }
+ },
+ "fatia": "a-familia",
+ "idioma": "en-US"
+}

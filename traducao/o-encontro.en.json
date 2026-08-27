@@ -1,0 +1,375 @@
+{
+ "atualizado_em": "2026-08-27 13:39:20",
+ "blocos": {
+  "00b3352a06": {
+   "en": "x = <input type=\"range\" id=\"sl\" min=\"-3.1\" max=\"3.1\" step=\"0.002\" value=\"-1.5\"  \n         style=\"width:320px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "x = <input type=\"range\" id=\"sl\" min=\"-3.1\" max=\"3.1\" step=\"0.002\" value=\"-1.5\"\n         style=\"width:320px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "00b4af2ddb": {
+   "en": "adjacente = 1",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "adjacente = 1",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "04157e091c": {
+   "en": "reta",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "reta",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "0746d3a903": {
+   "en": "The tangent line got its name because it <b>touches</b>; the length on the circle got its name because it is measured <b>along the line that touches the circle</b>. They come from the same Latin word and name different objects — but they are not a mere coincidence of vocabulary: they come together in this equality, and nowhere else.\n<span class=\"deck\">It is the \"Where the Two Meet\" sheet of C1, and what the entire arc of calculus uses from C2.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A reta tangente ganhou o nome por <b>encostar</b>; o comprimento no círculo ganhou o\n  nome por ser medido <b>sobre a reta que encosta no círculo</b>. Vêm da mesma palavra latina\n  e nomeiam objetos diferentes — mas não são um acidente de vocabulário: elas se juntam nesta\n  igualdade, e em nenhum outro lugar.\n  <span class=\"deck\">É a folha \"Onde as duas se encontram\" do C1, e o que o arco de cálculo\n  inteiro usa a partir do C2.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0cff0059da": {
+   "en": "2. The Angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. O ângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "10196cfdd1": {
+   "en": "o círculo de raio 1",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o círculo de raio 1",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "1673058248": {
+   "en": "9. The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "184934f84c": {
+   "en": "The word <i>tangent</i> names two different things: a length measured on the circle and the line that touches a curve. They are not synonyms, and they are not mere homonyms either — <b>they meet exactly once</b>, in a single identity, and that meeting is what this sheet illustrates.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A palavra <i>tangente</i> nomeia duas coisas diferentes: um comprimento medido\nno círculo e a reta que encosta numa curva. Elas não são sinônimos, e também não são meros\nhomônimos — <b>encontram-se exatamente uma vez</b>, numa identidade só, e é esse encontro que\nesta folha desenha.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "18815c4a4d": {
+   "en": "<b>1. The two gold segments are always the same length.</b> On the left is the tangent segment of the circle with radius 1 — the <code>tg θ</code> that the circle slice measured. On the right is how much the curve rises when you move 1 to the right along the tangent line. They are the same number, and that's why <code>f ′(x) = tg θ</code>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>1. Os dois dourados têm o mesmo comprimento, sempre.</b> À esquerda é o segmento de\n  tangente do círculo de raio 1 — o <code>tg θ</code> que a fatia do círculo mediu. À direita\n  é o quanto a curva sobe quando você anda 1 para a direita sobre a reta tangente. São o\n  mesmo número, e por isso <code>f ′(x) = tg θ</code>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "18eb8ac5fe": {
+   "en": "<b>3. Where the curve is flat, the circle point is on the ground.</b> At a maximum or a minimum, the tangent line becomes horizontal: θ = 0, the gold segment disappears, and f ′ = 0. Where the curve descends, θ is negative and the segment points downward. The slope is not a metaphor — it is an angle, and it is drawn.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>3. Onde a curva está deitada, o ponto do círculo está no chão.</b> Num máximo ou num\n  mínimo a reta tangente fica horizontal: θ = 0, o segmento dourado some, e f ′ = 0. Onde a\n  curva desce, θ é negativo e o segmento aponta para baixo. A inclinação não é uma metáfora —\n  é um ângulo, e ele está desenhado.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2568c29d34": {
+   "en": "The meeting — the slope is a tangent",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O encontro — a inclinação é uma tangente",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "284e3d9ca5": {
+   "en": "<b>2. It's the triangle of always.</b> Connect <i>the names of the triangle</i>: the adjacent\n  <b>leg</b> is 1 and the <b>opposite</b> is f ′(x). And tangent is opposite over adjacent\n  — but since the adjacent is 1, the division does nothing, and the tangent <i>is</i> the opposite.\n  <span class=\"deck\">The same triangle from o-triangulo.html and the same OAT from\n  o-circulo.html.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>2. É o triângulo de sempre.</b> Ligue <i>os nomes do triângulo</i>: o cateto\n  <b>adjacente</b> vale 1 e o <b>oposto</b> vale f ′(x). E tangente é oposto sobre adjacente\n  — só que com o adjacente valendo 1, a divisão não faz nada, e a tangente <i>é</i> o oposto.\n  <span class=\"deck\">O mesmo triângulo de o-triangulo.html e o mesmo OAT de\n  o-circulo.html.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "29721e970e": {
+   "en": "<b>tan θ</b> = <span id=\"rtg\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>tg θ</b> = <span id=\"rtg\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2d6e1b152d": {
+   "en": "← The rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "← A taxa",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "36f046889a": {
+   "en": "tg θ",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "tg θ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3a53debd78": {
+   "en": "opposite = f ′(x)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "oposto = f ′(x)",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3deaf1349b": {
+   "en": "1. The Pair Turns into a Point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. O par vira ponto",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "3f1bbc804b": {
+   "en": "<b>f ′(x)</b> = <span id=\"rd\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>f ′(x)</b> = <span id=\"rd\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "4443796646": {
+   "en": "the curve, and the line that touches it",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a curva, e a reta que encosta nela",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "486097ac48": {
+   "en": "3. The Triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. O triângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "4aa025f539": {
+   "en": "walk",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "andar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "5d5507cde8": {
+   "en": "4. The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. A distância",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "5e37164221": {
+   "en": "<span><b>x</b> = <span id=\"rx\"></span></span>\n  <span class=\"v-c\"><b>f(x)</b> = <span id=\"rf\"></span></span>\n  <span><b>θ</b> = <span id=\"rt\"></span>°</span>\n  <span class=\"v-o\"><b>tan θ</b> = <span id=\"rtg\"></span></span>\n  <span class=\"v-o\"><b>f ′(x)</b> = <span id=\"rd\"></span></span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  <span><b>x</b> = <span id=\"rx\"></span></span>\n  <span class=\"v-c\"><b>f(x)</b> = <span id=\"rf\"></span></span>\n  <span><b>θ</b> = <span id=\"rt\"></span>°</span>\n  <span class=\"v-o\"><b>tg θ</b> = <span id=\"rtg\"></span></span>\n  <span class=\"v-o\"><b>f ′(x)</b> = <span id=\"rd\"></span></span>\n",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "5ff5cbe80d": {
+   "en": "<b>A color changes here, on purpose.</b> In the other slices the\n  leg that rises is <b style=\"color:#e8654f\">terracotta</b> — it's the perpendicular component.\n  Here it is <b style=\"color:#c9a266\">golden</b>, the color of the <b>tangent</b>, because the thesis\n  of the slice is exactly that it <i>is</i> the segment of tangent of the circle. The change is the\n  argument, and so it is declared instead of happening silently.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Uma cor muda aqui, de propósito.</b> Nas outras fatias o\n  cateto que sobe é <b style=\"color:#e8654f\">terracota</b> — é o componente perpendicular.\n  Nesta ele é <b style=\"color:#c9a266\">dourado</b>, a cor da <b>tangente</b>, porque a tese\n  da fatia é exatamente que ele <i>é</i> o segmento de tangente do círculo. A troca é o\n  argumento, e por isso está declarada em vez de acontecer calada.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "6b353dcda3": {
+   "en": "<b>θ</b> = <span id=\"rt\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>θ</b> = <span id=\"rt\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "7209dd87fb": {
+   "en": "the same zero line, and the same scale, in both",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a mesma linha do zero, e a mesma escala, nos dois",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "78ddfa1e98": {
+   "en": "<b>f(x)</b> = <span id=\"rf\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>f(x)</b> = <span id=\"rf\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "7aa78c1473": {
+   "en": "The meeting",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O encontro",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "8908e1b318": {
+   "en": "the names of the triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "os nomes do triângulo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "8e25d2feee": {
+   "en": "cubic",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "cúbica",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "927563fcd1": {
+   "en": "sine",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "seno",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "951ade9de0": {
+   "en": "parabola",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parábola",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9c1d96767b": {
+   "en": "stop",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parar",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a1f18832ba": {
+   "en": "5. The Circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. O círculo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "a5facb6257": {
+   "en": "What to look at",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que olhar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "bdca5c60ec": {
+   "en": "<b>Do:</b> walk with <i>x</i> and look at the angle θ: what the tangent line does with the floor is\nthe same angle there in the circle. The golden segment on the left has the same length as the golden\nleg on the right — and since the two panels divide the scale, that checks out with the ruler.\n<i>the names of the triangle</i> shows who is who.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> ande com <i>x</i> e olhe o ângulo θ: o que a reta tangente faz com o chão é o\nmesmo ângulo lá no círculo. O segmento dourado da esquerda tem o mesmo comprimento do cateto\ndourado da direita — e como os dois painéis dividem a escala, isso se confere com a régua.\n<i>os nomes do triângulo</i> mostra quem é quem.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c9003287e3": {
+   "en": "7. The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "d0054c1d83": {
+   "en": "8 of 9 · the nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "db0f1aa2aa": {
+   "en": "the two golden segments have the same length — that's what f ′(x) = tg θ says",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "os dois segmentos dourados têm o mesmo comprimento — é isso que f ′(x) = tg θ diz",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "db3d405b10": {
+   "en": "on",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "on",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e0fcb2f7f0": {
+   "en": "The family →",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A família →",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e1400a7dc2": {
+   "en": "exponential",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "exponencial",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e959c3c199": {
+   "en": "6. The Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "f0910c9f0e": {
+   "en": "<b>x</b> = <span id=\"rx\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>x</b> = <span id=\"rx\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f43a448f41": {
+   "en": "Local instrument, self-contained: no network, no external library. It's where the two meanings\n  of the word <b>tangent</b> meet — the length in the circle, which the slices of measure built,\n  and the line that touches the curve, which the <code>rate</code> showed walking.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. É onde os dois sentidos\n  da palavra <b>tangente</b> se encontram — o comprimento no círculo, que as fatias da medida\n  construíram, e a reta que toca a curva, que a <code>taxa</code> mostrou andando.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "fe746d54a0": {
+   "en": "Why the two tangents are not homonyms",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Por que as duas tangentes não são homônimas",
+   "qa": "ok",
+   "tipo": "prosa"
+  }
+ },
+ "fatia": "o-encontro",
+ "idioma": "en-US"
+}

@@ -63,7 +63,18 @@ import sys
 import tempfile
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
-FATIAS = AQUI   # as fatias moram ao lado do portão, desde a mudança para repo próprio
+# As fatias saíram da raiz quando o sítio virou bilíngue: `pt/` é a fonte, `en/`
+# é derivado, e na raiz ficaram a porta e os stubs das URLs antigas. Sem esta
+# linha o portão auditava os STUBS — e reprovava as nove por "sem manifesto",
+# que é verdade sobre um stub de redirect e não diz nada sobre a fatia.
+# `--dir` permite auditar o inglês: `python3 auditar_fatias.py --dir en`.
+_ARG = None
+for _i, _a in enumerate(sys.argv):
+    if _a == "--dir" and _i + 1 < len(sys.argv):
+        _ARG = sys.argv[_i + 1]
+FATIAS = (os.path.join(AQUI, _ARG) if _ARG
+          else (os.path.join(AQUI, "pt") if os.path.isdir(os.path.join(AQUI, "pt"))
+                else AQUI))
 
 # R5, com os símbolos nomeados na norma e as formas em LaTeX
 BANIDOS = {
@@ -77,11 +88,24 @@ BANIDOS = {
 # Os símbolos que o portão sabe procurar, com FRONTEIRA DE PALAVRA. O padrão
 # ingênuo `sen` casa dentro de "desenho" e "desenrolamento" — foi assim que a
 # primeira auditoria à mão inflou a dívida, em 2026-08-27.
+# A tabela conhece as DUAS grafias. `sen` é a grafia portuguesa do seno e `sin`
+# a inglesa — o mesmo símbolo, e trocá-lo é notação, não tradução (norma de
+# tradução §8). Sem as chaves inglesas o portão reprovava a fatia derivada por
+# "declara 'sin' e não gasta", com `sin θ` escrito na figura: defeito do
+# instrumento, não da página.
 SIMBOLOS = {
-    "θ": r"θ", "π": r"π", "f′": r"f\s?′", "tg": r"\btg\b",
-    "sen": r"\bsen\b|\bseno\b", "cos": r"\bcos\b|\bcosseno\b",
+    "θ": r"θ", "π": r"π", "f′": r"f\s?′", "tg": r"\btg\b|\btan\b",
+    "sen": r"\bsen\b|\bseno\b|\bsin\b|\bsine\b",
+    "cos": r"\bcos\b|\bcosseno\b|\bcosine\b",
     "Δ": r"Δ", "S¹": r"S¹", "ℝ": r"ℝ", "√": r"√", "∞": r"∞",
 }
+
+# `sin` e `sen` são O MESMO SÍMBOLO em duas grafias, e a chave é UMA — o
+# manifesto da fatia derivada em inglês diz `sin`, e aqui ele volta a `sen`.
+# Tentei antes pôr as duas como chaves distintas apontando para o mesmo regex:
+# aí toda fatia passou a "gastar" as duas, e o português inteiro reprovou por
+# herança. Grafia alternativa se CANONIZA; duplicar a chave inventa um símbolo.
+CANONICO = {"sin": "sen", "sine": "sen", "tan": "tg", "cosine": "cos"}
 
 MANIFESTO = re.compile(
     r"<!--\s*fatia:\s*(?P<nome>[\w-]+)\s*\|\s*ordem:\s*(?P<ordem>\d+)"
@@ -109,7 +133,9 @@ def ler(caminho):
     m = MANIFESTO.search(fonte)
     man = None
     if m:
-        lista = lambda s: {x.strip() for x in (s or "").split() if x.strip() and x.strip() != "—"}
+        lista = lambda s: {CANONICO.get(x.strip(), x.strip())
+                          for x in (s or "").split()
+                          if x.strip() and x.strip() != "—"}
         man = {"nome": m.group("nome"), "ordem": int(m.group("ordem")),
                "declara": lista(m.group("declara")),
                "empresta": lista(m.group("empresta"))}
@@ -125,7 +151,9 @@ def auditar(arquivos, checar_js=True):
         if not m:
             achados.append((nome, "MANIFESTO", "sem a linha <!-- fatia: … -->"))
             continue
-        lista = lambda s: {x.strip() for x in (s or "").split() if x.strip() and x.strip() != "—"}
+        lista = lambda s: {CANONICO.get(x.strip(), x.strip())
+                          for x in (s or "").split()
+                          if x.strip() and x.strip() != "—"}
         man = {"arquivo": nome, "nome": m.group("nome"), "ordem": int(m.group("ordem")),
                "declara": lista(m.group("declara")), "empresta": lista(m.group("empresta"))}
         t = tela(fonte)
@@ -139,7 +167,8 @@ def auditar(arquivos, checar_js=True):
         # link NAO conta: <a href> e coisa que o leitor clica. O que quebra o
         # offline e RECURSO CARREGADO. Regex sem classe de aspas de proposito:
         # o `.?` cobre a aspa simples, a dupla ou a ausencia dela.
-        m_nav = re.search(r'class="onde"[^>]*>(\d+) de (\d+)', fonte)
+        # `de` OU `of`: a posição é o número, e ele não muda de idioma.
+        m_nav = re.search(r'class="onde"[^>]*>(\d+)\s+(?:de|of)\s+(\d+)', fonte)
         if "<!-- nav: GERADO" not in fonte:
             achados.append((nome, "NAV", "sem o bloco de navegação — rode gerar_indice.py"))
         elif not m_nav:

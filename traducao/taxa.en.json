@@ -1,0 +1,543 @@
+{
+ "atualizado_em": "2026-08-27 13:39:22",
+ "blocos": {
+  "01ce9e1882": {
+   "en": "as walls — only between −π/2 and π/2",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "as paredes — só entre −π/2 e π/2",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "01cfcab2b2": {
+   "en": "<b>Δf/h</b> = <span id=\"rq\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>Δf/h</b> = <span id=\"rq\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "01fad8781f": {
+   "en": "x = <input type=\"range\" id=\"sl\" min=\"-5\" max=\"5\" step=\"0.002\" value=\"-1.4\"  \n         style=\"width:250px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "x = <input type=\"range\" id=\"sl\" min=\"-5\" max=\"5\" step=\"0.002\" value=\"-1.4\"\n         style=\"width:250px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "06a3175004": {
+   "en": "the area",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a área",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0af7051a2d": {
+   "en": "the rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0b6607523d": {
+   "en": "<span><b>x</b> = <span id=\"rx\"></span></span>\n  <span class=\"v-f\"><b>f(x)</b> = <span id=\"rf\"></span></span>\n  <span class=\"v-s\"><b>Δf/h</b> = <span id=\"rq\"></span></span>\n  <span class=\"v-t\"><b>f ′(x)</b> = <span id=\"rd\"></span></span>\n  <span class=\"v-a\"><b>area</b> = <span id=\"ra\"></span></span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  <span><b>x</b> = <span id=\"rx\"></span></span>\n  <span class=\"v-f\"><b>f(x)</b> = <span id=\"rf\"></span></span>\n  <span class=\"v-s\"><b>Δf/h</b> = <span id=\"rq\"></span></span>\n  <span class=\"v-t\"><b>f ′(x)</b> = <span id=\"rd\"></span></span>\n  <span class=\"v-a\"><b>área</b> = <span id=\"ra\"></span></span>\n",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0cff0059da": {
+   "en": "2. The Angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. O ângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "1673058248": {
+   "en": "9. The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "18364b5056": {
+   "en": "8. The Intersection",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. O encontro",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "1a99319e64": {
+   "en": "← Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "← O desenrolamento",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "1b81dc516f": {
+   "en": "the rate JUMPS at x=0: there is no tangent line there",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa SALTA em x=0: não existe reta tangente ali",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "1b97b1ae06": {
+   "en": "the rate is from the same family, advanced a quarter turn",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa é da mesma família, adiantada um quarto de volta",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "23b36d23a6": {
+   "en": "Drag the <b>h</b> to the left. With <b>h</b> large there are <b>two points</b> and a  \n  <b>secant</b> — the quotient <code>Δf/h</code> is its slope. As h closes, the two  \n  points become one and the secant becomes the <b>tangent</b>: <code>Δf/h</code> approaches  \n  <code>f ′(x)</code>, and you see the two numbers converge on the readout line.  \n  <span class=\"deck\">It's Station 4 of C2 — <i>\"the line through two points, when the two  \n  become one\"</i>.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Arraste o <b>h</b> para a esquerda. Com <b>h</b> grande há <b>dois pontos</b> e uma reta\n  <b>secante</b> — o quociente <code>Δf/h</code> é a inclinação dela. À medida que h fecha,\n  os dois pontos viram um e a secante vira a <b>tangente</b>: <code>Δf/h</code> vai\n  encostando em <code>f ′(x)</code>, e você vê os dois números se aproximarem na linha de\n  leitura. <span class=\"deck\">É a Estação 4 do C2 — <i>\"a reta por dois pontos, quando os\n  dois viram um\"</i>.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "28f06270e8": {
+   "en": "rate zero — the derivative doesn't see constant",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "taxa zero — a derivada não vê constante",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "2cb2791c3b": {
+   "en": "nipple",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "bico",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3374fb6544": {
+   "en": "<b>area</b> = <span id=\"ra\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>área</b> = <span id=\"ra\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "33dde66b08": {
+   "en": "The rate — the function described by the change",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A taxa — a função descrita pela mudança",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3765f609a2": {
+   "en": "<b>About the last two functions on the list.</b>  \n  <code>seno</code> and <code>sen x / x</code> use trigonometry, which this slice doesn't  \n  teach and doesn't need: what it says — the height below is the slope above — holds  \n  for any curve. They're here because they're good examples, and they stay readable  \n  after the angle branch, the triangle, and the circle. The first seven don't contribute  \n  anything.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Sobre as duas últimas funções da lista.</b>\n  <code>seno</code> e <code>sen x / x</code> gastam trigonometria, que esta fatia não\n  ensina e não precisa: o que ela diz — a altura de baixo é a inclinação de cima — vale\n  para qualquer curva. Estão aqui porque são bons exemplos, e ficam legíveis depois do\n  ramo do ângulo, do triângulo e do círculo. As sete primeiras não emprestam nada.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3deaf1349b": {
+   "en": "1. The Pair Becomes a Point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. O par vira ponto",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "3f1bbc804b": {
+   "en": "<b>f ′(x)</b> = <span id=\"rd\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>f ′(x)</b> = <span id=\"rd\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "44d94f2c5d": {
+   "en": "Slope is <b>how much it rises per unit</b>. Stated that way, the sentence doesn't teach  \n  anything — it becomes a decorated definition. Here it becomes <b>two lengths in the  \n  same space</b>, and the statement can be checked with a ruler instead of being  \n  accepted on faith. A single panel, and everything on the same axes: the function,  \n  the line that touches it, and the rate.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Inclinação é <b>quanto sobe ao andar um</b>. Dita assim, a frase não ensina nada —\nela vira definição decorada. Aqui ela vira <b>dois comprimentos no mesmo espaço</b>, e a\nafirmação passa a se conferir com a régua em vez de se aceitar de palavra. Um painel só, e tudo\nnos mesmos eixos: a função, a reta que a toca e a taxa.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "486097ac48": {
+   "en": "3. The Triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. O triângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "49c552bbde": {
+   "en": "<b>Where the rate does not exist, the curve has a defect.</b> At the cusp, the rate <b>jumps</b>: the tangent line does not know which to choose, and so there is none. In the jump, the function is not even continuous. <span class=\"deck\">The three defects are from Station 2 of C1; continuity at a point is Station 4 of C3.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Onde a taxa não existe, a curva tem defeito.</b> No bico, a taxa <b>salta</b>: a reta\n  tangente não sabe qual escolher, e por isso não há uma. No salto, nem contínua a função é.\n  <span class=\"deck\">Os três defeitos são da Estação 2 do C1; continuidade em um ponto é a\n  Estação 4 do C3.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "4a9b54a7f9": {
+   "en": "the floor: <input type=\"range\" id=\"chao\" min=\"-2\" max=\"2\" step=\"0.01\" value=\"0\"\n         style=\"width:120px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o chão: <input type=\"range\" id=\"chao\" min=\"-2\" max=\"2\" step=\"0.01\" value=\"0\"\n         style=\"width:120px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "4c70d29a53": {
+   "en": "<b>Do:</b> turn on <i>the rate</i> and compare the red leg of the triangle with the height of\nthe red curve at the same x — it is the same length, twice. Close the <i>h</i> and see the\nsecant become tangent. Turn on <i>the area</i> and drag <i>the floor</i>: the x-axis is not\nspecial.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> ligue <i>a taxa</i> e compare o cateto vermelho do triângulo com a altura da\ncurva vermelha no mesmo x — é o mesmo comprimento, duas vezes. Feche o <i>h</i> e veja a\nsecante virar tangente. Ligue <i>a área</i> e arraste <i>o chão</i>: o eixo x não tem nada de\nespecial.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "4e7f782624": {
+   "en": "the rate is a LINE; the vertex is where it crosses zero",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa é uma RETA; o vértice é onde ela cruza o zero",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "57e5d70d4a": {
+   "en": "What each reading shows",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que cada leitura mostra",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "5d5507cde8": {
+   "en": "4. The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. A distância",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "5ed58e1582": {
+   "en": "not continuous; in the jump the rate has nothing to measure",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "nem contínua é; no salto a taxa não tem o que medir",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "60936c6f91": {
+   "en": "0/0 at zero: the hole exists, the limit is 1 — and the Confrontation proves (C4)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "0/0 no zero: o buraco existe, o limite é 1 — e o Confronto prova (C4)",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "6ae9162cae": {
+   "en": "Turn on <b>the area</b> and drag <b>the floor</b>. The x-axis is not special: it is the\n  graph of the constant zero function, and the area is measured between the curve and <i>it</i>. Changing the floor, the same operation becomes the area between two curves — and the usual floor is so usual that we forget we chose it, like the canonical basis in linear algebra.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Ligue <b>a área</b> e arraste <b>o chão</b>. O eixo x não tem nada de especial: ele é o\n  gráfico da função constante zero, e a área é medida entre a curva e <i>ele</i>. Trocando o\n  chão, a mesma operação vira a área entre duas curvas — e o chão habitual é tão habitual\n  que a gente esquece que escolheu, como a base canônica na álgebra linear.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "70405232aa": {
+   "en": "The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "7219789c0f": {
+   "en": "the rate does not exist here",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa não existe aqui",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "728daee307": {
+   "en": "<b>The white circles on the axis mark Bolzano.</b> Where the function changes sign, it\n  passed through zero — without needing to find where. <span class=\"deck\">C3, Station 5.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Os círculos brancos no eixo marcam Bolzano.</b> Onde a função troca de sinal, ela\n  passou pelo zero — sem precisar achar onde. <span class=\"deck\">C3, Estação 5.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "78c2f01afb": {
+   "en": "inclined line",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "reta inclinada",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "78ddfa1e98": {
+   "en": "<b>f(x)</b> = <span id=\"rf\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>f(x)</b> = <span id=\"rf\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "7f9e737c40": {
+   "en": "the rate is PROPORTIONAL to its own value — the definition of the family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a taxa é PROPORCIONAL ao próprio valor — a definição da família",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "8e25d2feee": {
+   "en": "cubic",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "cúbica",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "91e49dfd2d": {
+   "en": "1 over x",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1 sobre x",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "927563fcd1": {
+   "en": "sine",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "seno",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "95171455bc": {
+   "en": "jump",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "salto",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "951ade9de0": {
+   "en": "parabola",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parábola",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9c1d96767b": {
+   "en": "stop",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parar",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9ce1486d2c": {
+   "en": "The meeting →",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O encontro →",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a1f18832ba": {
+   "en": "5. The Circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. O círculo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "a43dd0ae10": {
+   "en": "<b>The exponential chases itself.</b> In it the red is a shrunken copy of the blue: the rate\n  is <b>proportional to its own value</b>. No other family does this.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>A exponencial se persegue.</b> Nela a vermelha é uma cópia encolhida da azul: a taxa\n  é <b>proporcional ao próprio valor</b>. Nenhuma outra família faz isso.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "aee2c079b8": {
+   "en": "7 of 9 · the nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "af1d62c4c3": {
+   "en": "two turns; the rate is a parabola",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "duas viradas; a taxa é uma parábola",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "b4bac21c6b": {
+   "en": "the floor",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o chão",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "b55afd3df6": {
+   "en": "constant rate, and it is not zero",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "taxa constante, e não é zero",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "b775e2e0bc": {
+   "en": "Local, self-contained instrument: no network, no external library. Sibling of\n  <code>desenrolamento.html</code> — that one shows <b>where the number comes from</b>; this,\n  <b>how the number changes</b>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Irmão do\n  <code>desenrolamento.html</code> — aquele mostra <b>de onde vem</b> o número; este,\n  <b>como o número muda</b>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b9674b57d3": {
+   "en": "<b>In <code>sen x / x</code> the zero is a hole</b> — 0/0 — and the two <b>walls</b>\n  appear: between −π/2 and π/2, the curve gets stuck between the cosine and the 1. Both go to 1, and\n  the middle one has nowhere to escape. <span class=\"deck\">It's the Squeeze Theorem, C4 §2, and\n  the limit that closes the series.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Em <code>sen x / x</code> o zero é um buraco</b> — 0/0 — e as duas <b>paredes</b>\n  aparecem: entre −π/2 e π/2, a curva fica presa entre o cosseno e o 1. As duas vão a 1, e\n  a do meio não tem para onde fugir. <span class=\"deck\">É o Teorema do Confronto, C4 §2, e\n  o limite que fecha a série.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c17eb3289a": {
+   "en": "— (h closed)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "— (h fechou)",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "ce4f904e64": {
+   "en": "<b>The constant is what the rate doesn't see.</b> On the constant line, the red curve lies on\n  zero. Adding a constant to the blue doesn't change anything in the red — that's what <code>ker D</code>\n  means, and it's the reason for the <code>+C</code> in the integral.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>A constante é o que a taxa não vê.</b> Na reta constante, a curva vermelha deita no\n  zero. Somar uma constante à azul não muda nada na vermelha — é o que <code>ker D</code>\n  quer dizer, e é a razão do <code>+C</code> da integral.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "d0a0e93705": {
+   "en": "sen x / x",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "sen x / x",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "d3d8474fbe": {
+   "en": "asymptote: the curve shoots up and the rate shoots up faster",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "assíntota: a curva dispara e a taxa dispara mais rápido",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "d458038133": {
+   "en": "animate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "animar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "db3d405b10": {
+   "en": "on",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "on",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e1400a7dc2": {
+   "en": "exponential",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "exponencial",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e2d5897735": {
+   "en": "h = <input type=\"range\" id=\"h\" min=\"0\" max=\"2.5\" step=\"0.005\" value=\"1.4\"\n         style=\"width:160px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "h = <input type=\"range\" id=\"h\" min=\"0\" max=\"2.5\" step=\"0.005\" value=\"1.4\"\n         style=\"width:160px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e6dd1386fe": {
+   "en": "The passage that GeoGebra hides",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A passagem que o GeoGebra esconde",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e959c3c199": {
+   "en": "6. The Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "f0910c9f0e": {
+   "en": "<b>x</b> = <span id=\"rx\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>x</b> = <span id=\"rx\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f5a8db67da": {
+   "en": "The floor is a choice",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O chão é uma escolha",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f85c4ad562": {
+   "en": "constant line",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "reta constante",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "f8a9b9ba31": {
+   "en": "Tangent and area live in the same instrument for a purpose: the Fundamental Theorem says that\n  they are the same thing read in two directions. <span class=\"deck\">The area by trapping is\n  Station 2 of C2 — Archimedes' gesture.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Tangente e área moram no mesmo instrumento de propósito: o Teorema Fundamental diz que\n  são a mesma coisa lida nos dois sentidos. <span class=\"deck\">A área por aprisionamento é\n  a Estação 2 do C2 — o gesto de Arquimedes.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "fe7ec019ec": {
+   "en": "<b>Where the rate crosses zero, the curve turns.</b> In the parabola, the vertex is not a special\n  place on the blue curve — it's where the red <i>crosses zero</i>. Rises before, falls after.\n  <span class=\"deck\">It's how Fermat found a maximum without a derivative, in C2 §4.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Onde a taxa cruza o zero, a curva vira.</b> Na parábola, o vértice não é um lugar\n  especial da curva azul — é onde a vermelha <i>cruza o zero</i>. Sobe antes, desce depois.\n  <span class=\"deck\">É como Fermat achava máximo sem derivada, no C2 §4.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  }
+ },
+ "fatia": "taxa",
+ "idioma": "en-US"
+}

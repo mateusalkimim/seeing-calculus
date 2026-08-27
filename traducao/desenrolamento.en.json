@@ -1,0 +1,352 @@
+{
+ "atualizado_em": "2026-08-27 13:39:07",
+ "blocos": {
+  "026edbd86c": {
+   "en": "height = sin a",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "altura = sen a",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "05d1605847": {
+   "en": "<b>Do:</b> drag <i>a</i> and observe the dashed line — it is horizontal on purpose,  \nbecause the two halves of the screen share the same vertical scale and the same zero line. Press  \n<i>animate</i> to see the curve being drawn, and turn on <i>show tangent</i> and <i>show arc</i> to compare the three lengths.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> arraste <i>a</i> e olhe a ligação tracejada — ela é horizontal de propósito,\nporque as duas metades da tela dividem a mesma escala vertical e a mesma linha do zero. Aperte\n<i>animar</i> para ver a curva ser escrita, e ligue <i>mostrar a tangente</i> e <i>mostrar o\narco</i> para comparar os três comprimentos.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "07ce50f9ab": {
+   "en": "<input type=\"checkbox\" id=\"tg\"> show tangent",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<input type=\"checkbox\" id=\"tg\"> mostrar a tangente",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0cff0059da": {
+   "en": "2. The Angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. O ângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "0f8424bac2": {
+   "en": "f ′(x) = tg θ",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n    f ′(x) = tg θ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "1673058248": {
+   "en": "9. The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "18364b5056": {
+   "en": "8. The Intersection",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. O encontro",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "18727cc9b9": {
+   "en": "<b>2. The dashed vertical line is the tangent line to the circle at (1,0).</b> That's why the tangent is called tangent: the value <code>tg a</code> is a length measured  \n<i>along the tangent line</i>. The point T is where the line through the origin and P  \nintersects that line — and that's why T disappears when P approaches the vertical: the two  \nlines become parallel and no longer intersect. The asymptote of the tangent graph is that,  \nseen up close.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>2. A reta vertical pontilhada é a reta tangente ao círculo em (1,0).</b> É por isso\n  que a tangente se chama tangente: o valor <code>tg a</code> é um comprimento medido\n  <i>sobre a reta tangente</i>. O ponto T é onde a reta que passa pela origem e por P\n  encontra essa reta — e é por isso que T dispara quando P se aproxima da vertical: as duas\n  retas ficam paralelas e não se encontram mais. A assíntota do gráfico da tangente é isso,\n  vista de perto.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "1cebde907a": {
+   "en": "a — the angle, in radians",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a — o ângulo, em radianos",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "2240acfe4c": {
+   "en": "The derivative is the <b>trigonometric tangent</b> of the angle θ that the <b>tangent line</b> makes  \nwith the x-axis. Slope of line is tangent of angle — the same ratio of the triangle, with the  \ntriangle lying on the curve instead of inside the circle.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A derivada é a <b>tangente trigonométrica</b> do ângulo θ que a <b>reta tangente</b> faz\n  com o eixo x. Inclinação de reta é tangente de ângulo — a mesma razão do triângulo, com o\n  triângulo deitado sobre a curva em vez de dentro do círculo.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2585372db1": {
+   "en": "the graph — the same height, at position a",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o gráfico — a mesma altura, na posição a",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3b7170ab03": {
+   "en": "<input type=\"checkbox\" id=\"arco\" checked> show arc",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<input type=\"checkbox\" id=\"arco\" checked> mostrar o arco",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3deaf1349b": {
+   "en": "1. The Pair Becomes a Point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. O par vira ponto",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "486097ac48": {
+   "en": "3. The Triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. O triângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "4a751e07ed": {
+   "en": "6 of 9 · the nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "4afabb4425": {
+   "en": "G = (a, sin a)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "G = (a, sen a)",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "5252f96f62": {
+   "en": "<b>3. The arc has length |a|.</b> This is the definition of radian, and it is what allows us to compare the three: <b>height &lt; arc &lt; tangent</b>. This inequality, obtained without any calculation, is what proves the limit of <code>sen(x)/x</code>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>3. O arco tem comprimento |a|.</b> É a definição de radiano, e é o que deixa comparar\n  os três: <b>altura &lt; arco &lt; tangente</b>. Essa desigualdade, obtida sem conta nenhuma,\n  é o que prova o limite de <code>sen(x)/x</code>.",
+   "qa": "ok",
+   "reparo": "&lt; desescapado pelo modelo, reescapado a mao",
+   "tipo": "prosa"
+  },
+  "5c1f5fb21e": {
+   "en": "<b>sin a</b> = <span id=\"rs\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>sen a</b> = <span id=\"rs\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "5d5507cde8": {
+   "en": "4. The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. A distância",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "5d7463ae01": {
+   "en": "circle of radius 1 — the machine",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "círculo de raio 1 — a máquina",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "5fa3c5cf2f": {
+   "en": "tangent line to the circle at (1,0)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "reta tangente ao círculo em (1,0)",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "603cc82ba2": {
+   "en": "The rate →",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A taxa →",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "64ee601f78": {
+   "en": "<b>a</b> = <span id=\"ra\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>a</b> = <span id=\"ra\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "6ef3e2530e": {
+   "en": "The circle's arc leaves a question in the air: <i> I know sine as a wave — what does it have to do with this circle?</i> The answer is literal, not analogical: <b> the height of the point is the height of the graph</b>, and only the input has changed places. In the circle, it is a rotation; in the graph, a position.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A folha do círculo deixa uma pergunta no ar: <i>eu conheço o seno como uma\nonda — o que ele tem a ver com este círculo?</i> A resposta é literal, e não é analogia: <b>a\naltura do ponto é a altura do gráfico</b>, e só a entrada mudou de lugar. No círculo ela é uma\nrotação; no gráfico, uma posição.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "6efd7c86d1": {
+   "en": "a = <input type=\"range\" id=\"sl\" min=\"-5\" max=\"5\" step=\"0.002\" value=\"0.6\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a = <input type=\"range\" id=\"sl\" min=\"-5\" max=\"5\" step=\"0.002\" value=\"0.6\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "843afdf4eb": {
+   "en": "<b>cos a</b> = <span id=\"rc\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>cos a</b> = <span id=\"rc\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "87d09faa06": {
+   "en": "the same line as zero, in both panels",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a mesma linha do zero, nos dois painéis",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9841dfd212": {
+   "en": "<span><b>a</b> = <span id=\"ra\"></span> rad = <span id=\"rg\"></span>°</span>\n  <span class=\"v-seno\"><b>sin a</b> = <span id=\"rs\"></span></span>\n  <span class=\"v-cos\"><b>cos a</b> = <span id=\"rc\"></span></span>\n  <span class=\"v-tg\"><b>tan a</b> = <span id=\"rt\"></span></span>\n  <span style=\"color:#8fa0b8\"><b>arc</b> = <span id=\"rarc\"></span></span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  <span><b>a</b> = <span id=\"ra\"></span> rad = <span id=\"rg\"></span>°</span>\n  <span class=\"v-seno\"><b>sen a</b> = <span id=\"rs\"></span></span>\n  <span class=\"v-cos\"><b>cos a</b> = <span id=\"rc\"></span></span>\n  <span class=\"v-tg\"><b>tg a</b> = <span id=\"rt\"></span></span>\n  <span style=\"color:#8fa0b8\"><b>arco</b> = <span id=\"rarc\"></span></span>\n",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "9c1d96767b": {
+   "en": "stop",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parar",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a1f18832ba": {
+   "en": "5. The Circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. O círculo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "a5facb6257": {
+   "en": "What to look at",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que olhar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "ac754e6669": {
+   "en": "<b>arc</b> = <span id=\"rarc\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>arco</b> = <span id=\"rarc\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "af31704df6": {
+   "en": "Local, self-contained instrument: no network, no external library. Companion of Station 5  \n  of C1 · Read a graph.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Companheiro da Estação 5\n  do C1 · Ler um gráfico.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b457b27d9c": {
+   "en": "<b>tan a</b> = <span id=\"rt\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>tg a</b> = <span id=\"rt\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "bf7974b6df": {
+   "en": "The missing bridge",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A ponte que falta dizer",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c9003287e3": {
+   "en": "7. The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "d458038133": {
+   "en": "animate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "animar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "da7a687343": {
+   "en": "off",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "off",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e9fa2b7c12": {
+   "en": "<b>1. The dashed line is horizontal.</b> It is not decoration: it is the assertion that the height of the point on the circle <i>is</i> the height of the graph. The circle does not become a graph by analogy — it becomes one because the output is the same and only the input changes places. In the circle, the input <b>a</b> is a rotation; in the graph, it is a horizontal position.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>1. A ligação tracejada é horizontal.</b> Ela não é enfeite: é a afirmação de que a\n  altura do ponto no círculo <i>é</i> a altura do gráfico. O círculo não vira gráfico por\n  analogia — vira porque a saída é a mesma e só a entrada muda de lugar. No círculo a\n  entrada <b>a</b> é uma rotação; no gráfico ela é uma posição horizontal.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "eb3868d4f0": {
+   "en": "← The circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "← O círculo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "edafd5beaf": {
+   "en": "The word <i>tangent</i> names two objects: the length along the tangent line to the circle, which is what this page draws, and the <b>tangent line to a curve</b> — the one that touches and follows the slope. They are not interchangeable, but they are also not mere homonyms: they meet in a single identity.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A palavra <i>tangente</i> nomeia dois objetos: o comprimento sobre a reta tangente ao\n  círculo, que é o que esta página desenha, e a <b>reta tangente a uma curva</b> — a que\n  encosta e segue a inclinação. Elas não são intercambiáveis, mas também não são meros\n  homônimos: encontram-se numa identidade só.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f71fc1abbf": {
+   "en": "The Unfolding",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "fcc6d3b7a8": {
+   "en": "The unrolling — from the circle to the graph",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O desenrolamento — do círculo ao gráfico",
+   "qa": "ok",
+   "tipo": "prosa"
+  }
+ },
+ "fatia": "desenrolamento",
+ "idioma": "en-US"
+}

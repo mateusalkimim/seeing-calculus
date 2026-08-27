@@ -1,0 +1,431 @@
+{
+ "atualizado_em": "2026-08-27 13:39:02",
+ "blocos": {
+  "02ba5efea1": {
+   "en": "<b>Why the floor locks.</b> When you turn on the wave, the floor cursor resets to zero and locks. It's not a gimmick or oversight: the unrolled strip is nearly half a thousand pixels long, and it's impossible to rotate it within this frame without it leaving the screen — we measured. Unrolling <b>requires choosing a floor</b>, and here the choice is the usual one. Turn off the wave and its slope returns exactly as it was.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Por que o chão trava.</b> Ao ligar a onda, o cursor do chão volta a zero à vista e fica\n  travado. Não é enfeite nem descuido: a faixa desenrolada tem quase meio milhar de pixels de\n  comprimento, e não existe como girá-la dentro desta moldura sem que ela saia da tela —\n  medimos. Desenrolar <b>exige escolher um chão</b>, e aqui a escolha é a habitual. Desligue a\n  onda e a sua inclinação volta exatamente como estava.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0499940722": {
+   "en": "Local, self-contained instrument: no network, no external library. From the same family as  \n<code>par-vira-ponto.html</code> and <code>taxa.html</code>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Da mesma família de\n  <code>par-vira-ponto.html</code> e <code>taxa.html</code>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0b136064bb": {
+   "en": "ratio (divided by the radius)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "razão (dividida pelo raio)",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0cff0059da": {
+   "en": "2. The Angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. O ângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "10c3127ba8": {
+   "en": "the floor = <input type=\"range\" id=\"ch\" min=\"-3.15\" max=\"3.15\" step=\"0.002\" value=\"0\"  \nstyle=\"width:170px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o chão = <input type=\"range\" id=\"ch\" min=\"-3.15\" max=\"3.15\" step=\"0.002\" value=\"0\"\n         style=\"width:170px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "119e89eb43": {
+   "en": "<b>radius</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>raio</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "157f3185e2": {
+   "en": "<b>tangent</b> — on the tangent line",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>tangente</b> — sobre a reta tangente",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "1673058248": {
+   "en": "9. The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "18364b5056": {
+   "en": "8. The Intersection",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. O encontro",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "1cd71c6226": {
+   "en": "the wave",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a onda",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2689ce5cbf": {
+   "en": "The circle — sine, cosine, and tangent as lengths",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O círculo — seno, cosseno e tangente como comprimentos",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2c9d3e43d6": {
+   "en": "<b>4. Turn on the arc.</b> With a radius of 1, the arc length <b>is</b> the angle in radians — that's the definition, not a conversion. And the three become comparable by eye:  \n<b class=\"c-sen\">sine</b> &lt; <b class=\"c-arc\">arc</b> &lt; <b class=\"c-tg\">tangent</b>.  \n<span class=\"deck\">This inequality, obtained without any calculation, is what proves the limit that closes the series in C4.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>4. Ligue o arco.</b> Com raio 1, o comprimento do arco <b>é</b> o ângulo em radianos —\n  é essa a definição, e não uma conversão. E os três ficam comparáveis a olho:\n  <b class=\"c-sen\">seno</b> &lt; <b class=\"c-arc\">arco</b> &lt; <b class=\"c-tg\">tangente</b>.\n  <span class=\"deck\">Essa desigualdade, obtida sem conta nenhuma, é o que prova o limite que\n  fecha a série no C4.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "35be7b25d0": {
+   "en": "radius",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "raio ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3de4261bc7": {
+   "en": "the same height, moved to a position",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a mesma altura, levada para uma posição",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3deaf1349b": {
+   "en": "1. The Pair Becomes a Point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. O par vira ponto",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "404da185cb": {
+   "en": "radius = <input type=\"range\" id=\"r\" min=\"0.45\" max=\"1.75\" step=\"0.005\" value=\"1\"  \nstyle=\"width:150px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "raio = <input type=\"range\" id=\"r\" min=\"0.45\" max=\"1.75\" step=\"0.005\" value=\"1\"\n         style=\"width:150px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "45a6569d5e": {
+   "en": "Sine, cosine, and tangent are not calculator buttons: they are <b>lengths</b>,  \nmeasured from a floor someone chose. The choice is usually invisible — the horizontal is so  \ncommon it seems natural. This is the instrument where it becomes visible, and where you can  \nundo it with your hand.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Seno, cosseno e tangente não são botões de calculadora: são <b>comprimentos</b>,\nmedidos a partir de um chão que alguém escolheu. A escolha costuma ser invisível — a horizontal\né tão habitual que parece a natureza das coisas. Este é o instrumento em que ela fica à vista, e\nonde dá para desfazê-la com a mão.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "485d3b88e2": {
+   "en": "<b>arc</b> — from zero to the point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>arco</b> — do zero até o ponto",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "486097ac48": {
+   "en": "3. The Triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. O triângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "4f29def856": {
+   "en": "<b>2. Tilt the floor.</b> Nothing essential changes: the three lengths remain the same, rotated together. The angle was never \"in relation to the horizontal\" — it was always <i>in relation to the floor we declared</i>. The horizontal is the usual choice, and it's so habitual that it seems like the nature of things.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>2. Incline o chão.</b> Nada de essencial muda: os três comprimentos continuam os\n  mesmos, girados junto. O ângulo nunca foi \"em relação à horizontal\" — foi sempre\n  <i>em relação ao chão que a gente declarou</i>. A horizontal é a escolha habitual, e é tão\n  habitual que parece a natureza das coisas.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "50b8e63bfb": {
+   "en": "T exited the frame · tg =",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "T saiu do quadro · tg = ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "5d5507cde8": {
+   "en": "4. The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. A distância",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "6d53c68d08": {
+   "en": "<b>Do:</b> tilt <i>the floor</i> and see the entire apparatus rotate together. Move the <i>radius</i> and watch the two columns in the table: the lengths change, the ratios do not. Turn on <i>the arc</i> to compare sine, arc, and tangent by eye, and <i>the wave</i> to see the circle write the sine wave.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> incline <i>o chão</i> e veja o aparelho inteiro girar junto. Mexa no <i>raio</i>\ne olhe as duas colunas da tabela: os comprimentos mudam, as razões não. Ligue <i>o arco</i> para\ncomparar seno, arco e tangente a olho, e <i>a onda</i> para ver o círculo escrever a senoide.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "6e18067d48": {
+   "en": "Move the <b>radius</b> with the wave turned on. The amplitude is the radius — the wave does not have its own height, it has the height of the circle that generated it.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Mexa no <b>raio</b> com a onda ligada. A amplitude é o raio — a onda não tem uma altura\n  própria, ela tem a altura do círculo que a gerou.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "702aa27173": {
+   "en": "<b>1b. The <span class=\"c-tg\">T</span> is not a loose point.</b> The thin line that passes through the origin and point P continues and <b>meets</b> the tangent line: this meeting defines the T, and that's why the length of the tangent grows without limit as the radius approaches perpendicular to the floor — the two lines become increasingly parallel. And when the <b class=\"c-tg\">T</b> goes out of the frame it <b>does not disappear</b>: the tangent is cut at the edge, with an arrowhead and the value displayed. Disappearing silently would hide exactly the asymptote — which is what we came to see.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>1b. O <span class=\"c-tg\">T</span> não é um ponto solto.</b> A reta fina que passa\n  pela origem e pelo ponto P segue em frente e <b>encontra</b> a reta tangente: é esse\n  encontro que define o T, e é por isso que o comprimento da tangente cresce sem limite\n  quando o raio se aproxima da perpendicular ao chão — as duas retas vão ficando paralelas.\n  E quando o <b class=\"c-tg\">T</b> passa da moldura ele <b>não some</b>: a tangente é cortada\n  na borda, com ponta de seta e o valor à mostra. Sumir calado esconderia justamente a\n  assíntota — que é o que se veio ver.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "7e4b9801ff": {
+   "en": "arc",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "arco ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "7f44657f05": {
+   "en": "rotate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "girar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "8594d53d79": {
+   "en": "← The distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "← A distância",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "927563fcd1": {
+   "en": "sine",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "seno ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "93d3d325d1": {
+   "en": "<b>cosine</b> — along the floor",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>cosseno</b> — ao longo do chão",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "95a16a057d": {
+   "en": "(the angle in radians)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "  (o ângulo em radianos)",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "95d2cfa728": {
+   "en": "cosine",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "cosseno ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9c1d96767b": {
+   "en": "stop",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parar",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9c26cd3ce2": {
+   "en": "The bottom axis marks <b>π</b> and <b>2π</b> for you to read the position, but it is <b>compressed</b>: it is not on the same scale as the radius. This sheet wants the image of the phenomenon; who makes the same passage <b>in scale</b>, with the arc and tangent together, is the next sheet — <a href=\"desenrolamento.html\">the unrolling</a>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O eixo de baixo marca <b>π</b> e <b>2π</b> para você ler a posição, mas está\n  <b>comprimido</b>: ele não está na mesma escala do raio. Esta folha quer a imagem do\n  fenômeno; quem faz a mesma passagem <b>em escala</b>, com o arco e a tangente junto, é a\n  folha seguinte — <a href=\"desenrolamento.html\">o desenrolamento</a>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "9c31f71109": {
+   "en": "The wave: the circle writing",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A onda: o círculo escrevendo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a18fea8c41": {
+   "en": "5 of 9 · the nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a5facb6257": {
+   "en": "What to look at",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que olhar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "aae562f7e1": {
+   "en": "Connect the <b>wave</b> and make it <b>rotate</b>. The height of the point — the <b class=\"c-sen\">sine</b> —  \n  is moved to a position, and the curve <b>is drawn as the angle moves</b>: it's not a sine wave that appears ready, it's the circle writing one. Drag the <b>angle</b> with your hand and the trace advances and recedes with you. The dashed line is horizontal on purpose — it asserts one thing only: <b>it's the same height, in two places</b>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Ligue <b>a onda</b> e mande <b>girar</b>. A altura do ponto — o <b class=\"c-sen\">seno</b> —\n  é levada para uma posição, e a curva <b>vai sendo desenhada enquanto o ângulo anda</b>: não é\n  uma senoide que aparece pronta, é o círculo escrevendo uma. Arraste o <b>ângulo</b> com a mão\n  e o traço avança e recua com você. A ligação tracejada é horizontal de propósito — ela afirma\n  uma coisa só: <b>é a mesma altura, em dois lugares</b>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "abc078f0c6": {
+   "en": "<b>sine</b> — perpendicular to the ground",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>seno</b> — perpendicular ao chão",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b4bac21c6b": {
+   "en": "the ground",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o chão",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "b630ced189": {
+   "en": "And it pays more: with this line drawn, the two triangles that appear —  \n  the small one, with sides <b class=\"c-cos\">cosine</b> and <b class=\"c-sen\">sine</b>, and the large  \n  one, with sides <b>radius</b> and <b class=\"c-tg\">tangent</b> — are <b>similar</b>. The ratio between  \n  the sides is the same in both, and that is, as a drawing and not as a formula,  \n  <code>tg θ = sin θ / cos θ</code>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "E ela paga mais: com essa reta desenhada, os dois triângulos que aparecem —\n  o pequeno, de lados <b class=\"c-cos\">cosseno</b> e <b class=\"c-sen\">seno</b>, e o grande,\n  de lados <b>raio</b> e <b class=\"c-tg\">tangente</b> — são <b>semelhantes</b>. A razão entre\n  os lados é a mesma nos dois, e isso é, como desenho e não como fórmula,\n  <code>tg θ = sen θ / cos θ</code>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "ba2cae9ea8": {
+   "en": "The circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O círculo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "bd5c3dbcce": {
+   "en": "<b>3. Adjust the radius, and look at the two columns of the table.</b> The <b>lengths</b> change.  \n  The <b>ratios</b> do not. That's why the circle of radius 1 exists: in it, and only in it,  \n  the length <i>is</i> the ratio — and then you can call the drawing \"sine\" without lying.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>3. Mexa no raio, e olhe as duas colunas da tabela.</b> Os <b>comprimentos</b> mudam.\n  As <b>razões</b> não. É por isso que o círculo de raio 1 existe: nele, e só nele, o\n  comprimento <i>é</i> a razão — e aí dá para chamar o desenho de \"seno\" sem mentir.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c9003287e3": {
+   "en": "7. The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "caee9ba0b7": {
+   "en": "The unrolling →",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O desenrolamento →",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "d277ac9088": {
+   "en": "length in the drawing",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "comprimento no desenho",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "da5cc15c7c": {
+   "en": "tangent",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "tangente",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "db3d405b10": {
+   "en": "on",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "on",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e012f44b33": {
+   "en": "1 (by definition)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1 (por definição)",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e959c3c199": {
+   "en": "6. The Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "e9981fc230": {
+   "en": "the arc",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o arco",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f1505a19da": {
+   "en": "<b>1. The three are lengths, not magical numbers.</b> The <b class=\"c-cos\">cosine</b>  \n  is how far the point advanced <i>along</i> the ground; the <b class=\"c-sen\">sine</b>, how far  \n  it rose <i>from</i> the ground; the <b class=\"c-tg\">tangent</b> is measured along the line that  \n  touches the circle — and that's where it gets its name.  \n  <span class=\"deck\">They are the four lengths from Station 5 of C1.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>1. Os três são comprimentos, não números mágicos.</b> O <b class=\"c-cos\">cosseno</b>\n  é o quanto o ponto avançou <i>ao longo</i> do chão; o <b class=\"c-sen\">seno</b>, o quanto\n  ele subiu <i>a partir</i> do chão; a <b class=\"c-tg\">tangente</b> é medida sobre a reta que\n  encosta no círculo — e é daí que vem o nome dela.\n  <span class=\"deck\">São os quatro comprimentos da Estação 5 do C1.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "fb0f60724a": {
+   "en": "angle θ = <input type=\"range\" id=\"th\" min=\"-6.2\" max=\"6.2\" step=\"0.002\" value=\"0.85\"  \n         style=\"width:280px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "ângulo θ = <input type=\"range\" id=\"th\" min=\"-6.2\" max=\"6.2\" step=\"0.002\" value=\"0.85\"\n         style=\"width:280px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  }
+ },
+ "fatia": "o-circulo",
+ "idioma": "en-US"
+}

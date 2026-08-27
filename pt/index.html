@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ver o cálculo — nove instrumentos, em ordem</title>
+<style>
+  :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
+         --cartao:#0d1c30; --borda:#1e3050; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;
+       padding:44px 26px 60px;line-height:1.6}
+  .caixa{max-width:820px;margin:0 auto}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:44px;margin:0 0 6px;letter-spacing:.2px}
+  .lede{color:#b9c4d4;font-size:16px;max-width:760px;margin:0 0 6px;text-align:justify;hyphens:auto}
+  .nota{color:var(--fraco);font-size:13.5px;max-width:760px;margin:14px 0 0;text-align:justify;hyphens:auto}
+  h2{font-family:Cormorant,Georgia,serif;font-size:25px;margin:44px 0 10px;
+     font-weight:600}
+  ol{list-style:none;padding:0;margin:18px 0 0;counter-reset:f}
+  li{counter-increment:f;margin:0 0 12px}
+  a.fatia{display:flex;gap:18px;align-items:baseline;text-decoration:none;color:inherit;
+          background:var(--cartao);border:1px solid var(--borda);border-left-width:4px;
+          border-radius:6px;padding:15px 18px;transition:border-color .12s}
+  a.fatia:hover{border-color:var(--ouro)}
+  a.fatia::before{content:counter(f);font-variant-numeric:tabular-nums;color:var(--fraco);
+                  font-size:15px;min-width:20px}
+  .corpo{flex:1}
+  .nome{font-family:Cormorant,Georgia,serif;font-size:22px;font-weight:600}
+  .explica{color:var(--ouro);font-size:13.5px;margin-top:1px}
+  .chamada{color:#9fadc0;font-size:13.5px;margin-top:7px}
+  pre.arvore{background:var(--cartao);border:1px solid var(--borda);border-radius:6px;
+             padding:18px;overflow-x:auto;color:#9fadc0;font-size:13px;line-height:1.5}
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--borda);
+         color:var(--fraco);font-size:13px}
+  footer a{color:var(--ouro)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+</style>
+</head>
+<body>
+<div class="caixa">
+
+<h1>Ver o cálculo</h1>
+<p class="lede">Nove instrumentos, em ordem. Cada um mostra <b>uma</b> coisa, e cada um
+abre sozinho no navegador — sem instalação, sem rede, sem conta.</p>
+<p class="lede">Não são ilustrações do que um texto já disse. São o lugar onde a
+afirmação pode ser <b>conferida com a régua</b>: quando duas coisas têm o mesmo
+comprimento, elas têm o mesmo comprimento na tela, e você mede.</p>
+
+<h2>A ordem</h2>
+<ol>
+  <li><a class="fatia" href="par-vira-ponto.html" style="border-left-color:#c9a266"><div class="corpo"><div class="nome">O par vira ponto</div><div class="explica">duas retas numéricas viram um gráfico</div><div class="chamada">Todo mundo sabe que a função é uma máquina: entra x, sai y.</div></div></a></li>
+  <li><a class="fatia" href="o-angulo.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">O ângulo</div><div class="explica">em graus, em radianos, e de onde vem o π</div><div class="chamada">Um ângulo não tem tamanho próprio.</div></div></a></li>
+  <li><a class="fatia" href="o-triangulo.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">O triângulo</div><div class="explica">oposto, adjacente e hipotenusa dependem de qual ângulo</div><div class="chamada">Oposto e adjacente parecem nomes dos lados.</div></div></a></li>
+  <li><a class="fatia" href="a-distancia.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">A distância</div><div class="explica">de onde nasce um círculo</div><div class="chamada">Um círculo não é desenhado: ele é gerado por uma condição — todos os pontos que estão à mesma distância de um centro.</div></div></a></li>
+  <li><a class="fatia" href="o-circulo.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">O círculo</div><div class="explica">seno, cosseno e tangente como comprimentos</div><div class="chamada">Seno, cosseno e tangente não são botões de calculadora: são comprimentos, medidos a partir de um chão que alguém escolheu.</div></div></a></li>
+  <li><a class="fatia" href="desenrolamento.html" style="border-left-color:#e8654f"><div class="corpo"><div class="nome">O desenrolamento</div><div class="explica">do círculo ao gráfico</div><div class="chamada">A folha do círculo deixa uma pergunta no ar: eu conheço o seno como uma onda — o que ele tem a ver com este círculo?</div></div></a></li>
+  <li><a class="fatia" href="taxa.html" style="border-left-color:#78c4ff"><div class="corpo"><div class="nome">A taxa</div><div class="explica">a função descrita pela mudança</div><div class="chamada">Inclinação é quanto sobe ao andar um.</div></div></a></li>
+  <li><a class="fatia" href="o-encontro.html" style="border-left-color:#6fbf6a"><div class="corpo"><div class="nome">O encontro</div><div class="explica">a inclinação é uma tangente</div><div class="chamada">A palavra tangente nomeia duas coisas diferentes: um comprimento medido no círculo e a reta que encosta numa curva.</div></div></a></li>
+  <li><a class="fatia" href="a-familia.html" style="border-left-color:#c9a266"><div class="corpo"><div class="nome">A família</div><div class="explica">ler a curva e dizer que máquina a fez</div><div class="chamada">Você reconhece uma parábola de olho.</div></div></a></li>
+</ol>
+
+<h2>Por que esta ordem, e não outra</h2>
+<p class="nota">Uma dimensão só tem posição — não há para onde curvar. É a segunda que
+desbloqueia a forma, e é por isso que <b>o par vira ponto</b> é a raiz e não um começo
+entre outros: até um ângulo precisa de duas dimensões para existir. Depois da raiz, a
+árvore abre em dois ramos que só se encontram no fim.</p>
+<pre class="arvore">   ORDEM DE LEITURA — uma fila
+
+   par-vira-ponto → o ângulo → o triângulo → a distância → o círculo
+                  → o desenrolamento → a taxa → o encontro
+
+
+   DEPENDÊNCIA — dois ramos, e só aqui a árvore existe
+
+                    par-vira-ponto
+              ┌───────────┴───────────┐
+           a taxa      o ângulo → o triângulo → a distância → o círculo
+              │                    → o desenrolamento
+              └───────────┬───────────┘
+                     o encontro
+
+   A taxa não DEPENDE da trigonometria: inclinação existe sem ângulo. Mas ela
+   gasta a palavra &quot;tangente&quot;, e essa palavra precisa estar desambiguada antes.
+   Por isso a fila a põe tarde, e o ramo continua sendo verdade.</pre>
+<p class="nota">Dependência e ordem de leitura não são a mesma coisa, e vale separar. A
+<b>taxa</b> não depende da trigonometria — inclinação existe sem ângulo nenhum. Mas ela
+gasta a palavra <b>tangente</b>, que nomeia duas coisas, e essa ambiguidade precisa estar
+desfeita antes. Por isso a fila a põe em sétimo, embora o grafo de dependência a mantenha
+num ramo próprio.</p>
+<p class="nota">Isso não foi teoria: com a taxa em segundo, ela era a <b>única fatia com
+dívida declarada</b> no portão — gastava seno, cosseno e π antes de qualquer um ser
+definido. Descendo para sétimo, a dívida zerou. O portão viu o que o argumento não tinha
+visto.</p>
+
+<h2>Como isto se verifica</h2>
+<p class="nota">Cada fatia declara, num manifesto legível por máquina, a sua ordem e os
+símbolos pelos quais responde. O <code>auditar_fatias.py</code> cobra: nenhum símbolo
+gasto sem vir da própria fatia ou de uma <b>anterior</b>; nenhum empréstimo sem alguém
+depois pagá-lo; nenhuma declaração ociosa; nenhum pedido de rede. E roda com
+<b>controle negativo</b> — injeta defeitos e exige que sejam pegos, porque zero achados
+só significa alguma coisa se o portão provar que sabe reprovar.</p>
+<p class="nota">Este índice também é gerado: ele lê a ordem e a descrição das próprias
+fatias. Editar o HTML gerado é o defeito, não o atalho.</p>
+
+<footer>
+<b>Ver o cálculo</b> — Mateus Alkimim.<br>
+Código sob <b>MIT</b>; conteúdo sob
+<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br">CC BY-SA 4.0</a>
+(veja <code>LICENSE</code> e <code>LICENSE-CONTENT</code>).<br>
+Reusar é livre, inclusive comercialmente; derivar exige manter a mesma licença e dar
+crédito.
+</footer>
+
+</div>
+<!-- faixa-idioma: gerada por i18n.py, nao editar -->
+<div id="faixa-idioma" hidden style="position:fixed;top:0;left:0;right:0;
+ z-index:99;background:#c9a266;color:#0a1424;font:13px/1.4 Inter,system-ui,
+ sans-serif;padding:7px 12px;display:flex;gap:10px;justify-content:center;
+ align-items:center">
+<span>This page is in Portuguese.</span>
+<a href="../en/index.html" style="color:#0a1424;font-weight:600">Read in English</a>
+<button onclick="this.parentNode.hidden=true" aria-label="close"
+ style="background:none;border:0;color:#0a1424;cursor:pointer;font-size:15px">&times;</button>
+</div>
+<script>
+(function(){try{
+  var f=localStorage.getItem('sc-lang');
+  if(f==='pt')return;
+  var L=(navigator.languages&&navigator.languages.length)?navigator.languages
+        :[navigator.language||''];
+  var pt=false; for(var i=0;i<L.length;i++){ if(/^pt/i.test(L[i])){pt=true;break;} }
+  if(f!=='en' && pt!==false)return;
+  document.getElementById('faixa-idioma').hidden=false;
+}catch(e){}})();
+document.querySelector('#faixa-idioma a').addEventListener('click',function(){
+  try{localStorage.setItem('sc-lang','en');}catch(e){}
+});
+</script>
+</body>
+</html>

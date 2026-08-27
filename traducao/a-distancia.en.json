@@ -1,0 +1,431 @@
+{
+ "atualizado_em": "2026-08-27 13:39:05",
+ "blocos": {
+  "016c2beff3": {
+   "en": "distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a distância",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "071f276798": {
+   "en": "The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A distância",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0a84ae150e": {
+   "en": "<b>x² + y²</b> = <span id=\"rs\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>x² + y²</b> = <span id=\"rs\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0b0ad4d047": {
+   "en": "<span class=\"v-x\"><b>x</b> = <span id=\"rx\"></span> · <b>x²</b> = <span id=\"rx2\"></span></span>\n  <span class=\"v-y\"><b>y</b> = <span id=\"ry\"></span> · <b>y²</b> = <span id=\"ry2\"></span></span>\n  <span class=\"v-h\"><b>x² + y²</b> = <span id=\"rs\"></span></span>\n  <span class=\"v-h\"><b>the distance</b> = <span id=\"rd\"></span></span>\n  <span class=\"v-o\"><b>r</b> = <span id=\"rr\"></span> · <b>r²</b> = <span id=\"rr2\"></span></span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  <span class=\"v-x\"><b>x</b> = <span id=\"rx\"></span> · <b>x²</b> = <span id=\"rx2\"></span></span>\n  <span class=\"v-y\"><b>y</b> = <span id=\"ry\"></span> · <b>y²</b> = <span id=\"ry2\"></span></span>\n  <span class=\"v-h\"><b>x² + y²</b> = <span id=\"rs\"></span></span>\n  <span class=\"v-h\"><b>a distância</b> = <span id=\"rd\"></span></span>\n  <span class=\"v-o\"><b>r</b> = <span id=\"rr\"></span> · <b>r²</b> = <span id=\"rr2\"></span></span>\n",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0c28bf99ce": {
+   "en": "The Distance — where a circle originates",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A distância — de onde nasce um círculo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0cff0059da": {
+   "en": "2. The Angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. O ângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "0f93abe309": {
+   "en": "<b>y</b> = <span id=\"ry\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>y</b> = <span id=\"ry\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "11120e033f": {
+   "en": "4 of 9 · as nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "1673058248": {
+   "en": "9. The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "18364b5056": {
+   "en": "8. The Intersection",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. O encontro",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "1ea1010abc": {
+   "en": "The 2 is the dimension of the <b>space where the thing  \n      lives</b> — the plane has two axes",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o 2 é a dimensão do <b>espaço onde a coisa\n      mora</b> — o plano tem dois eixos",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "20310d7929": {
+   "en": "← The triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "← O triângulo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "205b67a2ce": {
+   "en": "the sum passed from r²: the point is OUTSIDE",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a soma passou de r²: o ponto está FORA",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "22ad7da77b": {
+   "en": "the required distance r = <input type=\"range\" id=\"sr\" min=\"0.5\" max=\"3.0\" step=\"0.005\"  \n         value=\"2\" style=\"width:150px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a distância exigida r = <input type=\"range\" id=\"sr\" min=\"0.5\" max=\"3.0\" step=\"0.005\"\n         value=\"2\" style=\"width:150px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2c7b77389f": {
+   "en": "This set has a proper name in mathematics: <b>S¹</b>. And here lies a  \n  trap that is worth disarming before it catches you, because on this same page  \n  appear <b>three superscripts with three meanings</b>:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Esse conjunto tem nome próprio na matemática: <b>S¹</b>. E aqui mora uma\n  armadilha que vale desarmar antes de ela pegar, porque nesta mesma página\n  aparecem <b>três sobrescritos com três significados</b>:",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "363834c863": {
+   "en": "<code>x²</code>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<code>x²</code>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3da7250d36": {
+   "en": "<b>r</b> = <span id=\"rr\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>r</b> = <span id=\"rr\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3deaf1349b": {
+   "en": "1. The Pair Becomes a Point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. O par vira ponto",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "486097ac48": {
+   "en": "3. The Triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. O triângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "4a2d96575a": {
+   "en": "The circle →",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O círculo →",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "4e878535c8": {
+   "en": "A set of points defined by a condition is called a <b>geometric locus</b>. The circle of radius 1 is the geometric locus of the points of the plane whose distance to the origin is <b>1</b> — and the condition, written, is  \n  <code>x² + y² = 1</code>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Um conjunto de pontos definido por uma condição chama-se <b>lugar\n  geométrico</b>. O círculo de raio 1 é o lugar geométrico dos pontos do plano\n  cuja distância à origem vale <b>1</b> — e a condição, escrita, é\n  <code>x² + y² = 1</code>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "531410aa65": {
+   "en": "<code>S¹</code>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<code>S¹</code>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "54df0615cf": {
+   "en": "<b>2. The circle is the set that satisfies a condition.</b> Choose a  \n  <b class=\"v-o\">r</b> and sweep: the points that fulfill <i>distance = r</i> are marked, and  \n  their trail <b>is</b> the circle. No one drew it — it is what remains when one demands  \n  one thing only from every point of the plane.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>2. O círculo é o conjunto que satisfaz uma condição.</b> Escolha um\n  <b class=\"v-o\">r</b> e varra: os pontos que cumprem <i>distância = r</i> ficam marcados, e\n  o rastro deles <b>é</b> o círculo. Ninguém o desenhou — ele é o que sobra quando se exige\n  uma coisa só de todo ponto do plano.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "6c991571fa": {
+   "en": "<b>Why sin² + cos² = 1.</b> Put <b class=\"v-o\">r = 1</b>. A point of the unit circle has coordinates <code>(cos θ, sin θ)</code> — it is the slice of the circle that shows this, with the cosine along the floor and the sine perpendicular to it. Substituting in the condition: <code>cos²θ + sin²θ = 1</code>. <b>The fundamental identity is Pythagoras in  \n  the circle of radius 1</b>, and not a new formula.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Por que sen² + cos² = 1.</b> Ponha <b class=\"v-o\">r = 1</b>. Um ponto do círculo\n  unitário tem coordenadas <code>(cos θ, sen θ)</code> — é a fatia do círculo que mostra\n  isso, com o cosseno ao longo do chão e o seno perpendicular a ele. Substituindo na\n  condição: <code>cos²θ + sen²θ = 1</code>. <b>A identidade fundamental é Pitágoras no\n  círculo de raio 1</b>, e não uma fórmula nova.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "710e3279b0": {
+   "en": "<b>the distance</b> = <span id=\"rd\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>a distância</b> = <span id=\"rd\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "7126581ae3": {
+   "en": "clear",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "limpar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "803e0532d1": {
+   "en": "<b>1. The distance is the hypotenuse.</b> Move the point and observe the triangle: the legs are exactly the <b class=\"v-x\">x</b> and the <b class=\"v-y\">y</b> of the point, and the distance to the origin is the hypotenuse. It's not an analogy — it's the same triangle from the previous slice, with the legs laid over the axes. <span class=\"deck\">That's why the triangle comes before the circle.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>1. A distância é uma hipotenusa.</b> Ande com o ponto e olhe o triângulo: os catetos\n  são exatamente o <b class=\"v-x\">x</b> e o <b class=\"v-y\">y</b> do ponto, e a distância até\n  a origem é a hipotenusa. Não é analogia — é o mesmo triângulo da fatia anterior, com os\n  catetos deitados sobre os eixos. <span class=\"deck\">É por isso que o triângulo vem antes do\n  círculo.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "8afadb07de": {
+   "en": "the two are equal: the point is on the circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "os dois são iguais: o ponto está no círculo",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "92cd396728": {
+   "en": "<b>3. And the condition, written, is the equation.</b> Squaring removes the root and leaves <code>x² + y² = r²</code>. Watch the reading line as you move: when the sum <b class=\"v-h\">x² + y²</b> touches <b class=\"v-o\">r²</b>, the point is on the circle. The equation is not a formula to memorize — it's the condition, expressed in symbols.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>3. E a condição, escrita, é a equação.</b> Elevar ao quadrado tira a raiz e sobra\n  <code>x² + y² = r²</code>. Olhe a linha de leitura enquanto anda: quando a soma\n  <b class=\"v-h\">x² + y²</b> encosta em <b class=\"v-o\">r²</b>, o ponto está no círculo. A\n  equação não é uma fórmula a decorar — é a condição, dita em símbolos.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "9c1d96767b": {
+   "en": "stop",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parar",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a1f18832ba": {
+   "en": "5. The Circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. O círculo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "a5a2928768": {
+   "en": "What this solves all at once",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que isso resolve de uma vez",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a5facb6257": {
+   "en": "What to look at",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que olhar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a8d7a09a5a": {
+   "en": "<code>ℝ²</code>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<code>ℝ²</code>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "aff427deb4": {
+   "en": "the 2 is <b>power</b> — x multiplied by\n      itself",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o 2 é <b>potência</b> — x multiplicado por\n      si mesmo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b7023cfcf0": {
+   "en": "marked:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "marcados: ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "ba21bcde58": {
+   "en": "A circle drawn on the plane is a <b>one</b>-dimensional object within a <b>two</b>-dimensional space: moving along it gives one freedom only — forward or backward along the curve. It's the same idea from the first slice, one level up.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Um círculo desenhado no plano é um objeto de <b>uma</b> dimensão dentro de\n  um espaço de <b>duas</b>: quem anda sobre ele tem uma liberdade só — para\n  frente ou para trás ao longo da curva. É a mesma ideia da primeira fatia,\n  um andar acima.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c07773a708": {
+   "en": "A circle is not drawn: it is <b>generated by a condition</b> — all points that are at the same distance from a center. And the distance of a point to the origin is the hypotenuse of a right triangle whose legs are the x and y themselves. The circle is born from the triangle, and here you can see it happening.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Um círculo não é desenhado: ele é <b>gerado por uma condição</b> — todos os\npontos que estão à mesma distância de um centro. E a distância de um ponto até a origem é a\nhipotenusa de um triângulo retângulo cujos catetos são o próprio x e o próprio y. O círculo\nnasce do triângulo, e aqui dá para ver isso acontecendo.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c1b240162e": {
+   "en": "The name of this, and the name of it",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O nome disso, e o nome dele",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c1f47f053e": {
+   "en": "the 1 is the dimension <b>of the thing itself</b> —\n      the circle is a <i>curve</i>, and a curve is one-dimensional",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o 1 é a dimensão <b>da própria coisa</b> —\n      o círculo é uma <i>curva</i>, e curva é unidimensional",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c7cc215037": {
+   "en": "satisfies the condition",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "cumpre a condição",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "c9003287e3": {
+   "en": "7. The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "cbb4e86839": {
+   "en": "the sum did not reach r²: the point is INSIDE",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a soma não chegou a r²: o ponto está DENTRO",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "cfeb582472": {
+   "en": "x = <input type=\"range\" id=\"sx\" min=\"-3.2\" max=\"3.2\" step=\"0.005\" value=\"1.6\"\n         style=\"width:210px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "x = <input type=\"range\" id=\"sx\" min=\"-3.2\" max=\"3.2\" step=\"0.005\" value=\"1.6\"\n         style=\"width:210px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "d74981a3e3": {
+   "en": "<b>Do:</b> drag <i>x</i> and <i>y</i> and watch the hypotenuse form. Then fix  \n<i>the required distance r</i> and press <i>sweep all points at this distance</i>: the circle  \nappears as <b>result</b> of the condition, not as a pencil stroke.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> arraste <i>x</i> e <i>y</i> e acompanhe a hipotenusa se formando. Depois fixe\n<i>a distância exigida r</i> e aperte <i>varrer todos os pontos a essa distância</i>: o círculo\naparece como <b>resultado</b> da condição, não como traço de lápis.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "db3d405b10": {
+   "en": "on",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "on",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e467630d35": {
+   "en": "the required distance: r =",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a distância exigida: r = ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e707863380": {
+   "en": "sweep all points at this distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "varrer todos os pontos a essa distância",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e84592e48c": {
+   "en": "<b>Why a circle needs two accounts to be written.</b> Test the rule of  \n  the function: for <code>x = 0</code> and <code>r = 2</code> there are <b>two</b> points,  \n  <code>y = +2</code> and <code>y = −2</code>. One input, two outputs — the circle  \n  <b>is not a function</b>, and breaks the requirement that the first slice establishes. It is exactly  \n  for this reason that it is written as <code>(r·cos θ, r·sen θ)</code>: an angle enters, and the  \n  <i>two</i> numbers come out together.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Por que o círculo precisa de duas contas para ser escrito.</b> Teste a regra da\n  função: para <code>x = 0</code> e <code>r = 2</code> existem <b>dois</b> pontos,\n  <code>y = +2</code> e <code>y = −2</code>. Uma entrada, duas saídas — o círculo\n  <b>não é função</b>, e quebra a exigência que a primeira fatia estabelece. É exatamente\n  por isso que ele é escrito como <code>(r·cos θ, r·sen θ)</code>: um ângulo entra, e os\n  <i>dois</i> números saem juntos.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e959c3c199": {
+   "en": "6. The Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "f0910c9f0e": {
+   "en": "<b>x</b> = <span id=\"rx\">",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>x</b> = <span id=\"rx\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f6087889dc": {
+   "en": "Local, self-contained instrument: no network, no external library. Between  \n  <code>o-triangulo</code> and <code>o-circulo</code> in the order of the family.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Entre\n  <code>o-triangulo</code> e <code>o-circulo</code> na ordem da família.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f9033a2e24": {
+   "en": "y = <input type=\"range\" id=\"sy\" min=\"-3.2\" max=\"3.2\" step=\"0.005\" value=\"1.2\"  \n         style=\"width:210px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "y = <input type=\"range\" id=\"sy\" min=\"-3.2\" max=\"3.2\" step=\"0.005\" value=\"1.2\"\n         style=\"width:210px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  }
+ },
+ "fatia": "a-distancia",
+ "idioma": "en-US"
+}

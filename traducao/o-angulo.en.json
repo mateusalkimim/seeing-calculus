@@ -1,0 +1,431 @@
+{
+ "atualizado_em": "2026-08-27 13:39:02",
+ "blocos": {
+  "089ed715d8": {
+   "en": "<b>the radius</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>o raio</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0b41ea868b": {
+   "en": "a length — changes with the radius",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "um comprimento — muda com o raio",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0e7b7e1766": {
+   "en": "the arc became the circumference,",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o arco virou a circunferência,",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "1673058248": {
+   "en": "9. The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "18364b5056": {
+   "en": "8. The Meeting",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. O encontro",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "191e66799c": {
+   "en": "what is measured",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o que se mede",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2262c1cfdf": {
+   "en": "The triangle →",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O triângulo →",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "241d1c7ba4": {
+   "en": "three arcs at the same time",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "três arcos ao mesmo tempo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "286228e397": {
+   "en": "radius of the arc = <input type=\"range\" id=\"r\" min=\"0.35\" max=\"1.5\" step=\"0.005\" value=\"1\"\n         style=\"width:170px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "raio do arco = <input type=\"range\" id=\"r\" min=\"0.35\" max=\"1.5\" step=\"0.005\" value=\"1\"\n         style=\"width:170px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "296ed46896": {
+   "en": "← The pair turns into a point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "← O par vira ponto",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2fc443eb46": {
+   "en": "<b>radians</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>radianos</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "35be7b25d0": {
+   "en": "radius",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "raio",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "38317836f3": {
+   "en": "and it divided by the radius gives 2π",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "e ela dividida pelo raio dá 2π",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3deaf1349b": {
+   "en": "1. The Pair Turns into a Point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. O par vira ponto",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "486097ac48": {
+   "en": "3. The Triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. O triângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "4f91cd8ec6": {
+   "en": "360 marks — nothing in the drawing asks for this number",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "360 marcas — nada no desenho pede esse número",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "5484f75481": {
+   "en": "= arc ÷ radius",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "= arco ÷ raio",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "5d5507cde8": {
+   "en": "4. The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. A distância",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "7689dbd187": {
+   "en": "open until the full turn",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "abrir até a volta inteira",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "78d5822b43": {
+   "en": "<b>Do:</b> open the angle with <i>the opening</i> and then move <i>radius of the arc</i> — the\nangle does not change, the arc changes. Turn on <i>three arcs at the same time</i> to see it all at once,\nand <i>the division into 360</i> to see where the degree came from.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> abra o ângulo com <i>a abertura</i> e depois mexa em <i>raio do arco</i> — o\nângulo não muda, o arco muda. Ligue <i>três arcos ao mesmo tempo</i> para ver isso de uma vez,\ne <i>a divisão em 360</i> para ver de onde veio o grau.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "7b4faf0c54": {
+   "en": "the one that turns",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a que gira",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "7e4b9801ff": {
+   "en": "arc",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "arco",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "81ca3cd0eb": {
+   "en": "the full turn: 2π",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a volta inteira: 2π",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "850e24003e": {
+   "en": "The angle — in degrees, in radians, and where π comes from",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O ângulo — em graus, em radianos, e de onde vem o π",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "93313f24b9": {
+   "en": "Why calculus does not use degrees",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Por que o cálculo não usa graus",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "98e098a5ae": {
+   "en": "in degrees",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "em graus",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9c1d96767b": {
+   "en": "stop",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parar",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9dc022b4a7": {
+   "en": "= the slice, if the turn is 360",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "= a fatia, se a volta for 360",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a09308c5b5": {
+   "en": "in radians",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "em radianos",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a1f18832ba": {
+   "en": "5. The Circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. O círculo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "a4ac48ab32": {
+   "en": "<b>3. Turn on the division into 360.</b> Nothing in the drawing asks for 360. It is a partition inherited from\n  Babylonian astronomy, chosen because 360 divides well — by 2, 3, 4, 5, 6, 8, 9, 10,\n  12, 15, 18… The degree is <b>convenient</b>, and that's all. It carries no information about the\n  circle. Half a turn are 180 degrees <i>because someone divided it this way</i>; half a turn are π\n  radians <b>because half the circumference divided by the radius gives π</b>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>3. Ligue a divisão em 360.</b> Nada no desenho pede 360. É uma partição herdada da\n  astronomia babilônica, escolhida porque 360 se divide bem — por 2, 3, 4, 5, 6, 8, 9, 10,\n  12, 15, 18… O grau é <b>cômodo</b>, e é só isso. Não carrega informação nenhuma sobre o\n  círculo. Meia volta são 180 graus <i>porque alguém dividiu assim</i>; meia volta são π\n  radianos <b>porque a metade da circunferência dividida pelo raio dá π</b>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a5facb6257": {
+   "en": "What to look at",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que olhar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a7b52dccc4": {
+   "en": "2 of 9 · the nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a7fa9cd914": {
+   "en": "the reference half-line",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a semirreta de referência",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "acb48dce46": {
+   "en": "the opening = <input type=\"range\" id=\"th\" min=\"0\" max=\"6.2832\" step=\"0.002\" value=\"1.1\"\n         style=\"width:300px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a abertura = <input type=\"range\" id=\"th\" min=\"0\" max=\"6.2832\" step=\"0.002\" value=\"1.1\"\n         style=\"width:300px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "ad51545bda": {
+   "en": "what is read",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o que se lê",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "bc3168adf6": {
+   "en": "<b>1. Move the radius.</b> The <b class=\"c-a\">arc</b> stretches and shrinks — it is a\n  length, and depends on where you drew it. But the line of <b class=\"c-o\">radians</b>\n  does not move. Turn on <i>three arcs at the same time</i>: three different lengths, one\n  ratio only. <b>This is the radian</b>: not a unit that someone chose, but the arc measured\n  with the radius itself.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>1. Mexa no raio.</b> O <b class=\"c-a\">arco</b> estica e encolhe — ele é um\n  comprimento, e depende de onde você desenhou. Mas a linha dos <b class=\"c-o\">radianos</b>\n  não se mexe. Ligue <i>três arcos ao mesmo tempo</i>: três comprimentos diferentes, uma\n  razão só. <b>Isso é o radiano</b>: não uma unidade que alguém escolheu, mas o arco medido\n  com o próprio raio.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "bd30899037": {
+   "en": "Local, self-contained instrument: no network, no external library. Slice of the same family\n  of <code>par-vira-ponto</code>, <code>taxa</code> and <code>o-circulo</code>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Fatia da mesma família\n  de <code>par-vira-ponto</code>, <code>taxa</code> e <code>o-circulo</code>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "be020f0d85": {
+   "en": "what was used as a ruler",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o que se usou como régua",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c218d44bdd": {
+   "en": "Not a preference of notation. Only in radians does <code>sen′ = cos</code> hold — the derivative\n  of sine is cosine, clean. In degrees, the same derivative comes with a <b>π/180</b> attached,\n  and it reappears in every calculation from there on. The choice of unit makes the entire\n  calculation clean or dirty.\n  <span class=\"deck\">This is seen in taxa.html: the red sine curve is exactly the cosine\n  — and only exactly because the input is in radians.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Não é preferência de notação. Só em radianos vale <code>sen′ = cos</code> — a derivada\n  do seno é o cosseno, limpa. Em graus a mesma derivada sai com um <b>π/180</b> pendurado,\n  e ele volta a aparecer em toda conta dali para a frente. A escolha da unidade suja ou\n  limpa o cálculo inteiro.\n  <span class=\"deck\">Isso se vê na taxa.html: a curva vermelha do seno é o cosseno\n  exatamente — e só é exatamente porque a entrada está em radianos.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c5268818cb": {
+   "en": "(in screen units)",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "  (em unidades de tela)",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "c706a8dc4d": {
+   "en": "<b>2. Open until the full turn.</b> The arc becomes the circumference, and the reading in\n  radians stops at <b>6.28318…</b> — which is <b>2π</b>. And then π is no longer a number that\n  appears out of nowhere: it is <i>the circumference divided by the diameter</i>, or\n  <b>how much the circle measures when measured with its own radius</b>. It falls out of the\n  calculation, not from convention.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>2. Abra até a volta inteira.</b> O arco vira a circunferência, e a leitura em\n  radianos para em <b>6,28318…</b> — que é <b>2π</b>. E aí o π deixa de ser um número que\n  aparece do nada: ele é <i>a circunferência dividida pelo diâmetro</i>, ou seja,\n  <b>o quanto o círculo mede quando medido com o próprio raio</b>. Ele cai da conta, não\n  da convenção.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c733d2c4ea": {
+   "en": "arc ÷ radius — <b>does not change with the radius</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "arco ÷ raio — <b>não muda com o raio</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c9003287e3": {
+   "en": "7. The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "d4bd661774": {
+   "en": "three arcs, three lengths — and only one radian",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "três arcos, três comprimentos — e um só radiano",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "db3d405b10": {
+   "en": "on",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "on",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "df3b081adc": {
+   "en": "An angle does not have its own size. It is an <b>opening</b>, and an opening cannot be\nmeasured without someone drawing an arc — it is in the choice of this arc that the two ways\nof reading the same angle appear. One was invented by decree, four thousand years ago, and the\nother the circle gives for free. Knowing which is which changes everything that comes after.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Um ângulo não tem tamanho próprio. Ele é uma <b>abertura</b>, e abertura não se\nmede sem que alguém desenhe um arco — é na escolha desse arco que aparecem as duas maneiras de\nler o mesmo ângulo. Uma delas foi inventada por decreto, há quatro mil anos, e a outra o\ncírculo dá de graça. Saber qual é qual muda tudo o que vem depois.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e44a71895c": {
+   "en": "<b>the arc</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>o arco</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e63368335c": {
+   "en": "<b>degrees</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>graus</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e84a549d48": {
+   "en": "The angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O ângulo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e959c3c199": {
+   "en": "6. The Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "ec9cb421ba": {
+   "en": "the division into 360",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a divisão em 360",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f6ff5f8f69": {
+   "en": "the slice of a turn, if the turn is cut into 360",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a fatia de uma volta, se a volta for cortada em 360",
+   "qa": "ok",
+   "tipo": "prosa"
+  }
+ },
+ "fatia": "o-angulo",
+ "idioma": "en-US"
+}

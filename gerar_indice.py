@@ -17,7 +17,12 @@ import os
 import re
 import sys
 
-AQUI = os.path.dirname(os.path.abspath(__file__))
+_RAIZ = os.path.dirname(os.path.abspath(__file__))
+# As fatias passaram a morar em `pt/` quando o sitio virou bilingue (a porta e
+# os stubs de URL antiga ficaram na raiz). O gerador segue a fonte: se `pt/`
+# existe, e ali que ele le e escreve. Sem isso ele geraria um indice vazio na
+# raiz e nada acusaria -- diretorio sem fatia nao e erro, e so um diretorio.
+AQUI = os.path.join(_RAIZ, "pt") if os.path.isdir(os.path.join(_RAIZ, "pt")) else _RAIZ
 SAIDA = os.path.join(AQUI, "index.html")
 
 MANIFESTO = re.compile(

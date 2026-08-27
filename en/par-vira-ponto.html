@@ -1,0 +1,340 @@
+<!doctype html>
+<!-- fatia: par-vira-ponto | ordem: 1 | declara: — | empresta: — -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The pair becomes a point — two numerical lines become a graph</title>
+<style>
+  :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
+         --x:#78c4ff; --y:#e8654f; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:30px;margin:0 0 2px;letter-spacing:.2px}
+  .sub{color:var(--fraco);font-size:13.5px;margin:0 0 14px;max-width:960px;line-height:1.5}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;background:#081120}
+  .painel{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:12px 0 4px;
+          padding:11px 14px;background:#0d1c30;border-radius:6px}
+  label{font-size:13px;display:flex;align-items:center;gap:7px;color:var(--creme)}
+  input[type=range]{accent-color:var(--ouro)}
+  button{background:#24374f;color:var(--creme);border:0;border-radius:4px;padding:6px 12px;
+         font-size:12.5px;cursor:pointer;font-family:inherit}
+  button.on{background:var(--ouro);color:#0a1424;font-weight:600}
+  #fns{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+  .notas{margin-top:26px;max-width:1000px;font-size:14px;line-height:1.65;color:#b9c4d4}
+  .notas h2{font-family:Cormorant,Georgia,serif;font-size:21px;color:var(--creme);
+            margin:22px 0 6px;font-weight:600}
+  .notas b{color:var(--creme)} .cx{color:var(--x)} .cy{color:var(--y)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+  .deck{color:#7f8ea4;font-size:12.5px}
+
+  /* ── LAYOUT, 2026-08-27 ────────────────────────────────────────────────
+     Correção do operador, com a tela na mão: a folha ocupava o monitor
+     inteiro. Num monitor largo o desenho abria com mais de 1800 px de
+     largura e quase 1000 px de altura, e aí o título e o texto viravam
+     legenda de uma figura gigante — a prosa perdia a importância que tem.
+
+     Agora quem manda é a PROSA. Uma medida só, --col, para o título e para
+     todos os blocos de texto: larguras diferentes com margem automática
+     dariam bordas esquerdas desalinhadas. A largura sai da LEITURA, não do
+     monitor — 620 px com corpo de 15,5 px dá cerca de 80 caracteres por
+     linha, que é a faixa confortável. O desenho fica num quadro de 1100 px:
+     largo o bastante para a construção caber sem encolher os rótulos,
+     estreito o bastante para não engolir a folha. */
+  :root{ --col:620px; --quadro:658px }   /* --quadro = a largura que este
+     desenho ocupa na tela, 568 px de altura vezes a proporção medida dele */
+  /* Cada fatia tem a proporção do PRÓPRIO desenho, medida no navegador. Por
+     isso o limite é a ALTURA e a largura segue: com width:100% uma folha
+     quase quadrada ficaria mais alta que larga — o defeito de origem com
+     outra roupa. */
+  /* ALTURA FIXA, largura pela proporção. Com width:auto as fatias menores
+     renderizavam 1:1 e as maiores encolhiam, e a folha descia com o
+     desenho mudando de altura a cada passo — 523, 568, 600. Agora a
+     faixa tem sempre a mesma altura e é a LARGURA que conta a forma da
+     composição: quase quadrada nas geométricas, larga nas de gráfico. */
+  canvas{height:568px;width:auto;max-width:1100px;margin:0 auto}
+  /* os controles pertencem ao DESENHO, não à página: sem isto eles
+     espalhavam pelos 1100 px do contêiner enquanto o quadro tinha 658,
+     e a folha ficava com dois alinhamentos brigando. */
+  .painel,#fns,#resp,.leitura{max-width:var(--quadro);margin-left:auto;margin-right:auto}
+  body{max-width:1152px;margin:0 auto}
+  h1,.sub,.faca,.notas{max-width:var(--col);margin-left:auto;margin-right:auto}
+  /* sem isto o título quebra com órfã — a última palavra sozinha na
+     segunda linha. `balance` reparte as linhas em vez de encher a
+     primeira até o fim. */
+  h1{text-wrap:balance;font-size:28px;line-height:1.22}
+  .sub{font-size:15.5px;line-height:1.68;color:#a8b4c6;
+       text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  .notas{font-size:15.5px;line-height:1.72}
+  .notas p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  /* O GANCHO. O texto de cima dizia a tese e parava — não dizia o que fazer
+     com as mãos, e a pessoa chegava no desenho sem saber por onde pegar.
+     Esta faixa nomeia, um por um, os controles que EXISTEM nesta folha. */
+  .faca{margin-bottom:20px;background:#0d1c30;border-left:3px solid var(--ouro);
+        border-radius:0 5px 5px 0;padding:12px 16px;color:#b9c4d4;
+        font-size:14px;line-height:1.68}
+  .faca b{color:var(--ouro)}
+  .faca i{color:var(--creme);font-style:normal;background:#132440;
+          padding:1px 6px;border-radius:3px;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- nav: GERADO por gerar_indice.py · não editar à mão -->
+
+<style>
+  nav.fila{display:flex;align-items:center;gap:14px;max-width:1100px;margin:0 auto 26px;
+           padding:0 0 12px;border-bottom:1px solid #1e3050;font-size:12.5px;
+           font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif}
+  nav.fila a{color:#5b6b86;text-decoration:none;transition:color .12s}
+  nav.fila a:hover{color:#c9a266}
+  nav.fila .meio{flex:1;display:flex;align-items:center;justify-content:center;gap:10px}
+  nav.fila .passos{display:flex;gap:3px}
+  nav.fila .passos i{width:16px;height:3px;border-radius:2px;background:#1e3050;display:block}
+  nav.fila .passos i.aqui{background:#c9a266}
+  nav.fila .onde{color:#7f8ea4;font-variant-numeric:tabular-nums}
+  nav.fila .vazio{visibility:hidden}
+</style>
+<nav class="fila"><a class="vazio">←</a><span class="meio"><span class="passos"><i class="aqui" title="The pair becomes a point"></i><i title="2. The Angle"></i><i title="3. The Triangle"></i><i title="4. The Distance"></i><i title="5. The Circle"></i><i title="6. The Unrolling"></i><i title="7. The Rate"></i><i title="8. The Intersection"></i><i title="9. The Family"></i></span><a class="onde" href="index.html">1 of 9 · the nine slices</a></span><a href="o-angulo.html">Angle →</a></nav>
+<!-- /nav -->
+
+<h1>The pair becomes a point</h1>
+<p class="sub">Everyone knows that a function is a machine: enter <b>x</b>, exit <b>y</b>.  
+What almost never gets shown is the moment when <b>two numbers become a place</b> — and  
+it's that moment, repeated, that makes the graph exist. Here x lives on a line and y lives  
+on another, each with only one dimension; the graph point is the meeting of the two, and  
+the curve is the trace the meetings leave behind.</p>
+
+<p class="faca"><b>Do:</b> drag <i>input x</i> and watch the two numbers walking each on their own line.
+  Turn on <i>leave trail</i> and move again — the curve wasn't there, it is constructed.
+  <i>sweep all inputs</i> makes the machine work alone.</p>
+
+<div id="fns"></div>
+
+<canvas id="c" width="764" height="660"></canvas>
+
+<div class="painel">
+  <label>Enter x = <input type="range" id="sl" min="-6" max="6" step="0.005" value="1.4"  
+         style="width:300px"></label>
+  <button id="play">sweep all inputs</button>
+  <button id="bRastro">leave a trace</button>
+  <button id="bLimpa">clear the trail</button>
+</div>
+
+<div class="notas">
+  <h2>What to look at</h2>
+  <p><b>1. They are two separate lines, and each is a one-dimensional world.</b> On the bottom
+  line there is only <i>position</i>: a number, and nothing more. On the left one, the same.
+  None of the two, alone, has shape — there is nowhere to curve.</p>
+
+  <p><b>2. The graph point is not on either of the two lines.</b> It is where the rise  
+  coming from <b class="cx">x</b> crosses the traverse coming from <b class="cy">y</b>.  
+  That's why it needs <b>two</b> numbers to exist: one from each line.  
+  <span class="deck">It's sheet 3 of C1 — "the pair becomes a point".</span></p>
+
+  <p><b>3. The graph is a trail, not a drawing.</b> Turn on <i>leave trail</i> and sweep the
+  inputs. Each position of x produces an encounter, the encounter is marked, and the curve
+  appears. No one drew the curve: it is the collection of all encounters.
+  <span class="deck">"Do this with all the inputs. The trail that the points leave is the
+  graph."</span></p>
+
+  <p><b>4. The machine can refuse.</b> In <code>1 / x</code>, zero doesn't enter: there is no  
+  output for it. That's the <b>domain</b> — the inputs the machine accepts — and in the  
+  drawing it appears as a place where there was never a meeting.</p>
+
+  <h2>Why this one comes before the other two</h2>
+  <p>The other two tools of the family speak of the <b>relationship between the two axes</b> and
+  assume that the plane already exists. The <code>desenrolamento.html</code> shows where the
+  first coordinate comes from; the <code>taxa.html</code> shows how the second changes when
+  the first moves. This one shows <b>what these two numbers are, and why there are two</b> —
+  and it is the only one that constructs the stage where the others play.</p>
+
+  <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">Local instrument, self-contained: no network, no external library. First of the family;
+  the sisters are <code>desenrolamento.html</code> and <code>taxa.html</code>.</p>
+</div>
+
+<script>
+(function(){
+  // ═══════════════════════════════════════════════════════════════════════
+  // TESE DESTA FATIA
+  // A TESE DESTE INSTRUMENTO, e ela é do operador (2026-08-26):
+  //   "x é um ponto em uma dimensão, y é outro ponto em uma dimensão, e
+  //    quando conectados formam um gráfico".
+  // O plano NÃO é o ponto de partida — ele é o resultado de juntar duas retas
+  // numéricas. Por isso os dois eixos são desenhados como RETAS PRÓPRIAS, com
+  // sua régua e seu ponto, em cores distintas (x terracota, y verde — a mesma
+  // convenção das figuras do gerar_figuras.py deste deck), e o ponto do
+  // gráfico nasce do CRUZAMENTO das duas guias, nunca desenhado direto.
+  // Quem for mexer aqui: se o ponto do gráfico passar a ser desenhado sem as
+  // duas guias, o instrumento perde a única coisa que ele tem a dizer.
+  // ═══════════════════════════════════════════════════════════════════════
+  const CO={fundo:'#081120',eixo:'#22374f',fraco:'#5b6b86',creme:'#e8e2d6',
+            ouro:'#c9a266',x:'#78c4ff',y:'#e8654f',guia:'#3c5f86'};
+
+  const FUNCOES=[
+    {n:'double and sum a', r:'double and sum a', f:x=>2*x+1},
+    {n:'half of x',     r:'divide by two', f:x=>x/2},
+    {n:'x squared',   r:'multiply by itself', f:x=>x*x},
+    {n:'x² − 3',          r:'square and subtract three', f:x=>x*x-3},
+    {n:'always two',     r:'return two, give what you have', f:()=>2},
+    {n:'1 / x',           r:'invert', f:x=>x===0?NaN:1/x},
+    // renomeada em 2026-08-27: a descrição anterior era "a altura no círculo de
+    // raio 1" — empréstimo de uma fatia que vem cinco depois. Regra da §0b.7:
+    // herdar de quem vem depois não é herdar, é supor.
+    {n:'rises and falls',    r:'rise and fall, without exceeding one', f:x=>Math.sin(x)},
+  ];
+
+  const cv=document.getElementById('c'), ct=cv.getContext('2d');
+  const sl=document.getElementById('sl'), bt=document.getElementById('play');
+  const bR=document.getElementById('bRastro'), bL=document.getElementById('bLimpa');
+  let atual=0, rastro=true, pontos=[], rodando=false, ult=0;
+
+  // ── ENQUADRAMENTO, 2026-08-27 ────────────────────────────────────────
+  // O quadro era 1240x640 nas nove. Para uma composição quase quadrada como
+  // esta, isso deixava centenas de pixels de vazio dos dois lados. Agora ele
+  // é 764x660, e não é palpite: um navegador varreu TODOS os controles desta
+  // folha e mediu o que o desenho de fato ocupa; o quadro é esse retângulo
+  // com 28 px de folga. O translate acima centra o CONTEÚDO no quadro — não a
+  // caixa de desenho (W,H), que é outra coisa e continua valendo para o
+  // traçado. Mexeu no desenho? Meça de novo: número de enquadramento
+  // envelhece calado.
+  const W=1240,H=640, U=52, ox=560, oy=350;      // origem do plano
+  const XMIN=-6,XMAX=6, YMIN=-4.6,YMAX=4.6;
+  const mx=x=>ox+U*x, my=y=>oy-U*y;
+
+  const fns=document.getElementById('fns');
+  FUNCOES.forEach((f,i)=>{
+    const b=document.createElement('button'); b.textContent=f.n;
+    b.onclick=()=>{atual=i;pontos=[];pinta();desenhar(+sl.value)}; fns.appendChild(b);
+  });
+  const pinta=()=>[...fns.children].forEach((b,i)=>b.classList.toggle('on',i===atual));
+
+  function linha(x1,y1,x2,y2,cor,l,tr){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1;if(tr)ct.setLineDash(tr);
+    ct.beginPath();ct.moveTo(x1,y1);ct.lineTo(x2,y2);ct.stroke();ct.restore();
+  }
+  function txt(t,x,y,c,s,a,peso){
+    ct.save();ct.fillStyle=c;ct.font=(peso||'')+' '+(s||12)+'px Inter,system-ui,sans-serif';
+    ct.textAlign=a||'left';ct.fillText(t,x,y);ct.restore();
+  }
+  function disco(x,y,cor,r){
+    ct.save();ct.fillStyle=cor;ct.beginPath();ct.arc(x,y,r||6,0,7);ct.fill();
+    ct.strokeStyle=CO.fundo;ct.lineWidth=1.8;ct.stroke();ct.restore();
+  }
+
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
+  function desenhar(x){
+    const F=FUNCOES[atual], y=F.f(x), vale=isFinite(y)&&Math.abs(y)<=YMAX;
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(-163.5,3.5);   // enquadramento MEDIDO, ver a nota
+
+    // ── A MÁQUINA, no alto: entra um número, sai outro ────────────────────
+    const bx=330,by=26,bw=580,bh=52;
+    ct.save();ct.strokeStyle=CO.ouro;ct.lineWidth=1.8;
+    ct.strokeRect(bx+186,by,208,bh);ct.restore();
+    txt(F.r,bx+290,by+24,CO.ouro,12.5,'center');
+    txt('the rule',bx+290,by+42,CO.fraco,10.5,'center');
+    txt('enter',bx+92,by+18,CO.fraco,11,'center');
+    txt(x.toFixed(2),bx+92,by+40,CO.x,17,'center','600');
+    txt('out',bx+492,by+18,CO.fraco,11,'center');
+    txt(vale?y.toFixed(2):'—',bx+492,by+40,vale?CO.y:CO.fraco,17,'center','600');
+    linha(bx+130,by+30,bx+180,by+30,CO.x,1.6);
+    linha(bx+400,by+30,bx+452,by+30,vale?CO.y:CO.eixo,1.6);
+    if(!vale) txt('the machine does not accept this x',bx+492,by+58,CO.fraco,11,'center');
+
+    // ── AS DUAS RETAS NUMÉRICAS, cada uma um mundo de uma dimensão ────────
+    // a de baixo é a ENTRADA; a da esquerda é a SAÍDA
+    const yEixo=my(YMIN)-6, xEixo=mx(XMIN)-6;
+    linha(mx(XMIN),yEixo,mx(XMAX),yEixo,CO.x,2.4);
+    linha(xEixo,my(YMIN),xEixo,my(YMAX),CO.y,2.4);
+    txt('the INPUT line — here x is just a position',mx(0),yEixo+34,CO.x,12.5,'center');
+    ct.save();ct.translate(xEixo-38,my(0));ct.rotate(-Math.PI/2);
+    txt('the OUTPUT line — here y is just a position',0,0,CO.y,12.5,'center');ct.restore();
+    for(let k=Math.ceil(XMIN);k<=XMAX;k++){
+      linha(mx(k),yEixo-5,mx(k),yEixo+5,CO.x,1.2);
+      txt(k,mx(k),yEixo+20,'#8a5a4c',10,'center');
+    }
+    for(let k=Math.ceil(YMIN);k<=YMAX;k++){
+      linha(xEixo-5,my(k),xEixo+5,my(k),CO.y,1.2);
+      txt(k,xEixo-12,my(k)+4,'#5f8a5c',10,'right');
+    }
+
+    // ── o plano: onde as duas retas se cruzam ────────────────────────────
+    ct.save();ct.strokeStyle=CO.eixo;ct.lineWidth=1;
+    for(let k=Math.ceil(XMIN);k<=XMAX;k++){ct.beginPath();
+      ct.moveTo(mx(k),my(YMIN));ct.lineTo(mx(k),my(YMAX));ct.stroke()}
+    for(let k=Math.ceil(YMIN);k<=YMAX;k++){ct.beginPath();
+      ct.moveTo(mx(XMIN),my(k));ct.lineTo(mx(XMAX),my(k));ct.stroke()}
+    ct.restore();
+    linha(mx(XMIN),my(0),mx(XMAX),my(0),'#3a5578',1.4);
+    linha(mx(0),my(YMIN),mx(0),my(YMAX),'#3a5578',1.4);
+
+    // ── o rastro: cada encontro que já aconteceu ─────────────────────────
+    ct.save();ct.fillStyle=CO.ouro;
+    for(const p of pontos){ct.beginPath();ct.arc(mx(p[0]),my(p[1]),2.1,0,7);ct.fill()}
+    ct.restore();
+
+    // ── as duas guias, e o ENCONTRO ──────────────────────────────────────
+    disco(mx(x),yEixo,CO.x,6.5);
+    txt(x.toFixed(2),mx(x),yEixo-14,CO.x,12,'center','600');
+    if(vale){
+      disco(xEixo,my(y),CO.y,6.5);
+      txt(y.toFixed(2),xEixo+12,my(y)+4,CO.y,12,'left','600');
+      linha(mx(x),yEixo,mx(x),my(y),CO.x,1.3,[5,4]);      // sobe do x
+      linha(xEixo,my(y),mx(x),my(y),CO.y,1.3,[5,4]);      // atravessa do y
+      disco(mx(x),my(y),CO.ouro,7);
+      txt('the meeting',mx(x)+14,my(y)-12,CO.ouro,12.5,'left','600');
+    }
+    txt(pontos.length?('marked encounters:'+pontos.length):'turn on the trace and sweep the inputs',
+        W/2,H-14,CO.fraco,12,'center');
+  }
+
+  function marcar(x){
+    const y=FUNCOES[atual].f(x);
+    if(rastro&&isFinite(y)&&Math.abs(y)<=YMAX) pontos.push([x,y]);
+  }
+  function quadro(ts){
+    if(!rodando)return;
+    if(ult){let x=+sl.value+(ts-ult)/1000*2.2;
+      if(x>XMAX){x=XMIN} sl.value=x; marcar(x); desenhar(x)}
+    ult=ts;requestAnimationFrame(quadro);
+  }
+  bt.onclick=()=>{rodando=!rodando;ult=0;bt.textContent=rodando?'stop':'sweep all inputs';
+    bt.classList.toggle('on',rodando);if(rodando)requestAnimationFrame(quadro)};
+  bR.onclick=()=>{rastro=!rastro;bR.classList.toggle('on',rastro);desenhar(+sl.value)};
+  bL.onclick=()=>{pontos=[];desenhar(+sl.value)};
+  sl.oninput=()=>{marcar(+sl.value);desenhar(+sl.value)};
+  bR.classList.add('on');pinta();desenhar(+sl.value);
+})();
+</script>
+<!-- faixa-idioma: gerada por i18n.py, nao editar -->
+<div id="faixa-idioma" hidden style="position:fixed;top:0;left:0;right:0;
+ z-index:99;background:#c9a266;color:#0a1424;font:13px/1.4 Inter,system-ui,
+ sans-serif;padding:7px 12px;display:flex;gap:10px;justify-content:center;
+ align-items:center">
+<span>Esta pagina esta em ingles.</span>
+<a href="../pt/par-vira-ponto.html" style="color:#0a1424;font-weight:600">Ler em portugues</a>
+<button onclick="this.parentNode.hidden=true" aria-label="fechar"
+ style="background:none;border:0;color:#0a1424;cursor:pointer;font-size:15px">&times;</button>
+</div>
+<script>
+(function(){try{
+  var f=localStorage.getItem('sc-lang');
+  if(f==='en')return;
+  var L=(navigator.languages&&navigator.languages.length)?navigator.languages
+        :[navigator.language||''];
+  var pt=false; for(var i=0;i<L.length;i++){ if(/^pt/i.test(L[i])){pt=true;break;} }
+  if(f!=='pt' && pt!==true)return;
+  document.getElementById('faixa-idioma').hidden=false;
+}catch(e){}})();
+document.querySelector('#faixa-idioma a').addEventListener('click',function(){
+  try{localStorage.setItem('sc-lang','pt');}catch(e){}
+});
+</script>
+</body>
+</html>

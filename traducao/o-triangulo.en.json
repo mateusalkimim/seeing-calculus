@@ -1,0 +1,391 @@
+{
+ "atualizado_em": "2026-08-27 13:39:02",
+ "blocos": {
+  "0cff0059da": {
+   "en": "2. The Angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. O ângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "15ad0345cd": {
+   "en": "Where this triangle reappears",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Onde este triângulo reaparece",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "1673058248": {
+   "en": "9. The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "18364b5056": {
+   "en": "8. The Intersection",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. O encontro",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "1eae4ebc11": {
+   "en": "the ratio it forms",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a razão que ele forma",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "2171a0fca4": {
+   "en": "adjacent leg",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "cateto adjacente",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "2355f5b5bc": {
+   "en": "sin θ",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "sen θ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "2a34e772bc": {
+   "en": "return to the first angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "voltar ao primeiro ângulo",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "36f046889a": {
+   "en": "tg θ",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "tg θ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "3de0797e10": {
+   "en": "<b>hypotenuse</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>hipotenusa</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3de4aff20f": {
+   "en": "The triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O triângulo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3deaf1349b": {
+   "en": "1. The Pair Turns into a Point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. O par vira ponto",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "4ef4c3c257": {
+   "en": "<b>opposite leg</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>cateto oposto</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "5992d198d9": {
+   "en": "<b>1. Change angle.</b> The triangle doesn’t change — no side moves. But what was  \n  <b class=\"c-op\">opposite</b> becomes <b class=\"c-adj\">adjacent</b> and vice-versa, because the  \n  names describe the <i>position in relation to the angle viewed</i>. Those who memorized  \n  SOH-CA-TOA without seeing this treat the names as if they were of the side, and err when  \n  the drawing is rotated.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>1. Troque de ângulo.</b> O triângulo não muda — nenhum lado se move. Mas o que era\n  <b class=\"c-op\">oposto</b> vira <b class=\"c-adj\">adjacente</b> e vice-versa, porque os\n  nomes descrevem a <i>posição em relação ao ângulo olhado</i>. Quem decorou SOH-CA-TOA sem\n  ver isto trata os nomes como se fossem do lado, e erra quando o desenho vem girado.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "5d5507cde8": {
+   "en": "4. The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. A distância",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "60c37e8f30": {
+   "en": "the shape = <input type=\"range\" id=\"th\" min=\"0.18\" max=\"1.39\" step=\"0.002\" value=\"0.62\"  \n         style=\"width:260px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a forma = <input type=\"range\" id=\"th\" min=\"0.18\" max=\"1.39\" step=\"0.002\" value=\"0.62\"\n         style=\"width:260px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "65c9ed0f84": {
+   "en": "hypotenuse",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "hipotenusa",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "696339934d": {
+   "en": "the size = <input type=\"range\" id=\"h\" min=\"0.55\" max=\"1.55\" step=\"0.005\" value=\"1\"  \n         style=\"width:190px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o tamanho = <input type=\"range\" id=\"h\" min=\"0.55\" max=\"1.55\" step=\"0.005\" value=\"1\"\n         style=\"width:190px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "6dcfb62a8c": {
+   "en": "is the ruler for the other two",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "é a régua das outras duas",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "7693a02996": {
+   "en": "viewing from angle θ =",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "olhando do ângulo θ = ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "77dd394e58": {
+   "en": "÷ hypotenuse = cos θ =",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "÷ hipotenusa = cos θ = ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "8477b06dd2": {
+   "en": "viewing from the other angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "olhar do outro ângulo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "91f579bbe1": {
+   "en": "← The angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "← O ângulo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "9505c85381": {
+   "en": "cos θ",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "cos θ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9532d3cb94": {
+   "en": "<b>Do:</b> change <i>the shape</i> and see the three sides change together. Press  \n  <i>view from the other angle</i> and see the names switch places. Then adjust <i>the size</i>:  \n  all lengths change, and no ratio changes — that’s exactly why the ratios have a name.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> mude <i>a forma</i> e veja os três lados mudarem juntos. Aperte <i>olhar do\noutro ângulo</i> e veja os nomes pularem de lugar. Depois mexa em <i>o tamanho</i>: todos os\ncomprimentos mudam, e nenhuma razão muda — é exatamente por isso que as razões têm nome.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "9920e26e5d": {
+   "en": "adjacent",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "adjacente",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a1f18832ba": {
+   "en": "5. The Circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. O círculo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "a4fdd29985": {
+   "en": "The distance →",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A distância →",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a5facb6257": {
+   "en": "What to view",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que olhar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "aced96eb02": {
+   "en": "opposite leg",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "cateto oposto",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "b0c8092197": {
+   "en": "length",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "comprimento",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b2067801c2": {
+   "en": "<b>2. And then sine becomes cosine.</b> The two acute angles add up to a right angle —  \n  they are <b>complementary</b>. Viewing from the other, the opposite and the adjacent swap,  \n  so the ratio that was the sine becomes the cosine:  \n  <code>sin θ = cos(90° − θ)</code>. That’s <b>where</b> the \"co\" in cosine comes from: it is  \n  the sine of the <b>co</b>plement. Turn on <i>show complement</i> and see the two angles  \n  closing the right angle.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>2. E aí o seno vira cosseno.</b> Os dois ângulos agudos somam um reto — são\n  <b>complementares</b>. Olhando do outro, o oposto e o adjacente trocam, então a razão que\n  era o seno passa a ser o cosseno:\n  <code>sen θ = cos(90° − θ)</code>. É <b>daí</b> que vem o \"co\" de cosseno: ele é o seno do\n  <b>co</b>mplemento. Ligue <i>mostrar o complemento</i> e veja os dois ângulos fechando o\n  ângulo reto.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b73380d74c": {
+   "en": "Local, self-contained instrument: no network, no external library. Slice of the same  \n  family as <code>o-angulo</code>, <code>o-circulo</code>, <code>par-vira-ponto</code> and  \n  <code>taxa</code>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Fatia da mesma família\n  de <code>o-angulo</code>, <code>o-circulo</code>, <code>par-vira-ponto</code> e\n  <code>taxa</code>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b7670d12b3": {
+   "en": "<b>tangent</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>tangente</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "be3590b815": {
+   "en": "The triangle — opposite, adjacent, and hypotenuse depend on which angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O triângulo — oposto, adjacente e hipotenusa dependem de qual ângulo",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c63a3dbf20": {
+   "en": "3 of 9 · the nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "c9003287e3": {
+   "en": "7. The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "d356441662": {
+   "en": "÷ hypotenuse = sin θ =",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "÷ hipotenusa = sen θ = ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "d3a69996b6": {
+   "en": "opposite ÷ adjacent =",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "oposto ÷ adjacente = ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "db3d405b10": {
+   "en": "on",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "on",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "ddb1cb2c39": {
+   "en": "<b>4. The hypotenuse is the only one that doesn't change its name.</b> It is defined by the right angle,  \n  not by the angle you are looking at — it is always the side opposite to it, and always the largest of the three.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>4. A hipotenusa é a única que não troca de nome.</b> Ela é definida pelo ângulo reto,\n  não pelo ângulo que você olha — é sempre o lado oposto a ele, e sempre o maior dos três.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "e959c3c199": {
+   "en": "6. The Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "eb9a59898e": {
+   "en": "Opposite and adjacent seem like names of the <i>sides</i>. They are not: they are names of the  \n<b>relationship</b> between a side and the angle you chose to look at. Change the angle and the two  \nnames change sides, without the triangle moving a millimeter. The hypotenuse is the only one that doesn't  \nmove — it is always the side opposite the right angle.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Oposto e adjacente parecem nomes dos <i>lados</i>. Não são: são nomes da\n<b>relação</b> entre um lado e o ângulo que você escolheu olhar. Troque de ângulo e os dois\nnomes trocam de lado, sem que o triângulo se mexa um milímetro. A hipotenusa é a única que não\nse move — ela é sempre o lado oposto ao ângulo reto.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "edeb0ffd24": {
+   "en": "<b>3. Change the size, and look at the two columns.</b> The <b>lengths</b> all change.  \n  The <b>ratios</b> do not change at all. That's why sine and cosine are properties of the  \n  <b>angle</b>, and not of the triangle — and that's why the school formula works for  \n  any triangle, and not just the one in the book.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>3. Mexa no tamanho, e olhe as duas colunas.</b> Os <b>comprimentos</b> mudam todos.\n  As <b>razões</b> não mudam nenhuma. É por isso que seno e cosseno são propriedades do\n  <b>ângulo</b>, e não do triângulo — e é por isso que a fórmula da escola serve para\n  qualquer triângulo, e não só para o do livro.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "ee9a23ea1a": {
+   "en": "<b>adjacent leg</b>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>cateto adjacente</b>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f2c5a4cf24": {
+   "en": "Set the size to <b>1</b>. Now the hypotenuse is one, and the two ratios become the  \n  actual lengths: the opposite <i>is</i> the sine, the adjacent <i>is</i> the cosine. This is  \n  exactly the triangle drawn inside the <code>o-circulo.html</code>, with the hypotenuse in the place of the radius — and the colors here are the same on purpose.  \n  <span class=\"deck\">It is also the triangle in the taxa.html: there the adjacent is 1 and the opposite  \n  is f′, and so f′ = opposite/adjacent = tan θ.</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Ponha o tamanho em <b>1</b>. Agora a hipotenusa vale um, e as duas razões viram os\n  próprios comprimentos: o oposto <i>é</i> o seno, o adjacente <i>é</i> o cosseno. Este é\n  exatamente o triângulo que está desenhado dentro do <code>o-circulo.html</code>, com a\n  hipotenusa no lugar do raio — e as cores aqui são as mesmas de lá de propósito.\n  <span class=\"deck\">É também o triângulo da taxa.html: lá o adjacente vale 1 e o oposto\n  vale f′, e por isso f′ = oposto/adjacente = tg θ.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f6836a5669": {
+   "en": "opposite",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "oposto",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "fa6c77eeff": {
+   "en": "show the complement",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "mostrar o complemento",
+   "qa": "ok",
+   "tipo": "prosa"
+  }
+ },
+ "fatia": "o-triangulo",
+ "idioma": "en-US"
+}

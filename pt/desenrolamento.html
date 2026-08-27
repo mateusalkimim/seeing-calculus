@@ -1,0 +1,368 @@
+<!doctype html>
+<!-- fatia: desenrolamento | ordem: 6 | declara: — | empresta: f′ -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O desenrolamento — do círculo ao gráfico</title>
+<style>
+  :root{
+    --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86;
+    --ouro:#c9a266; --seno:#e8654f; --cosseno:#78c4ff; --linha:#1e3050;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;
+       padding:22px 26px 40px}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;
+     font-weight:600;font-size:30px;margin:0 0 2px;letter-spacing:.2px}
+  .sub{color:var(--fraco);font-size:13.5px;margin:0 0 16px;max-width:900px;line-height:1.5}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;background:#081120}
+  .painel{display:flex;flex-wrap:wrap;gap:22px;align-items:center;
+          margin:14px 0 4px;padding:12px 14px;background:#0d1c30;border-radius:6px}
+  label{font-size:13px;color:var(--creme);display:flex;align-items:center;gap:7px}
+  input[type=range]{width:340px;accent-color:var(--ouro)}
+  button{background:var(--ouro);color:#0a1424;border:0;border-radius:4px;
+         padding:7px 15px;font-weight:600;font-size:13px;cursor:pointer;font-family:inherit}
+  button.off{background:#24374f;color:var(--creme)}
+  .leitura{display:flex;gap:20px;flex-wrap:wrap;font-variant-numeric:tabular-nums;
+           font-size:13px;margin-top:12px}
+  .leitura b{font-weight:600}
+  .v-seno{color:var(--seno)} .v-cos{color:var(--cosseno)} .v-tg{color:var(--ouro)}
+  .notas{margin-top:26px;max-width:1000px;font-size:14px;line-height:1.65;color:#b9c4d4}
+  .notas h2{font-family:Cormorant,Georgia,serif;font-size:21px;color:var(--creme);
+            margin:22px 0 6px;font-weight:600}
+  .notas b{color:var(--creme)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+
+  /* ── LAYOUT, 2026-08-27 ────────────────────────────────────────────────
+     Correção do operador, com a tela na mão: a folha ocupava o monitor
+     inteiro. Num monitor largo o desenho abria com mais de 1800 px de
+     largura e quase 1000 px de altura, e aí o título e o texto viravam
+     legenda de uma figura gigante — a prosa perdia a importância que tem.
+
+     Agora quem manda é a PROSA. Uma medida só, --col, para o título e para
+     todos os blocos de texto: larguras diferentes com margem automática
+     dariam bordas esquerdas desalinhadas. A largura sai da LEITURA, não do
+     monitor — 620 px com corpo de 15,5 px dá cerca de 80 caracteres por
+     linha, que é a faixa confortável. O desenho fica num quadro de 1100 px:
+     largo o bastante para a construção caber sem encolher os rótulos,
+     estreito o bastante para não engolir a folha. */
+  :root{ --col:620px; --quadro:1100px }   /* --quadro = a largura que este
+     desenho ocupa na tela, 568 px de altura vezes a proporção medida dele */
+  /* Cada fatia tem a proporção do PRÓPRIO desenho, medida no navegador. Por
+     isso o limite é a ALTURA e a largura segue: com width:100% uma folha
+     quase quadrada ficaria mais alta que larga — o defeito de origem com
+     outra roupa. */
+  /* ALTURA FIXA, largura pela proporção. Com width:auto as fatias menores
+     renderizavam 1:1 e as maiores encolhiam, e a folha descia com o
+     desenho mudando de altura a cada passo — 523, 568, 600. Agora a
+     faixa tem sempre a mesma altura e é a LARGURA que conta a forma da
+     composição: quase quadrada nas geométricas, larga nas de gráfico. */
+  canvas{height:568px;width:auto;max-width:1100px;margin:0 auto}
+  /* os controles pertencem ao DESENHO, não à página: sem isto eles
+     espalhavam pelos 1100 px do contêiner enquanto o quadro tinha 658,
+     e a folha ficava com dois alinhamentos brigando. */
+  .painel,#fns,#resp,.leitura{max-width:var(--quadro);margin-left:auto;margin-right:auto}
+  body{max-width:1152px;margin:0 auto}
+  h1,.sub,.faca,.notas{max-width:var(--col);margin-left:auto;margin-right:auto}
+  /* sem isto o título quebra com órfã — a última palavra sozinha na
+     segunda linha. `balance` reparte as linhas em vez de encher a
+     primeira até o fim. */
+  h1{text-wrap:balance;font-size:28px;line-height:1.22}
+  .sub{font-size:15.5px;line-height:1.68;color:#a8b4c6;
+       text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  .notas{font-size:15.5px;line-height:1.72}
+  .notas p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  /* O GANCHO. O texto de cima dizia a tese e parava — não dizia o que fazer
+     com as mãos, e a pessoa chegava no desenho sem saber por onde pegar.
+     Esta faixa nomeia, um por um, os controles que EXISTEM nesta folha. */
+  .faca{margin-bottom:20px;background:#0d1c30;border-left:3px solid var(--ouro);
+        border-radius:0 5px 5px 0;padding:12px 16px;color:#b9c4d4;
+        font-size:14px;line-height:1.68}
+  .faca b{color:var(--ouro)}
+  .faca i{color:var(--creme);font-style:normal;background:#132440;
+          padding:1px 6px;border-radius:3px;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- nav: GERADO por gerar_indice.py · não editar à mão -->
+
+<style>
+  nav.fila{display:flex;align-items:center;gap:14px;max-width:1100px;margin:0 auto 26px;
+           padding:0 0 12px;border-bottom:1px solid #1e3050;font-size:12.5px;
+           font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif}
+  nav.fila a{color:#5b6b86;text-decoration:none;transition:color .12s}
+  nav.fila a:hover{color:#c9a266}
+  nav.fila .meio{flex:1;display:flex;align-items:center;justify-content:center;gap:10px}
+  nav.fila .passos{display:flex;gap:3px}
+  nav.fila .passos i{width:16px;height:3px;border-radius:2px;background:#1e3050;display:block}
+  nav.fila .passos i.aqui{background:#c9a266}
+  nav.fila .onde{color:#7f8ea4;font-variant-numeric:tabular-nums}
+  nav.fila .vazio{visibility:hidden}
+</style>
+<nav class="fila"><a href="o-circulo.html">← O círculo</a><span class="meio"><span class="passos"><i title="1. O par vira ponto"></i><i title="2. O ângulo"></i><i title="3. O triângulo"></i><i title="4. A distância"></i><i title="5. O círculo"></i><i class="aqui" title="O desenrolamento"></i><i title="7. A taxa"></i><i title="8. O encontro"></i><i title="9. A família"></i></span><a class="onde" href="index.html">6 de 9 · as nove fatias</a></span><a href="taxa.html">A taxa →</a></nav>
+<!-- /nav -->
+
+<h1>O desenrolamento — do círculo ao gráfico</h1>
+<p class="sub">A folha do círculo deixa uma pergunta no ar: <i>eu conheço o seno como uma
+onda — o que ele tem a ver com este círculo?</i> A resposta é literal, e não é analogia: <b>a
+altura do ponto é a altura do gráfico</b>, e só a entrada mudou de lugar. No círculo ela é uma
+rotação; no gráfico, uma posição.</p>
+
+<p class="faca"><b>Faça:</b> arraste <i>a</i> e olhe a ligação tracejada — ela é horizontal de propósito,
+porque as duas metades da tela dividem a mesma escala vertical e a mesma linha do zero. Aperte
+<i>animar</i> para ver a curva ser escrita, e ligue <i>mostrar a tangente</i> e <i>mostrar o
+arco</i> para comparar os três comprimentos.</p>
+
+<canvas id="c" width="1240" height="640"></canvas>
+
+<div class="painel">
+  <label>a = <input type="range" id="sl" min="-5" max="5" step="0.002" value="0.6"></label>
+  <button id="play">animar</button>
+  <label><input type="checkbox" id="tg"> mostrar a tangente</label>
+  <label><input type="checkbox" id="arco" checked> mostrar o arco</label>
+</div>
+
+<div class="leitura">
+  <span><b>a</b> = <span id="ra"></span> rad = <span id="rg"></span>°</span>
+  <span class="v-seno"><b>sen a</b> = <span id="rs"></span></span>
+  <span class="v-cos"><b>cos a</b> = <span id="rc"></span></span>
+  <span class="v-tg"><b>tg a</b> = <span id="rt"></span></span>
+  <span style="color:#8fa0b8"><b>arco</b> = <span id="rarc"></span></span>
+</div>
+
+<div class="notas">
+  <h2>O que olhar</h2>
+  <p><b>1. A ligação tracejada é horizontal.</b> Ela não é enfeite: é a afirmação de que a
+  altura do ponto no círculo <i>é</i> a altura do gráfico. O círculo não vira gráfico por
+  analogia — vira porque a saída é a mesma e só a entrada muda de lugar. No círculo a
+  entrada <b>a</b> é uma rotação; no gráfico ela é uma posição horizontal.</p>
+
+  <p><b>2. A reta vertical pontilhada é a reta tangente ao círculo em (1,0).</b> É por isso
+  que a tangente se chama tangente: o valor <code>tg a</code> é um comprimento medido
+  <i>sobre a reta tangente</i>. O ponto T é onde a reta que passa pela origem e por P
+  encontra essa reta — e é por isso que T dispara quando P se aproxima da vertical: as duas
+  retas ficam paralelas e não se encontram mais. A assíntota do gráfico da tangente é isso,
+  vista de perto.</p>
+
+  <p><b>3. O arco tem comprimento |a|.</b> É a definição de radiano, e é o que deixa comparar
+  os três: <b>altura &lt; arco &lt; tangente</b>. Essa desigualdade, obtida sem conta nenhuma,
+  é o que prova o limite de <code>sen(x)/x</code>.</p>
+
+  <h2>A ponte que falta dizer</h2>
+  <p>A palavra <i>tangente</i> nomeia dois objetos: o comprimento sobre a reta tangente ao
+  círculo, que é o que esta página desenha, e a <b>reta tangente a uma curva</b> — a que
+  encosta e segue a inclinação. Elas não são intercambiáveis, mas também não são meros
+  homônimos: encontram-se numa identidade só.</p>
+  <p style="text-align:center;font-size:17px;color:var(--ouro);margin:14px 0">
+    f ′(x) = tg θ</p>
+  <p>A derivada é a <b>tangente trigonométrica</b> do ângulo θ que a <b>reta tangente</b> faz
+  com o eixo x. Inclinação de reta é tangente de ângulo — a mesma razão do triângulo, com o
+  triângulo deitado sobre a curva em vez de dentro do círculo.</p>
+
+  <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">
+  Instrumento local, autocontido: sem rede, sem biblioteca externa. Companheiro da Estação 5
+  do C1 · Ler um gráfico.</p>
+</div>
+
+<script>
+(function(){
+  // ══════════════════════════════════════════════════════════════════════
+  // TESE DESTA FATIA
+  // DECISÃO DO OPERADOR, 2026-08-26: O CÍRCULO FICA. Recurso essencial —
+  // "é a coisa mais legal ver como ele desenha o gráfico".
+  //
+  // Não trocar o painel da esquerda por uma entrada de função arbitrária.
+  // Trocar `Math.sin(u)` por um `f(u)` qualquer custa duas linhas e é
+  // exatamente por isso que a tentação existe — mas o painel da esquerda não
+  // é enfeite: é o GERADOR. A página afirma que a altura do gráfico veio de
+  // algum lugar, e o lugar é o círculo. Para uma f qualquer não há círculo, a
+  // altura viria de lugar nenhum, e o traço horizontal passaria a ligar um
+  // ponto real a um ponto arbitrário: a figura seguiria bonita e passaria a
+  // AFIRMAR UMA RELAÇÃO QUE NÃO EXISTE.
+  //
+  // O que pode crescer aqui é o GERADOR, nunca a saída avulsa: elipse (onda
+  // deformada), ciclóide (ponto da roda), epiciclos (dois círculos → soma de
+  // senos, a porta do Fourier). Instrumento que aceite função arbitrária é
+  // OUTRO instrumento — o leitor curva→taxa, item v do registro da
+  // norma-de-notacao §1.2b.
+  // ══════════════════════════════════════════════════════════════════════
+  const cv = document.getElementById('c'), ct = cv.getContext('2d');
+  const sl = document.getElementById('sl'), bt = document.getElementById('play');
+  const cbTg = document.getElementById('tg'), cbArco = document.getElementById('arco');
+  const CO = {fundo:'#081120', eixo:'#1e3050', fraco:'#5b6b86', creme:'#e8e2d6',
+              ouro:'#c9a266', seno:'#e8654f', cos:'#78c4ff', zero:'#41638f'};
+  // QA de 2026-08-26 (Qwen3-VL): o leitor afirmou que "cada lado tem a sua
+  // própria linha do zero". A geometria estava certa — 1.208 px atravessando os
+  // dois painéis — mas o contraste contra o fundo era 50, e a linha que carrega
+  // a afirmação central da página não podia ser a menos visível dela.
+
+  // ── a geometria da tela ────────────────────────────────────────────────
+  // A ESCALA VERTICAL É A MESMA NOS DOIS PAINÉIS, e a linha do zero é a mesma.
+  // É isso que faz a ligação sair horizontal — sem isso o desenho mentiria.
+  const W=1240, H=520, U=132, y0=268, cx=214;
+  const A0=-5.5, A1=5.5, gx0=430, gx1=1216;
+  const mx = a => gx0 + (a-A0)/(A1-A0)*(gx1-gx0);
+  const my = v => y0 - U*v;
+  const xTan = cx + U;                       // a reta tangente ao círculo: x = 1
+
+  function linha(x1,y1,x2,y2,cor,larg,tracejado){
+    ct.save(); ct.strokeStyle=cor; ct.lineWidth=larg||1;
+    if(tracejado) ct.setLineDash(tracejado);
+    ct.beginPath(); ct.moveTo(x1,y1); ct.lineTo(x2,y2); ct.stroke(); ct.restore();
+  }
+  function ponto(x,y,cor,r){
+    ct.save(); ct.fillStyle=cor; ct.beginPath(); ct.arc(x,y,r||4.5,0,7); ct.fill();
+    ct.strokeStyle=CO.fundo; ct.lineWidth=1.5; ct.stroke(); ct.restore();
+  }
+  function texto(t,x,y,cor,tam,al){
+    ct.save(); ct.fillStyle=cor; ct.font=(tam||12)+'px Inter,system-ui,sans-serif';
+    ct.textAlign=al||'left'; ct.fillText(t,x,y); ct.restore();
+  }
+
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
+  function desenhar(a){
+    const s=Math.sin(a), c=Math.cos(a), t=Math.tan(a);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
+
+    // eixo do zero, atravessando OS DOIS painéis — é a prova visual da escala comum
+    linha(24,y0,W-16,y0,CO.zero,1.4);
+    linha(cx,26,cx,H-26,CO.eixo,1);              // eixo vertical do círculo
+    linha(mx(0),26,mx(0),H-26,CO.eixo,1);        // eixo vertical do gráfico
+
+    // ── painel do círculo ────────────────────────────────────────────────
+    ct.save(); ct.strokeStyle='#2b4066'; ct.lineWidth=1.4;
+    ct.beginPath(); ct.arc(cx,y0,U,0,7); ct.stroke(); ct.restore();
+
+    // a reta tangente ao círculo em (1,0) — de onde a tangente tira o nome
+    linha(xTan,26,xTan,H-26,'#3d5f7e',1.2,[5,5]);
+    texto('reta tangente ao círculo em (1,0)',xTan+7,42,'#6a86a6',11);
+
+    const Px=cx+U*c, Py=y0-U*s, Qx=Px, Qy=y0;
+
+    if(cbArco.checked){                          // o arco: comprimento |a|
+      ct.save(); ct.strokeStyle=CO.ouro; ct.lineWidth=3.4; ct.globalAlpha=.55;
+      ct.beginPath(); ct.arc(cx,y0,U,0,-a,a>0); ct.stroke(); ct.restore();
+    }
+    // a reta pela origem e por P — ela cruza x=1 exatamente em (1, tg a)
+    if(Math.abs(c)>1e-4){
+      const k=(gx0-40-cx)/(U*c);
+      linha(cx-U*c*Math.abs(k),y0+U*s*Math.abs(k),cx+U*c*Math.abs(k),y0-U*s*Math.abs(k),
+            '#33506f',1.1);
+    }
+    linha(cx,y0,Px,Py,CO.creme,1.8);             // raio
+    linha(cx,y0,Qx,Qy,CO.cos,3.2);               // cosseno
+    linha(Qx,Qy,Px,Py,CO.seno,3.2);              // seno
+
+    if(cbTg.checked && Math.abs(t)<4.2){         // tangente, sobre a reta x=1
+      linha(xTan,y0,xTan,y0-U*t,CO.ouro,3.2);
+      ponto(xTan,y0-U*t,CO.ouro);
+      texto('T',xTan+9,y0-U*t+4,CO.ouro,12);
+    }
+    ponto(Qx,Qy,CO.cos,3.6);
+    ponto(Px,Py,CO.creme,5);
+    texto('P',Px+9,Py-7,CO.creme,12.5);
+    texto('círculo de raio 1 — a máquina',cx,H-14,CO.fraco,12,'center');
+
+    // ── painel do gráfico ────────────────────────────────────────────────
+    for(let k=Math.ceil(A0);k<=A1;k++){          // marcas do eixo da entrada
+      if(k===0) continue;
+      linha(mx(k),y0-4,mx(k),y0+4,CO.eixo,1);
+      texto(k,mx(k),y0+17,'#41577a',10,'center');
+    }
+    // a curva do seno, desenhada DE -5 ATÉ a — ela nasce enquanto se arrasta
+    ct.save(); ct.strokeStyle=CO.seno; ct.lineWidth=2.4; ct.beginPath();
+    for(let i=0;i<=900;i++){
+      const u=A0+(a-A0)*i/900, X=mx(u), Y=my(Math.sin(u));
+      i? ct.lineTo(X,Y) : ct.moveTo(X,Y);
+    }
+    ct.stroke(); ct.restore();
+
+    if(cbTg.checked){                            // a curva da tangente, com corte
+      ct.save(); ct.strokeStyle=CO.ouro; ct.lineWidth=1.9; ct.globalAlpha=.85;
+      ct.beginPath(); let quebrou=true;
+      for(let i=0;i<=1400;i++){
+        const u=A0+(a-A0)*i/1400, v=Math.tan(u);
+        if(!isFinite(v)||Math.abs(v)>1.85){ quebrou=true; continue; }
+        const X=mx(u), Y=my(v);
+        quebrou? (ct.moveTo(X,Y),quebrou=false) : ct.lineTo(X,Y);
+      }
+      ct.stroke(); ct.restore();
+      if(Math.abs(t)<1.85){
+        linha(xTan,y0-U*t,mx(a),my(t),CO.ouro,1.1,[4,4]);
+        ponto(mx(a),my(t),CO.ouro,4);
+      }
+    }
+    // A LIGAÇÃO: sai horizontal porque P e G têm a MESMA altura
+    linha(Px,Py,mx(a),my(s),CO.seno,1.2,[4,4]);
+    ponto(mx(a),my(s),CO.seno,5);
+    texto('G = (a, sen a)',mx(a)+10,my(s)-9,CO.seno,12);
+    texto('o gráfico — a mesma altura, na posição a',(gx0+gx1)/2,H-14,CO.fraco,12,'center');
+    // o que cada eixo MEDE — sem isto a figura mostra a correspondência e não a nomeia
+    texto('a — o ângulo, em radianos',(gx0+gx1)/2,y0+34,'#54708f',11.5,'center');
+    texto('altura = sen a',mx(0)-11,my(1.42),'#54708f',11.5,'right');
+    texto('a mesma linha do zero, nos dois painéis',W-18,y0-9,'#54708f',11,'right');
+
+    // leituras
+    const f=(x,n)=>x.toFixed(n||4);
+    document.getElementById('ra').textContent=f(a,3);
+    document.getElementById('rg').textContent=f(a*180/Math.PI,1);
+    document.getElementById('rs').textContent=f(s);
+    document.getElementById('rc').textContent=f(c);
+    document.getElementById('rt').textContent=Math.abs(c)<1e-3?'—':f(t);
+    document.getElementById('rarc').textContent=f(Math.abs(a),3);
+  }
+
+  let rodando=false, ult=0;
+  function quadro(ts){
+    if(!rodando) return;
+    if(ult){
+      let a=parseFloat(sl.value)+(ts-ult)/1000*0.9;
+      if(a>5) a=-5;
+      sl.value=a; desenhar(a);
+    }
+    ult=ts; requestAnimationFrame(quadro);
+  }
+  bt.onclick=()=>{
+    rodando=!rodando; ult=0;
+    bt.textContent=rodando?'parar':'animar';
+    bt.classList.toggle('off',rodando);
+    if(rodando) requestAnimationFrame(quadro);
+  };
+  sl.oninput=()=>desenhar(parseFloat(sl.value));
+  cbTg.onchange=cbArco.onchange=()=>desenhar(parseFloat(sl.value));
+  desenhar(parseFloat(sl.value));
+})();
+</script>
+<!-- faixa-idioma: gerada por i18n.py, nao editar -->
+<div id="faixa-idioma" hidden style="position:fixed;top:0;left:0;right:0;
+ z-index:99;background:#c9a266;color:#0a1424;font:13px/1.4 Inter,system-ui,
+ sans-serif;padding:7px 12px;display:flex;gap:10px;justify-content:center;
+ align-items:center">
+<span>This page is in Portuguese.</span>
+<a href="../en/desenrolamento.html" style="color:#0a1424;font-weight:600">Read in English</a>
+<button onclick="this.parentNode.hidden=true" aria-label="close"
+ style="background:none;border:0;color:#0a1424;cursor:pointer;font-size:15px">&times;</button>
+</div>
+<script>
+(function(){try{
+  var f=localStorage.getItem('sc-lang');
+  if(f==='pt')return;
+  var L=(navigator.languages&&navigator.languages.length)?navigator.languages
+        :[navigator.language||''];
+  var pt=false; for(var i=0;i<L.length;i++){ if(/^pt/i.test(L[i])){pt=true;break;} }
+  if(f!=='en' && pt!==false)return;
+  document.getElementById('faixa-idioma').hidden=false;
+}catch(e){}})();
+document.querySelector('#faixa-idioma a').addEventListener('click',function(){
+  try{localStorage.setItem('sc-lang','en');}catch(e){}
+});
+</script>
+</body>
+</html>

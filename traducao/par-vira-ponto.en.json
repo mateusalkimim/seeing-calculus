@@ -1,0 +1,391 @@
+{
+ "atualizado_em": "2026-08-27 13:39:02",
+ "blocos": {
+  "0102907239": {
+   "en": "Angle →",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O ângulo →",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0a9eb4d5ca": {
+   "en": "Local instrument, self-contained: no network, no external library. First of the family;\n  the sisters are <code>desenrolamento.html</code> and <code>taxa.html</code>.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Primeira da família;\n  as irmãs são <code>desenrolamento.html</code> e <code>taxa.html</code>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "0cff0059da": {
+   "en": "2. The Angle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "2. O ângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "10ebd9fe03": {
+   "en": "double and sum a",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "dobre e some um",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "1571f05741": {
+   "en": "the rule",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a regra",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "1673058248": {
+   "en": "9. The Family",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "9. A família",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "18364b5056": {
+   "en": "8. The Intersection",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "8. O encontro",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "192c0ce2fb": {
+   "en": "The other two tools of the family speak of the <b>relationship between the two axes</b> and\n  assume that the plane already exists. The <code>desenrolamento.html</code> shows where the\n  first coordinate comes from; the <code>taxa.html</code> shows how the second changes when\n  the first moves. This one shows <b>what these two numbers are, and why there are two</b> —\n  and it is the only one that constructs the stage where the others play.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "As outras duas ferramentas da família falam da <b>relação entre os dois eixos</b> e\n  pressupõem que o plano já existe. O <code>desenrolamento.html</code> mostra de onde vem a\n  primeira coordenada; o <code>taxa.html</code> mostra como a segunda muda quando a primeira\n  anda. Esta mostra <b>o que são esses dois números, e por que são dois</b> — e é a única\n  que constrói o palco onde as outras jogam.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "1962498775": {
+   "en": "<b>3. The graph is a trail, not a drawing.</b> Turn on <i>leave trail</i> and sweep the\n  inputs. Each position of x produces an encounter, the encounter is marked, and the curve\n  appears. No one drew the curve: it is the collection of all encounters.\n  <span class=\"deck\">\"Do this with all the inputs. The trail that the points leave is the\n  graph.\"</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>3. O gráfico é um rastro, não um desenho.</b> Ligue <i>deixar rastro</i> e varra as\n  entradas. Cada posição do x produz um encontro, o encontro fica marcado, e a curva vai\n  aparecendo. Ninguém desenhou a curva: ela é a coleção de todos os encontros.\n  <span class=\"deck\">\"Faça isso com todas as entradas. O rastro que os pontos deixam é o\n  gráfico.\"</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "1a7ede21ce": {
+   "en": "rise and fall, without exceeding one",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "suba e desça, sem passar de um",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "1acb3d6f1f": {
+   "en": "marked encounters:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "encontros marcados: ",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "20f3288cf4": {
+   "en": "rises and falls",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "sobe e desce",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "2baa063e51": {
+   "en": "return two, give what you have",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "devolva dois, dê o que der",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "2f0620b952": {
+   "en": "<b>Do:</b> drag <i>input x</i> and watch the two numbers walking each on their own line.\n  Turn on <i>leave trail</i> and move again — the curve wasn't there, it is constructed.\n  <i>sweep all inputs</i> makes the machine work alone.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>Faça:</b> arraste <i>entra x</i> e acompanhe os dois números caminhando cada um na sua\nreta. Ligue <i>deixar rastro</i> e ande de novo — a curva não estava lá, ela é construída.\n<i>varrer todas as entradas</i> faz a máquina trabalhar sozinha.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "310100ad5d": {
+   "en": "sweep all inputs",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "varrer todas as entradas",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "3738c9d75b": {
+   "en": "the machine does not accept this x",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a máquina não aceita este x",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "4621cd357a": {
+   "en": "clear the trail",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "limpar o rastro",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "486097ac48": {
+   "en": "3. The Triangle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "3. O triângulo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "4916b6da6f": {
+   "en": "<b>1. They are two separate lines, and each is a one-dimensional world.</b> On the bottom\n  line there is only <i>position</i>: a number, and nothing more. On the left one, the same.\n  None of the two, alone, has shape — there is nowhere to curve.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>1. São duas retas separadas, e cada uma é um mundo de uma dimensão.</b> Na reta de\n  baixo só existe <i>posição</i>: um número, e nada mais. Na da esquerda, idem. Nenhuma das\n  duas, sozinha, tem forma — não há para onde curvar.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "5d5507cde8": {
+   "en": "4. The Distance",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "4. A distância",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "60d718da7e": {
+   "en": "always two",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "sempre dois",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "66e740cb40": {
+   "en": "the OUTPUT line — here y is just a position",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a reta da SAÍDA — aqui y é só uma posição",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "715bfeb5dd": {
+   "en": "the INPUT line — here x is just a position",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "a reta da ENTRADA — aqui x é só uma posição",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "79ebed8f70": {
+   "en": "Why this one comes before the other two",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Por que esta vem antes das outras duas",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "841ede9b5b": {
+   "en": "Enter x = <input type=\"range\" id=\"sl\" min=\"-6\" max=\"6\" step=\"0.005\" value=\"1.4\"  \n         style=\"width:300px\">",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "entra x = <input type=\"range\" id=\"sl\" min=\"-6\" max=\"6\" step=\"0.005\" value=\"1.4\"\n         style=\"width:300px\">",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "8ae6136777": {
+   "en": "x squared",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "x ao quadrado",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "9c1d96767b": {
+   "en": "stop",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "parar",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "a1f18832ba": {
+   "en": "5. The Circle",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "5. O círculo",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "a5facb6257": {
+   "en": "What to look at",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O que olhar",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "a716582666": {
+   "en": "<b>2. The graph point is not on either of the two lines.</b> It is where the rise  \n  coming from <b class=\"cx\">x</b> crosses the traverse coming from <b class=\"cy\">y</b>.  \n  That's why it needs <b>two</b> numbers to exist: one from each line.  \n  <span class=\"deck\">It's sheet 3 of C1 — \"the pair becomes a point\".</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>2. O ponto do gráfico não está em nenhuma das duas retas.</b> Ele é onde a subida\n  que vem do <b class=\"cx\">x</b> cruza a travessia que vem do <b class=\"cy\">y</b>. É por isso\n  que ele precisa de <b>dois</b> números para existir: um de cada reta.\n  <span class=\"deck\">É a folha 3 do C1 — \"o par vira ponto\".</span>",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "aba50a00d0": {
+   "en": "multiply by itself",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "multiplique por si mesmo",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "b70147d7ed": {
+   "en": "The pair becomes a point",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O par vira ponto",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b7aa4d316e": {
+   "en": "divide by two",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "divida por dois",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "c9003287e3": {
+   "en": "7. The Rate",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "7. A taxa",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "ca74f87189": {
+   "en": "turn on the trace and sweep the inputs",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "ligue o rastro e varra as entradas",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "cc0d90f24b": {
+   "en": "square and subtract three",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "eleve ao quadrado e tire três",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "d011c0cf0c": {
+   "en": "<b>4. The machine can refuse.</b> In <code>1 / x</code>, zero doesn't enter: there is no  \n  output for it. That's the <b>domain</b> — the inputs the machine accepts — and in the  \n  drawing it appears as a place where there was never a meeting.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<b>4. A máquina pode recusar.</b> Em <code>1 / x</code>, o zero não entra: não existe\n  saída para ele. Isso é o <b>domínio</b> — as entradas que a máquina aceita — e no desenho\n  aparece como um lugar onde nunca houve encontro.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "d20a2ab96b": {
+   "en": "The pair becomes a point — two numerical lines become a graph",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O par vira ponto — duas retas numéricas viram um gráfico",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "db3d405b10": {
+   "en": "on",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "on",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e3505712d5": {
+   "en": "half of x",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "metade de x",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "e959c3c199": {
+   "en": "6. The Unrolling",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "6. O desenrolamento",
+   "qa": "ok",
+   "tipo": "attr:title"
+  },
+  "ede0edff78": {
+   "en": "invert",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "inverta",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "ee15cb9601": {
+   "en": "leave a trace",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "deixar rastro",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f0488e3000": {
+   "en": "out",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "sai",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "f474b79de7": {
+   "en": "1 of 9 · the nine slices",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1 de 9 · as nove fatias",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f797f127aa": {
+   "en": "the meeting",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "o encontro",
+   "qa": "ok",
+   "tipo": "js"
+  },
+  "f87a02f4ee": {
+   "en": "Everyone knows that a function is a machine: enter <b>x</b>, exit <b>y</b>.  \nWhat almost never gets shown is the moment when <b>two numbers become a place</b> — and  \nit's that moment, repeated, that makes the graph exist. Here x lives on a line and y lives  \non another, each with only one dimension; the graph point is the meeting of the two, and  \nthe curve is the trace the meetings leave behind.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Todo mundo sabe que a função é uma máquina: entra <b>x</b>, sai <b>y</b>.\nO que quase nunca se mostra é o instante em que <b>dois números viram um lugar</b> — e é esse\ninstante, repetido, que faz o gráfico existir. Aqui x mora numa reta e y mora em outra, cada\numa com uma dimensão só; o ponto do gráfico é o encontro das duas, e a curva é o rastro que\nos encontros deixam para trás.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "fa97568348": {
+   "en": "enter",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "entra",
+   "qa": "ok",
+   "tipo": "js"
+  }
+ },
+ "fatia": "par-vira-ponto",
+ "idioma": "en-US"
+}

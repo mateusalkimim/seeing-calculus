@@ -1,0 +1,329 @@
+<!doctype html>
+<!-- fatia: o-encontro | ordem: 8 | declara: — | empresta: — -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The meeting — the slope is a tangent</title>
+<style>
+  :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
+         --curva:#9b8ec4; --adj:#78c4ff; --tg:#c9a266; --chao:#41638f; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:30px;margin:0 0 2px;letter-spacing:.2px}
+  .sub{color:var(--fraco);font-size:13.5px;margin:0 0 14px;max-width:980px;line-height:1.5}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;background:#081120}
+  .painel{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:12px 0 4px;
+          padding:11px 14px;background:#0d1c30;border-radius:6px}
+  label{font-size:13px;display:flex;align-items:center;gap:7px;color:var(--creme)}
+  input[type=range]{accent-color:var(--ouro)}
+  button{background:#24374f;color:var(--creme);border:0;border-radius:4px;padding:6px 12px;
+         font-size:12.5px;cursor:pointer;font-family:inherit}
+  button.on{background:var(--ouro);color:#0a1424;font-weight:600}
+  #fns{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+  .leitura{display:flex;gap:22px;flex-wrap:wrap;font-variant-numeric:tabular-nums;
+           font-size:13px;margin-top:12px}
+  .v-o{color:var(--ouro)} .v-c{color:var(--curva)}
+  .notas{margin-top:26px;max-width:1000px;font-size:14px;line-height:1.65;color:#b9c4d4}
+  .notas h2{font-family:Cormorant,Georgia,serif;font-size:21px;color:var(--creme);
+            margin:22px 0 6px;font-weight:600}
+  .notas b{color:var(--creme)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+  .deck{color:#7f8ea4;font-size:12.5px}
+
+  /* ── LAYOUT, 2026-08-27 ────────────────────────────────────────────────
+     Correção do operador, com a tela na mão: a folha ocupava o monitor
+     inteiro. Num monitor largo o desenho abria com mais de 1800 px de
+     largura e quase 1000 px de altura, e aí o título e o texto viravam
+     legenda de uma figura gigante — a prosa perdia a importância que tem.
+
+     Agora quem manda é a PROSA. Uma medida só, --col, para o título e para
+     todos os blocos de texto: larguras diferentes com margem automática
+     dariam bordas esquerdas desalinhadas. A largura sai da LEITURA, não do
+     monitor — 620 px com corpo de 15,5 px dá cerca de 80 caracteres por
+     linha, que é a faixa confortável. O desenho fica num quadro de 1100 px:
+     largo o bastante para a construção caber sem encolher os rótulos,
+     estreito o bastante para não engolir a folha. */
+  :root{ --col:620px; --quadro:1100px }   /* --quadro = a largura que este
+     desenho ocupa na tela, 568 px de altura vezes a proporção medida dele */
+  /* Cada fatia tem a proporção do PRÓPRIO desenho, medida no navegador. Por
+     isso o limite é a ALTURA e a largura segue: com width:100% uma folha
+     quase quadrada ficaria mais alta que larga — o defeito de origem com
+     outra roupa. */
+  /* ALTURA FIXA, largura pela proporção. Com width:auto as fatias menores
+     renderizavam 1:1 e as maiores encolhiam, e a folha descia com o
+     desenho mudando de altura a cada passo — 523, 568, 600. Agora a
+     faixa tem sempre a mesma altura e é a LARGURA que conta a forma da
+     composição: quase quadrada nas geométricas, larga nas de gráfico. */
+  canvas{height:568px;width:auto;max-width:1100px;margin:0 auto}
+  /* os controles pertencem ao DESENHO, não à página: sem isto eles
+     espalhavam pelos 1100 px do contêiner enquanto o quadro tinha 658,
+     e a folha ficava com dois alinhamentos brigando. */
+  .painel,#fns,#resp,.leitura{max-width:var(--quadro);margin-left:auto;margin-right:auto}
+  body{max-width:1152px;margin:0 auto}
+  h1,.sub,.faca,.notas{max-width:var(--col);margin-left:auto;margin-right:auto}
+  /* sem isto o título quebra com órfã — a última palavra sozinha na
+     segunda linha. `balance` reparte as linhas em vez de encher a
+     primeira até o fim. */
+  h1{text-wrap:balance;font-size:28px;line-height:1.22}
+  .sub{font-size:15.5px;line-height:1.68;color:#a8b4c6;
+       text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  .notas{font-size:15.5px;line-height:1.72}
+  .notas p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  /* O GANCHO. O texto de cima dizia a tese e parava — não dizia o que fazer
+     com as mãos, e a pessoa chegava no desenho sem saber por onde pegar.
+     Esta faixa nomeia, um por um, os controles que EXISTEM nesta folha. */
+  .faca{margin-bottom:20px;background:#0d1c30;border-left:3px solid var(--ouro);
+        border-radius:0 5px 5px 0;padding:12px 16px;color:#b9c4d4;
+        font-size:14px;line-height:1.68}
+  .faca b{color:var(--ouro)}
+  .faca i{color:var(--creme);font-style:normal;background:#132440;
+          padding:1px 6px;border-radius:3px;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- nav: GERADO por gerar_indice.py · não editar à mão -->
+
+<style>
+  nav.fila{display:flex;align-items:center;gap:14px;max-width:1100px;margin:0 auto 26px;
+           padding:0 0 12px;border-bottom:1px solid #1e3050;font-size:12.5px;
+           font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif}
+  nav.fila a{color:#5b6b86;text-decoration:none;transition:color .12s}
+  nav.fila a:hover{color:#c9a266}
+  nav.fila .meio{flex:1;display:flex;align-items:center;justify-content:center;gap:10px}
+  nav.fila .passos{display:flex;gap:3px}
+  nav.fila .passos i{width:16px;height:3px;border-radius:2px;background:#1e3050;display:block}
+  nav.fila .passos i.aqui{background:#c9a266}
+  nav.fila .onde{color:#7f8ea4;font-variant-numeric:tabular-nums}
+  nav.fila .vazio{visibility:hidden}
+</style>
+<nav class="fila"><a href="taxa.html">← The rate</a><span class="meio"><span class="passos"><i title="1. The Pair Turns into a Point"></i><i title="2. The Angle"></i><i title="3. The Triangle"></i><i title="4. The Distance"></i><i title="5. The Circle"></i><i title="6. The Unrolling"></i><i title="7. The Rate"></i><i class="aqui" title="The meeting"></i><i title="9. The Family"></i></span><a class="onde" href="index.html">8 of 9 · the nine slices</a></span><a href="a-familia.html">The family →</a></nav>
+<!-- /nav -->
+
+<h1>The meeting</h1>
+<p class="sub">The word <i>tangent</i> names two different things: a length measured on the circle and the line that touches a curve. They are not synonyms, and they are not mere homonyms either — <b>they meet exactly once</b>, in a single identity, and that meeting is what this sheet illustrates.</p>
+
+<p class="faca"><b>Do:</b> walk with <i>x</i> and look at the angle θ: what the tangent line does with the floor is
+the same angle there in the circle. The golden segment on the left has the same length as the golden
+leg on the right — and since the two panels divide the scale, that checks out with the ruler.
+<i>the names of the triangle</i> shows who is who.</p>
+
+<div id="fns"></div>
+
+<canvas id="c" width="1240" height="640"></canvas>
+
+<div class="painel">
+  <label>x = <input type="range" id="sl" min="-3.1" max="3.1" step="0.002" value="-1.5"  
+         style="width:320px"></label>
+  <button id="play">walk</button>
+  <button id="bNomes">the names of the triangle</button>
+</div>
+
+<div class="leitura"><span><b>x</b> = <span id="rx"></span></span>
+  <span class="v-c"><b>f(x)</b> = <span id="rf"></span></span>
+  <span><b>θ</b> = <span id="rt"></span>°</span>
+  <span class="v-o"><b>tan θ</b> = <span id="rtg"></span></span>
+  <span class="v-o"><b>f ′(x)</b> = <span id="rd"></span></span></div>
+
+<div class="notas">
+  <h2>What to look at</h2>
+  <p><b>1. The two gold segments are always the same length.</b> On the left is the tangent segment of the circle with radius 1 — the <code>tan θ</code> that the circle slice measured. On the right is how much the curve rises when you move 1 to the right along the tangent line. They are the same number, and that's why <code>f ′(x) = tan θ</code>.</p>
+
+  <p><b>2. It's the triangle of always.</b> Connect <i>the names of the triangle</i>: the adjacent
+  <b>leg</b> is 1 and the <b>opposite</b> is f ′(x). And tangent is opposite over adjacent
+  — but since the adjacent is 1, the division does nothing, and the tangent <i>is</i> the opposite.
+  <span class="deck">The same triangle from o-triangulo.html and the same OAT from
+  o-circulo.html.</span></p>
+
+  <p><b>3. Where the curve is flat, the circle point is on the ground.</b> At a maximum or a minimum, the tangent line becomes horizontal: θ = 0, the gold segment disappears, and f ′ = 0. Where the curve descends, θ is negative and the segment points downward. The slope is not a metaphor — it is an angle, and it is drawn.</p>
+
+  <p style="color:#8fa0b8"><b>A color changes here, on purpose.</b> In the other slices the
+  leg that rises is <b style="color:#e8654f">terracotta</b> — it's the perpendicular component.
+  Here it is <b style="color:#c9a266">golden</b>, the color of the <b>tangent</b>, because the thesis
+  of the slice is exactly that it <i>is</i> the segment of tangent of the circle. The change is the
+  argument, and so it is declared instead of happening silently.</p>
+
+  <h2>Why the two tangents are not homonyms</h2>
+  <p>The tangent line got its name because it <b>touches</b>; the length on the circle got its name because it is measured <b>along the line that touches the circle</b>. They come from the same Latin word and name different objects — but they are not a mere coincidence of vocabulary: they come together in this equality, and nowhere else.
+<span class="deck">It is the "Where the Two Meet" sheet of C1, and what the entire arc of calculus uses from C2.</span></p>
+
+  <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">Local instrument, self-contained: no network, no external library. It's where the two meanings
+  of the word <b>tangent</b> meet — the length in the circle, which the slices of measure built,
+  and the line that touches the curve, which the <code>rate</code> showed walking.</p>
+</div>
+
+<script>
+(function(){
+  // ═══════════════════════════════════════════════════════════════════════
+  // TESE DESTA FATIA
+  // A FATIA DO ENCONTRO. Aqui os DOIS SENTIDOS da palavra "tangente" se
+  // juntam: o comprimento no círculo, construído pelas fatias da medida, e a
+  // reta que toca a curva, que a taxa mostrou andando.
+  //
+  // Reordenado em 2026-08-27: a taxa era a 2ª e virou a 7ª. Ela não DEPENDE da
+  // trigonometria — inclinação existe sem ângulo —, mas gasta a palavra
+  // "tangente", e a ambiguidade precisa estar desfeita antes. Dependência tem
+  // dois ramos; ordem de leitura é uma fila.
+  //
+  // O QUE A TORNA VERIFICÁVEL: os dois painéis usam a MESMA escala U e a
+  // MESMA linha do zero. Por isso o segmento de tangente do círculo (à
+  // esquerda, comprimento U·|tg θ|) e o cateto oposto do triângulo sobre a
+  // curva (à direita, comprimento U·|f'|) são o MESMO comprimento em pixels
+  // quando f' = tg θ — que é a igualdade que a fatia existe para mostrar.
+  // Escalas independentes transformariam a demonstração em legenda.
+  //
+  // theta = atan(f'), sempre em (-90°, 90°), então o ponto do círculo vive na
+  // metade direita e o segmento de tangente existe sempre.
+  // ═══════════════════════════════════════════════════════════════════════
+  const CO={fundo:'#081120',eixo:'#22374f',fraco:'#5b6b86',creme:'#e8e2d6',
+            ouro:'#c9a266',curva:'#9b8ec4',adj:'#78c4ff',chao:'#41638f',aux:'#8a94a4'};
+
+  const FUNCOES=[
+    {n:'parabola',    f:x=>0.35*x*x-1.15, d:x=>0.7*x},
+    {n:'cubic',      f:x=>0.16*x*x*x-0.75*x, d:x=>0.48*x*x-0.75},
+    {n:'sine',        f:x=>1.15*Math.sin(x), d:x=>1.15*Math.cos(x)},
+    {n:'exponential', f:x=>0.25*Math.exp(0.5*x)-1, d:x=>0.125*Math.exp(0.5*x)},
+    {n:'reta',        f:x=>0.7*x-0.2, d:()=>0.7},
+  ];
+
+  const cv=document.getElementById('c'), ct=cv.getContext('2d');
+  const sl=document.getElementById('sl'), bt=document.getElementById('play'),
+        bN=document.getElementById('bNomes');
+  let atual=0, verNomes=true, rodando=false, ult=0;
+
+  // MESMA escala e MESMA linha do zero nos dois painéis — é a espinha
+  const W=1240,H=620, U=105, y0=340;
+  const ccx=230;                                  // centro do círculo
+  const gx0=505, X0=-3.25, X1=3.25;               // painel da curva
+  const mx=x=>gx0+U*(x-X0), my=v=>y0-U*v;
+  const LIM=2.5;
+
+  const fns=document.getElementById('fns');
+  FUNCOES.forEach((f,i)=>{const b=document.createElement('button');b.textContent=f.n;
+    b.onclick=()=>{atual=i;pinta();desenhar(+sl.value)};fns.appendChild(b)});
+  const pinta=()=>[...fns.children].forEach((b,i)=>b.classList.toggle('on',i===atual));
+
+  function linha(x1,y1,x2,y2,cor,l,tr){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1;if(tr)ct.setLineDash(tr);
+    ct.beginPath();ct.moveTo(x1,y1);ct.lineTo(x2,y2);ct.stroke();ct.restore();
+  }
+  function txt(t,x,y,c,s,a,p){
+    ct.save();ct.fillStyle=c;ct.font=(p||'')+' '+(s||12)+'px Inter,system-ui,sans-serif';
+    ct.textAlign=a||'left';ct.fillText(t,x,y);ct.restore();
+  }
+  function disco(x,y,cor,r){
+    ct.save();ct.fillStyle=cor;ct.beginPath();ct.arc(x,y,r||5.5,0,7);ct.fill();
+    ct.strokeStyle=CO.fundo;ct.lineWidth=1.7;ct.stroke();ct.restore();
+  }
+
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
+  function desenhar(x){
+    const F=FUNCOES[atual], v=F.f(x), d=F.d(x), th=Math.atan(d), tg=Math.tan(th);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
+
+    // A LINHA DO ZERO, uma só, atravessando os dois painéis
+    linha(40,y0,W-30,y0,CO.chao,1.4);
+    txt('the same zero line, and the same scale, in both',W-34,y0-9,'#54708f',11,'right');
+
+    // ── o círculo de raio 1 ───────────────────────────────────────────────
+    ct.save();ct.strokeStyle=CO.eixo;ct.lineWidth=1.5;ct.beginPath();
+    ct.arc(ccx,y0,U,0,7);ct.stroke();ct.restore();
+    linha(ccx,y0-U*1.55,ccx,y0+U*1.55,CO.eixo,1);
+    linha(ccx+U,y0-U*2.3,ccx+U,y0+U*2.3,'#3d5f7e',1.2,[5,5]);
+    txt('o círculo de raio 1',ccx,y0+U*1.9,CO.fraco,12.5,'center');
+
+    const Px=ccx+U*Math.cos(th), Py=y0-U*Math.sin(th);
+    linha(ccx,y0,ccx+U*2.05*Math.cos(th),y0-U*2.05*Math.sin(th),CO.aux,1.5);  // a reta O-P
+    ct.save();ct.strokeStyle=CO.ouro;ct.lineWidth=2.0;ct.beginPath();
+    ct.arc(ccx,y0,32,0,-th,th>0);ct.stroke();ct.restore();
+    txt('θ',ccx+40,y0-(th>0?10:-18),CO.ouro,14,'left','600');
+    disco(Px,Py,CO.creme,5);
+    // O SEGMENTO DE TANGENTE — o primeiro dos dois dourados
+    linha(ccx+U,y0,ccx+U,y0-U*tg,CO.ouro,4.0);
+    disco(ccx+U,y0-U*tg,CO.ouro,4.5);
+    txt('tg θ',ccx+U+11,y0-U*tg/2,CO.ouro,13,'left','600');
+
+    // ── a curva ──────────────────────────────────────────────────────────
+    ct.save();ct.strokeStyle=CO.curva;ct.lineWidth=2.5;ct.beginPath();
+    let q=true;
+    for(let i=0;i<=900;i++){
+      const t=X0+(X1-X0)*i/900, w=F.f(t);
+      if(!isFinite(w)||Math.abs(w)>LIM){q=true;continue}
+      q?(ct.moveTo(mx(t),my(w)),q=false):ct.lineTo(mx(t),my(w));
+    }
+    ct.stroke();ct.restore();
+    for(let k=-3;k<=3;k++){linha(mx(k),y0-4,mx(k),y0+4,CO.eixo,1);
+      txt(k,mx(k),y0+19,'#41577a',10,'center')}
+
+    if(isFinite(v)&&Math.abs(v)<LIM){
+      const e=1.7;
+      linha(mx(x-e),my(v-d*e),mx(x+e),my(v+d*e),CO.ouro,1.9);   // a reta tangente
+      linha(mx(x),my(v),mx(x+1),my(v),CO.adj,1.6);              // anda 1: o cateto ADJACENTE
+      // O CATETO OPOSTO — o segundo dourado, do MESMO comprimento do primeiro
+      linha(mx(x+1),my(v),mx(x+1),my(v+d),CO.ouro,4.0);
+      ct.save();ct.strokeStyle=CO.ouro;ct.lineWidth=2.0;ct.beginPath();
+      ct.arc(mx(x),my(v),32,0,-th,th>0);ct.stroke();ct.restore();
+      txt('θ',mx(x)+40,my(v)-(th>0?10:-18),CO.ouro,14,'left','600');
+      if(verNomes){
+        txt('adjacente = 1',mx(x+0.5),my(v)+18,CO.adj,11.5,'center');
+        txt('opposite = f ′(x)',mx(x+1)+11,my(v+d/2),CO.ouro,11.5,'left');
+      }
+      disco(mx(x),my(v),CO.curva,6);
+    }
+    txt('the curve, and the line that touches it',(gx0+mx(X1))/2,y0+U*1.9,CO.fraco,12.5,'center');
+    txt('the two golden segments have the same length — that\'s what f ′(x) = tg θ says',
+        W/2,H-16,CO.ouro,13,'center');
+
+    const n=z=>isFinite(z)?z.toFixed(4).replace('.',','):'—';
+    document.getElementById('rx').textContent=n(x);
+    document.getElementById('rf').textContent=n(v);
+    document.getElementById('rt').textContent=(th*180/Math.PI).toFixed(2).replace('.',',');
+    document.getElementById('rtg').textContent=n(tg);
+    document.getElementById('rd').textContent=n(d);
+  }
+
+  function quadro(ts){
+    if(!rodando)return;
+    if(ult){let x=+sl.value+(ts-ult)/1000*1.1; if(x>3.1)x=-3.1; sl.value=x; desenhar(x)}
+    ult=ts;requestAnimationFrame(quadro);
+  }
+  bt.onclick=()=>{rodando=!rodando;ult=0;bt.textContent=rodando?'stop':'walk';
+                  bt.classList.toggle('on',rodando);if(rodando)requestAnimationFrame(quadro)};
+  bN.onclick=()=>{verNomes=!verNomes;bN.classList.toggle('on',verNomes);desenhar(+sl.value)};
+  sl.oninput=()=>desenhar(+sl.value);
+  bN.classList.add('on');pinta();desenhar(+sl.value);
+})();
+</script>
+<!-- faixa-idioma: gerada por i18n.py, nao editar -->
+<div id="faixa-idioma" hidden style="position:fixed;top:0;left:0;right:0;
+ z-index:99;background:#c9a266;color:#0a1424;font:13px/1.4 Inter,system-ui,
+ sans-serif;padding:7px 12px;display:flex;gap:10px;justify-content:center;
+ align-items:center">
+<span>Esta pagina esta em ingles.</span>
+<a href="../pt/o-encontro.html" style="color:#0a1424;font-weight:600">Ler em portugues</a>
+<button onclick="this.parentNode.hidden=true" aria-label="fechar"
+ style="background:none;border:0;color:#0a1424;cursor:pointer;font-size:15px">&times;</button>
+</div>
+<script>
+(function(){try{
+  var f=localStorage.getItem('sc-lang');
+  if(f==='en')return;
+  var L=(navigator.languages&&navigator.languages.length)?navigator.languages
+        :[navigator.language||''];
+  var pt=false; for(var i=0;i<L.length;i++){ if(/^pt/i.test(L[i])){pt=true;break;} }
+  if(f!=='pt' && pt!==true)return;
+  document.getElementById('faixa-idioma').hidden=false;
+}catch(e){}})();
+document.querySelector('#faixa-idioma a').addEventListener('click',function(){
+  try{localStorage.setItem('sc-lang','pt');}catch(e){}
+});
+</script>
+</body>
+</html>
