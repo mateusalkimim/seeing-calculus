@@ -34,7 +34,13 @@ O que ele mede:
                 clica, não coisa que a página busca — e a licença precisa
                 estar clicável na via mais usada. Falha dura.
   [8] JS        o script passa no `node --check`. Falha dura.
-  [9] TESE      o topo do <script> traz o marcador `TESE DESTA FATIA`, seguido
+  [9] NAV       a fatia carrega o bloco de navegação GERADO, e a posição que
+                ele anuncia bate com a `ordem` do manifesto. A nav é derivada
+                (gerar_indice.py a injeta); se alguém apagá-la ou editá-la à
+                mão, a fila que o portão garante deixa de chegar ao leitor — e
+                é quebra silenciosa, porque a página continua abrindo. Falha
+                dura.
+  [10] TESE      o topo do <script> traz o marcador `TESE DESTA FATIA`, seguido
                 do que ela existe para dizer e do que a destruiria. O portão NÃO
                 julga a tese — ele verifica que existe uma, sob um marcador
                 fixo. Medir a palavra não é medir a coisa; o que este item mede
@@ -133,6 +139,16 @@ def auditar(arquivos, checar_js=True):
         # link NAO conta: <a href> e coisa que o leitor clica. O que quebra o
         # offline e RECURSO CARREGADO. Regex sem classe de aspas de proposito:
         # o `.?` cobre a aspa simples, a dupla ou a ausencia dela.
+        m_nav = re.search(r'class="onde"[^>]*>(\d+) de (\d+)', fonte)
+        if "<!-- nav: GERADO" not in fonte:
+            achados.append((nome, "NAV", "sem o bloco de navegação — rode gerar_indice.py"))
+        elif not m_nav:
+            achados.append((nome, "NAV", "bloco de navegação sem a posição declarada"))
+        elif int(m_nav.group(1)) != man["ordem"]:
+            achados.append((nome, "NAV",
+                            f"a nav anuncia posição {m_nav.group(1)} e o manifesto diz "
+                            f"{man['ordem']} — a fila e a página discordam"))
+
         carrega = re.search(r"@import"
                             r"|src\s*=\s*.?https?://"
                             r"|<link[^>]+href\s*=\s*.?https?://"
@@ -193,6 +209,7 @@ def controle_negativo():
         ("JS", base.replace("(function(){", "(function(){ if( ")),
         ("MANIFESTO", re.sub(r"<!--\s*fatia:.*?-->", "", base, flags=re.S)),
         ("OCIOSO", re.sub(r"(declara:[^|]*)", r"\1 ∞ ", base, count=1)),
+        ("NAV", re.sub(r'(class="onde"[^>]*>)\d+', r"\g<1>99", base, count=1)),
     ]
     print("\ncontrole negativo — o portão precisa REPROVAR cada um destes:")
     ok = True

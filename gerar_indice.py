@@ -183,6 +183,73 @@ ARVORE = """   ORDEM DE LEITURA — uma fila
    Por isso a fila a põe tarde, e o ramo continua sendo verdade."""
 
 
+NAV_CSS = """
+<style>
+  nav.fila{display:flex;align-items:center;gap:14px;max-width:980px;margin:0 auto 26px;
+           padding:0 0 12px;border-bottom:1px solid #1e3050;font-size:12.5px;
+           font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif}
+  nav.fila a{color:#5b6b86;text-decoration:none;transition:color .12s}
+  nav.fila a:hover{color:#c9a266}
+  nav.fila .meio{flex:1;display:flex;align-items:center;justify-content:center;gap:10px}
+  nav.fila .passos{display:flex;gap:3px}
+  nav.fila .passos i{width:16px;height:3px;border-radius:2px;background:#1e3050;display:block}
+  nav.fila .passos i.aqui{background:#c9a266}
+  nav.fila .onde{color:#7f8ea4;font-variant-numeric:tabular-nums}
+  nav.fila .vazio{visibility:hidden}
+</style>"""
+
+
+def bloco_nav(fatias, i):
+    """A navegação de UMA fatia, derivada da ORDEM dos manifestos.
+
+    Injetada em bloco marcado: reordenar as fatias reescreve as oito de uma vez.
+    Vai inline, e não num nav.js, porque cada fatia abre SOZINHA — é propriedade
+    declarada no README, e um arquivo solto por e-mail tem de continuar
+    funcionando.
+    """
+    n = len(fatias)
+    ant = fatias[i - 1] if i > 0 else None
+    pro = fatias[i + 1] if i < n - 1 else None
+    passos = "".join(
+        f'<i class="aqui" title="{html.escape(f["nome"])}"></i>' if k == i
+        else f'<i title="{k+1}. {html.escape(f["nome"])}"></i>'
+        for k, f in enumerate(fatias))
+    esq = (f'<a href="{ant["arquivo"]}">← {html.escape(ant["nome"])}</a>'
+           if ant else '<a class="vazio">←</a>')
+    dir_ = (f'<a href="{pro["arquivo"]}">{html.escape(pro["nome"])} →</a>'
+            if pro else '<a class="vazio">→</a>')
+    return (f"<!-- nav: GERADO por gerar_indice.py · não editar à mão -->\n"
+            f"{NAV_CSS}\n"
+            f'<nav class="fila">{esq}'
+            f'<span class="meio"><span class="passos">{passos}</span>'
+            f'<a class="onde" href="index.html">{i+1} de {n} · as oito fatias</a>'
+            f'</span>{dir_}</nav>\n'
+            f"<!-- /nav -->")
+
+
+MARCA_INI = "<!-- nav: GERADO"
+MARCA_FIM = "<!-- /nav -->"
+
+
+def injetar_nav(fatias):
+    """Reescreve o bloco de nav em cada fatia. Idempotente."""
+    for i, f in enumerate(fatias):
+        caminho = os.path.join(AQUI, f["arquivo"])
+        s = open(caminho, encoding="utf-8").read()
+        novo = bloco_nav(fatias, i)
+        if MARCA_INI in s:
+            a = s.index(MARCA_INI); b = s.index(MARCA_FIM) + len(MARCA_FIM)
+            s = s[:a] + novo + s[b:]
+        else:
+            m = re.search(r"<body>\s*", s)
+            if not m:
+                print(f"  ⚠ {f['arquivo']}: sem <body>, nav não injetada", file=sys.stderr)
+                continue
+            s = s[:m.end()] + novo + "\n\n" + s[m.end():]
+        open(caminho, "w", encoding="utf-8").write(s)
+    return len(fatias)
+
+
 def main():
     fatias = ler_fatias()
     if not fatias:
@@ -202,7 +269,9 @@ def main():
 
     with open(SAIDA, "w", encoding="utf-8") as fh:
         fh.write(TEMPLATE.format(cartoes="\n".join(cartoes), arvore=html.escape(ARVORE)))
+    n = injetar_nav(fatias)
     print(f"index.html gerado — {len(fatias)} fatias, ordem 1..{len(fatias)}")
+    print(f"navegação injetada em {n} fatia(s), derivada da mesma ordem")
     for f in fatias:
         print(f"   {f['ordem']}  {f['nome']}")
     return 0
