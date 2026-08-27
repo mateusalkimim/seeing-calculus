@@ -217,9 +217,10 @@ O que falta, declarado em vez de escondido:
 - ~~rótulos vivendo só na tabela~~ — **resolvido em 2026-08-27** no
   `o-circulo`, o único caso: cosseno, seno e arco passaram a ter nome colado no
   traço;
-- ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: moldura de
-  640 nas oito primeiras, com cada composição centrada e intocada;
-- **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se
+- ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: altura comum
+  de 568 px na tela para as nove, com cada composição centrada na própria
+  moldura e intocada;
+- **a fusão.** As nove são fatias de propósito — pequenas e nítidas, para se
   fundirem bem depois. A primeira sobreposição examinada foi *a onda* do
   `o-circulo` × o `desenrolamento`. Eu cortei a onda por ela zerar o chão, e o
   **autor reverteu** — com razão, e por um motivo que a minha análise não

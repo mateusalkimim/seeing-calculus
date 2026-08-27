@@ -4,7 +4,7 @@
 
 # Instalação
 
-Não há instalação para **usar**. As oito fatias são páginas HTML autocontidas:
+Não há instalação para **usar**. As nove fatias são páginas HTML autocontidas:
 baixe o repositório e abra o `index.html`. Elas funcionam offline, sem servidor
 e sem dependência.
 

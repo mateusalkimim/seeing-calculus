@@ -4,7 +4,7 @@
 
 # Installation
 
-There is no installation to **use**. The eight slices are self-contained HTML pages:  
+There is no installation to **use**. The nine slices are self-contained HTML pages:  
 download the repository and open the `index.html`. They work offline, without a server  
 and without dependencies.
 
