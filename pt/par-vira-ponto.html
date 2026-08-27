@@ -334,11 +334,15 @@ reta. Ligue <i>deixar rastro</i> e ande de novo — a curva não estava lá, ela
     ct.strokeStyle=CO.fundo;ct.lineWidth=1.8;ct.stroke();ct.restore();
   }
 
-  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
-  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
-  // remexido: H continua sendo a altura da composição, e o translate acima
-  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
-  // muda a moldura.
+  // ALTURA NA TELA (2026-08-27): o que impede a página de saltar de uma fatia
+  // para a outra é `canvas{height:568px}` no CSS — igual nas NOVE. O atributo
+  // do canvas NÃO é comum: cada fatia tem a proporção do próprio desenho,
+  // medida no navegador (nesta, 660). Este comentário já disse "o atributo é
+  // 620 em todas as oito" — errado no número e na contagem, e sobrevivente do
+  // estado anterior à medida por fatia.
+  // O desenho NÃO foi remexido: H continua sendo a altura da composição, e o
+  // translate acima a centra na moldura DESTA fatia. Mudar H aqui move o
+  // desenho; mudar o atributo muda a moldura.
   function desenhar(x){
     const F=FUNCOES[atual], y=F.f(x), vale=isFinite(y)&&Math.abs(y)<=YMAX;
     ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(-163.5,3.5);   // enquadramento MEDIDO, ver a nota

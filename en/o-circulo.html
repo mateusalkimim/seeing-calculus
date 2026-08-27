@@ -358,11 +358,15 @@ style="width:150px"></label>
     ct.strokeStyle=CO.fundo;ct.lineWidth=1.7;ct.stroke();ct.restore();
   }
 
-  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
-  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
-  // remexido: H continua sendo a altura da composição, e o translate acima
-  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
-  // muda a moldura.
+  // ALTURA NA TELA (2026-08-27): o que impede a página de saltar de uma fatia
+  // para a outra é `canvas{height:568px}` no CSS — igual nas NOVE. O atributo
+  // do canvas NÃO é comum: cada fatia tem a proporção do próprio desenho,
+  // medida no navegador (nesta, 640). Este comentário já disse "o atributo é
+  // 620 em todas as oito" — errado no número e na contagem, e sobrevivente do
+  // estado anterior à medida por fatia.
+  // O desenho NÃO foi remexido: H continua sendo a altura da composição, e o
+  // translate acima a centra na moldura DESTA fatia. Mudar H aqui move o
+  // desenho; mudar o atributo muda a moldura.
   // ── O QUADRO, e o que faz quando algo sai dele ────────────────────────
   // Antes, a tangente simplesmente SUMIA quando |r·tg| passava de 2,6 — e some
   // justamente quando ela está fazendo o que a página quer mostrar: crescendo

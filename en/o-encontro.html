@@ -328,11 +328,15 @@ leg on the right — and since the two panels divide the scale, that checks out 
     ct.strokeStyle=CO.fundo;ct.lineWidth=1.7;ct.stroke();ct.restore();
   }
 
-  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
-  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
-  // remexido: H continua sendo a altura da composição, e o translate acima
-  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
-  // muda a moldura.
+  // ALTURA NA TELA (2026-08-27): o que impede a página de saltar de uma fatia
+  // para a outra é `canvas{height:568px}` no CSS — igual nas NOVE. O atributo
+  // do canvas NÃO é comum: cada fatia tem a proporção do próprio desenho,
+  // medida no navegador (nesta, 640). Este comentário já disse "o atributo é
+  // 620 em todas as oito" — errado no número e na contagem, e sobrevivente do
+  // estado anterior à medida por fatia.
+  // O desenho NÃO foi remexido: H continua sendo a altura da composição, e o
+  // translate acima a centra na moldura DESTA fatia. Mudar H aqui move o
+  // desenho; mudar o atributo muda a moldura.
   function desenhar(x){
     const F=FUNCOES[atual], v=F.f(x), d=F.d(x), th=Math.atan(d), tg=Math.tan(th);
     ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
