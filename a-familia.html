@@ -1,0 +1,295 @@
+<!doctype html>
+<!-- fatia: a-familia | ordem: 9 | declara: — | empresta: — -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A família — ler a curva e dizer que máquina a fez</title>
+<style>
+  :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
+         --f:#9b8ec4; --taxa:#e8654f; --certo:#6fbf6a; --errado:#d4756a; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:30px;margin:0 0 2px;letter-spacing:.2px}
+  .sub{color:var(--fraco);font-size:13.5px;margin:0 0 14px;max-width:960px;line-height:1.5}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;background:#081120}
+  .painel{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:12px 0 4px;
+          padding:11px 14px;background:#0d1c30;border-radius:6px}
+  label{font-size:13px;display:flex;align-items:center;gap:7px;color:var(--creme)}
+  input[type=range]{accent-color:var(--ouro)}
+  button{background:#24374f;color:var(--creme);border:0;border-radius:4px;padding:6px 12px;
+         font-size:12.5px;cursor:pointer;font-family:inherit}
+  button.on{background:var(--ouro);color:#0a1424;font-weight:600}
+  button:disabled{opacity:.45;cursor:default}
+  #resp{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+  #veredito{margin-top:12px;font-size:14px;line-height:1.6;min-height:44px;max-width:1000px}
+  #veredito b.ok{color:var(--certo)} #veredito b.nao{color:var(--errado)}
+  .placar{margin-left:auto;color:var(--fraco);font-size:12.5px;font-variant-numeric:tabular-nums}
+  .notas{margin-top:26px;max-width:1000px;font-size:14px;line-height:1.65;color:#b9c4d4}
+  .notas h2{font-family:Cormorant,Georgia,serif;font-size:21px;color:var(--creme);
+            margin:22px 0 6px;font-weight:600}
+  .notas b{color:var(--creme)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+  .deck{color:#7f8ea4;font-size:12.5px}
+</style>
+</head>
+<body>
+
+<!-- nav: GERADO por gerar_indice.py · não editar à mão -->
+
+<style>
+  nav.fila{display:flex;align-items:center;gap:14px;max-width:980px;margin:0 auto 26px;
+           padding:0 0 12px;border-bottom:1px solid #1e3050;font-size:12.5px;
+           font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif}
+  nav.fila a{color:#5b6b86;text-decoration:none;transition:color .12s}
+  nav.fila a:hover{color:#c9a266}
+  nav.fila .meio{flex:1;display:flex;align-items:center;justify-content:center;gap:10px}
+  nav.fila .passos{display:flex;gap:3px}
+  nav.fila .passos i{width:16px;height:3px;border-radius:2px;background:#1e3050;display:block}
+  nav.fila .passos i.aqui{background:#c9a266}
+  nav.fila .onde{color:#7f8ea4;font-variant-numeric:tabular-nums}
+  nav.fila .vazio{visibility:hidden}
+</style>
+<nav class="fila"><a href="o-encontro.html">← O encontro</a><span class="meio"><span class="passos"><i title="1. O par vira ponto"></i><i title="2. O ângulo"></i><i title="3. O triângulo"></i><i title="4. A distância"></i><i title="5. O círculo"></i><i title="6. O desenrolamento"></i><i title="7. A taxa"></i><i title="8. O encontro"></i><i class="aqui" title="A família"></i></span><a class="onde" href="index.html">9 de 9 · as oito fatias</a></span><a class="vazio">→</a></nav>
+<!-- /nav -->
+
+<h1>A família — ler a curva e dizer <em>que máquina</em> a fez</h1>
+<p class="sub">A curva aparece <b>sem nome</b>. Você não vai adivinhar pelo formato: vai
+<b>medir a taxa</b> com a própria mão, ponto a ponto, e olhar o que as suas medidas fazem.
+Arraste <b>onde medir</b> e os pontos vermelhos vão ficando para trás — a taxa não é dada,
+ela é levantada. Só depois responda.</p>
+
+<canvas id="c" width="1240" height="640"></canvas>
+
+<div class="painel">
+  <label>onde medir = <input type="range" id="onde" min="-2.85" max="2.85" step="0.005"
+         value="-2.85" style="width:280px"></label>
+  <button id="varrer">medir sozinho</button>
+  <button id="limpar">limpar as medidas</button>
+  <label>passo h = <input type="range" id="h" min="0.03" max="0.6" step="0.005" value="0.25"
+         style="width:150px"></label>
+  <button id="outra">outra curva</button>
+  <span class="placar" id="placar">acertos: 0 de 0</span>
+</div>
+
+<div id="resp"></div>
+<div id="veredito"></div>
+
+<div class="notas">
+  <h2>Por que a pergunta é esta, e não "que curva é essa"</h2>
+  <p>Não existe número de tipos de curva, e todo catálogo é escolha de quem escreve. Decorar
+  uma lista de formatos é o contrário de ler. O que existe é um <b>organizador</b> — o que a
+  taxa faz — e ele cabe em seis linhas:</p>
+  <p><b>taxa zero</b>, constante. <b>Taxa sempre a mesma</b> e não zero, reta. <b>Taxa que é
+  uma reta</b>, parábola. <b>Taxa que é uma parábola</b>, cúbica. <b>Taxa proporcional à
+  própria curva</b>, exponencial. <b>Taxa da mesma família, deslocada</b>, seno e cosseno.
+  E <b>taxa que salta</b> não é família nenhuma: é defeito.</p>
+
+  <h2>Por que são estas famílias, e não outras</h2>
+  <p>Porque são <b>as que a taxa não tira do lugar</b>. Polinômio deriva em polinômio, com o
+  grau caindo de um. A exponencial deriva nela mesma. Seno e cosseno derivam um no outro, e
+  voltam ao começo em quatro passos. Uma família que a taxa levasse para fora dela mesma não
+  teria capítulo: cada conta abriria um objeto novo, e não haveria o que aprender de uma vez.</p>
+
+  <h2>Mexa no passo, e veja medir deixar de bastar</h2>
+  <p>O <code>h</code> é o passo da medida: <code>Δf</code> dividido por <code>2h</code>, a
+  inclinação de uma cordinha centrada no ponto. Nas famílias, mudar o passo quase não muda a
+  resposta. No <b>bico</b>, muda tudo: a taxa medida sobe em rampa em vez de saltar, e a rampa
+  fica mais estreita conforme o passo diminui — a rampa era do <b>instrumento</b>, não da
+  curva. No <b>salto</b>, o valor medido dispara e cresce sem parar quando o passo encolhe.</p>
+  <p>É aqui que medir para de bastar. <b>Medir</b> a taxa é uma coisa; <b>provar</b> que ela é
+  aquela é outra, e precisa da operação que o limite traz.
+  <span class="deck">Este é o assunto do C2 — <i>antes da palavra limite</i> — e a estação da
+  família mora lá.</span></p>
+
+  <h2>A direção importa</h2>
+  <p>A fatia da <b>taxa</b> faz o caminho contrário: você escolhe o nome num botão e vê a curva
+  e a taxa dela. Aqui a curva vem sem nome, e o nome é a <b>sua conclusão</b>. As duas juntas
+  fecham o par — regra que vira curva, e curva que vira regra.</p>
+  <p>As <b>onze curvas de família</b> deste instrumento foram conferidas em código: classificar
+  cada uma <i>só</i> pelo que a taxa medida faz devolve o rótulo certo nas onze, e a resposta não
+  muda entre <code>h = 0,03</code> e <code>h = 0,6</code>. As duas de defeito mudam — é a
+  diferença que a folha quer que se veja.</p>
+  <p class="deck">Instrumento local, autocontido: sem rede, sem biblioteca externa. A taxa
+  <b>f′</b> já foi declarada na fatia da taxa, duas antes desta — aqui ela só é medida.</p>
+</div>
+
+<script>
+(function(){
+  // ═══════════════════════════════════════════════════════════════════════
+  // TESE DESTA FATIA
+  // A direção é CURVA → REGRA, e é ela o conteúdo. A fatia da taxa já mostra
+  // as famílias, mas com o nome escolhido num botão: isso é reconhecimento
+  // com a resposta dada, e a norma chama pelo nome — taxonomia decorada.
+  // Aqui a curva não tem nome, e o leitor LEVANTA a taxa com a própria mão:
+  // arrastar deixa pontos para trás, e a curva da taxa emerge das medidas
+  // dele. Não é enfeite: é a imagem mental do fenômeno se formando, que é
+  // conteúdo (correção do operador, 2026-08-27).
+  //
+  // O passo h é regulável DE PROPÓSITO. Nas famílias ele quase não muda nada;
+  // no bico e no salto ele muda tudo, e é assim que a fatia mostra, sem dizer,
+  // que medir não prova. Nada aqui deriva: só há medida.
+  // ═══════════════════════════════════════════════════════════════════════
+  const CO={fundo:'#081120',eixo:'#1e3050',chao:'#41638f',fraco:'#5b6b86',
+            f:'#9b8ec4',taxa:'#e8654f',ouro:'#c9a266',creme:'#e8e2d6'};
+  const W=1240,H=640, X0=-3,X1=3, MG=70;
+  const cv=document.getElementById('c'), ct=cv.getContext('2d');
+  const onde=document.getElementById('onde'), hs=document.getElementById('h');
+
+  const CURVAS=[
+    {f:x=>0.9,                       fam:'constante',     nota:'a taxa é zero em todo lugar'},
+    {f:x=>-0.6,                      fam:'constante',     nota:'a taxa é zero — e a altura não importa'},
+    {f:x=>0.55*x+0.3,                fam:'reta',          nota:'a taxa é sempre a mesma, e não é zero'},
+    {f:x=>-0.8*x+0.4,                fam:'reta',          nota:'a taxa é sempre a mesma, e negativa'},
+    {f:x=>0.30*x*x-1.2,              fam:'parábola',      nota:'as medidas caem sobre uma RETA'},
+    {f:x=>-0.35*x*x+1.4,             fam:'parábola',      nota:'as medidas caem sobre uma reta, descendo'},
+    {f:x=>0.10*x*x*x-0.75*x,         fam:'cúbica',        nota:'as medidas formam uma PARÁBOLA — grau um a menos'},
+    {f:x=>0.22*Math.exp(0.8*x),      fam:'exponencial',   nota:'as medidas acompanham a própria curva, em escala'},
+    {f:x=>0.5*Math.exp(-0.7*x),      fam:'exponencial',   nota:'proporcional à própria curva, com o sinal trocado'},
+    {f:x=>1.15*Math.sin(x),          fam:'trigonométrica',nota:'as medidas são da mesma família, deslocadas'},
+    {f:x=>1.0*Math.cos(1.2*x),       fam:'trigonométrica',nota:'a taxa é a mesma onda, adiantada'},
+    // O bico e o salto falham de jeitos DIFERENTES, e o texto de cada um diz
+    // qual: no bico o valor medido em x=0 é zero para qualquer passo (a corda
+    // é simétrica), e o que encolhe com o passo é a RAMPA; no salto o valor
+    // medido dispara e cresce sem teto. Dizer 'muda com o passo' para os dois
+    // seria vago no primeiro caso — conferido em código.
+    {f:x=>Math.abs(x)-1.0,           fam:'defeito',       nota:'no bico a taxa medida sobe em RAMPA em vez de saltar — e a rampa encolhe com o passo: ela era do instrumento'},
+    {f:x=>x<0?-0.9:0.9,              fam:'defeito',       nota:'no salto a taxa medida DISPARA, e cresce sem parar conforme o passo encolhe'},
+  ];
+  const FAMS=['constante','reta','parábola','cúbica','exponencial','trigonométrica','defeito'];
+
+  let atual=0, medidas=[], resp=null, acertos=0, tentativas=0, varrendo=0;
+
+  const taxa=(f,x,h)=>(f(x+h)-f(x-h))/(2*h);
+
+  // A janela sai da curva E das medidas possíveis, sempre com o zero dentro.
+  // O salto manda a taxa para o infinito quando o passo encolhe, então a
+  // contribuição dela entra com TETO — e o ponto que passar do teto é
+  // desenhado na borda, com ponta, em vez de sumir calado.
+  const TETO=2.6;
+  function janela(){
+    const f=CURVAS[atual].f; let lo=0,hi=0;
+    for(let i=0;i<=240;i++){const x=X0+(X1-X0)*i/240, v=f(x);
+      if(isFinite(v)){lo=Math.min(lo,v);hi=Math.max(hi,v);}}
+    for(let i=0;i<=120;i++){const x=-2.85+5.7*i/120, m=taxa(f,x,+hs.value);
+      if(isFinite(m)){lo=Math.min(lo,Math.max(m,-TETO));hi=Math.max(hi,Math.min(m,TETO));}}
+    if(hi-lo<1.2){const c=(lo+hi)/2;lo=c-0.6;hi=c+0.6;}
+    const fg=0.13*(hi-lo); return [lo-fg,hi+fg];
+  }
+  let JAN=janela();
+  const mx=x=>MG+(x-X0)/(X1-X0)*(W-2*MG);
+  const my=v=>{const [lo,hi]=JAN; return H-58-(v-lo)/(hi-lo)*(H-116);};
+
+  function linha(x1,y1,x2,y2,cor,l,tr){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1.5;if(tr)ct.setLineDash(tr);
+    ct.beginPath();ct.moveTo(x1,y1);ct.lineTo(x2,y2);ct.stroke();ct.restore();}
+  function disco(x,y,cor,r){ct.save();ct.fillStyle=cor;ct.beginPath();
+    ct.arc(x,y,r||4,0,7);ct.fill();ct.restore();}
+  function txt(s,x,y,cor,t,al){ct.save();ct.fillStyle=cor;ct.textAlign=al||'left';
+    ct.font=(t||12)+'px Inter,system-ui,sans-serif';ct.fillText(s,x,y);ct.restore();}
+
+  function pontoTaxa(x,m){                 // com ponta na borda quando escapa
+    const [lo,hi]=JAN;
+    if(m>=lo&&m<=hi){disco(mx(x),my(m),CO.taxa,4.2);return;}
+    const y=m>hi?my(hi)+6:my(lo)-6, s=m>hi?-1:1;
+    ct.save();ct.fillStyle=CO.taxa;ct.beginPath();
+    ct.moveTo(mx(x),y+s*-7);ct.lineTo(mx(x)-5,y);ct.lineTo(mx(x)+5,y);
+    ct.closePath();ct.fill();ct.restore();
+  }
+
+  function desenhar(){
+    const C=CURVAS[atual], f=C.f, h=+hs.value, x=+onde.value;
+    ct.setTransform(1,0,0,1,0,0);
+    ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+
+    linha(mx(X0),my(0),mx(X1),my(0),CO.chao,1.6);          // o chão
+    linha(mx(0),58,mx(0),H-58,CO.eixo,1.1);                 // a vertical
+    txt('o chão — a altura zero',mx(X1)-6,my(0)-9,CO.chao,11.5,'right');
+
+    ct.save();ct.strokeStyle=CO.f;ct.lineWidth=2.6;ct.beginPath();   // a curva
+    let novo=true;
+    for(let i=0;i<=900;i++){const t=X0+(X1-X0)*i/900, v=f(t);
+      if(!isFinite(v)){novo=true;continue;}
+      const salto=i&&Math.abs(v-f(X0+(X1-X0)*(i-1)/900))>1.2;
+      if(novo||salto){ct.moveTo(mx(t),my(v));novo=false;}else ct.lineTo(mx(t),my(v));}
+    ct.stroke();ct.restore();
+
+    for(const xm of medidas) pontoTaxa(xm,taxa(f,xm,h));    // o que já foi medido
+
+    if(resp!==null){                                        // a taxa inteira, depois
+      ct.save();ct.strokeStyle=CO.taxa;ct.lineWidth=1.3;ct.globalAlpha=.55;
+      ct.beginPath();let n2=true;
+      for(let i=0;i<=600;i++){const t=-2.9+5.8*i/600, m=taxa(f,t,h);
+        if(!isFinite(m)||m<JAN[0]||m>JAN[1]){n2=true;continue;}
+        if(n2){ct.moveTo(mx(t),my(m));n2=false;}else ct.lineTo(mx(t),my(m));}
+      ct.stroke();ct.restore();
+    }
+
+    const m=taxa(f,x,h);                                    // a cordinha de agora
+    if(isFinite(f(x-h))&&isFinite(f(x+h))){
+      linha(mx(x-h),my(f(x-h)),mx(x+h),my(f(x+h)),CO.ouro,3.2);
+      disco(mx(x-h),my(f(x-h)),CO.ouro,3.4); disco(mx(x+h),my(f(x+h)),CO.ouro,3.4);
+    }
+    if(isFinite(f(x))) disco(mx(x),my(f(x)),CO.creme,5);
+    linha(mx(x),58,mx(x),H-58,CO.eixo,1,[3,5]);
+
+    txt('a curva, sem nome',MG+4,44,CO.f,13);
+    txt('a cordinha: passo h = '+h.toFixed(3),MG+4,H-26,CO.ouro,12);
+    txt('taxa medida aqui = '+(isFinite(m)?m.toFixed(3):'—'),mx(X1),44,CO.taxa,13,'right');
+    txt(medidas.length+' medida(s) no quadro',mx(X1),H-26,CO.fraco,12,'right');
+  }
+
+  function marcar(x){                       // grade de 0,15 p/ os pontos não borrarem
+    const k=Math.round(x/0.15)*0.15;
+    if(!medidas.some(v=>Math.abs(v-k)<0.07)) medidas.push(k);
+  }
+
+  const respDiv=document.getElementById('resp'), vd=document.getElementById('veredito');
+  FAMS.forEach(fam=>{
+    const b=document.createElement('button'); b.textContent=fam; b.dataset.fam=fam;
+    b.onclick=()=>responder(fam); respDiv.appendChild(b);
+  });
+
+  function responder(fam){
+    if(resp!==null) return;
+    const C=CURVAS[atual]; resp=fam; tentativas++;
+    const ok=fam===C.fam; if(ok)acertos++;
+    document.getElementById('placar').textContent='acertos: '+acertos+' de '+tentativas;
+    [...respDiv.children].forEach(b=>{b.disabled=true;
+      if(b.dataset.fam===C.fam)b.classList.add('on');});
+    vd.innerHTML=(ok?'<b class="ok">é isso.</b> ':'<b class="nao">não.</b> era <b>'+C.fam+'</b>. ')
+      +C.nota+'.'+(C.fam==='defeito'
+        ? ' <span class="deck">Encolha o passo h e olhe de novo: o que muda é do instrumento, não da curva — e é aí que medir deixa de bastar.</span>'
+        : ' <span class="deck">Mexa no passo h: numa família, a resposta quase não muda.</span>');
+    desenhar();
+  }
+
+  function nova(){
+    let i; do{ i=Math.floor(Math.random()*CURVAS.length); }while(i===atual&&CURVAS.length>1);
+    atual=i; medidas=[]; resp=null; vd.innerHTML='';
+    onde.value=-2.85; JAN=janela();
+    [...respDiv.children].forEach(b=>{b.disabled=false;b.classList.remove('on');});
+    desenhar();
+  }
+
+  onde.oninput=()=>{marcar(+onde.value);desenhar();};
+  hs.oninput=()=>{JAN=janela();desenhar();};
+  document.getElementById('limpar').onclick=()=>{medidas=[];desenhar();};
+  document.getElementById('outra').onclick=nova;
+  document.getElementById('varrer').onclick=function(){
+    if(varrendo){cancelAnimationFrame(varrendo);varrendo=0;this.classList.remove('on');return;}
+    this.classList.add('on'); const bt=this;
+    const passo=()=>{ let x=+onde.value+0.03;
+      if(x>2.85){x=2.85;} onde.value=x; marcar(x); desenhar();
+      if(x>=2.85){varrendo=0;bt.classList.remove('on');return;}
+      varrendo=requestAnimationFrame(passo); };
+    varrendo=requestAnimationFrame(passo);
+  };
+
+  nova();
+})();
+</script>
+</body>
+</html>

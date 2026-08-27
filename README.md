@@ -29,14 +29,14 @@ Para conferir o repositório (precisa de Python 3 e Node, só para isso):
 
 ```bash
 python3 auditar_fatias.py --controle   # o portão, com controle negativo
-python3 gerar_indice.py                # regera o index e a navegação das oito
+python3 gerar_indice.py                # regera o index e a navegação das nove
 ```
 
 Passo a passo por sistema operacional em [`docs/INSTALACAO.md`](docs/INSTALACAO.md).
 
 ## O que tem aqui
 
-**Uma cor, um papel** — a regra que amarra as oito: *azul = ao longo da
+**Uma cor, um papel** — a regra que amarra as nove: *azul = ao longo da
 referência* (`x`, cateto adjacente, cosseno) · *terracota = perpendicular a ela*
 (`y`, cateto oposto, seno, a taxa). As exceções estão declaradas em
 [`pharo/ux-de-explicacao-interativa.md`](pharo/ux-de-explicacao-interativa.md),
@@ -47,11 +47,12 @@ index.html            a porta — GERADO por gerar_indice.py, não editar à mã
 par-vira-ponto.html   ┐
 taxa.html             │
 o-angulo.html         │
-o-triangulo.html      ├ as oito fatias, na ordem do manifesto de cada uma
+o-triangulo.html      ├ as nove fatias, na ordem do manifesto de cada uma
 a-distancia.html      │
 o-circulo.html        │
 desenrolamento.html   │
-o-encontro.html       ┘
+o-encontro.html       │
+a-familia.html        ┘
 gerar_indice.py       lê as fatias, escreve o index E injeta a navegação
 auditar_fatias.py     o portão: ordem, herança de símbolo, rede, JS
 pharo/                o conhecimento destilado — por que a ordem é essa
@@ -161,7 +162,7 @@ python3 auditar_fatias.py --controle
 
 A **navegação** de cada fatia é gerada da mesma ordem — anterior, posição na
 fila, próxima — e injetada num bloco marcado. Reordenar as fatias reescreve as
-oito de uma vez, e o portão reprova se a posição anunciada divergir do
+nove de uma vez, e o portão reprova se a posição anunciada divergir do
 manifesto. Ela vai **inline**, e não num `nav.js`, porque cada fatia **abre
 sozinha**: um arquivo solto por e-mail tem de continuar funcionando.
 
@@ -189,8 +190,20 @@ que este repositório existe em vez de uma pasta no disco.
 
 ## Estado, e o que falta
 
-O que está de pé: as oito fatias, o portão com controle negativo, o índice
+O que está de pé: as **nove** fatias, o portão com controle negativo, o índice
 gerado, e a licença por camada.
+
+A nona, **a família** (2026-08-27), fecha um par com a **taxa**: aquela vai de
+*regra para curva* — escolhe-se o nome num botão e vê-se o desenho; esta vai de
+*curva para regra* — a curva aparece **sem nome**, e quem levanta a taxa é o
+leitor, arrastando. Escolher o nome num menu e ver a taxa é reconhecimento com a
+resposta dada; a direção inversa é a que não dá para decorar. O passo `h` é
+regulável de propósito: nas famílias ele quase não muda a resposta, no bico e no
+salto muda tudo — e é assim que a fatia mostra, sem dizer, que **medir não
+prova**. As onze curvas de família foram conferidas em código: classificar cada
+uma só pelo que a taxa medida faz devolve o rótulo certo nas onze, estável entre
+`h = 0,03` e `h = 0,6`. A estação irmã, no deck, é a **Estação 5 · a família** do
+C2, que paga o item v do registro da §1.2b da norma de notação.
 
 O que falta, declarado em vez de escondido:
 
@@ -200,7 +213,7 @@ O que falta, declarado em vez de escondido:
   `o-circulo`, o único caso: cosseno, seno e arco passaram a ter nome colado no
   traço;
 - ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: moldura de
-  640 nas oito, com cada composição centrada e intocada;
+  640 nas oito primeiras, com cada composição centrada e intocada;
 - **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se
   fundirem bem depois. A primeira sobreposição examinada foi *a onda* do
   `o-circulo` × o `desenrolamento`. Eu cortei a onda por ela zerar o chão, e o
