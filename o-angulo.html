@@ -1,0 +1,220 @@
+<!doctype html>
+<!-- fatia: o-angulo | ordem: 3 | declara: π | empresta: sen cos -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O ângulo — em graus, em radianos, e de onde vem o π</title>
+<style>
+  :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
+         --arco:#6fbf6a; --chao:#41638f; --grau:#c98fb4; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:30px;margin:0 0 2px;letter-spacing:.2px}
+  .sub{color:var(--fraco);font-size:13.5px;margin:0 0 14px;max-width:960px;line-height:1.5}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;background:#081120}
+  .painel{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:12px 0 4px;
+          padding:11px 14px;background:#0d1c30;border-radius:6px}
+  label{font-size:13px;display:flex;align-items:center;gap:7px;color:var(--creme)}
+  input[type=range]{accent-color:var(--ouro)}
+  button{background:#24374f;color:var(--creme);border:0;border-radius:4px;padding:6px 12px;
+         font-size:12.5px;cursor:pointer;font-family:inherit}
+  button.on{background:var(--ouro);color:#0a1424;font-weight:600}
+  table.l{border-collapse:collapse;margin-top:14px;font-variant-numeric:tabular-nums;font-size:13px}
+  table.l td,table.l th{padding:5px 18px 5px 0;text-align:left}
+  table.l th{color:var(--fraco);font-weight:500;font-size:12px}
+  .c-a{color:var(--arco)} .c-g{color:var(--grau)} .c-o{color:var(--ouro)}
+  .notas{margin-top:26px;max-width:1000px;font-size:14px;line-height:1.65;color:#b9c4d4}
+  .notas h2{font-family:Cormorant,Georgia,serif;font-size:21px;color:var(--creme);
+            margin:22px 0 6px;font-weight:600}
+  .notas b{color:var(--creme)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+  .deck{color:#7f8ea4;font-size:12.5px}
+</style>
+</head>
+<body>
+
+<h1>O ângulo</h1>
+<p class="sub">Um ângulo é uma <b>abertura</b> entre duas semirretas que saem do mesmo
+vértice. Ele não tem tamanho próprio — para medir, é preciso <b>desenhar um arco</b>, e aí
+aparecem duas maneiras de ler o mesmo ângulo. Uma delas foi inventada; a outra o círculo dá
+de graça.</p>
+
+<canvas id="c" width="1240" height="600"></canvas>
+
+<div class="painel">
+  <label>a abertura = <input type="range" id="th" min="0" max="6.2832" step="0.002" value="1.1"
+         style="width:300px"></label>
+  <label>raio do arco = <input type="range" id="r" min="0.35" max="1.5" step="0.005" value="1"
+         style="width:170px"></label>
+  <button id="play">abrir até a volta inteira</button>
+  <button id="bTres">três arcos ao mesmo tempo</button>
+  <button id="bGrau">a divisão em 360</button>
+</div>
+
+<table class="l">
+  <tr><th></th><th>o que se mede</th><th>o que se lê</th></tr>
+  <tr><td class="c-a"><b>o arco</b></td><td class="c-a" id="La"></td>
+      <td class="c-a">um comprimento — muda com o raio</td></tr>
+  <tr><td style="color:#8fa0b8"><b>o raio</b></td><td style="color:#8fa0b8" id="Lr"></td>
+      <td style="color:#8fa0b8">o que se usou como régua</td></tr>
+  <tr><td class="c-o"><b>radianos</b></td><td class="c-o" id="Lrad"></td>
+      <td class="c-o">arco ÷ raio — <b>não muda com o raio</b></td></tr>
+  <tr><td class="c-g"><b>graus</b></td><td class="c-g" id="Lg"></td>
+      <td class="c-g">a fatia de uma volta, se a volta for cortada em 360</td></tr>
+</table>
+
+<div class="notas">
+  <h2>O que olhar</h2>
+  <p><b>1. Mexa no raio.</b> O <b class="c-a">arco</b> estica e encolhe — ele é um
+  comprimento, e depende de onde você desenhou. Mas a linha dos <b class="c-o">radianos</b>
+  não se mexe. Ligue <i>três arcos ao mesmo tempo</i>: três comprimentos diferentes, uma
+  razão só. <b>Isso é o radiano</b>: não uma unidade que alguém escolheu, mas o arco medido
+  com o próprio raio.</p>
+
+  <p><b>2. Abra até a volta inteira.</b> O arco vira a circunferência, e a leitura em
+  radianos para em <b>6,28318…</b> — que é <b>2π</b>. E aí o π deixa de ser um número que
+  aparece do nada: ele é <i>a circunferência dividida pelo diâmetro</i>, ou seja,
+  <b>o quanto o círculo mede quando medido com o próprio raio</b>. Ele cai da conta, não
+  da convenção.</p>
+
+  <p><b>3. Ligue a divisão em 360.</b> Nada no desenho pede 360. É uma partição herdada da
+  astronomia babilônica, escolhida porque 360 se divide bem — por 2, 3, 4, 5, 6, 8, 9, 10,
+  12, 15, 18… O grau é <b>cômodo</b>, e é só isso. Não carrega informação nenhuma sobre o
+  círculo. Meia volta são 180 graus <i>porque alguém dividiu assim</i>; meia volta são π
+  radianos <b>porque a metade da circunferência dividida pelo raio dá π</b>.</p>
+
+  <h2>Por que o cálculo não usa graus</h2>
+  <p>Não é preferência de notação. Só em radianos vale <code>sen′ = cos</code> — a derivada
+  do seno é o cosseno, limpa. Em graus a mesma derivada sai com um <b>π/180</b> pendurado,
+  e ele volta a aparecer em toda conta dali para a frente. A escolha da unidade suja ou
+  limpa o cálculo inteiro.
+  <span class="deck">Isso se vê na taxa.html: a curva vermelha do seno é o cosseno
+  exatamente — e só é exatamente porque a entrada está em radianos.</span></p>
+
+  <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">
+  Instrumento local, autocontido: sem rede, sem biblioteca externa. Fatia da mesma família
+  de <code>par-vira-ponto</code>, <code>taxa</code> e <code>o-circulo</code>.</p>
+</div>
+
+<script>
+(function(){
+  // ═══════════════════════════════════════════════════════════════════════
+  // TESE DESTA FATIA
+  // A TESE: o ângulo não tem tamanho próprio. Para medir é preciso desenhar
+  // um arco — e aí o RAIO usado é uma escolha. O radiano é a leitura que não
+  // depende dessa escolha (arco ÷ raio); o grau é uma partição arbitrária.
+  //
+  // POR ISSO O RAIO É UM CONTROLE, e por isso existe o modo de TRÊS ARCOS
+  // simultâneos: três comprimentos diferentes e uma razão só, na mesma tela,
+  // é a única forma de a independência ser VISTA em vez de afirmada.
+  //
+  // O π cai da volta inteira: arco = circunferência, e circunferência ÷ raio
+  // = 2π. Se alguém trocar a leitura de radianos por uma conversão a partir
+  // de graus (×π/180), a figura para de mostrar de onde o π vem e passa a
+  // usá-lo como constante mágica — que é exatamente o que ela combate.
+  // ═══════════════════════════════════════════════════════════════════════
+  const CO={fundo:'#081120',eixo:'#22374f',fraco:'#5b6b86',creme:'#e8e2d6',
+            ouro:'#c9a266',arco:'#6fbf6a',chao:'#41638f',grau:'#c98fb4'};
+  const cv=document.getElementById('c'), ct=cv.getContext('2d');
+  const th=document.getElementById('th'), rr=document.getElementById('r'),
+        bt=document.getElementById('play'), bTres=document.getElementById('bTres'),
+        bGrau=document.getElementById('bGrau');
+  let tres=false, verGrau=false, rodando=false, ult=0;
+  const W=1240,H=600, U=175, cx=470, cy=390;      // vértice do ângulo
+
+  function linha(x1,y1,x2,y2,cor,l,tr){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1;if(tr)ct.setLineDash(tr);
+    ct.beginPath();ct.moveTo(x1,y1);ct.lineTo(x2,y2);ct.stroke();ct.restore();
+  }
+  function txt(t,x,y,c,s,a,p){
+    ct.save();ct.fillStyle=c;ct.font=(p||'')+' '+(s||12)+'px Inter,system-ui,sans-serif';
+    ct.textAlign=a||'left';ct.fillText(t,x,y);ct.restore();
+  }
+  const px=(r,a)=>[cx+U*r*Math.cos(a), cy-U*r*Math.sin(a)];
+
+  function arco(r,t,cor,larg,alpha){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=larg;ct.globalAlpha=alpha||1;
+    ct.beginPath();ct.arc(cx,cy,U*r,0,-t,true);ct.stroke();ct.restore();
+  }
+
+  function desenhar(){
+    const t=+th.value, r=+rr.value;
+    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+
+    if(verGrau){                                   // a partição arbitrária em 360
+      ct.save();ct.strokeStyle=CO.grau;ct.globalAlpha=.5;
+      for(let k=0;k<360;k+=10){
+        const a=k*Math.PI/180, g=(k%90===0)?1.55:(k%30===0?1.30:1.16);
+        ct.lineWidth=(k%90===0)?1.6:1;
+        ct.beginPath();ct.moveTo(...px(1.60,a));ct.lineTo(...px(g,a));ct.stroke();
+      }
+      ct.restore();
+      txt('360 marcas — nada no desenho pede esse número',cx,cy-U*1.78,CO.grau,12,'center');
+    }
+
+    // as duas semirretas: a de referência e a que gira. A ABERTURA entre elas
+    // é o ângulo; ele não tem tamanho até alguém desenhar um arco.
+    const L=1.62;
+    linha(cx,cy,...px(L,0),CO.chao,2.2);
+    txt('a semirreta de referência',...px(L,0).map((v,i)=>i?v+20:v-150),CO.chao,12);
+    linha(cx,cy,...px(L,t),CO.creme,2.2);
+    txt('a que gira',...px(L,t).map((v,i)=>i?v-12:v+8),CO.creme,12);
+
+    if(tres){                                      // três raios, um só radiano
+      for(const [rr_,al] of [[0.42,.85],[0.72,.85],[1.05,.85]]){
+        arco(rr_,t,CO.arco,3.0,al);
+        const m=px(rr_,t/2);
+        txt((U*rr_*t/U).toFixed(2).replace('.',','),m[0],m[1]+4,CO.arco,11.5,'center');
+      }
+      txt('três arcos, três comprimentos — e um só radiano',cx,cy+34,CO.fraco,12.5,'center');
+    } else {
+      arco(r,t,CO.arco,4.2);
+      const m=px(r,t/2);
+      txt('arco',m[0],m[1]-9,CO.arco,12.5,'center');
+      linha(cx,cy,...px(r,t*0.5),'#8a94a4',1.4);   // o raio usado como régua
+      txt('raio',...px(r*0.55,t*0.5).map((v,i)=>i?v-7:v+6),'#8a94a4',11.5);
+    }
+
+    // a leitura, grande, no canto — as duas lado a lado
+    const rad=t, gr=t*180/Math.PI;
+    txt('em radianos',900,110,CO.fraco,12.5);
+    txt(rad.toFixed(4).replace('.',','),900,152,CO.ouro,30,'left','600');
+    txt('= arco ÷ raio',900,176,CO.fraco,11.5);
+    txt('em graus',900,236,CO.fraco,12.5);
+    txt(gr.toFixed(1).replace('.',',')+'°',900,278,CO.grau,30,'left','600');
+    txt('= a fatia, se a volta for 360',900,302,CO.fraco,11.5);
+    if(Math.abs(t-2*Math.PI)<0.02){
+      txt('a volta inteira: 2π',900,352,CO.arco,15,'left','600');
+      txt('o arco virou a circunferência,',900,376,CO.fraco,12);
+      txt('e ela dividida pelo raio dá 2π',900,394,CO.fraco,12);
+    }
+
+    const S=(id,v)=>document.getElementById(id).textContent=v;
+    S('La',(r*t).toFixed(3).replace('.',',')+'  (em unidades de tela)');
+    S('Lr',r.toFixed(3).replace('.',','));
+    S('Lrad',rad.toFixed(4).replace('.',','));
+    S('Lg',gr.toFixed(2).replace('.',',')+'°');
+  }
+
+  function quadro(ts){
+    if(!rodando)return;
+    if(ult){let t=+th.value+(ts-ult)/1000*0.85;
+      if(t>6.2832){t=6.2832;rodando=false;bt.textContent='abrir até a volta inteira';
+                   bt.classList.remove('on')}
+      th.value=t;desenhar()}
+    ult=ts;if(rodando)requestAnimationFrame(quadro);
+  }
+  bt.onclick=()=>{if(+th.value>=6.28)th.value=0;
+    rodando=!rodando;ult=0;bt.textContent=rodando?'parar':'abrir até a volta inteira';
+    bt.classList.toggle('on',rodando);if(rodando)requestAnimationFrame(quadro)};
+  bTres.onclick=()=>{tres=!tres;bTres.classList.toggle('on',tres);rr.disabled=tres;desenhar()};
+  bGrau.onclick=()=>{verGrau=!verGrau;bGrau.classList.toggle('on',verGrau);desenhar()};
+  th.oninput=rr.oninput=desenhar;
+  desenhar();
+})();
+</script>
+</body>
+</html>

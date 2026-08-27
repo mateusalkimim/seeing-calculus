@@ -1,0 +1,325 @@
+<!doctype html>
+<!-- fatia: taxa | ordem: 2 | declara: f′ Δ | empresta: π sen cos -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A taxa — a função descrita pela mudança</title>
+<style>
+  :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
+         --f:#78c4ff; --taxa:#e8654f; --area:#4e9d6b; --sec:#a98a55; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:30px;margin:0 0 2px;letter-spacing:.2px}
+  .sub{color:var(--fraco);font-size:13.5px;margin:0 0 14px;max-width:960px;line-height:1.5}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;background:#081120}
+  .painel{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:12px 0 4px;
+          padding:11px 14px;background:#0d1c30;border-radius:6px}
+  label{font-size:13px;display:flex;align-items:center;gap:7px;color:var(--creme)}
+  input[type=range]{accent-color:var(--ouro)}
+  button{background:#24374f;color:var(--creme);border:0;border-radius:4px;padding:6px 12px;
+         font-size:12.5px;cursor:pointer;font-family:inherit}
+  button.on{background:var(--ouro);color:#0a1424;font-weight:600}
+  #fns{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+  .leitura{display:flex;gap:20px;flex-wrap:wrap;font-variant-numeric:tabular-nums;
+           font-size:13px;margin-top:12px}
+  .v-f{color:var(--f)} .v-t{color:var(--taxa)} .v-a{color:var(--area)} .v-s{color:var(--sec)}
+  .notas{margin-top:26px;max-width:1000px;font-size:14px;line-height:1.65;color:#b9c4d4}
+  .notas h2{font-family:Cormorant,Georgia,serif;font-size:21px;color:var(--creme);
+            margin:22px 0 6px;font-weight:600}
+  .notas b{color:var(--creme)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+  .deck{color:#7f8ea4;font-size:12.5px}
+</style>
+</head>
+<body>
+
+<h1>A taxa — a função descrita pela mudança</h1>
+<p class="sub">Um painel só, e tudo nos <b>mesmos eixos</b>: a função, a reta que a toca, e a
+taxa. Ligue a taxa e compare o <b>cateto vermelho</b> do triângulo com a <b>altura</b> da
+curva vermelha no mesmo x — são o mesmo comprimento, no mesmo espaço. Inclinação é
+<b>quanto sobe ao andar um</b>, e é isso que os dois traços medem — com a régua, não de
+palavra. A ligação disso com a trigonometria não é assunto desta fatia: ela tem uma só,
+no fim da ordem.</p>
+
+<div id="fns"></div>
+
+<canvas id="c" width="1240" height="560"></canvas>
+
+<div class="painel">
+  <label>x = <input type="range" id="sl" min="-5" max="5" step="0.002" value="-1.4"
+         style="width:250px"></label>
+  <button id="play">animar</button>
+  <button id="bTaxa">a taxa</button>
+  <button id="bArea">a área</button>
+  <label>h = <input type="range" id="h" min="0" max="2.5" step="0.005" value="1.4"
+         style="width:160px"></label>
+  <label>o chão: <input type="range" id="chao" min="-2" max="2" step="0.01" value="0"
+         style="width:120px"></label>
+</div>
+
+<div class="leitura">
+  <span><b>x</b> = <span id="rx"></span></span>
+  <span class="v-f"><b>f(x)</b> = <span id="rf"></span></span>
+  <span class="v-s"><b>Δf/h</b> = <span id="rq"></span></span>
+  <span class="v-t"><b>f ′(x)</b> = <span id="rd"></span></span>
+  <span class="v-a"><b>área</b> = <span id="ra"></span></span>
+</div>
+
+<div class="notas">
+  <h2>A passagem que o GeoGebra esconde</h2>
+  <p>Arraste o <b>h</b> para a esquerda. Com <b>h</b> grande há <b>dois pontos</b> e uma reta
+  <b>secante</b> — o quociente <code>Δf/h</code> é a inclinação dela. À medida que h fecha,
+  os dois pontos viram um e a secante vira a <b>tangente</b>: <code>Δf/h</code> vai
+  encostando em <code>f ′(x)</code>, e você vê os dois números se aproximarem na linha de
+  leitura. <span class="deck">É a Estação 4 do C2 — <i>"a reta por dois pontos, quando os
+  dois viram um"</i>.</span></p>
+
+  <h2>O que cada leitura mostra</h2>
+  <p><b>Onde a taxa cruza o zero, a curva vira.</b> Na parábola, o vértice não é um lugar
+  especial da curva azul — é onde a vermelha <i>cruza o zero</i>. Sobe antes, desce depois.
+  <span class="deck">É como Fermat achava máximo sem derivada, no C2 §4.</span></p>
+
+  <p><b>Onde a taxa não existe, a curva tem defeito.</b> No bico, a taxa <b>salta</b>: a reta
+  tangente não sabe qual escolher, e por isso não há uma. No salto, nem contínua a função é.
+  <span class="deck">Os três defeitos são da Estação 2 do C1; continuidade em um ponto é a
+  Estação 4 do C3.</span></p>
+
+  <p><b>Os círculos brancos no eixo marcam Bolzano.</b> Onde a função troca de sinal, ela
+  passou pelo zero — sem precisar achar onde. <span class="deck">C3, Estação 5.</span></p>
+
+  <p><b>A constante é o que a taxa não vê.</b> Na reta constante, a curva vermelha deita no
+  zero. Somar uma constante à azul não muda nada na vermelha — é o que <code>ker D</code>
+  quer dizer, e é a razão do <code>+C</code> da integral.</p>
+
+  <p><b>A exponencial se persegue.</b> Nela a vermelha é uma cópia encolhida da azul: a taxa
+  é <b>proporcional ao próprio valor</b>. Nenhuma outra família faz isso.</p>
+
+  <p><b>Em <code>sen x / x</code> o zero é um buraco</b> — 0/0 — e as duas <b>paredes</b>
+  aparecem: entre −π/2 e π/2, a curva fica presa entre o cosseno e o 1. As duas vão a 1, e
+  a do meio não tem para onde fugir. <span class="deck">É o Teorema do Confronto, C4 §2, e
+  o limite que fecha a série.</span></p>
+
+  <p style="color:#8fa0b8"><b>Sobre as duas últimas funções da lista.</b>
+  <code>seno</code> e <code>sen x / x</code> gastam trigonometria, que esta fatia não
+  ensina e não precisa: o que ela diz — a altura de baixo é a inclinação de cima — vale
+  para qualquer curva. Estão aqui porque são bons exemplos, e ficam legíveis depois do
+  ramo do ângulo, do triângulo e do círculo. As sete primeiras não emprestam nada.</p>
+
+  <h2>O chão é uma escolha</h2>
+  <p>Ligue <b>a área</b> e arraste <b>o chão</b>. O eixo x não tem nada de especial: ele é o
+  gráfico da função constante zero, e a área é medida entre a curva e <i>ele</i>. Trocando o
+  chão, a mesma operação vira a área entre duas curvas — e o chão habitual é tão habitual
+  que a gente esquece que escolheu, como a base canônica na álgebra linear.</p>
+  <p>Tangente e área moram no mesmo instrumento de propósito: o Teorema Fundamental diz que
+  são a mesma coisa lida nos dois sentidos. <span class="deck">A área por aprisionamento é
+  a Estação 2 do C2 — o gesto de Arquimedes.</span></p>
+
+  <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">
+  Instrumento local, autocontido: sem rede, sem biblioteca externa. Irmão do
+  <code>desenrolamento.html</code> — aquele mostra <b>de onde vem</b> o número; este,
+  <b>como o número muda</b>.</p>
+</div>
+
+<script>
+(function(){
+  // ═══════════════════════════════════════════════════════════════════════
+  // TESE DESTA FATIA
+  // UM PAINEL SÓ, e f e f' nos MESMOS EIXOS (decisão do operador, 2026-08-26).
+  // Painéis empilhados obrigavam a acreditar que as duas escalas eram iguais;
+  // aqui elas SÃO a mesma, e o cateto vertical do triângulo (que mede f') e a
+  // altura da curva vermelha são dois comprimentos no mesmo espaço. A barra
+  // vermelha do eixo até f'(x) existe para exibir esse mesmo comprimento duas
+  // vezes, lado a lado. Se alguém separar em dois painéis de novo, a afirmação
+  // volta a depender de fé.
+  //
+  // Cada função traz f E f' ANALÍTICAS. Derivada numérica mentiria exatamente
+  // onde importa — no bico e no salto, que são dois dos casos a mostrar.
+  // ═══════════════════════════════════════════════════════════════════════
+  const CO={fundo:'#081120',eixo:'#1e3050',zero:'#41638f',fraco:'#5b6b86',
+            creme:'#e8e2d6',ouro:'#c9a266',f:'#78c4ff',taxa:'#e8654f',
+            area:'#4e9d6b',sec:'#a98a55'};
+
+  const FUNCOES=[
+    {n:'reta constante', f:()=>1.2, d:()=>0,
+     nota:'taxa zero — a derivada não vê constante'},
+    {n:'reta inclinada', f:x=>0.6*x-0.4, d:()=>0.6,
+     nota:'taxa constante, e não é zero'},
+    {n:'parábola', f:x=>0.25*x*x-1.4, d:x=>0.5*x,
+     nota:'a taxa é uma RETA; o vértice é onde ela cruza o zero'},
+    {n:'cúbica', f:x=>0.06*x*x*x-0.55*x, d:x=>0.18*x*x-0.55,
+     nota:'duas viradas; a taxa é uma parábola'},
+    {n:'seno', f:x=>Math.sin(x), d:x=>Math.cos(x),
+     nota:'a taxa é da mesma família, adiantada um quarto de volta'},
+    {n:'exponencial', f:x=>0.3*Math.exp(0.4*x), d:x=>0.12*Math.exp(0.4*x),
+     nota:'a taxa é PROPORCIONAL ao próprio valor — a definição da família'},
+    {n:'bico', f:x=>Math.abs(x)-1.2, d:x=>x===0?NaN:(x>0?1:-1), quebra:[0],
+     nota:'a taxa SALTA em x=0: não existe reta tangente ali'},
+    {n:'salto', f:x=>x<0?-0.9:0.9, d:x=>x===0?NaN:0, quebra:[0],
+     nota:'nem contínua é; no salto a taxa não tem o que medir'},
+    {n:'1 sobre x', f:x=>1/x, d:x=>-1/(x*x), quebra:[0],
+     nota:'assíntota: a curva dispara e a taxa dispara mais rápido'},
+    {n:'sen x / x', f:x=>x===0?NaN:Math.sin(x)/x,
+     d:x=>x===0?NaN:(x*Math.cos(x)-Math.sin(x))/(x*x), quebra:[0], paredes:true,
+     nota:'0/0 no zero: o buraco existe, o limite é 1 — e o Confronto prova (C4)'},
+  ];
+
+  const cv=document.getElementById('c'), ct=cv.getContext('2d');
+  const sl=document.getElementById('sl'), bt=document.getElementById('play');
+  const bTaxa=document.getElementById('bTaxa'), bArea=document.getElementById('bArea');
+  const chao=document.getElementById('chao'), hsl=document.getElementById('h');
+  let atual=2, verTaxa=true, verArea=false, rodando=false, ult=0;
+
+  const W=1240,H=560, X0=-5.4,X1=5.4, U=68, y0=300;
+  const mx=x=>60+(x-X0)/(X1-X0)*(W-120), my=v=>y0-U*v;
+  const LIM=3.6;
+
+  const fns=document.getElementById('fns');
+  FUNCOES.forEach((fn,i)=>{
+    const b=document.createElement('button'); b.textContent=fn.n;
+    b.onclick=()=>{atual=i;pinta();desenhar(+sl.value)}; fns.appendChild(b);
+  });
+  const pinta=()=>[...fns.children].forEach((b,i)=>b.classList.toggle('on',i===atual));
+
+  function linha(x1,y1,x2,y2,cor,l,tr){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1;if(tr)ct.setLineDash(tr);
+    ct.beginPath();ct.moveTo(x1,y1);ct.lineTo(x2,y2);ct.stroke();ct.restore();
+  }
+  function txt(t,x,y,c,s,a){
+    ct.save();ct.fillStyle=c;ct.font=(s||12)+'px Inter,system-ui,sans-serif';
+    ct.textAlign=a||'left';ct.fillText(t,x,y);ct.restore();
+  }
+  function disco(x,y,cor,r){
+    ct.save();ct.fillStyle=cor;ct.beginPath();ct.arc(x,y,r||5.5,0,7);ct.fill();
+    ct.strokeStyle=CO.fundo;ct.lineWidth=1.6;ct.stroke();ct.restore();
+  }
+  function curva(fn,cor,larg,quebras){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=larg;ct.beginPath();
+    let q=true;
+    for(let i=0;i<=1400;i++){
+      const x=X0+(X1-X0)*i/1400, v=fn(x);
+      if(!isFinite(v)||Math.abs(v)>LIM||(quebras||[]).some(k=>Math.abs(x-k)<0.012)){q=true;continue}
+      const X=mx(x),Y=my(v); q?(ct.moveTo(X,Y),q=false):ct.lineTo(X,Y);
+    }
+    ct.stroke();ct.restore();
+  }
+  function integral(fn,a,b,g){
+    let s=0;const n=1400,h=(b-a)/n;
+    for(let i=0;i<n;i++){
+      const v1=fn(a+i*h)-g, v2=fn(a+(i+1)*h)-g;
+      if(!isFinite(v1)||!isFinite(v2)||Math.abs(v1)>60||Math.abs(v2)>60)continue;
+      s+=(v1+v2)/2*h;
+    }
+    return s;
+  }
+
+  function desenhar(x){
+    const F=FUNCOES[atual], g=+chao.value, h=+hsl.value;
+    const v=F.f(x), d=F.d(x), v2=F.f(x+h), q=(v2-v)/h;
+    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+
+    linha(50,my(0),W-50,my(0),CO.zero,1.4);
+    linha(mx(0),my(0)-U*3.5,mx(0),my(0)+U*3.5,CO.eixo,1);
+    for(let k=-5;k<=5;k++){
+      if(!k)continue;
+      linha(mx(k),my(0)-5,mx(k),my(0)+5,CO.eixo,1);
+      txt(k,mx(k),my(0)+20,'#41577a',10,'center');
+    }
+
+    if(verArea){
+      ct.save();ct.fillStyle=CO.area;ct.globalAlpha=.20;ct.beginPath();
+      let iniciou=false;
+      for(let i=0;i<=700;i++){
+        const t=X0+(x-X0)*i/700, w=F.f(t);
+        if(!isFinite(w)||Math.abs(w)>LIM){iniciou=false;continue}
+        if(!iniciou){ct.moveTo(mx(t),my(g));iniciou=true}
+        ct.lineTo(mx(t),my(w));
+      }
+      ct.lineTo(mx(x),my(g));ct.closePath();ct.fill();ct.restore();
+      linha(50,my(g),W-50,my(g),CO.area,1.6,[6,4]);
+      txt('o chão',W-56,my(g)-7,CO.area,11,'right');
+    }
+
+    // as paredes do Confronto — só onde a desigualdade VALE (−π/2 a π/2)
+    if(F.paredes){
+      ct.save();ct.strokeStyle=CO.ouro;ct.globalAlpha=.6;ct.lineWidth=1.5;ct.setLineDash([5,4]);
+      ct.beginPath();
+      for(let i=0;i<=300;i++){const t=-Math.PI/2+Math.PI*i/300;
+        i?ct.lineTo(mx(t),my(Math.cos(t))):ct.moveTo(mx(t),my(Math.cos(t)))}
+      ct.stroke();
+      ct.beginPath();ct.moveTo(mx(-Math.PI/2),my(1));ct.lineTo(mx(Math.PI/2),my(1));ct.stroke();
+      ct.restore();
+      txt('as paredes — só entre −π/2 e π/2',mx(Math.PI/2)+9,my(1)-7,CO.ouro,11);
+    }
+
+    curva(F.f,CO.f,2.6,F.quebra);
+    if(verTaxa) curva(F.d,CO.taxa,2.1,F.quebra);
+
+    // Bolzano: círculo branco onde a função troca de sinal
+    ct.save();ct.strokeStyle=CO.creme;ct.lineWidth=1.6;
+    let ant=F.f(X0);
+    for(let i=1;i<=900;i++){
+      const t=X0+(X1-X0)*i/900, w=F.f(t);
+      if(isFinite(ant)&&isFinite(w)&&ant*w<0&&Math.abs(w-ant)<1.0){
+        ct.beginPath();ct.arc(mx(t),my(0),4.5,0,7);ct.stroke();
+      }
+      ant=w;
+    }
+    ct.restore();
+
+    if(isFinite(v)&&Math.abs(v)<LIM){
+      // a SECANTE, enquanto h não fechou
+      if(h>0.02&&isFinite(v2)&&Math.abs(v2)<LIM&&isFinite(q)&&Math.abs(q)<24){
+        const e=2.8;
+        linha(mx(x-e),my(v-q*e),mx(x+e),my(v+q*e),CO.sec,1.5,[6,4]);
+        linha(mx(x),my(v),mx(x+h),my(v),CO.creme,1.2);
+        linha(mx(x+h),my(v),mx(x+h),my(v2),CO.sec,2.0);
+        disco(mx(x+h),my(v2),CO.sec,4.5);
+        txt('h',mx(x+h/2),my(v)+15,CO.fraco,10,'center');
+      }
+      // a TANGENTE e o triângulo "anda 1, sobe f′"
+      if(isFinite(d)&&Math.abs(d)<24){
+        const e=2.8;
+        linha(mx(x-e),my(v-d*e),mx(x+e),my(v+d*e),CO.ouro,1.9);
+        linha(mx(x),my(v),mx(x+1),my(v),CO.creme,1.5);
+        linha(mx(x+1),my(v),mx(x+1),my(v+d),CO.taxa,3.2);
+        txt('1',mx(x+.5),my(v)+15,CO.fraco,10,'center');
+      }
+      disco(mx(x),my(v),CO.f);
+    }
+    // O MESMO COMPRIMENTO, DUAS VEZES: o cateto do triângulo e esta barra
+    if(verTaxa&&isFinite(d)&&Math.abs(d)<LIM){
+      linha(mx(x),my(0),mx(x),my(d),CO.taxa,3.2);
+      disco(mx(x),my(d),CO.taxa);
+      txt("f ′(x)",mx(x)+9,my(d)-9,CO.taxa,11.5);
+    } else if(verTaxa){
+      txt('a taxa não existe aqui',mx(x)+10,my(0)-16,CO.taxa,12);
+    }
+    txt(F.nota,W/2,H-16,CO.fraco,12.5,'center');
+
+    const n=(z,c)=>isFinite(z)?z.toFixed(c||3):'—';
+    document.getElementById('rx').textContent=n(x);
+    document.getElementById('rf').textContent=n(v);
+    document.getElementById('rd').textContent=n(d);
+    document.getElementById('rq').textContent=(h>0.02&&isFinite(q))?n(q):'— (h fechou)';
+    document.getElementById('ra').textContent=verArea?n(integral(F.f,X0,x,g)):'—';
+  }
+
+  function quadro(ts){
+    if(!rodando)return;
+    if(ult){let x=+sl.value+(ts-ult)/1000*1.5;if(x>5)x=-5;sl.value=x;desenhar(x)}
+    ult=ts;requestAnimationFrame(quadro);
+  }
+  bt.onclick=()=>{rodando=!rodando;ult=0;bt.textContent=rodando?'parar':'animar';
+                  bt.classList.toggle('on',rodando);if(rodando)requestAnimationFrame(quadro)};
+  bTaxa.onclick=()=>{verTaxa=!verTaxa;bTaxa.classList.toggle('on',verTaxa);desenhar(+sl.value)};
+  bArea.onclick=()=>{verArea=!verArea;bArea.classList.toggle('on',verArea);desenhar(+sl.value)};
+  sl.oninput=chao.oninput=hsl.oninput=()=>desenhar(+sl.value);
+  bTaxa.classList.add('on');
+  pinta();desenhar(+sl.value);
+})();
+</script>
+</body>
+</html>

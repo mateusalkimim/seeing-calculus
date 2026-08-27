@@ -1,0 +1,265 @@
+<!doctype html>
+<!-- fatia: o-circulo | ordem: 6 | declara: — | empresta: — -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O círculo — seno, cosseno e tangente como comprimentos</title>
+<style>
+  :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
+         --sen:#e8654f; --cos:#78c4ff; --arco:#6fbf6a; --chao:#41638f; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:30px;margin:0 0 2px;letter-spacing:.2px}
+  .sub{color:var(--fraco);font-size:13.5px;margin:0 0 14px;max-width:960px;line-height:1.5}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;background:#081120}
+  .painel{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:12px 0 4px;
+          padding:11px 14px;background:#0d1c30;border-radius:6px}
+  label{font-size:13px;display:flex;align-items:center;gap:7px;color:var(--creme)}
+  input[type=range]{accent-color:var(--ouro)}
+  button{background:#24374f;color:var(--creme);border:0;border-radius:4px;padding:6px 12px;
+         font-size:12.5px;cursor:pointer;font-family:inherit}
+  button.on{background:var(--ouro);color:#0a1424;font-weight:600}
+  table.l{border-collapse:collapse;margin-top:14px;font-variant-numeric:tabular-nums;font-size:13px}
+  table.l td,table.l th{padding:5px 16px 5px 0;text-align:left}
+  table.l th{color:var(--fraco);font-weight:500;font-size:12px}
+  .c-sen{color:var(--sen)} .c-cos{color:var(--cos)} .c-tg{color:var(--ouro)} .c-arc{color:var(--arco)}
+  .notas{margin-top:26px;max-width:1000px;font-size:14px;line-height:1.65;color:#b9c4d4}
+  .notas h2{font-family:Cormorant,Georgia,serif;font-size:21px;color:var(--creme);
+            margin:22px 0 6px;font-weight:600}
+  .notas b{color:var(--creme)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+  .deck{color:#7f8ea4;font-size:12.5px}
+</style>
+</head>
+<body>
+
+<h1>O círculo</h1>
+<p class="sub">Seno, cosseno e tangente não são botões de calculadora: são <b>comprimentos</b>,
+medidos a partir de um <b>chão</b> que alguém escolheu. Incline o chão e veja que o
+aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa no
+<b>raio</b> e veja o que muda e o que não muda.</p>
+
+<canvas id="c" width="1240" height="620"></canvas>
+
+<div class="painel">
+  <label>ângulo θ = <input type="range" id="th" min="-6.2" max="6.2" step="0.002" value="0.85"
+         style="width:280px"></label>
+  <label>o chão = <input type="range" id="ch" min="-3.15" max="3.15" step="0.002" value="0"
+         style="width:170px"></label>
+  <label>raio = <input type="range" id="r" min="0.45" max="1.75" step="0.005" value="1"
+         style="width:150px"></label>
+  <button id="play">girar</button>
+  <button id="bArco">o arco</button>
+  <button id="bOnda">a onda</button>
+</div>
+
+<table class="l">
+  <tr><th></th><th>comprimento no desenho</th><th>razão (dividida pelo raio)</th></tr>
+  <tr><td class="c-cos"><b>cosseno</b> — ao longo do chão</td>
+      <td class="c-cos" id="Lc"></td><td class="c-cos" id="Rc"></td></tr>
+  <tr><td class="c-sen"><b>seno</b> — perpendicular ao chão</td>
+      <td class="c-sen" id="Ls"></td><td class="c-sen" id="Rs"></td></tr>
+  <tr><td class="c-tg"><b>tangente</b> — sobre a reta tangente</td>
+      <td class="c-tg" id="Lt"></td><td class="c-tg" id="Rt"></td></tr>
+  <tr><td class="c-arc"><b>arco</b> — do zero até o ponto</td>
+      <td class="c-arc" id="La"></td><td class="c-arc" id="Ra"></td></tr>
+  <tr><td style="color:#8fa0b8"><b>raio</b></td><td style="color:#8fa0b8" id="Lr"></td>
+      <td style="color:#8fa0b8">1 (por definição)</td></tr>
+</table>
+
+<div class="notas">
+  <h2>O que olhar</h2>
+  <p><b>1. Os três são comprimentos, não números mágicos.</b> O <b class="c-cos">cosseno</b>
+  é o quanto o ponto avançou <i>ao longo</i> do chão; o <b class="c-sen">seno</b>, o quanto
+  ele subiu <i>a partir</i> do chão; a <b class="c-tg">tangente</b> é medida sobre a reta que
+  encosta no círculo — e é daí que vem o nome dela.
+  <span class="deck">São os quatro comprimentos da Estação 5 do C1.</span></p>
+
+  <p><b>1b. O <span class="c-tg">T</span> não é um ponto solto.</b> A reta fina que passa
+  pela origem e pelo ponto P segue em frente e <b>encontra</b> a reta tangente: é esse
+  encontro que define o T, e é por isso que o comprimento da tangente cresce sem limite
+  quando o raio se aproxima da perpendicular ao chão — as duas retas vão ficando paralelas.</p>
+
+  <p>E ela paga mais: com essa reta desenhada, os dois triângulos que aparecem —
+  o pequeno, de lados <b class="c-cos">cosseno</b> e <b class="c-sen">seno</b>, e o grande,
+  de lados <b>raio</b> e <b class="c-tg">tangente</b> — são <b>semelhantes</b>. A razão entre
+  os lados é a mesma nos dois, e isso é, como desenho e não como fórmula,
+  <code>tg θ = sen θ / cos θ</code>.</p>
+
+  <p><b>2. Incline o chão.</b> Nada de essencial muda: os três comprimentos continuam os
+  mesmos, girados junto. O ângulo nunca foi "em relação à horizontal" — foi sempre
+  <i>em relação ao chão que a gente declarou</i>. A horizontal é a escolha habitual, e é tão
+  habitual que parece a natureza das coisas.</p>
+
+  <p><b>3. Mexa no raio, e olhe as duas colunas da tabela.</b> Os <b>comprimentos</b> mudam.
+  As <b>razões</b> não. É por isso que o círculo de raio 1 existe: nele, e só nele, o
+  comprimento <i>é</i> a razão — e aí dá para chamar o desenho de "seno" sem mentir.</p>
+
+  <p><b>4. Ligue o arco.</b> Com raio 1, o comprimento do arco <b>é</b> o ângulo em radianos —
+  é essa a definição, e não uma conversão. E os três ficam comparáveis a olho:
+  <b class="c-sen">seno</b> &lt; <b class="c-arc">arco</b> &lt; <b class="c-tg">tangente</b>.
+  <span class="deck">Essa desigualdade, obtida sem conta nenhuma, é o que prova o limite que
+  fecha a série no C4.</span></p>
+
+  <h2>A onda, que aqui é enfeite e não explicação</h2>
+  <p>A chave <b>a onda</b> mostra a altura do ponto sendo levada para uma posição horizontal,
+  e o rastro desenha a senoide. É verdadeiro e é bonito, mas <b>não é o que esta ferramenta
+  vem dizer</b> — ela vem dizer que seno e cosseno são comprimentos num círculo. A onda pede
+  o chão na horizontal, e por isso ligá-la endireita o chão.</p>
+
+  <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">
+  Instrumento local, autocontido: sem rede, sem biblioteca externa. Da mesma família de
+  <code>par-vira-ponto.html</code> e <code>taxa.html</code>.</p>
+</div>
+
+<script>
+(function(){
+  // ═══════════════════════════════════════════════════════════════════════
+  // TESE DESTA FATIA
+  // A TESE, do operador (2026-08-26): mostrar o que sen, cos e tg SÃO —
+  // comprimentos de um ângulo EM RELAÇÃO A UM CHÃO DADO, com o raio à vista.
+  // Sem gráfico. A onda existe como chave secundária porque "enriquece a
+  // visualização", mas NÃO é a explicação central: associar seno a ondulatória
+  // foi justamente o que embaralhou a conversa que gerou esta ferramenta.
+  //
+  // O CHÃO É INCLINÁVEL de propósito. Todo o aparelho (o zero do ângulo, a
+  // projeção do cosseno, a perpendicular do seno, a reta tangente) é definido
+  // a partir dele — u = direção do chão, n = perpendicular. Com o chão fixo na
+  // horizontal, a escolha fica invisível e vira "natureza".
+  //
+  // O RAIO É SOLTO pelo mesmo motivo: com r=1 o comprimento e a razão são o
+  // mesmo número, e o aluno nunca descobre que são duas coisas. A tabela
+  // mostra as duas colunas justamente para separá-las.
+  // ═══════════════════════════════════════════════════════════════════════
+  const CO={fundo:'#081120',eixo:'#22374f',fraco:'#5b6b86',creme:'#e8e2d6',
+            ouro:'#c9a266',sen:'#e8654f',cos:'#78c4ff',arco:'#6fbf6a',chao:'#41638f'};
+  const cv=document.getElementById('c'), ct=cv.getContext('2d');
+  const th=document.getElementById('th'), ch=document.getElementById('ch'),
+        rr=document.getElementById('r'), bt=document.getElementById('play'),
+        bArco=document.getElementById('bArco'), bOnda=document.getElementById('bOnda');
+  let verArco=true, verOnda=false, rodando=false, ult=0, rastro=[];
+
+  const W=1240,H=620, U=150, cx=420, cy=310;      // U = pixels por unidade de raio
+  const OX=760, OW=430;                            // faixa da onda (secundária)
+
+  function linha(x1,y1,x2,y2,cor,l,tr){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1;if(tr)ct.setLineDash(tr);
+    ct.beginPath();ct.moveTo(x1,y1);ct.lineTo(x2,y2);ct.stroke();ct.restore();
+  }
+  function txt(t,x,y,c,s,a,p){
+    ct.save();ct.fillStyle=c;ct.font=(p||'')+' '+(s||12)+'px Inter,system-ui,sans-serif';
+    ct.textAlign=a||'left';ct.fillText(t,x,y);ct.restore();
+  }
+  function disco(x,y,cor,r){
+    ct.save();ct.fillStyle=cor;ct.beginPath();ct.arc(x,y,r||5.5,0,7);ct.fill();
+    ct.strokeStyle=CO.fundo;ct.lineWidth=1.7;ct.stroke();ct.restore();
+  }
+
+  function desenhar(){
+    const t=+th.value, phi=verOnda?0:+ch.value, r=+rr.value;
+    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+
+    // u = direção do CHÃO; n = perpendicular a ele. Tudo se define a partir daqui.
+    const ux=Math.cos(phi), uy=-Math.sin(phi), nx=-Math.sin(phi), ny=-Math.cos(phi);
+    const P=(a,b)=>[cx+U*(a*ux+b*nx), cy+U*(a*uy+b*ny)];   // coords no referencial do chão
+
+    // O CHÃO, e a perpendicular por O
+    const g=2.3;
+    linha(...P(-g,0),...P(g,0),CO.chao,2.0);
+    linha(...P(0,-1.9),...P(0,1.9),CO.eixo,1.1);
+    txt('o chão',...P(g,0).map((v,i)=>i?v-10:v+10),CO.chao,12.5);
+
+    // o círculo de raio r
+    ct.save();ct.strokeStyle=CO.eixo;ct.lineWidth=1.6;ct.beginPath();
+    ct.arc(cx,cy,U*r,0,7);ct.stroke();ct.restore();
+
+    const A=P(r,0);                                   // o zero do ângulo, sobre o chão
+    const Pt=P(r*Math.cos(t), r*Math.sin(t));         // o ponto no círculo
+    const Q=P(r*Math.cos(t), 0);                      // pé de P sobre o chão
+    const tg=Math.tan(t), temTg=Math.abs(Math.cos(t))>0.035 && Math.abs(r*tg)<2.6;
+    const T=temTg?P(r, r*tg):null;                    // sobre a reta tangente em A
+
+    // a RETA TANGENTE ao círculo em A — de onde a tangente tira o nome
+    linha(...P(r,-2.0),...P(r,2.0),'#3d5f7e',1.2,[5,5]);
+
+    // A RETA PELA ORIGEM E POR P. É ELA QUE DEFINE O T: o T não é um ponto
+    // solto sobre a reta tangente — é o ENCONTRO desta reta com aquela. Sem
+    // ela desenhada, o T aparece sem razão visível (era o estado anterior, e
+    // o operador pegou). De quebra, ela deixa OQP e OAT semelhantes na tela,
+    // e a semelhança é a prova de que tg = sen/cos.
+    {
+      // quando o T existe, a reta TEM de alcançá-lo: o parâmetro dele é
+      // r/cos(t), e um teto menor que isso deixaria uma falha visível
+      // justamente no ponto que a reta existe para explicar.
+      const L = temTg ? Math.min(Math.abs(r/Math.cos(t))*1.06, 3.2) : 2.0;
+      linha(...P(-L*Math.cos(t),-L*Math.sin(t)),
+      // cinza dessaturado DE PROPÓSITO: é linha de construção, e precisa se
+      // distinguir do chão (#41638f). Na primeira versão as duas cores eram
+      // quase iguais e as linhas se confundiam — numa figura cujo assunto é
+      // "qual é a referência", esse é o pior lugar para uma ambiguidade.
+            ...P( L*Math.cos(t), L*Math.sin(t)),'#8a94a4',1.7);
+    }
+
+    if(verArco){                                      // o arco: comprimento r·θ
+      ct.save();ct.strokeStyle=CO.arco;ct.lineWidth=3.4;ct.globalAlpha=.75;
+      ct.beginPath();ct.arc(cx,cy,U*r,-phi,-phi-t,t>0);ct.stroke();ct.restore();
+    }
+    if(temTg){                                        // a tangente
+      linha(...A,...T,CO.ouro,3.2); disco(...T,CO.ouro,4.5);
+      txt('tangente',T[0]+9,T[1],CO.ouro,11.5);
+    }
+    linha(cx,cy,...Pt,CO.creme,1.7);                  // o raio
+    linha(cx,cy,...Q,CO.cos,3.4);                     // o cosseno, AO LONGO do chão
+    linha(...Q,...Pt,CO.sen,3.4);                     // o seno, PERPENDICULAR ao chão
+    disco(...Q,CO.cos,4.2); disco(...Pt,CO.creme,6);
+    txt('P',Pt[0]+11,Pt[1]-9,CO.creme,13);
+    txt('raio '+r.toFixed(2),cx+(Pt[0]-cx)/2+8,cy+(Pt[1]-cy)/2-8,'#8fa0b8',11);
+
+    // o ângulo θ, medido A PARTIR DO CHÃO
+    ct.save();ct.strokeStyle=CO.ouro;ct.lineWidth=1.8;ct.beginPath();
+    ct.arc(cx,cy,34,-phi,-phi-t,t>0);ct.stroke();ct.restore();
+    const meio=P(.30*Math.cos(t/2), .30*Math.sin(t/2));
+    txt('θ',meio[0]-4,meio[1]+5,CO.ouro,14,'left','600');
+
+    // ── A ONDA: chave secundária. Enriquece, não explica. ─────────────────
+    if(verOnda){
+      linha(OX,cy,OX+OW,cy,CO.chao,1.4);
+      for(const k of [1,2]) linha(OX+OW*k/2.2,cy-5,OX+OW*k/2.2,cy+5,CO.eixo,1);
+      ct.save();ct.strokeStyle=CO.sen;ct.lineWidth=2.2;ct.beginPath();
+      for(let i=0;i<=400;i++){const a=-6.2+12.4*i/400;
+        i?ct.lineTo(OX+OW*(a+6.2)/12.4,cy-U*r*Math.sin(a)):
+          ct.moveTo(OX+OW*(a+6.2)/12.4,cy-U*r*Math.sin(a))}
+      ct.stroke();ct.restore();
+      const gx=OX+OW*(t+6.2)/12.4, gy=cy-U*r*Math.sin(t);
+      linha(Pt[0],Pt[1],gx,gy,CO.sen,1.1,[4,4]); disco(gx,gy,CO.sen,5);
+      txt('a onda — enfeite útil, não a explicação',OX+OW/2,cy+U*1.55,CO.fraco,11.5,'center');
+    }
+
+    const n=(z,c)=>isFinite(z)?z.toFixed(c===undefined?3:c):'—';
+    const S=(id,v)=>document.getElementById(id).textContent=v;
+    S('Lc',n(r*Math.cos(t))); S('Rc',n(Math.cos(t)));
+    S('Ls',n(r*Math.sin(t))); S('Rs',n(Math.sin(t)));
+    S('Lt',temTg?n(r*tg):'—'); S('Rt',Math.abs(Math.cos(t))>0.035?n(tg):'—');
+    S('La',n(r*Math.abs(t)));  S('Ra',n(Math.abs(t))+'  (o ângulo em radianos)');
+    S('Lr',n(r));
+  }
+
+  function quadro(ts){
+    if(!rodando)return;
+    if(ult){let t=+th.value+(ts-ult)/1000*0.9; if(t>6.2)t=-6.2; th.value=t; desenhar()}
+    ult=ts;requestAnimationFrame(quadro);
+  }
+  bt.onclick=()=>{rodando=!rodando;ult=0;bt.textContent=rodando?'parar':'girar';
+                  bt.classList.toggle('on',rodando);if(rodando)requestAnimationFrame(quadro)};
+  bArco.onclick=()=>{verArco=!verArco;bArco.classList.toggle('on',verArco);desenhar()};
+  bOnda.onclick=()=>{verOnda=!verOnda;bOnda.classList.toggle('on',verOnda);
+                     ch.disabled=verOnda;desenhar()};
+  th.oninput=ch.oninput=rr.oninput=desenhar;
+  bArco.classList.add('on'); desenhar();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<!-- fatia: par-vira-ponto | ordem: 1 | declara: — | empresta: — -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O par vira ponto — duas retas numéricas viram um gráfico</title>
+<style>
+  :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
+         --x:#e8654f; --y:#6fbf6a; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--creme);
+       font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
+  h1{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
+     font-size:30px;margin:0 0 2px;letter-spacing:.2px}
+  .sub{color:var(--fraco);font-size:13.5px;margin:0 0 14px;max-width:960px;line-height:1.5}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;background:#081120}
+  .painel{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:12px 0 4px;
+          padding:11px 14px;background:#0d1c30;border-radius:6px}
+  label{font-size:13px;display:flex;align-items:center;gap:7px;color:var(--creme)}
+  input[type=range]{accent-color:var(--ouro)}
+  button{background:#24374f;color:var(--creme);border:0;border-radius:4px;padding:6px 12px;
+         font-size:12.5px;cursor:pointer;font-family:inherit}
+  button.on{background:var(--ouro);color:#0a1424;font-weight:600}
+  #fns{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+  .notas{margin-top:26px;max-width:1000px;font-size:14px;line-height:1.65;color:#b9c4d4}
+  .notas h2{font-family:Cormorant,Georgia,serif;font-size:21px;color:var(--creme);
+            margin:22px 0 6px;font-weight:600}
+  .notas b{color:var(--creme)} .cx{color:var(--x)} .cy{color:var(--y)}
+  code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
+  .deck{color:#7f8ea4;font-size:12.5px}
+</style>
+</head>
+<body>
+
+<h1>O par vira ponto</h1>
+<p class="sub">A função é uma máquina: entra <b class="cx">x</b>, sai <b class="cy">y</b>.
+Cada um é um ponto numa reta — <b class="cx">x</b> mora na reta de baixo,
+<b class="cy">y</b> mora na reta da esquerda. Cada uma tem <b>uma dimensão</b> só. O ponto
+do gráfico é o <b>encontro</b> dos dois, e o gráfico é o rastro que esses encontros deixam.</p>
+
+<div id="fns"></div>
+
+<canvas id="c" width="1240" height="640"></canvas>
+
+<div class="painel">
+  <label>entra x = <input type="range" id="sl" min="-6" max="6" step="0.005" value="1.4"
+         style="width:300px"></label>
+  <button id="play">varrer todas as entradas</button>
+  <button id="bRastro">deixar rastro</button>
+  <button id="bLimpa">limpar o rastro</button>
+</div>
+
+<div class="notas">
+  <h2>O que olhar</h2>
+  <p><b>1. São duas retas separadas, e cada uma é um mundo de uma dimensão.</b> Na reta de
+  baixo só existe <i>posição</i>: um número, e nada mais. Na da esquerda, idem. Nenhuma das
+  duas, sozinha, tem forma — não há para onde curvar.</p>
+
+  <p><b>2. O ponto do gráfico não está em nenhuma das duas retas.</b> Ele é onde a subida
+  que vem do <b class="cx">x</b> cruza a travessia que vem do <b class="cy">y</b>. É por isso
+  que ele precisa de <b>dois</b> números para existir: um de cada reta.
+  <span class="deck">É a folha 3 do C1 — "o par vira ponto".</span></p>
+
+  <p><b>3. O gráfico é um rastro, não um desenho.</b> Ligue <i>deixar rastro</i> e varra as
+  entradas. Cada posição do x produz um encontro, o encontro fica marcado, e a curva vai
+  aparecendo. Ninguém desenhou a curva: ela é a coleção de todos os encontros.
+  <span class="deck">"Faça isso com todas as entradas. O rastro que os pontos deixam é o
+  gráfico."</span></p>
+
+  <p><b>4. A máquina pode recusar.</b> Em <code>1 / x</code>, o zero não entra: não existe
+  saída para ele. Isso é o <b>domínio</b> — as entradas que a máquina aceita — e no desenho
+  aparece como um lugar onde nunca houve encontro.</p>
+
+  <h2>Por que esta vem antes das outras duas</h2>
+  <p>As outras duas ferramentas da família falam da <b>relação entre os dois eixos</b> e
+  pressupõem que o plano já existe. O <code>desenrolamento.html</code> mostra de onde vem a
+  primeira coordenada; o <code>taxa.html</code> mostra como a segunda muda quando a primeira
+  anda. Esta mostra <b>o que são esses dois números, e por que são dois</b> — e é a única
+  que constrói o palco onde as outras jogam.</p>
+
+  <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">
+  Instrumento local, autocontido: sem rede, sem biblioteca externa. Primeira da família;
+  as irmãs são <code>desenrolamento.html</code> e <code>taxa.html</code>.</p>
+</div>
+
+<script>
+(function(){
+  // ═══════════════════════════════════════════════════════════════════════
+  // TESE DESTA FATIA
+  // A TESE DESTE INSTRUMENTO, e ela é do operador (2026-08-26):
+  //   "x é um ponto em uma dimensão, y é outro ponto em uma dimensão, e
+  //    quando conectados formam um gráfico".
+  // O plano NÃO é o ponto de partida — ele é o resultado de juntar duas retas
+  // numéricas. Por isso os dois eixos são desenhados como RETAS PRÓPRIAS, com
+  // sua régua e seu ponto, em cores distintas (x terracota, y verde — a mesma
+  // convenção das figuras do gerar_figuras.py deste deck), e o ponto do
+  // gráfico nasce do CRUZAMENTO das duas guias, nunca desenhado direto.
+  // Quem for mexer aqui: se o ponto do gráfico passar a ser desenhado sem as
+  // duas guias, o instrumento perde a única coisa que ele tem a dizer.
+  // ═══════════════════════════════════════════════════════════════════════
+  const CO={fundo:'#081120',eixo:'#22374f',fraco:'#5b6b86',creme:'#e8e2d6',
+            ouro:'#c9a266',x:'#e8654f',y:'#6fbf6a',guia:'#3c5f86'};
+
+  const FUNCOES=[
+    {n:'dobre e some um', r:'dobre e some um', f:x=>2*x+1},
+    {n:'metade de x',     r:'divida por dois', f:x=>x/2},
+    {n:'x ao quadrado',   r:'multiplique por si mesmo', f:x=>x*x},
+    {n:'x² − 3',          r:'eleve ao quadrado e tire três', f:x=>x*x-3},
+    {n:'sempre dois',     r:'devolva dois, dê o que der', f:()=>2},
+    {n:'1 / x',           r:'inverta', f:x=>x===0?NaN:1/x},
+    // renomeada em 2026-08-27: a descrição anterior era "a altura no círculo de
+    // raio 1" — empréstimo de uma fatia que vem cinco depois. Regra da §0b.7:
+    // herdar de quem vem depois não é herdar, é supor.
+    {n:'sobe e desce',    r:'suba e desça, sem passar de um', f:x=>Math.sin(x)},
+  ];
+
+  const cv=document.getElementById('c'), ct=cv.getContext('2d');
+  const sl=document.getElementById('sl'), bt=document.getElementById('play');
+  const bR=document.getElementById('bRastro'), bL=document.getElementById('bLimpa');
+  let atual=0, rastro=true, pontos=[], rodando=false, ult=0;
+
+  const W=1240,H=640, U=52, ox=560, oy=350;      // origem do plano
+  const XMIN=-6,XMAX=6, YMIN=-4.6,YMAX=4.6;
+  const mx=x=>ox+U*x, my=y=>oy-U*y;
+
+  const fns=document.getElementById('fns');
+  FUNCOES.forEach((f,i)=>{
+    const b=document.createElement('button'); b.textContent=f.n;
+    b.onclick=()=>{atual=i;pontos=[];pinta();desenhar(+sl.value)}; fns.appendChild(b);
+  });
+  const pinta=()=>[...fns.children].forEach((b,i)=>b.classList.toggle('on',i===atual));
+
+  function linha(x1,y1,x2,y2,cor,l,tr){
+    ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1;if(tr)ct.setLineDash(tr);
+    ct.beginPath();ct.moveTo(x1,y1);ct.lineTo(x2,y2);ct.stroke();ct.restore();
+  }
+  function txt(t,x,y,c,s,a,peso){
+    ct.save();ct.fillStyle=c;ct.font=(peso||'')+' '+(s||12)+'px Inter,system-ui,sans-serif';
+    ct.textAlign=a||'left';ct.fillText(t,x,y);ct.restore();
+  }
+  function disco(x,y,cor,r){
+    ct.save();ct.fillStyle=cor;ct.beginPath();ct.arc(x,y,r||6,0,7);ct.fill();
+    ct.strokeStyle=CO.fundo;ct.lineWidth=1.8;ct.stroke();ct.restore();
+  }
+
+  function desenhar(x){
+    const F=FUNCOES[atual], y=F.f(x), vale=isFinite(y)&&Math.abs(y)<=YMAX;
+    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+
+    // ── A MÁQUINA, no alto: entra um número, sai outro ────────────────────
+    const bx=330,by=26,bw=580,bh=52;
+    ct.save();ct.strokeStyle=CO.ouro;ct.lineWidth=1.8;
+    ct.strokeRect(bx+186,by,208,bh);ct.restore();
+    txt(F.r,bx+290,by+24,CO.ouro,12.5,'center');
+    txt('a regra',bx+290,by+42,CO.fraco,10.5,'center');
+    txt('entra',bx+92,by+18,CO.fraco,11,'center');
+    txt(x.toFixed(2),bx+92,by+40,CO.x,17,'center','600');
+    txt('sai',bx+492,by+18,CO.fraco,11,'center');
+    txt(vale?y.toFixed(2):'—',bx+492,by+40,vale?CO.y:CO.fraco,17,'center','600');
+    linha(bx+130,by+30,bx+180,by+30,CO.x,1.6);
+    linha(bx+400,by+30,bx+452,by+30,vale?CO.y:CO.eixo,1.6);
+    if(!vale) txt('a máquina não aceita este x',bx+492,by+58,CO.fraco,11,'center');
+
+    // ── AS DUAS RETAS NUMÉRICAS, cada uma um mundo de uma dimensão ────────
+    // a de baixo é a ENTRADA; a da esquerda é a SAÍDA
+    const yEixo=my(YMIN)-6, xEixo=mx(XMIN)-6;
+    linha(mx(XMIN),yEixo,mx(XMAX),yEixo,CO.x,2.4);
+    linha(xEixo,my(YMIN),xEixo,my(YMAX),CO.y,2.4);
+    txt('a reta da ENTRADA — aqui x é só uma posição',mx(0),yEixo+34,CO.x,12.5,'center');
+    ct.save();ct.translate(xEixo-38,my(0));ct.rotate(-Math.PI/2);
+    txt('a reta da SAÍDA — aqui y é só uma posição',0,0,CO.y,12.5,'center');ct.restore();
+    for(let k=Math.ceil(XMIN);k<=XMAX;k++){
+      linha(mx(k),yEixo-5,mx(k),yEixo+5,CO.x,1.2);
+      txt(k,mx(k),yEixo+20,'#8a5a4c',10,'center');
+    }
+    for(let k=Math.ceil(YMIN);k<=YMAX;k++){
+      linha(xEixo-5,my(k),xEixo+5,my(k),CO.y,1.2);
+      txt(k,xEixo-12,my(k)+4,'#5f8a5c',10,'right');
+    }
+
+    // ── o plano: onde as duas retas se cruzam ────────────────────────────
+    ct.save();ct.strokeStyle=CO.eixo;ct.lineWidth=1;
+    for(let k=Math.ceil(XMIN);k<=XMAX;k++){ct.beginPath();
+      ct.moveTo(mx(k),my(YMIN));ct.lineTo(mx(k),my(YMAX));ct.stroke()}
+    for(let k=Math.ceil(YMIN);k<=YMAX;k++){ct.beginPath();
+      ct.moveTo(mx(XMIN),my(k));ct.lineTo(mx(XMAX),my(k));ct.stroke()}
+    ct.restore();
+    linha(mx(XMIN),my(0),mx(XMAX),my(0),'#3a5578',1.4);
+    linha(mx(0),my(YMIN),mx(0),my(YMAX),'#3a5578',1.4);
+
+    // ── o rastro: cada encontro que já aconteceu ─────────────────────────
+    ct.save();ct.fillStyle=CO.ouro;
+    for(const p of pontos){ct.beginPath();ct.arc(mx(p[0]),my(p[1]),2.1,0,7);ct.fill()}
+    ct.restore();
+
+    // ── as duas guias, e o ENCONTRO ──────────────────────────────────────
+    disco(mx(x),yEixo,CO.x,6.5);
+    txt(x.toFixed(2),mx(x),yEixo-14,CO.x,12,'center','600');
+    if(vale){
+      disco(xEixo,my(y),CO.y,6.5);
+      txt(y.toFixed(2),xEixo+12,my(y)+4,CO.y,12,'left','600');
+      linha(mx(x),yEixo,mx(x),my(y),CO.x,1.3,[5,4]);      // sobe do x
+      linha(xEixo,my(y),mx(x),my(y),CO.y,1.3,[5,4]);      // atravessa do y
+      disco(mx(x),my(y),CO.ouro,7);
+      txt('o encontro',mx(x)+14,my(y)-12,CO.ouro,12.5,'left','600');
+    }
+    txt(pontos.length?('encontros marcados: '+pontos.length):'ligue o rastro e varra as entradas',
+        W/2,H-14,CO.fraco,12,'center');
+  }
+
+  function marcar(x){
+    const y=FUNCOES[atual].f(x);
+    if(rastro&&isFinite(y)&&Math.abs(y)<=YMAX) pontos.push([x,y]);
+  }
+  function quadro(ts){
+    if(!rodando)return;
+    if(ult){let x=+sl.value+(ts-ult)/1000*2.2;
+      if(x>XMAX){x=XMIN} sl.value=x; marcar(x); desenhar(x)}
+    ult=ts;requestAnimationFrame(quadro);
+  }
+  bt.onclick=()=>{rodando=!rodando;ult=0;bt.textContent=rodando?'parar':'varrer todas as entradas';
+    bt.classList.toggle('on',rodando);if(rodando)requestAnimationFrame(quadro)};
+  bR.onclick=()=>{rastro=!rastro;bR.classList.toggle('on',rastro);desenhar(+sl.value)};
+  bL.onclick=()=>{pontos=[];desenhar(+sl.value)};
+  sl.oninput=()=>{marcar(+sl.value);desenhar(+sl.value)};
+  bR.classList.add('on');pinta();desenhar(+sl.value);
+})();
+</script>
+</body>
+</html>
