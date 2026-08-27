@@ -112,9 +112,15 @@ exatamente isso** `(b)` — o olho vai e volta, e o percurso não ensina nada.
 1. **um significado por cor, em toda a fila.** Onde o papel muda de fatia, a
    cor muda com aviso explícito — a regra R2 da norma de notação, aplicada à
    cor em vez de à letra;
-2. **rótulo dentro do desenho**, não em tabela abaixo. Onde a tabela for
-   necessária (comprimento × razão, no o-circulo), ela fica, porque ali a
-   comparação **é** o conteúdo;
+2. ~~rótulo dentro do desenho~~ — **feito em 2026-08-27**, e o levantamento
+   achou **um** caso real, não quatro: só no `o-circulo` havia elemento
+   desenhado cujo nome existia apenas na tabela — `cosseno`, `seno` e `arco`.
+   O leitor tinha de mapear "o segmento azul" para uma linha lá embaixo. Os
+   três ganharam nome e comprimento colados no próprio traço, girando com o
+   chão. **A tabela ficou**, porque ali a comparação *comprimento × razão*
+   **é** o conteúdo, e isso uma tabela faz melhor que um desenho — contiguidade
+   espacial não manda abolir tabela, manda não usar tabela para o que é
+   rótulo;
 3. **navegação e posição na fila** em cada fatia — hoje cada uma é um beco sem
    saída, e a ordem que o portão garante não chega ao leitor;
 4. **altura de canvas constante**, para a página não saltar entre fatias.

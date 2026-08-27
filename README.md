@@ -196,6 +196,9 @@ O que falta, declarado em vez de escondido:
 
 - ~~cada fatia era um beco sem saída~~ — **resolvido em 2026-08-27**: navegação
   e posição na fila, geradas da mesma ordem que o portão cobra;
+- ~~rótulos vivendo só na tabela~~ — **resolvido em 2026-08-27** no
+  `o-circulo`, o único caso: cosseno, seno e arco passaram a ter nome colado no
+  traço;
 - **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se
   fundirem bem depois. A fusão ainda não aconteceu, e tem uma pergunta aberta:
   a chave *a onda* do `o-circulo` faz o que o `desenrolamento` faz, e dois
