@@ -15,6 +15,7 @@ para inspecao local e marca cada bloco pendente no HTML.
     python3 gerar_en.py --permitir-pendente
 """
 import argparse
+import glob
 import os
 import sys
 
@@ -34,12 +35,14 @@ def main():
     ap.add_argument("--traducao", default=TRADUCAO)
     a = ap.parse_args()
 
-    if not os.path.isdir(a.fonte):
-        raise SystemExit("sem %s -- o portugues e a fonte deste build" % a.fonte)
-    os.makedirs(a.destino, exist_ok=True)
-
+    # `pt/` so existe em repositorio COM sitio. Um repositorio sem GitHub Pages
+    # tem README, e o README e a pagina -- abortar aqui fazia o build morrer
+    # antes de chegar ao markdown, em dois repositorios inteiros.
     total_pend, feitos = 0, 0
-    for arq in sorted(os.listdir(a.fonte)):
+    tem_sitio = os.path.isdir(a.fonte)
+    if tem_sitio:
+        os.makedirs(a.destino, exist_ok=True)
+    for arq in (sorted(os.listdir(a.fonte)) if tem_sitio else []):
         if not arq.endswith(".html"):
             continue
         raw = open(os.path.join(a.fonte, arq), encoding="utf-8").read()
@@ -64,32 +67,79 @@ def main():
         open(os.path.join(a.fonte, arq), "w", encoding="utf-8").write(pt_com_faixa)
         feitos += 1
 
-    # ---- o README, que no GitHub e a porta de entrada do repositorio ----
-    readme = os.path.join(AQUI, "README.md")
-    if os.path.exists(readme):
-        raw = open(readme, encoding="utf-8").read()
-        tab = i18n.ler_tabela(i18n.caminho_tabela("README.md", a.traducao))
+    # ---- os documentos markdown: o README e o que estiver em docs/ ----
+    # No GitHub o README e a porta de entrada, e num repositorio SEM Pages ele
+    # e a unica pagina que existe. `docs/` vai junto porque o README aponta
+    # para la -- mandar o leitor de ingles para uma pagina em portugues e o
+    # mesmo defeito, uma casa adiante. `pharo/` NAO entra: e material interno
+    # de pesquisa, e traduzi-lo e outra decisao, do autor.
+    # README, os markdown da RAIZ (o relativity-paradox-lab guarda a
+    # `FUNDAMENTACAO-CIENTIFICA.md` la) e `docs/`. Varrer so README e docs/
+    # deixaria um documento publicado de fora, sem ninguem acusar.
+    docs = [os.path.join(AQUI, "README.md")]
+    for f in sorted(glob.glob(os.path.join(AQUI, "*.md"))
+                    + glob.glob(os.path.join(AQUI, "docs", "*.md"))):
+        if (f.endswith(".en.md") or f in docs
+                or os.path.basename(f).startswith("LICENSE")):
+            continue
+        docs.append(f)
+    em_ingles = {}
+    for doc in docs:
+        if not os.path.exists(doc):
+            continue
+        rel = os.path.relpath(doc, AQUI)
+        raw = open(doc, encoding="utf-8").read()
+        # basename, igual ao tradutor: nomear a tabela de um jeito aqui e de
+        # outro la faria o build procurar um arquivo que o tradutor nunca
+        # escreveu, e reprovar por "sem traducao" o que estava traduzido.
+        tab = i18n.ler_tabela(i18n.caminho_tabela(doc, a.traducao))
+        if not tab.get("blocos"):
+            # DOCUMENTO SEM TABELA E PENDENCIA, NAO AUSENCIA. Pular calado fez
+            # o `docs/INSTALACAO.md` de um repositorio ficar so em portugues
+            # sem que o build dissesse uma palavra -- o arquivo existe, o
+            # leitor de ingles chega nele, e nada acusava.
+            total_pend += 1
+            print("%-24s SEM TRADUCAO (nenhum bloco na tabela)" % rel)
+            continue
         en_md, pend, cercas = i18n.aplicar_md(i18n.sem_troca_idioma(raw), tab)
         if pend:
             total_pend += len(pend)
-            print("README.md               %d bloco(s) sem traducao" % len(pend))
+            print("%-24s %d bloco(s) sem traducao" % (rel, len(pend)))
             for k, pt, tipo in pend[:4]:
                 print("   %s  %s" % (k, pt.strip()[:64].replace("\n", " ")))
-        elif tab.get("blocos"):
-            open(os.path.join(AQUI, "README.en.md"), "w", encoding="utf-8").write(
-                i18n.troca_idioma_md(en_md, "en"))
-            open(readme, "w", encoding="utf-8").write(
-                i18n.troca_idioma_md(raw, "pt"))
-            print("README.en.md%s" % ("  [%d cerca(s) de codigo em portugues: "
-                                      "realinhe a mao]" % cercas if cercas else ""))
+            continue
+        alvo = doc[:-3] + ".en.md"
+        em_ingles[rel] = os.path.relpath(alvo, AQUI)
+        open(alvo, "w", encoding="utf-8").write(
+            i18n.troca_idioma_md(en_md, "en", os.path.basename(doc)))
+        open(doc, "w", encoding="utf-8").write(
+            i18n.troca_idioma_md(raw, "pt", os.path.basename(alvo)))
+        # conta so a cerca que AINDA mede portugues -- avisar sobre toda
+        # cerca, inclusive as ja traduzidas, e ruido que ensina a ignorar o
+        # aviso.
+        sobrando = sum(1 for _, _, mio in i18n.cercas_traduziveis(en_md))
+        print("%s%s" % (os.path.relpath(alvo, AQUI),
+                        "  [%d cerca(s) ainda em portugues: realinhe a mao]"
+                        % sobrando if sobrando else ""))
+    # o documento em ingles aponta para o VIZINHO em ingles, quando ele existe.
+    # Sem isto o leitor de ingles e mandado de volta para o portugues no 1o
+    # clique, e a traducao vale so ate a borda do arquivo.
+    for rel, ing in em_ingles.items():
+        alvo = os.path.join(AQUI, ing)
+        t = open(alvo, encoding="utf-8").read()
+        for outro, outro_en in em_ingles.items():
+            t = t.replace("](%s)" % outro.replace(os.sep, "/"),
+                          "](%s)" % outro_en.replace(os.sep, "/"))
+        open(alvo, "w", encoding="utf-8").write(t)
 
     if total_pend and not a.permitir_pendente:
         print("\nREPROVADO: %d bloco(s) sem traducao. O ingles nao foi "
               "publicado.\nPreencha as tabelas de %s e rode de novo."
               % (total_pend, os.path.basename(a.traducao)))
         return 1
-    print("\n%d pagina(s) em %s%s" % (feitos, a.destino,
-          "  [COM %d PENDENTE(S) MARCADO(S)]" % total_pend if total_pend else ""))
+    if tem_sitio:
+        print("\n%d pagina(s) em %s%s" % (feitos, a.destino,
+              "  [COM %d PENDENTE(S) MARCADO(S)]" % total_pend if total_pend else ""))
     return 0
 
 

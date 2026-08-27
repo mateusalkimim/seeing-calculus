@@ -1,0 +1,175 @@
+{
+ "atualizado_em": "2026-08-27 14:35:47",
+ "blocos": {
+  "0a5c82562c": {
+   "en": "# Installation",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "# Instalação",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "2d6ffe767f": {
+   "en": "The gate rejects if a slice uses a symbol that no previous slice declared, if a loan is never paid back, if there is idle declaration, if it loads an external resource, or if the JavaScript doesn't compile.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "O portão reprova se a fatia gastar símbolo que nenhuma fatia anterior declarou,\nse um empréstimo nunca for pago, se houver declaração ociosa, se algo carregar\nrecurso externo, ou se o JavaScript não compilar.\n",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "32b988bb45": {
+   "en": "1. download the repository — **Code → Download ZIP** button on GitHub, or  \n   `git clone https://github.com/mateusalkimim/seeing-calculus.git`;  \n2. extract, if you downloaded the ZIP;  \n3. **double-click** on `index.html`.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. baixe o repositório — botão **Code → Download ZIP** no GitHub, ou\n   `git clone https://github.com/mateusalkimim/seeing-calculus.git`;\n2. extraia, se baixou o ZIP;\n3. **duplo clique** em `index.html`.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "37635dae9d": {
+   "en": "1. write self-contained HTML, with the block `THESE SLICE` at the top of the  \n   `<script>`;  \n2. put the manifest on the second line of the file:",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "1. escreva o HTML autocontido, com o bloco `TESE DESTA FATIA` no topo do\n   `<script>`;\n2. ponha o manifesto na segunda linha do arquivo:",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "4c65f86565": {
+   "en": "### Without Downloading Anything",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Sem baixar nada",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "53c97c5b95": {
+   "en": "## Use",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## Usar",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "57efe39647": {
+   "en": "No third-party packages: both scripts use only the standard library.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Nenhum pacote de terceiro: os dois scripts usam só a biblioteca padrão.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "5848155f61": {
+   "en": "## Add a Slice",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## Acrescentar uma fatia",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "591dc24b9a": {
+   "en": "Only those who are **editing** the slices need this.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Só quem for **editar** as fatias precisa disto.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "7daed19f83": {
+   "en": "| Tool | For What | Version Tested |\n|---|---|---|\n| Python 3 | run the gate and the index generator | 3.12 |\n| Node | the gate uses `node --check` to validate the JS of each slice | 24 |",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "| Ferramenta | Para quê | Versão testada |\n|---|---|---|\n| Python 3 | rodar o portão e o gerador do índice | 3.12 |\n| Node | o portão usa `node --check` para validar o JS de cada fatia | 24 |",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "8db529a18b": {
+   "en": "### macOS",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### macOS",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "9ab73c4df8": {
+   "en": "```html\n   <!-- slice: nome-da-fatia | order: N | declares: θ tg | borrows: — -->\n   ```",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "   ```html\n   <!-- fatia: nome-da-fatia | ordem: N | declara: θ tg | empresta: — -->\n   ```",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "ad08eb6796": {
+   "en": "### Linux",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Linux",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b23c9601b9": {
+   "en": "`declares` are the symbols it responds to; `borrows` are the ones it uses with a warning and that some **subsequent** slice defines;  \n3. renumber the orders to continue `1..N` without gaps;  \n4. `python3 auditar_fatias.py --controle` — it must give **PASS**;  \n5. `python3 gerar_indice.py`.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "   `declara` são os símbolos pelos quais ela responde; `empresta` são os que ela\n   gasta com aviso e que alguma fatia **posterior** define;\n3. renumere as ordens para continuarem `1..N` sem buraco;\n4. `python3 auditar_fatias.py --controle` — tem de dar **PASSA**;\n5. `python3 gerar_indice.py`.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "b6b2a7a60f": {
+   "en": "**The `index.html` is derived.** It is written by `gerar_indice.py` from the manifest, the title, and the call of each slice. Editing it by hand is the bug, not the shortcut: the next generation overwrites it.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "**O `index.html` é derivado.** Ele é escrito pelo `gerar_indice.py` a partir do\nmanifesto, do título e da chamada de cada fatia. Editá-lo à mão é o defeito, não\no atalho: a próxima geração apaga.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c177aafed4": {
+   "en": "Any modern browser will do. Do not open it with Internet Explorer.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Qualquer navegador moderno serve. Não abra pelo Internet Explorer.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "c2bf7f0c6a": {
+   "en": "python3 auditar_fatias.py --controle   # the gate + the negative control  \npython3 gerar_indice.py                # regenerates the index.html",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "python3 auditar_fatias.py --controle   # o portão + o controle negativo\npython3 gerar_indice.py                # regera o index.html",
+   "qa": "ok",
+   "tipo": "cerca"
+  },
+  "c821ada6be": {
+   "en": "### Windows",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "### Windows",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cb58d79f94": {
+   "en": "<https://mateusalkimim.github.io/seeing-calculus/>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "<https://mateusalkimim.github.io/seeing-calculus/>",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cce2628881": {
+   "en": "There is no installation to **use**. The eight slices are self-contained HTML pages:  \ndownload the repository and open the `index.html`. They work offline, without a server  \nand without dependencies.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Não há instalação para **usar**. As oito fatias são páginas HTML autocontidas:\nbaixe o repositório e abra o `index.html`. Elas funcionam offline, sem servidor\ne sem dependência.",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "fcaedea705": {
+   "en": "## Develop",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "## Desenvolver",
+   "qa": "ok",
+   "tipo": "md"
+  }
+ },
+ "fatia": "INSTALACAO",
+ "idioma": "en-US"
+}

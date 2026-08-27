@@ -1,5 +1,5 @@
 <!-- idioma: linha gerada por i18n.py -->
-*[Leia em português](README.md)*
+*[Leia em português](README.en.md)*
 
 # See the Calculus — `seeing-calculus`
 
@@ -32,7 +32,7 @@ python3 auditar_fatias.py --controle   # the gate, with negative control
 python3 gerar_indice.py                # regenerates the index and navigation of the nine
 ```
 
-Step-by-step instructions by operating system in [`docs/INSTALLATION.md`](docs/INSTALACAO.md).
+Step-by-step instructions by operating system in [`docs/INSTALLATION.md`](docs/INSTALACAO.en.md).
 
 ## What's Here
 

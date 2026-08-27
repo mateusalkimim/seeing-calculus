@@ -397,6 +397,40 @@ def _numeros(t):
     return sorted(re.findall(r"\d+", limpo))
 
 
+# Numero POR EXTENSO conta como o numero. `2 semanas` -> `two weeks` e
+# traducao correta, e `século XIX` -> `19th century` tambem: o primeiro perde o
+# digito, o segundo ganha um. Comparar multiset de digitos acusava os dois.
+_EXTENSO = {"one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
+            "six": "6", "seven": "7", "eight": "8", "nine": "9", "ten": "10",
+            "eleven": "11", "twelve": "12", "hundred": "100",
+            "thousand": "1000", "first": "1", "second": "2", "third": "3"}
+
+
+def _numeros_perdidos(en, pt):
+    """Numeros do original que NAO reaparecem na traducao.
+
+    A checagem e de MAO UNICA de proposito. Numero que some e informacao
+    perdida -- uma medida, uma contagem, uma versao. Numero que APARECE quase
+    sempre e a lingua de chegada escrevendo o que o original dizia de outro
+    jeito (algarismo romano, ordinal, extenso). Exigir igualdade nos dois
+    sentidos reprovava a traducao correta.
+    """
+    alvo = _numeros(pt)
+    if not alvo:
+        return []
+    tem = list(_numeros(en))
+    for p, d in _EXTENSO.items():
+        for _ in re.findall(r"\b%s\b" % p, en, re.I):
+            tem.append(d)
+    faltam = []
+    for n in alvo:
+        if n in tem:
+            tem.remove(n)
+        else:
+            faltam.append(n)
+    return faltam
+
+
 def _tags(t):
     # A tag INTEIRA, com atributos -- multiset de NOMES deixou passar <em</em>
     # e aspas abertas em 112 blocos do Petzold (medicao 2026-07-18). Mas o
@@ -454,13 +488,38 @@ _PT_LETRA = re.compile(r"[a-zA-Z][ãõç]|[ãõç][a-zA-Z]")
 _LATEX = re.compile(r"\\\(|\\\[|\\Delta|\\frac|\\pi\\b|\\theta|\\sqrt")
 
 
+def sobrou_portugues(texto):
+    """O que denuncia portugues num texto que devia estar em ingles.
+
+    Uma ocorrencia solta NAO basta, e a razao apareceu em nome proprio: `hã` de
+    **Maranhão** (sobrenome de autor citado) e `pã` de **Galpão** (nome de um
+    asset) sao portugues que FICA -- nome nao se traduz. Tentei antes descontar
+    os trechos identicos ao original, e foi pior: remover pedaco do meio emenda
+    o texto e inventa fronteira de palavra (`parabola` virou `para bola`).
+
+    O sinal certo e o que separa nome mantido de bloco nao traduzido:
+      · palavra-funcao portuguesa aparece DUAS vezes ou mais -- nome proprio e
+        um, texto em portugues e muitos;
+      · ou um ACENTO portugues em palavra que comeca em MINUSCULA -- nome
+        proprio e capitalizado (Maranhão, Galpão, Ceará), prosa nao. O ingles
+        quase nao usa acento, e `parábola` solta precisava ser pega.
+    """
+    achados = [m.group(1) for m in _PT_SOBRA.finditer(texto)]
+    if len(achados) >= 2:
+        return achados[0]
+    for m in re.finditer(r"\b([a-z][\wà-ÿ]*[áéíóúâêôãõçà][\wà-ÿ]*)", texto):
+        return m.group(1)
+    return None
+
+
 def qa_bloco(en, pt, tipo):
     """(ok, [motivos]). Vazio = passou."""
     m = []
     if not en.strip():
         return False, ["vazio"]
-    if _numeros(en) != _numeros(pt):
-        m.append("numeros: %s != %s" % (_numeros(pt), _numeros(en)))
+    faltam = _numeros_perdidos(en, pt)
+    if faltam:
+        m.append("numero perdido: %s" % faltam)
     if _tags(en) != _tags(pt):
         m.append("tags alteradas")
     if _refs(en) != _refs(pt):
@@ -484,12 +543,18 @@ def qa_bloco(en, pt, tipo):
     # dentro de um <code> acusou "sobrou portugues: vira" em tres blocos bons.
     visivel = re.sub(r"<code\b.*?</code>", " ", en, flags=re.S | re.I)
     visivel = re.sub(r"<[^>]+>", " ", visivel)
-    g = _EN_GB.search(visivel)
-    if g:
-        m.append("en-GB: %s" % g.group(0))
-    p = _PT_SOBRA.search(visivel) or _PT_LETRA.search(visivel)
+    # So acusa en-GB NOVO. O README do relativity-paradox-lab cita prompts de
+    # geracao de imagem que ja vinham em ingles, com `grey` dentro: manter o
+    # que estava citado e fidelidade, nao britanismo. Palavra que ja existia no
+    # original nao e escolha do tradutor.
+    gb_pt = set(x.lower() for x in _EN_GB.findall(pt))
+    for g in _EN_GB.finditer(visivel):
+        if g.group(0).lower() not in gb_pt:
+            m.append("en-GB: %s" % g.group(0))
+            break
+    p = sobrou_portugues(visivel)
     if p:
-        m.append("sobrou portugues: %s" % p.group(0))
+        m.append("sobrou portugues: %s" % p)
     # A razao so vale com texto suficiente: "Conjuntos" -> "Sets" da 0.44x e
     # esta certo; "nos" -> "students" da 2.67x e esta errado -- e nenhum dos
     # dois se decide pelo comprimento. Abaixo de 24 caracteres a medida e ruido.
@@ -784,8 +849,9 @@ def qa_md(en, pt):
     m = []
     if not en.strip():
         return False, ["vazio"]
-    if _numeros(en) != _numeros(pt):
-        m.append("numeros: %s != %s" % (_numeros(pt), _numeros(en)))
+    faltam = _numeros_perdidos(en, pt)
+    if faltam:
+        m.append("numero perdido: %s" % faltam)
     if _links_md(en) != _links_md(pt):
         m.append("alvo de link alterado")
     if _simbolos(en) != _simbolos(pt):
@@ -795,12 +861,15 @@ def qa_md(en, pt):
     # `par-vira-ponto` acusava "vira" -- vermelho falso em bloco correto.
     prosa = re.sub(r"\]\([^)]*\)", "]", en)
     prosa = re.sub(r"`[^`]*`", " ", prosa)
-    g = _EN_GB.search(prosa)
-    if g:
-        m.append("en-GB: %s" % g.group(0))
-    p = _PT_SOBRA.search(prosa) or _PT_LETRA.search(prosa)
+    prosa = re.sub(r"https?://\S+|\S*[./_]\S*", " ", prosa)
+    gb_pt = set(x.lower() for x in _EN_GB.findall(pt))
+    for g in _EN_GB.finditer(prosa):
+        if g.group(0).lower() not in gb_pt:
+            m.append("en-GB: %s" % g.group(0))
+            break
+    p = sobrou_portugues(prosa)
     if p:
-        m.append("sobrou portugues: %s" % p.group(0))
+        m.append("sobrou portugues: %s" % p)
     razao = len(en) / max(len(pt), 1)
     if len(pt) >= 24 and not (0.45 <= razao <= 2.2):
         m.append("comprimento %.2fx do original" % razao)
@@ -823,8 +892,11 @@ def cercas_traduziveis(raw):
         miolo = re.sub(r"\n?(```|~~~)\s*$", "", miolo)
         # URL fora antes do teste: `github.com` casa com a palavra `com`, e a
         # cerca do `git clone` entrava como se tivesse portugues dentro.
-        prosa = re.sub(r"https?://\S+", " ", miolo)
-        if _PT_SOBRA.search(prosa) or _ACENTO_PT.search(prosa):
+        # mesma sonda do QA, e pelo mesmo motivo: `par-vira-ponto.html` casa
+        # com a palavra `vira` e `github.com` com `com`. Nome de arquivo nao e
+        # prosa, e uma ocorrencia solta nao denuncia idioma.
+        prosa = re.sub(r"https?://\S+|\S*[./_]\S*", " ", miolo)
+        if sobrou_portugues(prosa):
             ini = a + (len(corpo) - len(miolo) - len(corpo) + len(corpo))
             ini = raw.index(miolo, a)
             out.append((ini, ini + len(miolo), miolo))
@@ -865,8 +937,8 @@ def aplicar_md(raw, tabela):
 # um link e a unica coisa que funciona ali.
 
 MARCA_MD = "<!-- idioma: linha gerada por i18n.py -->"
-_LINHA_MD = {"pt": MARCA_MD + "\n*[Read this in English](README.en.md)*\n",
-             "en": MARCA_MD + "\n*[Leia em português](README.md)*\n"}
+_LINHA_MD = {"pt": MARCA_MD + "\n*[Read this in English](%s)*\n",
+             "en": MARCA_MD + "\n*[Leia em português](%s)*\n"}
 
 
 def sem_troca_idioma(raw):
@@ -877,8 +949,24 @@ def sem_troca_idioma(raw):
     return raw[:i] + raw[(len(raw) if fim == -1 else fim + 1):]
 
 
-def troca_idioma_md(raw, idioma):
-    return _LINHA_MD[idioma] + "\n" + sem_troca_idioma(raw).lstrip("\n")
+def troca_idioma_md(raw, idioma, vizinho=None):
+    padrao = "README.en.md" if idioma == "pt" else "README.md"
+    return (_LINHA_MD[idioma] % (vizinho or padrao)
+            + "\n" + sem_troca_idioma(raw).lstrip("\n"))
+
+
+def limpar_cerca(en):
+    """Tira a cerca de fechamento que o modelo devolve junto.
+
+    Pediu-se o MIOLO da cerca e ele devolve o miolo mais o ``` do fim -- duas
+    vezes em dois repositorios. Reinjetado assim, o markdown ganha uma cerca
+    aberta e o resto do documento vira bloco de codigo. E mecanico: se a
+    ultima linha e so a cerca, ela sai.
+    """
+    linhas = en.split("\n")
+    while linhas and re.fullmatch(r"\s*(```|~~~)\s*", linhas[-1] or ""):
+        linhas.pop()
+    return "\n".join(linhas)
 
 
 def qa_cerca(en, pt):
@@ -899,7 +987,12 @@ def qa_cerca(en, pt):
     # traducao correta. Diagrama se reconhece pelas caixas de desenho.
     diagrama = bool(re.search(r"[┌┐└┘├┤┬┴─│→]", pt))
     for a, b in ([] if diagrama else zip(pt.split("\n"), en.split("\n"))):
-        ca, cb = a.split("#")[0].strip(), b.split("#")[0].strip()
+        # O que esta entre <> num comando e PLACEHOLDER -- descricao do que
+        # o leitor deve pôr ali, nao literal a digitar. `<arquivo .env fora do
+        # repo>` tem de virar `<.env file outside the repo>`; compara-lo como
+        # comando reprovava justamente a traducao que se queria.
+        ca = re.sub(r"<[^>]*>", "<>", a.split("#")[0]).strip()
+        cb = re.sub(r"<[^>]*>", "<>", b.split("#")[0]).strip()
         # a coluna de descricao comeca depois de 2+ espacos; fora dela, igual
         ca, cb = re.split(r"\s{2,}", ca)[0], re.split(r"\s{2,}", cb)[0]
         if ca != cb:
@@ -910,7 +1003,7 @@ def qa_cerca(en, pt):
     # nome de arquivo e caminho saem antes do teste: `par-vira-ponto.html`
     # casava com a palavra `vira`, e `github.com` com `com`. Endereco nao e
     # prosa, e medi-lo so produz vermelho falso.
-    prosa = re.sub(r"https?://\S+|\S*[./]\S*", " ", en)
-    if _PT_SOBRA.search(prosa) or _ACENTO_PT.search(prosa):
-        m.append("sobrou portugues")
+    prosa = re.sub(r"https?://\S+|\S*[./_]\S*", " ", en)
+    if sobrou_portugues(prosa):
+        m.append("sobrou portugues: %s" % sobrou_portugues(prosa))
     return (not m), m

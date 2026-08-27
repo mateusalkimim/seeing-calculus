@@ -19,6 +19,7 @@ Mede tambem o que o modelo entrega quando ninguem confere: ingles BRITANICO.
     python3 conferir_idioma.py --controle # e o controle negativo
 """
 import argparse
+import glob
 import json
 import os
 import re
@@ -189,6 +190,65 @@ def controle():
     return 0
 
 
+def conferir_markdown(raiz):
+    """Confere cada par `X.md` / `X.en.md`.
+
+    Repositorio sem GitHub Pages nao tem `pt/` nem `en/` -- ele tem README, e o
+    README E a pagina. Sem esta passagem o portao dizia "pt/ nao existe" e
+    passava por cima do unico texto publicado que o repositorio tem.
+    """
+    achados = []
+    pares = []
+    for base in [os.path.join(raiz, "README.md")] + sorted(
+            glob.glob(os.path.join(raiz, "*.md"))
+            + glob.glob(os.path.join(raiz, "docs", "*.md"))):
+        if os.path.basename(base) in ("README.md",) and base != os.path.join(raiz, "README.md"):
+            continue
+        if os.path.basename(base).startswith("LICENSE"):
+            continue
+        if base.endswith(".en.md"):
+            continue
+        ing = base[:-3] + ".en.md"
+        if os.path.exists(ing):
+            pares.append((base, ing))
+    if not pares:
+        # SILENCIO NAO E APROVACAO. Se ha tabela de traducao e nao ha par
+        # `X.md`/`X.en.md`, o build nao rodou -- e o portao dizia "ok" por nao
+        # ter o que conferir, que e o falso verde mais barato de produzir.
+        if os.path.isdir(os.path.join(raiz, "traducao")):
+            achados.append("ha tabelas em traducao/ e nenhum par X.md/X.en.md: "
+                           "o build nao produziu o ingles")
+        else:
+            print("  (nada a conferir: sem traducao/)")
+        return achados
+    tab = _tabelas(os.path.join(raiz, "traducao"))
+    for pt_f, en_f in pares:
+        pt_txt = open(pt_f, encoding="utf-8").read()
+        en_txt = open(en_f, encoding="utf-8").read()
+        for nome, txt, esperado in ((os.path.basename(pt_f), pt_txt, "PT"),
+                                    (os.path.basename(en_f), en_txt, "EN")):
+            corpo = i18n.sem_troca_idioma(txt)
+            corpo = re.sub(r"```.*?```", " ", corpo, flags=re.S)
+            corpo = re.sub(r"\S*[./]\S*", " ", corpo)
+            pt_n, en_n = len(PT.findall(corpo)), len(EN.findall(corpo))
+            idioma = "PT" if pt_n > en_n else ("EN" if en_n > pt_n else "?")
+            print("  %s %-26s %-3s (pt=%-4d en=%-4d)"
+                  % ("ok " if idioma == esperado else "NAO", nome, idioma, pt_n, en_n))
+            if idioma != esperado:
+                achados.append("%s esta em %s, esperado %s" % (nome, idioma, esperado))
+            if esperado == "EN":
+                # so o britanismo NOVO: o README cita prompts de geracao de
+                # imagem que ja vinham em ingles com `grey` dentro. Manter o
+                # que estava citado e fidelidade, nao escolha de grafia.
+                ja_tinha = set(x.lower() for x in GB.findall(pt_txt))
+                for g in set(m.group(0).lower() for m in GB.finditer(corpo)):
+                    if g not in ja_tinha:
+                        achados.append("%s: en-GB '%s'" % (nome, g))
+        for t in nao_traduzidos(pt_txt, en_txt, tab):
+            achados.append("%s: %s" % (os.path.basename(en_f), t))
+    return achados
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--controle", action="store_true")
@@ -199,10 +259,13 @@ def main():
         print("controle:")
         return controle()
     achados = []
-    print("pt/ (esperado PT):")
-    achados += conferir(a.pt, "PT")
-    print("en/ (esperado EN):")
-    achados += conferir(a.en, "EN")
+    if os.path.isdir(a.pt):
+        print("pt/ (esperado PT):")
+        achados += conferir(a.pt, "PT")
+        print("en/ (esperado EN):")
+        achados += conferir(a.en, "EN")
+    print("markdown:")
+    achados += conferir_markdown(AQUI)
     if achados:
         print("\nREPROVADO (%d):" % len(achados))
         for x in achados:
