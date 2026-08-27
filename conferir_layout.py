@@ -27,6 +27,48 @@ LARGURA = 1900          # o monitor largo, que é onde o defeito aparecia
 TETO_ALTURA = 620       # o desenho não pode passar disto na tela
 PROSA = ("h1", ".sub", ".faca", ".notas")
 
+# O telefone entrou na régua em 2026-08-27. Três tamanhos reais, não um.
+TELEFONES = (("Android pequeno", 360, 740), ("iPhone", 390, 844),
+             ("telefone grande", 414, 896))
+ALVO_MIN = 44           # a recomendação da Apple; o Android pede 48
+
+TELA_MEDE = """() => {
+  // `clientWidth`, NAO `innerWidth`. Quando o desenho empurra a folha, o
+  // proprio `innerWidth` estica junto (842 num telefone de 360) e a subtracao
+  // da ZERO: a sonda mediria o defeito contra uma regua que o defeito move.
+  // O `clientWidth` do documento fica no viewport de layout, 360, e nao mente.
+  const de=document.documentElement, b=document.body;
+  const vw=de.clientWidth;
+  let menor=1e9, menorQ='';
+  for (const el of document.querySelectorAll('button,input,a,select')){
+    // LINK DENTRO DE FRASE NÃO É BOTÃO: engordá-lo para 44 px quebraria a
+    // entrelinha do parágrafo, e a regra de tamanho de alvo o isenta.
+    if (el.tagName==='A' && el.closest('p, .notas, li, td')) continue;
+    // input dentro de <label> tem o RÓTULO inteiro como alvo.
+    const lab = el.closest('label');
+    const r = (lab && el.tagName==='INPUT') ? lab.getBoundingClientRect()
+                                            : el.getBoundingClientRect();
+    if (r.width<1 || r.height<1) continue;
+    const m = Math.min(r.width, r.height);
+    if (m<menor){ menor=m; menorQ = el.tagName + (el.id?'#'+el.id:''); }
+  }
+  const vazam=[];
+  for (const el of document.querySelectorAll('body *')){
+    const r=el.getBoundingClientRect();
+    if (r.right > vw+1 && r.width > 4)
+      vazam.push(el.tagName + (el.className?'.'+String(el.className).split(' ')[0]:''));
+  }
+  const pn=document.querySelector('.painel');
+  const pr=pn?pn.getBoundingClientRect():null;
+  return { overflowX: Math.max(de.scrollWidth,b.scrollWidth)-vw,
+           larguraTotal: Math.max(de.scrollWidth,b.scrollWidth),
+           menorAlvo: Math.round(menor===1e9?999:menor), menorQual: menorQ,
+           vazam: [...new Set(vazam)].slice(0,4),
+           painel: !!pn,
+           painelNaTela: pr ? pr.bottom <= window.innerHeight : true,
+           painelAbaixo: pr ? Math.round(pr.bottom - window.innerHeight) : 0 };
+}"""
+
 
 def main():
     try:
@@ -35,7 +77,14 @@ def main():
         print("playwright ausente — não posso conferir o layout.", file=sys.stderr)
         return 2
 
-    aqui = pathlib.Path(__file__).parent
+    raiz = pathlib.Path(__file__).parent
+    # As fatias saíram da raiz quando o sítio virou bilíngue: na raiz ficaram a
+    # porta e os stubs. Sem esta linha o portão mediria os STUBS — páginas de
+    # três linhas que passam em tudo e não dizem nada sobre a fatia.
+    d = "pt"
+    if "--dir" in sys.argv:
+        d = sys.argv[sys.argv.index("--dir") + 1]
+    aqui = raiz / d if (raiz / d).is_dir() else raiz
     exe = os.environ.get("CHROME", "")
     fatias = sorted(p for p in glob.glob(str(aqui / "*.html")))
     achados = []
@@ -88,6 +137,38 @@ def main():
                                    f"(teto {TETO_ALTURA}) — ele volta a engolir a folha")
             print(f"  {nome:<18} prosa em x={esq[0] if esq else '—'} · "
                   f"desenho {cv['w'] if cv else '—'}x{cv['h'] if cv else '—'}")
+
+        # ---- o TELEFONE, que este portão nunca tinha olhado ----
+        # A régua acima mede um monitor de 1900 px. O defeito de telefone é
+        # outro e foi medido em 2026-08-27: num viewport de 360 a página ia a
+        # 842–1126 px, porque `canvas{height:568px;width:auto}` mantém a altura
+        # e deixa a largura crescer; e o menor alvo de toque media 10 px.
+        print()
+        for rot, lw, lh in TELEFONES:
+            pgm = b.new_page(viewport={"width": lw, "height": lh},
+                             device_scale_factor=3, is_mobile=True, has_touch=True)
+            for p in fatias:
+                nome = pathlib.Path(p).stem
+                pgm.goto(pathlib.Path(p).as_uri())
+                pgm.wait_for_timeout(500)
+                t = pgm.evaluate(TELA_MEDE)
+                if t["overflowX"] > 1:
+                    achados.append(f"{nome} [{rot}]: a página vai a "
+                                   f"{t['larguraTotal']} px num viewport de {lw} "
+                                   f"— o desenho empurra a folha")
+                if t["vazam"]:
+                    achados.append(f"{nome} [{rot}]: transborda — "
+                                   + ", ".join(t["vazam"][:3]))
+                if t["menorAlvo"] < ALVO_MIN:
+                    achados.append(f"{nome} [{rot}]: alvo de toque de "
+                                   f"{t['menorAlvo']} px em {t['menorQual']} "
+                                   f"(mínimo {ALVO_MIN})")
+                if t["painel"] and not t["painelNaTela"]:
+                    achados.append(f"{nome} [{rot}]: o controle cai "
+                                   f"{t['painelAbaixo']} px abaixo da primeira "
+                                   f"tela — a figura responde onde não se vê")
+            print(f"  {rot:<16} {len(fatias)} páginas conferidas")
+            pgm.close()
         b.close()
 
     print()

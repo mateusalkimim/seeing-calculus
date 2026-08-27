@@ -291,6 +291,12 @@ def _literais_js(raw):
     for m in re.finditer(r"<script\b[^>]*>(.*?)</script>", raw, re.S | re.I):
         base = m.start(1)
         corpo = m.group(1)
+        # BLOCO GERADO NAO E CONTEUDO. O script de telefone trouxe
+        # `'input[type=range]'`, `'font'` e `'itaca:redesenhar'` para a tabela
+        # de traducao -- codigo meu virando pendencia de traducao em dez
+        # arquivos. Quem gera se identifica; quem extrai respeita.
+        if "GERADO:" in corpo[:200]:
+            continue
         # tira comentarios para nao traduzir a TESE nem o cabecalho de codigo
         mascara = list(corpo)
         for c in re.finditer(r"//[^\n]*|/\*.*?\*/", corpo, re.S):

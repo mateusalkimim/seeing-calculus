@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 14:35:26",
+ "atualizado_em": "2026-08-27 15:23:55",
  "blocos": {
   "02ba5efea1": {
    "en": "<b>Why the floor locks.</b> When you turn on the wave, the floor cursor resets to zero and locks. It's not a gimmick or oversight: the unrolled strip is nearly half a thousand pixels long, and it's impossible to rotate it within this frame without it leaving the screen — we measured. Unrolling <b>requires choosing a floor</b>, and here the choice is the usual one. Turn off the wave and its slope returns exactly as it was.",
