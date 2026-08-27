@@ -202,9 +202,23 @@ O que falta, declarado em vez de escondido:
 - ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: moldura de
   640 nas oito, com cada composição centrada e intocada;
 - **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se
-  fundirem bem depois. A fusão ainda não aconteceu, e tem uma pergunta aberta:
-  a chave *a onda* do `o-circulo` faz o que o `desenrolamento` faz, e dois
-  arquivos desenhando a mesma coisa divergem em silêncio;
+  fundirem bem depois. A fusão começou em 2026-08-27 pela primeira sobreposição:
+  ~~a chave *a onda* do `o-circulo` fazia o que o `desenrolamento` faz~~ —
+  **a onda foi cortada.** Não pela duplicação: ela rodava com o chão forçado em
+  zero, e era o único controle da página que precisava *desligar a tese da
+  página* para funcionar. A regra que ficou, e que decide as próximas: **quando
+  duas fatias afirmam a mesma coisa, fica com quem a afirmação é a tese; perde
+  quem ela é uma chave.** Os próximos contatos a examinar são o triângulo
+  desenhado no `o-circulo` × `o-triangulo`, e a reta tangente, que aparece em três
+  folhas;
+- **o ponto T sai da moldura**, achado em 2026-08-27 pela varredura que
+  recentrou o `o-circulo`. O corte da tangente é `|r·tg| < 2,6`, mas a distância
+  de O até T é `r/|cos θ|`, e é ela que decide se o ponto cabe: com `θ = +0,977`,
+  chão `−2,548` e raio 1,75 o T cai 149 px fora do canvas — e sai em **todo**
+  raio, inclusive no padrão (97 px). O ponto ouro que o item 1b existe para
+  explicar pode não estar na tela. O conserto é trocar o critério de `|r·tg|`
+  para a distância, e ele **encurta o quanto se vê a tangente crescer** — por
+  isso está declarado aqui em vez de aplicado;
 - ~~o ramo da ordem~~ — **resolvido em 2026-08-27.** A taxa desceu de segundo
   para sétimo e as três dívidas declaradas dela zeraram. O que resta é a
   distinção, agora escrita: dependência tem dois ramos, leitura é uma fila;

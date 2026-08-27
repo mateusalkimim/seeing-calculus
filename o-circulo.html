@@ -71,7 +71,6 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
          style="width:150px"></label>
   <button id="play">girar</button>
   <button id="bArco">o arco</button>
-  <button id="bOnda">a onda</button>
 </div>
 
 <table class="l">
@@ -122,11 +121,14 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   <span class="deck">Essa desigualdade, obtida sem conta nenhuma, é o que prova o limite que
   fecha a série no C4.</span></p>
 
-  <h2>A onda, que aqui é enfeite e não explicação</h2>
-  <p>A chave <b>a onda</b> mostra a altura do ponto sendo levada para uma posição horizontal,
-  e o rastro desenha a senoide. É verdadeiro e é bonito, mas <b>não é o que esta ferramenta
-  vem dizer</b> — ela vem dizer que seno e cosseno são comprimentos num círculo. A onda pede
-  o chão na horizontal, e por isso ligá-la endireita o chão.</p>
+  <h2>E daqui para o gráfico</h2>
+  <p>A altura do ponto — o <b class="c-sen">seno</b> — pode ser levada para uma posição
+  horizontal, e o traço que ela deixa é a senoide. É verdadeiro e é bonito, e <b>não é o que
+  esta página vem dizer</b>: aqui seno e cosseno são comprimentos num círculo, medidos a partir
+  de um chão que se pode inclinar. Levar a altura para o gráfico <b>exige o chão na
+  horizontal</b> — exige desligar justamente o que esta página veio mostrar. Por isso essa
+  passagem tem folha própria, a seguinte:
+  <a href="desenrolamento.html">o desenrolamento</a>, onde ela é a tese e não uma chave.</p>
 
   <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">
   Instrumento local, autocontido: sem rede, sem biblioteca externa. Da mesma família de
@@ -139,9 +141,15 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   // TESE DESTA FATIA
   // A TESE, do operador (2026-08-26): mostrar o que sen, cos e tg SÃO —
   // comprimentos de um ângulo EM RELAÇÃO A UM CHÃO DADO, com o raio à vista.
-  // Sem gráfico. A onda existe como chave secundária porque "enriquece a
-  // visualização", mas NÃO é a explicação central: associar seno a ondulatória
-  // foi justamente o que embaralhou a conversa que gerou esta ferramenta.
+  // Sem gráfico, e desde 2026-08-27 sem a chave "a onda" — ela foi CORTADA.
+  // Ela desenhava a senoide, e para isso rodava com phi=0: era o único controle
+  // da página que precisava DESLIGAR a tese da página (o chão é uma escolha)
+  // para funcionar. Enfeite ao lado da lição é uma coisa; enfeite que custa a
+  // lição é outra. E a fatia seguinte, o desenrolamento, faz a mesma afirmação
+  // como TESE, com raio 1, tangente e arco. Regra que ficou: quando duas fatias
+  // afirmam a mesma coisa, fica com quem a afirmação é a tese.
+  // Não repor. O ponto que só a onda mostrava — amplitude segue o raio — já
+  // está na tabela, nas colunas comprimento × razão, e diz isso melhor.
   //
   // O CHÃO É INCLINÁVEL de propósito. Todo o aparelho (o zero do ângulo, a
   // projeção do cosseno, a perpendicular do seno, a reta tangente) é definido
@@ -157,11 +165,13 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   const cv=document.getElementById('c'), ct=cv.getContext('2d');
   const th=document.getElementById('th'), ch=document.getElementById('ch'),
         rr=document.getElementById('r'), bt=document.getElementById('play'),
-        bArco=document.getElementById('bArco'), bOnda=document.getElementById('bOnda');
-  let verArco=true, verOnda=false, rodando=false, ult=0, rastro=[];
+        bArco=document.getElementById('bArco');
+  let verArco=true, rodando=false, ult=0;
 
-  const W=1240,H=620, U=150, cx=420, cy=310;      // U = pixels por unidade de raio
-  const OX=760, OW=430;                            // faixa da onda (secundária)
+  // cx=620 desde 2026-08-27: com a onda cortada, a faixa 760–1190 ficou vazia e
+  // a composição foi recentrada no canvas. O 620 não é palpite — a varredura de
+  // (θ, chão, raio) mede a composição em ±480 px do centro, simétrica.
+  const W=1240,H=620, U=150, cx=620, cy=310;      // U = pixels por unidade de raio
 
   function linha(x1,y1,x2,y2,cor,l,tr){
     ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1;if(tr)ct.setLineDash(tr);
@@ -183,7 +193,7 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
   // muda a moldura.
   function desenhar(){
-    const t=+th.value, phi=verOnda?0:+ch.value, r=+rr.value;
+    const t=+th.value, phi=+ch.value, r=+rr.value;
     ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
 
     // u = direção do CHÃO; n = perpendicular a ele. Tudo se define a partir daqui.
@@ -267,20 +277,6 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
     const meio=P(.30*Math.cos(t/2), .30*Math.sin(t/2));
     txt('θ',meio[0]-4,meio[1]+5,CO.ouro,14,'left','600');
 
-    // ── A ONDA: chave secundária. Enriquece, não explica. ─────────────────
-    if(verOnda){
-      linha(OX,cy,OX+OW,cy,CO.chao,1.4);
-      for(const k of [1,2]) linha(OX+OW*k/2.2,cy-5,OX+OW*k/2.2,cy+5,CO.eixo,1);
-      ct.save();ct.strokeStyle=CO.sen;ct.lineWidth=2.2;ct.beginPath();
-      for(let i=0;i<=400;i++){const a=-6.2+12.4*i/400;
-        i?ct.lineTo(OX+OW*(a+6.2)/12.4,cy-U*r*Math.sin(a)):
-          ct.moveTo(OX+OW*(a+6.2)/12.4,cy-U*r*Math.sin(a))}
-      ct.stroke();ct.restore();
-      const gx=OX+OW*(t+6.2)/12.4, gy=cy-U*r*Math.sin(t);
-      linha(Pt[0],Pt[1],gx,gy,CO.sen,1.1,[4,4]); disco(gx,gy,CO.sen,5);
-      txt('a onda — enfeite útil, não a explicação',OX+OW/2,cy+U*1.55,CO.fraco,11.5,'center');
-    }
-
     const n=(z,c)=>isFinite(z)?z.toFixed(c===undefined?3:c):'—';
     const S=(id,v)=>document.getElementById(id).textContent=v;
     S('Lc',n(r*Math.cos(t))); S('Rc',n(Math.cos(t)));
@@ -298,8 +294,6 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   bt.onclick=()=>{rodando=!rodando;ult=0;bt.textContent=rodando?'parar':'girar';
                   bt.classList.toggle('on',rodando);if(rodando)requestAnimationFrame(quadro)};
   bArco.onclick=()=>{verArco=!verArco;bArco.classList.toggle('on',verArco);desenhar()};
-  bOnda.onclick=()=>{verOnda=!verOnda;bOnda.classList.toggle('on',verOnda);
-                     ch.disabled=verOnda;desenhar()};
   th.oninput=ch.oninput=rr.oninput=desenhar;
   bArco.classList.add('on'); desenhar();
 })();
