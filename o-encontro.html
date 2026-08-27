@@ -63,7 +63,7 @@ da direita. Os dois painéis dividem a mesma escala, então isso se confere com 
 
 <div id="fns"></div>
 
-<canvas id="c" width="1240" height="620"></canvas>
+<canvas id="c" width="1240" height="640"></canvas>
 
 <div class="painel">
   <label>x = <input type="range" id="sl" min="-3.1" max="3.1" step="0.002" value="-1.5"
@@ -182,9 +182,14 @@ da direita. Os dois painéis dividem a mesma escala, então isso se confere com 
     ct.strokeStyle=CO.fundo;ct.lineWidth=1.7;ct.stroke();ct.restore();
   }
 
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
   function desenhar(x){
     const F=FUNCOES[atual], v=F.f(x), d=F.d(x), th=Math.atan(d), tg=Math.tan(th);
-    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
 
     // A LINHA DO ZERO, uma só, atravessando os dois painéis
     linha(40,y0,W-30,y0,CO.chao,1.4);

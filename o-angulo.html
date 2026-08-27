@@ -60,7 +60,7 @@ vértice. Ele não tem tamanho próprio — para medir, é preciso <b>desenhar u
 aparecem duas maneiras de ler o mesmo ângulo. Uma delas foi inventada; a outra o círculo dá
 de graça.</p>
 
-<canvas id="c" width="1240" height="600"></canvas>
+<canvas id="c" width="1240" height="640"></canvas>
 
 <div class="painel">
   <label>a abertura = <input type="range" id="th" min="0" max="6.2832" step="0.002" value="1.1"
@@ -158,9 +158,14 @@ de graça.</p>
     ct.beginPath();ct.arc(cx,cy,U*r,0,-t,true);ct.stroke();ct.restore();
   }
 
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
   function desenhar(){
     const t=+th.value, r=+rr.value;
-    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
 
     if(verGrau){                                   // a partição arbitrária em 360
       ct.save();ct.strokeStyle=CO.grau;ct.globalAlpha=.5;

@@ -199,6 +199,8 @@ O que falta, declarado em vez de escondido:
 - ~~rótulos vivendo só na tabela~~ — **resolvido em 2026-08-27** no
   `o-circulo`, o único caso: cosseno, seno e arco passaram a ter nome colado no
   traço;
+- ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: moldura de
+  640 nas oito, com cada composição centrada e intocada;
 - **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se
   fundirem bem depois. A fusão ainda não aconteceu, e tem uma pergunta aberta:
   a chave *a onda* do `o-circulo` faz o que o `desenrolamento` faz, e dois

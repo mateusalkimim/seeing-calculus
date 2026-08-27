@@ -60,7 +60,7 @@ propriedades da <b>relação entre o lado e o ângulo que você escolheu</b>. Um
 retângulo tem dois ângulos agudos; troque de ângulo e os dois nomes trocam de lado. A
 hipotenusa é a única que não se move: ela é sempre o lado oposto ao ângulo reto.</p>
 
-<canvas id="c" width="1240" height="560"></canvas>
+<canvas id="c" width="1240" height="640"></canvas>
 
 <div class="painel">
   <label>a forma = <input type="range" id="th" min="0.18" max="1.39" step="0.002" value="0.62"
@@ -155,11 +155,16 @@ hipotenusa é a única que não se move: ela é sempre o lado oposto ao ângulo 
     ct.textAlign=a||'left';ct.fillText(t,x,y);ct.restore();
   }
 
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
   function desenhar(){
     const t=+th.value, h=+hh.value;
     // O TRIÂNGULO NÃO DEPENDE DE 'noOutro' — é essa a demonstração.
     const A=[Ax,Ay], B=[Ax+U*h*Math.cos(t),Ay], C=[Ax+U*h*Math.cos(t),Ay-U*h*Math.sin(t)];
-    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
 
     // os três lados, pintados pelo PAPEL que têm para o ângulo escolhido
     const corAB = noOutro?CO.op:CO.adj;    // AB: adjacente a A, oposto a C

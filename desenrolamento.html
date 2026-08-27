@@ -61,7 +61,7 @@
 A ligação tracejada é <b>horizontal</b>: as duas metades da tela dividem a mesma escala
 vertical e a mesma linha do zero, então o que se vê é a mesma altura em dois lugares.</p>
 
-<canvas id="c" width="1240" height="520"></canvas>
+<canvas id="c" width="1240" height="640"></canvas>
 
 <div class="painel">
   <label>a = <input type="range" id="sl" min="-5" max="5" step="0.002" value="0.6"></label>
@@ -167,9 +167,14 @@ vertical e a mesma linha do zero, então o que se vê é a mesma altura em dois 
     ct.textAlign=al||'left'; ct.fillText(t,x,y); ct.restore();
   }
 
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
   function desenhar(a){
     const s=Math.sin(a), c=Math.cos(a), t=Math.tan(a);
-    ct.clearRect(0,0,W,H); ct.fillStyle=CO.fundo; ct.fillRect(0,0,W,H);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
 
     // eixo do zero, atravessando OS DOIS painéis — é a prova visual da escala comum
     linha(24,y0,W-16,y0,CO.zero,1.4);

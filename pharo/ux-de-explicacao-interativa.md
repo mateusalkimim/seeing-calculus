@@ -123,7 +123,12 @@ exatamente isso** `(b)` — o olho vai e volta, e o percurso não ensina nada.
    rótulo;
 3. **navegação e posição na fila** em cada fatia — hoje cada uma é um beco sem
    saída, e a ordem que o portão garante não chega ao leitor;
-4. **altura de canvas constante**, para a página não saltar entre fatias.
+4. ~~altura de canvas constante~~ — **feita em 2026-08-27**. As oito passam a
+   ter moldura de **640** (a maior das composições, para nenhuma ser cortada), e
+   **nenhuma coordenada de desenho foi tocada**: cada composição mantém a
+   própria altura interna e é **centrada** na moldura por um `translate`. Mexer
+   nas coordenadas para caber teria sido reescrever oito desenhos para resolver
+   um problema de moldura.
 
 Nada disto acrescenta elemento novo. Os quatro **removem** ruído ou **reaproveitam**
 o que já existe, que é o que a coerência pede.

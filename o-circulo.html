@@ -60,7 +60,7 @@ medidos a partir de um <b>chão</b> que alguém escolheu. Incline o chão e veja
 aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa no
 <b>raio</b> e veja o que muda e o que não muda.</p>
 
-<canvas id="c" width="1240" height="620"></canvas>
+<canvas id="c" width="1240" height="640"></canvas>
 
 <div class="painel">
   <label>ângulo θ = <input type="range" id="th" min="-6.2" max="6.2" step="0.002" value="0.85"
@@ -177,9 +177,14 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
     ct.strokeStyle=CO.fundo;ct.lineWidth=1.7;ct.stroke();ct.restore();
   }
 
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
   function desenhar(){
     const t=+th.value, phi=verOnda?0:+ch.value, r=+rr.value;
-    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
 
     // u = direção do CHÃO; n = perpendicular a ele. Tudo se define a partir daqui.
     const ux=Math.cos(phi), uy=-Math.sin(phi), nx=-Math.sin(phi), ny=-Math.cos(phi);

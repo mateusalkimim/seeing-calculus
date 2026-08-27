@@ -64,7 +64,7 @@ no fim da ordem.</p>
 
 <div id="fns"></div>
 
-<canvas id="c" width="1240" height="560"></canvas>
+<canvas id="c" width="1240" height="640"></canvas>
 
 <div class="painel">
   <label>x = <input type="range" id="sl" min="-5" max="5" step="0.002" value="-1.4"
@@ -233,10 +233,15 @@ no fim da ordem.</p>
     return s;
   }
 
+  // ALTURA COMUM (2026-08-27): o atributo do canvas é 620 em todas as oito,
+  // para a página não saltar de uma fatia para a outra. O desenho NÃO foi
+  // remexido: H continua sendo a altura da composição, e o translate acima
+  // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
+  // muda a moldura.
   function desenhar(x){
     const F=FUNCOES[atual], g=+chao.value, h=+hsl.value;
     const v=F.f(x), d=F.d(x), v2=F.f(x+h), q=(v2-v)/h;
-    ct.clearRect(0,0,W,H);ct.fillStyle=CO.fundo;ct.fillRect(0,0,W,H);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
 
     linha(50,my(0),W-50,my(0),CO.zero,1.4);
     linha(mx(0),my(0)-U*3.5,mx(0),my(0)+U*3.5,CO.eixo,1);
