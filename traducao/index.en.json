@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:18",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "071f276798": {
    "en": "Distance",
@@ -89,6 +89,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "25b21a8f53": {
+   "en": ").<br>  \nReuse is free, including commercially; deriving requires maintaining the same license and giving  \ncredit.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": ").<br>\nReusar é livre, inclusive comercialmente; derivar exige manter a mesma licença e dar\ncrédito.\n",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "274c6ab451": {
    "en": "Nine instruments, in order. Each one shows <b>one</b> thing, and each\nopens by itself in the browser — without installation, without network, without an account.",
    "modelo": "phi-4",
@@ -159,6 +167,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "Ver o cálculo — nove instrumentos, em ordem",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "58e6b3a414": {
+   "en": "and",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " e ",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -298,6 +314,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "acc5be7180": {
+   "en": "<b>See the calculus</b> — Mateus Alkimim.<br>\nCode under <b>MIT</b>; content under\n<a href=\"https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br\">CC BY-SA 4.0</a>\n(see",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "\n<b>Ver o cálculo</b> — Mateus Alkimim.<br>\nCódigo sob <b>MIT</b>; conteúdo sob\n<a href=\"https://creativecommons.org/licenses/by-sa/4.0/deed.pt-br\">CC BY-SA 4.0</a>\n(veja ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "b5c56a89f7": {
    "en": "Dependence and order of reading are not the same thing, and it's worth  \nseparating them. The <b>rate</b> does not depend on trigonometry — slope exists without  \nany angle. But it uses the word <b>tangent</b>, which names two things, and this  \nambiguity needs to be resolved first. That's why the queue puts it in seventh,  \nalthough the graph of dependence keeps it in its own branch.",
    "modelo": "phi-4",
@@ -362,6 +386,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "e08a5a0a66": {
+   "en": "rule: no symbol  \nspent without coming from the slice itself or a <b>previous</b> one; no borrowing without someone  \nrepaying later; no idle statement; no network request. And it runs with  \n<b>negative control</b> — injects defects and requires them to be caught, because zero findings  \nonly mean something if the gate proves it can reject.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " cobra: nenhum símbolo\ngasto sem vir da própria fatia ou de uma <b>anterior</b>; nenhum empréstimo sem alguém\ndepois pagá-lo; nenhuma declaração ociosa; nenhum pedido de rede. E roda com\n<b>controle negativo</b> — injeta defeitos e exige que sejam pegos, porque zero achados\nsó significa alguma coisa se o portão provar que sabe reprovar.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "e84a549d48": {
    "en": "The Angle",
    "modelo": "phi-4",
@@ -383,6 +415,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "do círculo ao gráfico",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f4acb8ebb9": {
+   "en": "Each slice declares, in a machine-readable manifesto, its order and the  \nsymbols it responds to. The",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "Cada fatia declara, num manifesto legível por máquina, a sua ordem e os\nsímbolos pelos quais responde. O ",
    "qa": "ok",
    "tipo": "prosa"
   },

@@ -19,6 +19,7 @@ Mede tambem o que o modelo entrega quando ninguem confere: ingles BRITANICO.
     python3 conferir_idioma.py --controle # e o controle negativo
 """
 import argparse
+import json
 import os
 import re
 import sys
@@ -48,6 +49,12 @@ def texto_de(html):
     treina quem le a ignorar o numero.
     """
     s = i18n.remover_faixa(html)
+    # CITACAO NAO CONTA NA MEDIDA. Ela esta no idioma da FONTE, nao no da
+    # pagina: o abstraction-ladder cita Petzold e SICP no ingles original, e a
+    # pagina PORTUGUESA dele mede `pt=66 en=311` -- a medida certa levando a
+    # conclusao errada. <blockquote> e <cite> saem; o que sobra e a voz de quem
+    # escreve, que e o que a pergunta "em que idioma esta esta pagina" quer.
+    s = re.sub(r"<(blockquote|cite)\b.*?</\1>", " ", s, flags=re.S | re.I)
     s = re.sub(r"<(style|script)\b.*?</\1>", " ", s, flags=re.S | re.I)
     s = re.sub(r"<!--.*?-->", " ", s, flags=re.S)
     return re.sub(r"<[^>]+>", " ", s)
@@ -58,32 +65,62 @@ def medir(html):
     return len(PT.findall(t)), len(EN.findall(t))
 
 
-def nao_traduzidos(pt_html, en_html):
-    """Texto de tela IDENTICO nos dois idiomas -- a sonda que nao depende de
-    palavra-funcao.
+def _tabelas(dir_traducao):
+    """{texto_pt: registro} de todos os blocos conhecidos."""
+    fora = {}
+    if not os.path.isdir(dir_traducao):
+        return fora
+    for arq in os.listdir(dir_traducao):
+        if arq.endswith(".json"):
+            try:
+                t = json.load(open(os.path.join(dir_traducao, arq), encoding="utf-8"))
+            except Exception:
+                continue
+            for b in t.get("blocos", {}).values():
+                fora[b.get("pt", "").strip()] = b
+    return fora
 
-    Ela existe porque a de palavras-funcao deu VERDE, duas vezes, numa pagina
-    cuja navegacao inteira estava em portugues: "O par vira ponto" nao tem
-    `que`, nem `nao`, nem `para`. Titulo e rotulo sao justamente o texto que
-    aquela sonda nao enxerga -- e sao o texto que mais aparece na tela.
 
-    Comparar o texto bruto nao serve (numero, simbolo e nome proprio coincidem
-    de direito). Exige-se duas palavras e uma delas com 4+ letras: `pi` e
-    `sin x` passam livres, `O par vira ponto` nao.
+def nao_traduzidos(pt_html, en_html, tabela):
+    """Texto que ficou em portugues na pagina inglesa -- pelo REGISTRO.
+
+    Tres sondas tentaram isto e as duas primeiras erraram:
+
+      1. palavras-funcao: deu VERDE com a navegacao inteira em portugues,
+         porque "O par vira ponto" nao tem `que`, nem `nao`, nem `para`;
+      2. texto identico nos dois idiomas: pegou a navegacao, e passou a acusar
+         as CITACOES -- que sao identicas de direito, por serem o ingles
+         original (§7). Baixar o limiar as liberava e devolvia o ponto cego.
+
+    O sinal exato nao esta no texto, esta na TABELA: ela sabe, bloco a bloco,
+    o que foi traduzido, o que atravessou por ja ser ingles, e o que nunca foi
+    extraido. Sonda que adivinha pelo texto sempre vai errar num dos lados; a
+    que le o registro nao precisa adivinhar.
     """
     def nos(h):
         h = i18n.remover_faixa(h)
         h = re.sub(r"<(style|script|code)\b.*?</\1>", " ", h, flags=re.S | re.I)
         return set(t.strip() for t in re.split(r"<[^>]+>", h) if t.strip())
-    iguais = []
+
+    achados = []
     for t in nos(pt_html) & nos(en_html):
         palavras = re.findall(r"[A-Za-zÀ-ÿ]{2,}", t)
-        # tres palavras, e uma delas em minuscula: nome proprio coincide de
-        # direito ("— Mateus Alkimim."), e `<code>` guarda nome de arquivo.
-        if (len(palavras) >= 3 and any(len(p) >= 4 for p in palavras)
-                and any(p[0].islower() for p in palavras)):
-            iguais.append(t)
-    return sorted(iguais)
+        if len(palavras) < 3 or not any(p[0].islower() for p in palavras):
+            continue
+        reg = tabela.get(t)
+        if reg is None:
+            # nao esta no registro: ou e fragmento de um bloco maior (o pai foi
+            # traduzido e o filho aparece solto na varredura), ou nunca foi
+            # extraido. So acusa se nao couber dentro de nenhum bloco conhecido.
+            if any(t in k for k in tabela):
+                continue
+            achados.append("%s  [nunca extraido]" % t[:60])
+        elif reg.get("ja_en"):
+            continue                      # §7: citacao, ingles original
+        elif (reg.get("en") or "").strip() == t:
+            if not i18n.ja_em_ingles(t):
+                achados.append("%s  [modelo devolveu o original]" % t[:60])
+    return sorted(achados)
 
 
 def conferir(pasta, esperado):
@@ -108,7 +145,9 @@ def conferir(pasta, esperado):
         if esperado == "EN":
             gemeo = os.path.join(os.path.dirname(pasta), "pt", arq)
             if os.path.exists(gemeo):
-                for t in nao_traduzidos(open(gemeo, encoding="utf-8").read(), html):
+                tab = _tabelas(os.path.join(os.path.dirname(pasta), "traducao"))
+                for t in nao_traduzidos(open(gemeo, encoding="utf-8").read(),
+                                        html, tab):
                     achados.append("%s/%s: nao traduzido -- %r" % (
                         os.path.basename(pasta), arq, t[:60]))
         lang = re.search(r'<html[^>]*\slang="([^"]+)"', html)

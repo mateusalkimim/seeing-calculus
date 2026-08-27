@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:22",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "01ce9e1882": {
    "en": "as walls — only between −π/2 and π/2",
@@ -49,6 +49,13 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "0bf0a4ffec": {
+   "en": null,
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " o zero é um buraco</b> — 0/0 — e as duas <b>paredes</b>\n  aparecem: entre −π/2 e π/2, a curva fica presa entre o cosseno e o 1. As duas vão a 1, e\n  a do meio não tem para onde fugir. <span class=\"deck\">É o Teorema do Confronto, C4 §2, e\n  o limite que fecha a série.</span>",
+   "tipo": "prosa"
+  },
   "0cff0059da": {
    "en": "2. The Angle",
    "modelo": "phi-4",
@@ -56,6 +63,14 @@
    "pt": "2. O ângulo",
    "qa": "ok",
    "tipo": "attr:title"
+  },
+  "0d36208637": {
+   "en": "<b>About the last two functions on the list.</b>",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>Sobre as duas últimas funções da lista.</b>\n  ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "1673058248": {
    "en": "9. The Family",
@@ -72,6 +87,14 @@
    "pt": "8. O encontro",
    "qa": "ok",
    "tipo": "attr:title"
+  },
+  "190b0f8e73": {
+   "en": "means, and it is the ratio of",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "\n  quer dizer, e é a razão do ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "1a99319e64": {
    "en": "← Unrolling",
@@ -96,6 +119,14 @@
    "pt": "a taxa é da mesma família, adiantada um quarto de volta",
    "qa": "ok",
    "tipo": "js"
+  },
+  "1ca49f3ea1": {
+   "en": "<b>The constant is what the rate does not see.</b> On the constant line, the red curve lies on the zero. Adding a constant to the blue does not change anything in the red — this is what",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>A constante é o que a taxa não vê.</b> Na reta constante, a curva vermelha deita no\n  zero. Somar uma constante à azul não muda nada na vermelha — é o que ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "23b36d23a6": {
    "en": "Drag the <b>h</b> to the left. With <b>h</b> large there are <b>two points</b> and a  \n  <b>secant</b> — the quotient <code>Δf/h</code> is its slope. As h closes, the two  \n  points become one and the secant becomes the <b>tangent</b>: <code>Δf/h</code> approaches  \n  <code>f ′(x)</code>, and you see the two numbers converge on the readout line.  \n  <span class=\"deck\">It's Station 4 of C2 — <i>\"the line through two points, when the two  \n  become one\"</i>.</span>",
@@ -145,6 +176,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "3ceb089dc5": {
+   "en": "is the slope of it. As h closes, the two points become one and the secant becomes the <b>tangent</b>:",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " é a inclinação dela. À medida que h fecha,\n  os dois pontos viram um e a secante vira a <b>tangente</b>: ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "3deaf1349b": {
    "en": "1. The Pair Becomes a Point",
    "modelo": "phi-4",
@@ -152,6 +191,14 @@
    "pt": "1. O par vira ponto",
    "qa": "ok",
    "tipo": "attr:title"
+  },
+  "3ede2eb8f8": {
+   "en": ", and you see the two numbers approaching on the reading line. <span class=\"deck\">This is Station 4 of C2 — <i>\"the line through two points, when the two become one\"</i>.</span>",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": ", e você vê os dois números se aproximarem na linha de\n  leitura. <span class=\"deck\">É a Estação 4 do C2 — <i>\"a reta por dois pontos, quando os\n  dois viram um\"</i>.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "3f1bbc804b": {
    "en": "<b>f ′(x)</b> = <span id=\"rd\">",
@@ -185,6 +232,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "4a60d83754": {
+   "en": "<b>In",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>Em ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "4a9b54a7f9": {
    "en": "the floor: <input type=\"range\" id=\"chao\" min=\"-2\" max=\"2\" step=\"0.01\" value=\"0\"\n         style=\"width:120px\">",
    "modelo": "phi-4",
@@ -201,6 +256,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "4e686f3e1f": {
+   "en": "— that one shows <b>where the number comes from</b>; this one, <b>how the number changes</b>.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " — aquele mostra <b>de onde vem</b> o número; este,\n  <b>como o número muda</b>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "4e7f782624": {
    "en": "the rate is a LINE; the vertex is where it crosses zero",
    "modelo": "phi-4",
@@ -214,6 +277,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "O que cada leitura mostra",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "58e6b3a414": {
+   "en": "and",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " e ",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -240,6 +311,22 @@
    "pt": "0/0 no zero: o buraco existe, o limite é 1 — e o Confronto prova (C4)",
    "qa": "ok",
    "tipo": "js"
+  },
+  "67ab8b3b70": {
+   "en": "of the integral.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " da integral.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "69352eab75": {
+   "en": "approaches",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " vai\n  encostando em ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "6ae9162cae": {
    "en": "Turn on <b>the area</b> and drag <b>the floor</b>. The x-axis is not special: it is the\n  graph of the constant zero function, and the area is measured between the curve and <i>it</i>. Changing the floor, the same operation becomes the area between two curves — and the usual floor is so usual that we forget we chose it, like the canonical basis in linear algebra.",
@@ -337,6 +424,14 @@
    "qa": "ok",
    "tipo": "js"
   },
+  "96a52f4531": {
+   "en": "Local, self-contained instrument: no network, no external library. Sibling of",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Irmão do\n  ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "9c1d96767b": {
    "en": "stop",
    "modelo": "phi-4",
@@ -384,6 +479,14 @@
    "pt": "duas viradas; a taxa é uma parábola",
    "qa": "ok",
    "tipo": "js"
+  },
+  "b365acf876": {
+   "en": "spend trigonometry, which this slice does not teach and does not need: what it says — the lower height is the slope of the top — is true for any curve. They are here because they are good examples, and remain readable after the angle branch, the triangle, and the circle. The first seven do not contribute anything.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " gastam trigonometria, que esta fatia não\n  ensina e não precisa: o que ela diz — a altura de baixo é a inclinação de cima — vale\n  para qualquer curva. Estão aqui porque são bons exemplos, e ficam legíveis depois do\n  ramo do ângulo, do triângulo e do círculo. As sete primeiras não emprestam nada.",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "b4bac21c6b": {
    "en": "the floor",
@@ -440,6 +543,14 @@
    "pt": "sen x / x",
    "qa": "ok",
    "tipo": "js"
+  },
+  "d19d7889e4": {
+   "en": "Drag the <b>h</b> to the left. With <b>h</b> large there are <b>two points</b> and a <b>secant</b> line — the quotient",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "Arraste o <b>h</b> para a esquerda. Com <b>h</b> grande há <b>dois pontos</b> e uma reta\n  <b>secante</b> — o quociente ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "d3d8474fbe": {
    "en": "asymptote: the curve shoots up and the rate shoots up faster",
@@ -511,6 +622,15 @@
    "orfao": false,
    "pt": "O chão é uma escolha",
    "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f79e0b2fb5": {
+   "en": "It is the slope of it. As h closes in,  \n the two points become one and the secant becomes the <b>tangent</b>: <code>Δf/h</code> approaches <code>f ′(x)</code>, and you see the two numbers getting closer on the reading line. <span class=\"deck\">This is Station 4 of C2 — <i>\"the line through two points, when the two become one\"</i>.</span>",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " é a inclinação dela. À medida que h fecha,\n  os dois pontos viram um e a secante vira a <b>tangente</b>: <code>Δf/h</code> vai\n  encostando em <code>f ′(x)</code>, e você vê os dois números se aproximarem na linha de\n  leitura. <span class=\"deck\">É a Estação 4 do C2 — <i>\"a reta por dois pontos, quando os\n  dois viram um\"</i>.</span>",
+   "qa": "ok",
+   "reparo": "o modelo trocou <code> por LaTeX \\( \\) — e estas paginas nao carregam MathJax por contrato (o portao [7] barra recurso externo), entao a formula apareceria como texto cru. Reposto a mao.",
    "tipo": "prosa"
   },
   "f85c4ad562": {

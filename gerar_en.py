@@ -64,6 +64,25 @@ def main():
         open(os.path.join(a.fonte, arq), "w", encoding="utf-8").write(pt_com_faixa)
         feitos += 1
 
+    # ---- o README, que no GitHub e a porta de entrada do repositorio ----
+    readme = os.path.join(AQUI, "README.md")
+    if os.path.exists(readme):
+        raw = open(readme, encoding="utf-8").read()
+        tab = i18n.ler_tabela(i18n.caminho_tabela("README.md", a.traducao))
+        en_md, pend, cercas = i18n.aplicar_md(i18n.sem_troca_idioma(raw), tab)
+        if pend:
+            total_pend += len(pend)
+            print("README.md               %d bloco(s) sem traducao" % len(pend))
+            for k, pt, tipo in pend[:4]:
+                print("   %s  %s" % (k, pt.strip()[:64].replace("\n", " ")))
+        elif tab.get("blocos"):
+            open(os.path.join(AQUI, "README.en.md"), "w", encoding="utf-8").write(
+                i18n.troca_idioma_md(en_md, "en"))
+            open(readme, "w", encoding="utf-8").write(
+                i18n.troca_idioma_md(raw, "pt"))
+            print("README.en.md%s" % ("  [%d cerca(s) de codigo em portugues: "
+                                      "realinhe a mao]" % cercas if cercas else ""))
+
     if total_pend and not a.permitir_pendente:
         print("\nREPROVADO: %d bloco(s) sem traducao. O ingles nao foi "
               "publicado.\nPreencha as tabelas de %s e rode de novo."

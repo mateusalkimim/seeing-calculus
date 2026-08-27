@@ -58,7 +58,22 @@ NOTACAO_EN = (("sen", "sin"), ("tg", "tan"), ("arcsen", "arcsin"),
 # --------------------------- extracao ---------------------------
 
 class _Blocos(HTMLParser):
-    """Blocos-folha com offsets no texto cru (herdado do traduzir_epub.py)."""
+    """Blocos com offsets, INCLUSIVE o texto solto entre filhos de bloco.
+
+    A 1a versao (herdada do traduzir_epub.py) so pegava bloco-FOLHA -- um <p>
+    que contivesse outro bloco era ignorado inteiro. Num livro isso quase nunca
+    acontece; numa pagina de instrumento acontece o tempo todo:
+
+        <div>por dentro — peças da mesma camada:<details>…</details></div>
+
+    O texto "por dentro — peças da mesma camada:" e filho direto de um <div>
+    que TEM filho de bloco, e por isso nunca era extraido. A pagina inglesa
+    saiu com ele em portugues e nenhum aviso apareceu -- foi a sonda de texto
+    identico que o encontrou, depois de o portao de idioma dar verde.
+
+    Agora cada bloco devolve o seu conteudo MENOS o dos filhos de bloco: a
+    folha devolve tudo (nao tem filho), e o pai devolve so o que e dele.
+    """
 
     def __init__(self, raw):
         super().__init__(convert_charrefs=False)
@@ -66,20 +81,37 @@ class _Blocos(HTMLParser):
         self._linhas = [0]
         for m in re.finditer("\n", raw):
             self._linhas.append(m.end())
-        self.blocos = []
-        self.attrs = []          # (ini, fim, nome_do_atributo)
-        self._pilha = []
+        self.blocos = []       # (ini, fim) dos trechos traduziveis
+        self.attrs = []        # (ini, fim, nome_do_atributo)
+        self._pilha = []       # [tag, conteudo_ini, outer_ini, [filhos]]
         self._pula = 0
-        self._em_nav = 0
+        self._pulado_ini = None
 
     def _off(self):
         ln, col = self.getpos()
         return self._linhas[ln - 1] + col
 
     def handle_starttag(self, tag, attrs):
-        if tag in ("style", "script", "code"):
+        if tag in ("style", "script", "code", "svg"):
+            # Pular NAO BASTA: o bloco que contem o <svg> continua com ele
+            # dentro do proprio conteudo, e devolve o grafo inteiro como um
+            # bloco de texto. O contêiner pulado tem de ser RECORTADO do pai,
+            # como se fosse um filho de bloco.
+            # RECORTA so o que e contêiner de BLOCO. `<code>` e INLINE: ele
+            # vive dentro da frase, e recorta-lo parte o elemento que o
+            # envolve. `<p><b>Em <code>sen x / x</code> o zero e um buraco</b>`
+            # virava dois pedacos com o <b> aberto num e fechado no outro --
+            # fragmento invalido, que o modelo tentou consertar sozinho.
+            # SO marca se houver bloco ABERTO para recortar. Sem isto o
+            # <style> do <head> (que fecha com a pilha vazia) deixava o offset
+            # GRUDADO, e o primeiro </code> dentro de um paragrafo la embaixo
+            # o consumia: o recorte ia do <head> ate ali e engolia o paragrafo
+            # inteiro. Ele nao saia traduzido e nao era reportado como
+            # pendente -- sumia do registro, que e a pior forma de falhar.
+            if not self._pula and tag != "code" and self._pilha:
+                self._pulado_ini = self._off()
             self._pula += 1
-        if not self._pula and not self._em_nav:
+        if not self._pula:
             for nome, valor in attrs:
                 if nome in ATRIBUTOS and valor and not SEM_LETRA.match(valor):
                     alvo = '%s="%s"' % (nome, valor)
@@ -87,28 +119,45 @@ class _Blocos(HTMLParser):
                     if p != -1:
                         ini = p + len(nome) + 2
                         self.attrs.append((ini, ini + len(valor), nome))
-        # `a` e `span` sao INLINE dentro de prosa e BLOCO quando estao soltos.
-        # A nav e feita de ancoras soltas, e como `a` nao estava na lista o
-        # texto delas nunca foi extraido: a pagina inglesa saiu com a navegacao
-        # em portugues e o portao de palavras-funcao deu VERDE, porque titulo
-        # ("O par vira ponto") nao tem palavra-funcao. Por-los na lista sem esta
-        # condicao seria pior: um <a> dentro de um <p> faria o paragrafo deixar
-        # de ser folha, e a prosa sairia picada em pedacos.
+        # `a`/`span` sao inline dentro de prosa e bloco quando soltos: por-los
+        # sempre na lista picaria a prosa em pedacos no meio da frase.
         eh_bloco = tag in BLOCOS or (tag in INLINE_SOLTO and not self._pilha)
-        if eh_bloco and not self._pula and not self._em_nav:
-            ini = self.raw.index(">", self._off()) + 1
-            if self._pilha:
-                self._pilha[-1][2] = True
-            self._pilha.append([tag, ini, False])
+        if eh_bloco and not self._pula:
+            outer = self._off()
+            self._pilha.append([tag, self.raw.index(">", outer) + 1, outer, []])
+
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+        if self._pilha and self._pilha[-1][0] == tag:
+            self._pilha.pop()
 
     def handle_endtag(self, tag):
-        if tag in ("style", "script", "code"):
+        if tag in ("style", "script", "code", "svg"):
             self._pula = max(self._pula - 1, 0)
+            if not self._pula:
+                # zera SEMPRE, mesmo sem consumir: offset que sobrevive ao
+                # contêiner que o gerou vira recorte fantasma mais adiante.
+                if self._pilha and self._pulado_ini is not None:
+                    fim = self.raw.find(">", self._off())
+                    self._pilha[-1][3].append(
+                        (self._pulado_ini, len(self.raw) if fim == -1 else fim + 1))
+                self._pulado_ini = None
         if (tag in BLOCOS or tag in INLINE_SOLTO) and self._pilha \
                 and self._pilha[-1][0] == tag:
-            t, ini, tem_filho = self._pilha.pop()
-            if not tem_filho:
-                self.blocos.append((ini, self._off()))
+            t, cont_ini, outer_ini, filhos = self._pilha.pop()
+            cont_fim = self._off()
+            outer_fim = self.raw.find(">", cont_fim)
+            outer_fim = cont_fim if outer_fim == -1 else outer_fim + 1
+            if self._pilha:
+                self._pilha[-1][3].append((outer_ini, outer_fim))
+            # o conteudo MENOS os filhos de bloco
+            pos = cont_ini
+            for f_ini, f_fim in sorted(filhos):
+                if f_ini > pos:
+                    self.blocos.append((pos, f_ini))
+                pos = max(pos, f_fim)
+            if cont_fim > pos:
+                self.blocos.append((pos, cont_fim))
 
 
 # CLASSIFICACAO DE LITERAL DE JS -- e aqui que mora o risco do instrumento.
@@ -265,6 +314,23 @@ def _literais_js(raw):
     return out
 
 
+# O SVG e PULADO como contêiner e lido por dentro, exatamente como o <script>.
+# Sem isso o <svg> inteiro do mapa -- 1629x1906, 55 rotulos, centenas de
+# coordenadas -- entrou como UM bloco e voltou do modelo truncado a 5% do
+# tamanho, com 36 numeros perdidos. Um grafo nao se traduz; os ROTULOS dele
+# sim, e sao 55.
+def _textos_svg(raw):
+    out = []
+    for m in re.finditer(r"<svg\b.*?</svg>", raw, re.S | re.I):
+        base = m.start()
+        for t in re.finditer(r"<text\b[^>]*>(.*?)</text>", m.group(0), re.S | re.I):
+            dentro = t.group(1)
+            if re.search(r"[A-Za-zÀ-ÿ]{2}", re.sub(r"<[^>]+>", "", dentro)):
+                ini = base + t.start(1)
+                out.append((ini, ini + len(dentro), dentro, "svg"))
+    return out
+
+
 def chave(texto):
     return hashlib.sha1(texto.strip().encode("utf-8")).hexdigest()[:10]
 
@@ -277,7 +343,10 @@ def extrair(caminho):
     itens, descartados = [], []
     for ini, fim in p.blocos:
         cru = raw[ini:fim]
-        limpo = re.sub(r"&[#\w]+;", "x", re.sub(r"<[^>]+>", "", cru))
+        # comentario nao e texto de tela: ninguem le, e traduzi-lo gasta GPU
+        # e ainda faz o QA acusar tag alterada.
+        sem_comentario = re.sub(r"<!--.*?-->", " ", cru, flags=re.S)
+        limpo = re.sub(r"&[#\w]+;", "x", re.sub(r"<[^>]+>", "", sem_comentario))
         if not SEM_LETRA.match(limpo):
             itens.append((ini, fim, cru, "prosa"))
     for ini, fim, nome in p.attrs:
@@ -287,6 +356,7 @@ def extrair(caminho):
             itens.append((ini, fim, txt, "js"))
         elif re.search(r"[A-Za-zÀ-ÿ]{3}", txt):
             descartados.append(txt)
+    itens.extend(_textos_svg(raw))
     itens.sort()
     return raw, itens, descartados
 
@@ -318,7 +388,13 @@ def gravar_tabela(caminho, tab):
 # --------------------------- QA ---------------------------
 
 def _numeros(t):
-    return sorted(re.findall(r"\d+", re.sub(r"<[^>]+>", "", t)))
+    # O separador de milhar sai ANTES da contagem: o ingles escreve `2,484 px`
+    # onde o portugues escreve `2484 px`, e as duas grafias sao o mesmo numero.
+    # Sem isto o QA reprovava a traducao por escrever numero como se escreve em
+    # ingles -- que era exatamente o que se pediu.
+    limpo = re.sub(r"<[^>]+>", "", t)
+    limpo = re.sub(r"(?<=\d)[,.](?=\d\d\d\b)", "", limpo)
+    return sorted(re.findall(r"\d+", limpo))
 
 
 def _tags(t):
@@ -350,12 +426,18 @@ def _simbolos(t):
 _EN_GB = re.compile(r"\b(colours?|colour\w*|behaviour\w*|centres?|centred|"
                     r"metres?|litres?|favourite\w*|neighbour\w*|labour\w*|"
                     r"programme\w*|catalogue\w*|analogue\w*|defence|licence|"
-                    r"practise[sd]?|grey|whilst|amongst|towards|learnt|"
-                    r"organis\w*|analys\w*|recognis\w*|realis\w*|emphasis[ei]\w*|"
-                    r"minimis\w*|maximis\w*|normalis\w*|visualis\w*|summaris\w*|"
-                    r"criticis\w*|prioritis\w*|standardis\w*|specialis\w*|"
-                    r"generalis\w*|characteris\w*|modelling|labelled|"
-                    r"travelling|cancelled)\b", re.I)
+                    r"practise[sd]?|grey|whilst|amongst|learnt|"
+                    # O SUFIXO PRECISA SER FECHADO. `analys\w*` casou com
+                    # **analysis** 19 vezes no mapa -- e `analysis` e o
+                    # substantivo correto nas duas variantes; o que muda e o
+                    # VERBO (analyse/analyze). `organis\w*` casaria com
+                    # **organism** pelo mesmo motivo. Terminacao aberta num
+                    # teste de grafia sempre acaba pegando a palavra certa.
+                    r"(?:organis|analys|recognis|realis|emphasis|minimis|"
+                    r"maximis|normalis|visualis|summaris|criticis|prioritis|"
+                    r"standardis|specialis|generalis|characteris)"
+                    r"(?:e|es|ed|ing|ation|ations)|"
+                    r"modelling|labelled|travelling|cancelled)\b", re.I)
 
 # So palavra portuguesa SEM homografo em ingles. Fora: a, e, o, do, da, no, na,
 # ao, um, se, de, em, por, ou -- todas colidem.
@@ -367,7 +449,9 @@ _PT_SOBRA = re.compile(r"\b(que|n[aã]o|para|com|uma|pelo|pela|dos|das|nas|nos|"
                        re.I)
 
 # `ã õ ç` nao existem em palavra inglesa: acusam sozinhos, sem lista.
+_ACENTO_PT = re.compile(r"[áéíóúâêôãõçÁÉÍÓÚÂÊÔÃÕÇ]")
 _PT_LETRA = re.compile(r"[a-zA-Z][ãõç]|[ãõç][a-zA-Z]")
+_LATEX = re.compile(r"\\\(|\\\[|\\Delta|\\frac|\\pi\\b|\\theta|\\sqrt")
 
 
 def qa_bloco(en, pt, tipo):
@@ -383,6 +467,13 @@ def qa_bloco(en, pt, tipo):
         m.append("href/src alterados")
     if _simbolos(en) != _simbolos(pt):
         m.append("simbolos matematicos alterados")
+    # LaTeX INVENTADO. O modelo trocou `<code>Δf/h</code>` por `\( \Delta f/h
+    # \)`. Estas paginas nao carregam MathJax por contrato -- o portao das
+    # fatias barra recurso externo -- entao a formula apareceria como texto
+    # cru na tela. Passou por todas as outras medidas: as tags batiam em
+    # numero, o idioma media ingles, o comprimento era plausivel.
+    if _LATEX.search(en) and not _LATEX.search(pt):
+        m.append("LaTeX inventado (a pagina nao carrega MathJax)")
     # AS SONDAS DE IDIOMA LEEM SO O QUE O LEITOR LE. Varrer o HTML cru acusou
     # `border-left-color` como en-GB (e `colou?r` ainda casava com o `color`
     # AMERICANO, que e o certo), e acusou portugues em `class="nao"` e em
@@ -399,8 +490,11 @@ def qa_bloco(en, pt, tipo):
     p = _PT_SOBRA.search(visivel) or _PT_LETRA.search(visivel)
     if p:
         m.append("sobrou portugues: %s" % p.group(0))
+    # A razao so vale com texto suficiente: "Conjuntos" -> "Sets" da 0.44x e
+    # esta certo; "nos" -> "students" da 2.67x e esta errado -- e nenhum dos
+    # dois se decide pelo comprimento. Abaixo de 24 caracteres a medida e ruido.
     razao = len(en) / max(len(pt), 1)
-    if not (0.45 <= razao <= 2.2):
+    if len(pt) >= 24 and not (0.45 <= razao <= 2.2):
         m.append("comprimento %.2fx do original" % razao)
     return (not m), m
 
@@ -507,7 +601,10 @@ def extrair_de(raw):
     itens = []
     for ini, fim in p.blocos:
         cru = raw[ini:fim]
-        limpo = re.sub(r"&[#\w]+;", "x", re.sub(r"<[^>]+>", "", cru))
+        # comentario nao e texto de tela: ninguem le, e traduzi-lo gasta GPU
+        # e ainda faz o QA acusar tag alterada.
+        sem_comentario = re.sub(r"<!--.*?-->", " ", cru, flags=re.S)
+        limpo = re.sub(r"&[#\w]+;", "x", re.sub(r"<[^>]+>", "", sem_comentario))
         if not SEM_LETRA.match(limpo):
             itens.append((ini, fim, cru, "prosa"))
     for ini, fim, nome in p.attrs:
@@ -515,6 +612,7 @@ def extrair_de(raw):
     for ini, fim, txt, traduz in _literais_js(raw):
         if traduz:
             itens.append((ini, fim, txt, "js"))
+    itens.extend(_textos_svg(raw))
     return sorted(itens)
 
 
@@ -615,3 +713,204 @@ def ja_em_ingles(texto):
     limpo = re.sub(r"<[^>]+>", " ", texto)
     pt, en = len(_F_PT.findall(limpo)), len(_F_EN.findall(limpo))
     return en >= 3 and en >= 2 * max(pt, 1)
+
+
+# --------------------------- markdown ---------------------------
+# O README e a porta de entrada do repositorio, e no GitHub ele e a primeira
+# coisa que qualquer pessoa le. Nao e HTML: o separador de blocos aqui e a
+# linha em branco, e a cerca de codigo tem de ficar de fora.
+#
+# A cerca de codigo guarda ARTE ASCII neste acervo (a arvore de ordem de
+# leitura), e arte ASCII se realinha a mao -- traduzir os rotulos desloca as
+# caixas de desenho. Ela sai da traducao e e RELATADA, nunca silenciada.
+
+_CERCA = re.compile(r"^(```|~~~)", re.M)
+
+
+def blocos_md(raw):
+    """[(ini, fim, texto)] de cada bloco de markdown fora das cercas."""
+    # marca as faixas de cerca para pular
+    cercas, aberta = [], None
+    for m in _CERCA.finditer(raw):
+        if aberta is None:
+            aberta = m.start()
+        else:
+            fim = raw.find("\n", m.end())
+            cercas.append((aberta, len(raw) if fim == -1 else fim + 1))
+            aberta = None
+    if aberta is not None:
+        cercas.append((aberta, len(raw)))
+
+    def em_cerca(p):
+        return any(a <= p < b for a, b in cercas)
+
+    out, pos = [], 0
+    for m in re.finditer(r"\n[ \t]*\n", raw):
+        ini, fim = pos, m.start()
+        pos = m.end()
+        if fim > ini and not em_cerca(ini):
+            t = raw[ini:fim]
+            if re.search(r"[A-Za-zÀ-ÿ]{2}", t):
+                out.append((ini, fim, t))
+    if pos < len(raw) and not em_cerca(pos):
+        t = raw[pos:]
+        if re.search(r"[A-Za-zÀ-ÿ]{2}", t):
+            out.append((pos, len(raw), t))
+    return out, cercas
+
+
+def _links_md(t):
+    return sorted(re.findall(r"\]\(([^)]*)\)", t))
+
+
+def reparar_links_md(en, pt):
+    """Devolve ao link o alvo do original.
+
+    O modelo traduziu `](docs/INSTALACAO.md)` para `](docs/INSTALLATION.md)` --
+    um arquivo que nao existe. Caminho e URL nao sao texto: sao endereco, e
+    endereco traduzido e link quebrado. Quando a CONTAGEM bate, o conserto e
+    posicional e seguro; quando nao bate, isto nao repara nada e o QA reprova.
+    """
+    alvos = re.findall(r"\]\(([^)]*)\)", pt)
+    if len(alvos) != len(re.findall(r"\]\(([^)]*)\)", en)):
+        return en
+    it = iter(alvos)
+    return re.sub(r"(\]\()([^)]*)(\))",
+                  lambda m: m.group(1) + next(it) + m.group(3), en)
+
+
+def qa_md(en, pt):
+    """(ok, motivos). Como o qa_bloco, com o alvo do link no lugar da tag."""
+    m = []
+    if not en.strip():
+        return False, ["vazio"]
+    if _numeros(en) != _numeros(pt):
+        m.append("numeros: %s != %s" % (_numeros(pt), _numeros(en)))
+    if _links_md(en) != _links_md(pt):
+        m.append("alvo de link alterado")
+    if _simbolos(en) != _simbolos(pt):
+        m.append("simbolos matematicos alterados")
+    # A sonda de idioma le so PROSA: alvo de link e trecho em crase sao
+    # endereco e codigo. `github.com` acusava "sobrou portugues: com" e
+    # `par-vira-ponto` acusava "vira" -- vermelho falso em bloco correto.
+    prosa = re.sub(r"\]\([^)]*\)", "]", en)
+    prosa = re.sub(r"`[^`]*`", " ", prosa)
+    g = _EN_GB.search(prosa)
+    if g:
+        m.append("en-GB: %s" % g.group(0))
+    p = _PT_SOBRA.search(prosa) or _PT_LETRA.search(prosa)
+    if p:
+        m.append("sobrou portugues: %s" % p.group(0))
+    razao = len(en) / max(len(pt), 1)
+    if len(pt) >= 24 and not (0.45 <= razao <= 2.2):
+        m.append("comprimento %.2fx do original" % razao)
+    return (not m), m
+
+
+def cercas_traduziveis(raw):
+    """[(ini, fim, conteudo)] das cercas que tem texto humano em portugues.
+
+    Cerca de codigo nao se traduz -- mas o COMENTARIO dentro dela e texto que
+    alguem le, e a coluna de descricao de uma arvore de arquivos tambem. Deixar
+    a cerca inteira de fora punha `# o portão, com controle negativo` numa
+    pagina em ingles. O que fica de fora e o comando, o caminho e o simbolo.
+    """
+    _, cercas = blocos_md(raw)
+    out = []
+    for a, b in cercas:
+        corpo = raw[a:b]
+        miolo = re.sub(r"^(```|~~~)[^\n]*\n", "", corpo)
+        miolo = re.sub(r"\n?(```|~~~)\s*$", "", miolo)
+        # URL fora antes do teste: `github.com` casa com a palavra `com`, e a
+        # cerca do `git clone` entrava como se tivesse portugues dentro.
+        prosa = re.sub(r"https?://\S+", " ", miolo)
+        if _PT_SOBRA.search(prosa) or _ACENTO_PT.search(prosa):
+            ini = a + (len(corpo) - len(miolo) - len(corpo) + len(corpo))
+            ini = raw.index(miolo, a)
+            out.append((ini, ini + len(miolo), miolo))
+    return out
+
+
+def aplicar_md(raw, tabela):
+    """(markdown_en, pendentes, cercas_nao_traduzidas)."""
+    blocos, cercas = blocos_md(raw)
+    pendentes = []
+    # as cercas primeiro, de tras para frente (offsets do texto original)
+    for ini, fim, miolo in sorted(cercas_traduziveis(raw), reverse=True):
+        b = tabela.get("blocos", {}).get(chave(miolo))
+        en = b.get("en") if b else None
+        if b and b.get("qa") not in (None, "ok"):
+            en = None
+        if en:
+            raw = raw[:ini] + en + raw[fim:]
+            blocos, cercas = blocos_md(raw)
+        else:
+            pendentes.append((chave(miolo), miolo, "cerca"))
+    for ini, fim, texto in sorted(blocos, reverse=True):
+        b = tabela.get("blocos", {}).get(chave(texto))
+        en = b.get("en") if b else None
+        if b and b.get("qa") not in (None, "ok"):
+            en = None
+        if not en:
+            if ja_em_ingles(texto):
+                continue
+            pendentes.append((chave(texto), texto, "md"))
+            continue
+        raw = raw[:ini] + en + raw[fim:]
+    return raw, pendentes, len(cercas)
+
+
+# A troca de idioma do README e uma LINHA no topo, nao uma pagina de porta: no
+# GitHub o README aparece embutido, sem HTML nosso e sem JavaScript nenhum, e
+# um link e a unica coisa que funciona ali.
+
+MARCA_MD = "<!-- idioma: linha gerada por i18n.py -->"
+_LINHA_MD = {"pt": MARCA_MD + "\n*[Read this in English](README.en.md)*\n",
+             "en": MARCA_MD + "\n*[Leia em português](README.md)*\n"}
+
+
+def sem_troca_idioma(raw):
+    if MARCA_MD not in raw:
+        return raw
+    i = raw.index(MARCA_MD)
+    fim = raw.find("\n", raw.find("\n", i) + 1)
+    return raw[:i] + raw[(len(raw) if fim == -1 else fim + 1):]
+
+
+def troca_idioma_md(raw, idioma):
+    return _LINHA_MD[idioma] + "\n" + sem_troca_idioma(raw).lstrip("\n")
+
+
+def qa_cerca(en, pt):
+    """QA de cerca: o que NAO e texto humano tem de sair identico.
+
+    Compara as linhas ignorando o que vem depois de `#` (o comentario) e a
+    coluna de descricao. Se um comando mudou, reprova -- comando traduzido e
+    comando quebrado, e ninguem descobre lendo.
+    """
+    m = []
+    if not en.strip():
+        return False, ["vazio"]
+    if len(en.split("\n")) != len(pt.split("\n")):
+        m.append("numero de linhas mudou: %d -> %d"
+                 % (len(pt.split("\n")), len(en.split("\n"))))
+    # ARTE ASCII nao tem comando: toda linha e texto humano, e a checagem de
+    # "o que nao e comentario tem de sair identico" reprovaria justamente a
+    # traducao correta. Diagrama se reconhece pelas caixas de desenho.
+    diagrama = bool(re.search(r"[┌┐└┘├┤┬┴─│→]", pt))
+    for a, b in ([] if diagrama else zip(pt.split("\n"), en.split("\n"))):
+        ca, cb = a.split("#")[0].strip(), b.split("#")[0].strip()
+        # a coluna de descricao comeca depois de 2+ espacos; fora dela, igual
+        ca, cb = re.split(r"\s{2,}", ca)[0], re.split(r"\s{2,}", cb)[0]
+        if ca != cb:
+            m.append("comando/caminho alterado: %r -> %r" % (ca[:34], cb[:34]))
+            break
+    if _EN_GB.search(en):
+        m.append("en-GB")
+    # nome de arquivo e caminho saem antes do teste: `par-vira-ponto.html`
+    # casava com a palavra `vira`, e `github.com` com `com`. Endereco nao e
+    # prosa, e medi-lo so produz vermelho falso.
+    prosa = re.sub(r"https?://\S+|\S*[./]\S*", " ", en)
+    if _PT_SOBRA.search(prosa) or _ACENTO_PT.search(prosa):
+        m.append("sobrou portugues")
+    return (not m), m

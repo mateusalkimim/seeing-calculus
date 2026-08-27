@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:02",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "089ed715d8": {
    "en": "<b>the radius</b>",
@@ -24,6 +24,14 @@
    "pt": "o arco virou a circunferência,",
    "qa": "ok",
    "tipo": "js"
+  },
+  "0ef4cc3f0e": {
+   "en": "— the derivative\n  of sine is cosine, clear. In degrees, the same derivative comes out with a <b>π/180</b> attached,\n  and it reappears in every calculation from there on. The choice of unit makes the entire calculation clean or dirty.\n  <span class=\"deck\">This is seen in rate.html: the red sine curve is exactly the cosine\n  — and it is exactly so because the input is in radians.</span>",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " — a derivada\n  do seno é o cosseno, limpa. Em graus a mesma derivada sai com um <b>π/180</b> pendurado,\n  e ele volta a aparecer em toda conta dali para a frente. A escolha da unidade suja ou\n  limpa o cálculo inteiro.\n  <span class=\"deck\">Isso se vê na taxa.html: a curva vermelha do seno é o cosseno\n  exatamente — e só é exatamente porque a entrada está em radianos.</span>",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "1673058248": {
    "en": "9. The Family",
@@ -121,6 +129,14 @@
    "qa": "ok",
    "tipo": "attr:title"
   },
+  "49bb5d29b7": {
+   "en": "It's not a matter of notation preference. Only in radians does",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "Não é preferência de notação. Só em radianos vale ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "4f91cd8ec6": {
    "en": "360 marks — nothing in the drawing asks for this number",
    "modelo": "phi-4",
@@ -136,6 +152,14 @@
    "pt": "= arco ÷ raio",
    "qa": "ok",
    "tipo": "js"
+  },
+  "58e6b3a414": {
+   "en": "and",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " e ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "5d5507cde8": {
    "en": "4. The Distance",
@@ -422,6 +446,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "a fatia de uma volta, se a volta for cortada em 360",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "fa6d811165": {
+   "en": "Local, self-contained instrument: no network, no external library. Slice of the same family of",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Fatia da mesma família\n  de ",
    "qa": "ok",
    "tipo": "prosa"
   }

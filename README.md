@@ -1,6 +1,9 @@
+<!-- idioma: linha gerada por i18n.py -->
+*[Read this in English](README.en.md)*
+
 # Ver o cálculo — `seeing-calculus`
 
-**Oito instrumentos interativos que constroem, em ordem, o chão visual do
+**Nove instrumentos interativos que constroem, em ordem, o chão visual do
 cálculo.** Cada um mostra *uma* coisa, abre com dois cliques no navegador e
 funciona **offline**: são `canvas` e aritmética, **sem biblioteca de terceiro,
 sem rede, sem conta e sem servidor**. Nada sai da sua máquina — não há o que

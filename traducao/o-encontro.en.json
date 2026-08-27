@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:20",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "00b3352a06": {
    "en": "x = <input type=\"range\" id=\"sl\" min=\"-3.1\" max=\"3.1\" step=\"0.002\" value=\"-1.5\"  \n         style=\"width:320px\">",
@@ -105,6 +105,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "2b966366e2": {
+   "en": "What the slice of the circle measured. To the right  \nis how much the curve rises when you move 1 to the right along the tangent line. They are the  \nsame number, and therefore <code>f ′(x) = tg θ</code>.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " que a fatia do círculo mediu. À direita\n  é o quanto a curva sobe quando você anda 1 para a direita sobre a reta tangente. São o\n  mesmo número, e por isso <code>f ′(x) = tg θ</code>.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "2d6e1b152d": {
    "en": "← The rate",
    "modelo": "phi-4",
@@ -160,6 +168,14 @@
    "pt": "3. O triângulo",
    "qa": "ok",
    "tipo": "attr:title"
+  },
+  "4a566fea08": {
+   "en": "<b>1. The two golden segments always have the same length.</b> On the left is the tangent segment of the circle with radius 1 — the",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>1. Os dois dourados têm o mesmo comprimento, sempre.</b> À esquerda é o segmento de\n  tangente do círculo de raio 1 — o ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "4aa025f539": {
    "en": "walk",
@@ -257,6 +273,14 @@
    "qa": "ok",
    "tipo": "js"
   },
+  "99e86d142d": {
+   "en": "showed by walking.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " mostrou andando.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "9c1d96767b": {
    "en": "stop",
    "modelo": "phi-4",
@@ -321,6 +345,14 @@
    "qa": "ok",
    "tipo": "js"
   },
+  "df2fe20291": {
+   "en": "that the circle slice measured. On the right\n  is how much the curve rises when you move 1 to the right along the tangent line. They are the same number, and therefore",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " que a fatia do círculo mediu. À direita\n  é o quanto a curva sobe quando você anda 1 para a direita sobre a reta tangente. São o\n  mesmo número, e por isso ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "e0fcb2f7f0": {
    "en": "The family →",
    "modelo": "phi-4",
@@ -358,6 +390,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. É onde os dois sentidos\n  da palavra <b>tangente</b> se encontram — o comprimento no círculo, que as fatias da medida\n  construíram, e a reta que toca a curva, que a <code>taxa</code> mostrou andando.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f676bfb6e0": {
+   "en": "Local, self-contained instrument: no network, no external library. It is where the two meanings of the word <b>tangent</b> meet — the length on the circle, which the slices of the measure constructed, and the line that touches the curve, which the",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. É onde os dois sentidos\n  da palavra <b>tangente</b> se encontram — o comprimento no círculo, que as fatias da medida\n  construíram, e a reta que toca a curva, que a ",
    "qa": "ok",
    "tipo": "prosa"
   },

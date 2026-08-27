@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:02",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "0102907239": {
    "en": "Angle →",
@@ -89,6 +89,14 @@
    "qa": "ok",
    "tipo": "js"
   },
+  "1deeb39aa2": {
+   "en": "shows how the second changes when the first moves. This one shows <b>what these two numbers are, and why there are two</b> — and is the only one that sets the stage where the others play.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " mostra como a segunda muda quando a primeira\n  anda. Esta mostra <b>o que são esses dois números, e por que são dois</b> — e é a única\n  que constrói o palco onde as outras jogam.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "20f3288cf4": {
    "en": "rises and falls",
    "modelo": "phi-4",
@@ -96,6 +104,14 @@
    "pt": "sobe e desce",
    "qa": "ok",
    "tipo": "js"
+  },
+  "228fce54f0": {
+   "en": "<b>4. The machine can refuse.</b> In",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>4. A máquina pode recusar.</b> Em ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "2baa063e51": {
    "en": "return two, give what you have",
@@ -150,6 +166,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "<b>1. São duas retas separadas, e cada uma é um mundo de uma dimensão.</b> Na reta de\n  baixo só existe <i>posição</i>: um número, e nada mais. Na da esquerda, idem. Nenhuma das\n  duas, sozinha, tem forma — não há para onde curvar.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "58e6b3a414": {
+   "en": "and",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " e ",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -217,6 +241,14 @@
    "qa": "ok",
    "tipo": "js"
   },
+  "9e07f8313d": {
+   "en": "Local, self-contained instrument: no network, no external library. First of the family;  \n  the sisters are",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Primeira da família;\n  as irmãs são ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "a1f18832ba": {
    "en": "5. The Circle",
    "modelo": "phi-4",
@@ -265,6 +297,14 @@
    "qa": "ok",
    "tipo": "js"
   },
+  "c264b3c228": {
+   "en": ", zero doesn't enter: there is no  \n  exit for it. This is the <b>domain</b> — the inputs the machine accepts — and in the drawing  \n  appears as a place where there was never a meeting.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": ", o zero não entra: não existe\n  saída para ele. Isso é o <b>domínio</b> — as entradas que a máquina aceita — e no desenho\n  aparece como um lugar onde nunca houve encontro.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "c9003287e3": {
    "en": "7. The Rate",
    "modelo": "phi-4",
@@ -302,6 +342,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "O par vira ponto — duas retas numéricas viram um gráfico",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "d5208f043a": {
+   "en": "The other two tools of the family talk about the <b>relationship between the two axes</b> and  \n  assume that the plane already exists. The",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "As outras duas ferramentas da família falam da <b>relação entre os dois eixos</b> e\n  pressupõem que o plano já existe. O ",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -374,6 +422,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "Todo mundo sabe que a função é uma máquina: entra <b>x</b>, sai <b>y</b>.\nO que quase nunca se mostra é o instante em que <b>dois números viram um lugar</b> — e é esse\ninstante, repetido, que faz o gráfico existir. Aqui x mora numa reta e y mora em outra, cada\numa com uma dimensão só; o ponto do gráfico é o encontro das duas, e a curva é o rastro que\nos encontros deixam para trás.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "f8c63c2918": {
+   "en": "shows where the  \n  first coordinate comes from; the",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " mostra de onde vem a\n  primeira coordenada; o ",
    "qa": "ok",
    "tipo": "prosa"
   },

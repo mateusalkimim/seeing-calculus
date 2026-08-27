@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:02",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "04157e091c": {
    "en": "line",
@@ -8,6 +8,14 @@
    "pt": "reta",
    "qa": "ok",
    "tipo": "js"
+  },
+  "08a914cde0": {
+   "en": "O",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "O ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "0b98cb3433": {
    "en": "Why are these families, and not others",
@@ -70,6 +78,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "Porque são <b>as que a taxa não tira do lugar</b>. Polinômio deriva em polinômio, com o\n  grau caindo de um. A exponencial deriva nela mesma. Seno e cosseno derivam um no outro, e\n  voltam ao começo em quatro passos. Uma família que a taxa levasse para fora dela mesma não\n  teria capítulo: cada conta abriria um objeto novo, e não haveria o que aprender de uma vez.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "285f219a2f": {
+   "en": "é o passo da medida:",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " é o passo da medida: ",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -145,6 +161,14 @@
    "qa": "ok",
    "tipo": "attr:title"
   },
+  "490925f34b": {
+   "en": "This is the step of the measure: `<code>Δf</code>` divided by `<code>2h</code>`, the slope of a string centered at the point. In families, changing the step almost doesn't change the answer. At the `<b>tip</b>`, everything changes: the measured rate rises in a ramp instead of jumping, and the ramp becomes narrower as the step decreases — the ramp was from the `<b>instrument</b>`, not the curve. At the `<b>jump</b>`, the measured value spikes and grows without bound as the step shrinks.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " é o passo da medida: <code>Δf</code> dividido por <code>2h</code>, a\n  inclinação de uma cordinha centrada no ponto. Nas famílias, mudar o passo quase não muda a\n  resposta. No <b>bico</b>, muda tudo: a taxa medida sobe em rampa em vez de saltar, e a rampa\n  fica mais estreita conforme o passo diminui — a rampa era do <b>instrumento</b>, não da\n  curva. No <b>salto</b>, o valor medido dispara e cresce sem parar quando o passo encolhe.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "4ca155eee4": {
    "en": "measurement(s) on the frame",
    "modelo": "phi-4",
@@ -176,6 +200,14 @@
    "pt": "a taxa é a mesma onda, adiantada",
    "qa": "ok",
    "tipo": "js"
+  },
+  "58e6b3a414": {
+   "en": "e",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " e ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "5b76fd3bde": {
    "en": "the rate is always the same, and negative",
@@ -232,6 +264,14 @@
    "pt": "o chão — a altura zero",
    "qa": "ok",
    "tipo": "js"
+  },
+  "8005abcde7": {
+   "en": ". The two defects change — that's the  \n  difference the leaf wants you to see.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": ". As duas de defeito mudam — é a\n  diferença que a folha quer que se veja.",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "8c04ef34eb": {
    "en": "the measurements form a PARABOLA — degree one less",
@@ -377,6 +417,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "c065e78948": {
+   "en": "The <b>eleven family curves</b> of this instrument were verified in code: classify  \n  each one <i>only</i> by what the measured rate returns the correct label in the eleven, and the  \n  answer doesn't change between",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "As <b>onze curvas de família</b> deste instrumento foram conferidas em código: classificar\n  cada uma <i>só</i> pelo que a taxa medida faz devolve o rótulo certo nas onze, e a resposta não\n  muda entre ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "c253b99e91": {
    "en": "<b class=\"nao\">no.</b> it was <b>",
    "modelo": "phi-4",
@@ -497,6 +545,14 @@
    "qa": "ok",
    "tipo": "js"
   },
+  "ed810519fb": {
+   "en": ", the slope of a string centered at the point. In the families, changing the step almost doesn't  \n  change the answer. At the <b>tip</b>, everything changes: the measured rate rises in a ramp  \n  instead of jumping, and the ramp gets narrower as the step decreases — the ramp was from the  \n  <b>instrument</b>, not the curve. At the <b>jump</b>, the measured value spikes and grows  \n  endlessly as the step shrinks.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": ", a\n  inclinação de uma cordinha centrada no ponto. Nas famílias, mudar o passo quase não muda a\n  resposta. No <b>bico</b>, muda tudo: a taxa medida sobe em rampa em vez de saltar, e a rampa\n  fica mais estreita conforme o passo diminui — a rampa era do <b>instrumento</b>, não da\n  curva. No <b>salto</b>, o valor medido dispara e cresce sem parar quando o passo encolhe.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "f2700160ff": {
    "en": "at the cusp the measured rate rises in a RAMP instead of jumping — and the ramp shrinks with the step: it was from the instrument",
    "modelo": "phi-4",
@@ -513,11 +569,27 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "f4aacdee0b": {
+   "en": "dividido por",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " dividido por ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "f93b9d10a8": {
    "en": "The <code>h</code> is the step of the measure: <code>Δf</code> divided by <code>2h</code>, the  \nslope of a string centered on the point. In families, changing the step barely changes the  \nanswer. At the <b>cusp</b>, it changes everything: the measured rate rises in a ramp instead of jumping, and the ramp  \nbecomes narrower as the step shrinks — the ramp was from the <b>instrument</b>, not the curve. At the <b>jump</b>, the measured value skyrockets and grows without end as the step shrinks.",
    "modelo": "phi-4",
    "orfao": false,
    "pt": "O <code>h</code> é o passo da medida: <code>Δf</code> dividido por <code>2h</code>, a\n  inclinação de uma cordinha centrada no ponto. Nas famílias, mudar o passo quase não muda a\n  resposta. No <b>bico</b>, muda tudo: a taxa medida sobe em rampa em vez de saltar, e a rampa\n  fica mais estreita conforme o passo diminui — a rampa era do <b>instrumento</b>, não da\n  curva. No <b>salto</b>, o valor medido dispara e cresce sem parar quando o passo encolhe.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "fbb5f1d031": {
+   "en": "<span class=\"placar\" id=\"placar\">correct: 0 of 0</span>",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "\n  <span class=\"placar\" id=\"placar\">acertos: 0 de 0</span>\n",
    "qa": "ok",
    "tipo": "prosa"
   }

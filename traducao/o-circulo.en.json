@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:02",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "02ba5efea1": {
    "en": "<b>Why the floor locks.</b> When you turn on the wave, the floor cursor resets to zero and locks. It's not a gimmick or oversight: the unrolled strip is nearly half a thousand pixels long, and it's impossible to rotate it within this frame without it leaving the screen — we measured. Unrolling <b>requires choosing a floor</b>, and here the choice is the usual one. Turn off the wave and its slope returns exactly as it was.",
@@ -137,6 +137,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "483890ff59": {
+   "en": "And it pays more: with this drawn line, the two triangles that appear —  \n  the small one, with sides <b class=\"c-cos\">cosine</b> and <b class=\"c-sen\">sine</b>, and the large one,  \n  with sides <b>radius</b> and <b class=\"c-tg\">tangent</b> — are <b>similar</b>. The ratio between  \n  the sides is the same in both, and this is, as a drawing and not as a formula,",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "E ela paga mais: com essa reta desenhada, os dois triângulos que aparecem —\n  o pequeno, de lados <b class=\"c-cos\">cosseno</b> e <b class=\"c-sen\">seno</b>, e o grande,\n  de lados <b>raio</b> e <b class=\"c-tg\">tangente</b> — são <b>semelhantes</b>. A razão entre\n  os lados é a mesma nos dois, e isso é, como desenho e não como fórmula,\n  ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "485d3b88e2": {
    "en": "<b>arc</b> — from zero to the point",
    "modelo": "phi-4",
@@ -168,6 +176,14 @@
    "pt": "T saiu do quadro · tg = ",
    "qa": "ok",
    "tipo": "js"
+  },
+  "58e6b3a414": {
+   "en": "and",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " e ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "5d5507cde8": {
    "en": "4. The Distance",
@@ -222,6 +238,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "← A distância",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "8b197b3f5a": {
+   "en": "Local, self-contained instrument: no network, no external library. From the same family of",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Da mesma família de\n  ",
    "qa": "ok",
    "tipo": "prosa"
   },

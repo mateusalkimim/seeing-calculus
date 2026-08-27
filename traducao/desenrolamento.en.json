@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:07",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "026edbd86c": {
    "en": "height = sin a",
@@ -88,6 +88,14 @@
    "pt": "o gráfico — a mesma altura, na posição a",
    "qa": "ok",
    "tipo": "js"
+  },
+  "2cd94b9b50": {
+   "en": "<b>2. The dotted vertical line is the tangent line to the circle at (1,0).</b> This is why the tangent is called a tangent: the value",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>2. A reta vertical pontilhada é a reta tangente ao círculo em (1,0).</b> É por isso\n  que a tangente se chama tangente: o valor ",
+   "qa": "ok",
+   "tipo": "prosa"
   },
   "3b7170ab03": {
    "en": "<input type=\"checkbox\" id=\"arco\" checked> show arc",
@@ -218,6 +226,13 @@
    "qa": "ok",
    "tipo": "js"
   },
+  "9711bd76f0": {
+   "en": null,
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>3. O arco tem comprimento |a|.</b> É a definição de radiano, e é o que deixa comparar\n  os três: <b>altura &lt; arco &lt; tangente</b>. Essa desigualdade, obtida sem conta nenhuma,\n  é o que prova o limite de ",
+   "tipo": "prosa"
+  },
   "9841dfd212": {
    "en": "<span><b>a</b> = <span id=\"ra\"></span> rad = <span id=\"rg\"></span>°</span>\n  <span class=\"v-seno\"><b>sin a</b> = <span id=\"rs\"></span></span>\n  <span class=\"v-cos\"><b>cos a</b> = <span id=\"rc\"></span></span>\n  <span class=\"v-tg\"><b>tan a</b> = <span id=\"rt\"></span></span>\n  <span style=\"color:#8fa0b8\"><b>arc</b> = <span id=\"rarc\"></span></span>",
    "modelo": "phi-4",
@@ -263,6 +278,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Companheiro da Estação 5\n  do C1 · Ler um gráfico.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b197b006cd": {
+   "en": "is a length measured  \n<i>along the tangent line</i>. The point T is where the line through the origin and P intersects this line — and this is why T shoots off when P approaches the vertical: the two lines become parallel and no longer intersect. The asymptote of the tangent graph is this, seen up close.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " é um comprimento medido\n  <i>sobre a reta tangente</i>. O ponto T é onde a reta que passa pela origem e por P\n  encontra essa reta — e é por isso que T dispara quando P se aproxima da vertical: as duas\n  retas ficam paralelas e não se encontram mais. A assíntota do gráfico da tangente é isso,\n  vista de perto.",
    "qa": "ok",
    "tipo": "prosa"
   },

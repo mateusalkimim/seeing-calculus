@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 13:39:02",
+ "atualizado_em": "2026-08-27 14:10:07",
  "blocos": {
   "0cff0059da": {
    "en": "2. The Angle",
@@ -105,11 +105,27 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "58e6b3a414": {
+   "en": "e",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": " e\n  ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "5992d198d9": {
    "en": "<b>1. Change angle.</b> The triangle doesn’t change — no side moves. But what was  \n  <b class=\"c-op\">opposite</b> becomes <b class=\"c-adj\">adjacent</b> and vice-versa, because the  \n  names describe the <i>position in relation to the angle viewed</i>. Those who memorized  \n  SOH-CA-TOA without seeing this treat the names as if they were of the side, and err when  \n  the drawing is rotated.",
    "modelo": "phi-4",
    "orfao": false,
    "pt": "<b>1. Troque de ângulo.</b> O triângulo não muda — nenhum lado se move. Mas o que era\n  <b class=\"c-op\">oposto</b> vira <b class=\"c-adj\">adjacente</b> e vice-versa, porque os\n  nomes descrevem a <i>posição em relação ao ângulo olhado</i>. Quem decorou SOH-CA-TOA sem\n  ver isto trata os nomes como se fossem do lado, e erra quando o desenho vem girado.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "5b93388aa9": {
+   "en": "Set the size to <b>1</b>. Now the hypotenuse is one, and the two ratios become the\n  actual lengths: the opposite <i>is</i> the sine, the adjacent <i>is</i> the cosine. This is\n  exactly the triangle that is drawn inside the",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "Ponha o tamanho em <b>1</b>. Agora a hipotenusa vale um, e as duas razões viram os\n  próprios comprimentos: o oposto <i>é</i> o seno, o adjacente <i>é</i> o cosseno. Este é\n  exatamente o triângulo que está desenhado dentro do ",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -177,6 +193,14 @@
    "qa": "ok",
    "tipo": "prosa"
   },
+  "8cd1ea1859": {
+   "en": "<b>2. And there the sine becomes cosine.</b> The two acute angles sum to a right angle — they\n  are <b>complementary</b>. Looking from the other side, the opposite and adjacent swap, so the\n  ratio that was the sine becomes the cosine:",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "<b>2. E aí o seno vira cosseno.</b> Os dois ângulos agudos somam um reto — são\n  <b>complementares</b>. Olhando do outro, o oposto e o adjacente trocam, então a razão que\n  era o seno passa a ser o cosseno:\n  ",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
   "91f579bbe1": {
    "en": "← The angle",
    "modelo": "phi-4",
@@ -198,6 +222,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "<b>Faça:</b> mude <i>a forma</i> e veja os três lados mudarem juntos. Aperte <i>olhar do\noutro ângulo</i> e veja os nomes pularem de lugar. Depois mexa em <i>o tamanho</i>: todos os\ncomprimentos mudam, e nenhuma razão muda — é exatamente por isso que as razões têm nome.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "98de976b3e": {
+   "en": ". That's <b>where</b> the \"co\" in cosine comes from: it is the sine of the\n  <b>co</b>mplement. Turn on <i>show complement</i> and see the two angles closing the\n  right angle.",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": ". É <b>daí</b> que vem o \"co\" de cosseno: ele é o seno do\n  <b>co</b>mplemento. Ligue <i>mostrar o complemento</i> e veja os dois ângulos fechando o\n  ângulo reto.",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -254,6 +286,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "<b>2. E aí o seno vira cosseno.</b> Os dois ângulos agudos somam um reto — são\n  <b>complementares</b>. Olhando do outro, o oposto e o adjacente trocam, então a razão que\n  era o seno passa a ser o cosseno:\n  <code>sen θ = cos(90° − θ)</code>. É <b>daí</b> que vem o \"co\" de cosseno: ele é o seno do\n  <b>co</b>mplemento. Ligue <i>mostrar o complemento</i> e veja os dois ângulos fechando o\n  ângulo reto.",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "b70bbf9fda": {
+   "en": ", with the\n  hypotenuse in the place of the radius — and the colors here are the same as there on purpose.\n  <span class=\"deck\">It is also the triangle from the rate.html: there the adjacent is 1 and the\n  opposite is f′, and so f′ = opposite/adjacent = tg θ.</span>",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": ", com a\n  hipotenusa no lugar do raio — e as cores aqui são as mesmas de lá de propósito.\n  <span class=\"deck\">É também o triângulo da taxa.html: lá o adjacente vale 1 e o oposto\n  vale f′, e por isso f′ = oposto/adjacente = tg θ.</span>",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -382,6 +422,14 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "mostrar o complemento",
+   "qa": "ok",
+   "tipo": "prosa"
+  },
+  "fa6d811165": {
+   "en": "Local, self-contained instrument: no network, no external library. Slice from the same family\n  of \n```",
+   "modelo": "phi-4",
+   "orfao": true,
+   "pt": "\n  Instrumento local, autocontido: sem rede, sem biblioteca externa. Fatia da mesma família\n  de ",
    "qa": "ok",
    "tipo": "prosa"
   }
