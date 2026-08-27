@@ -29,7 +29,7 @@ Para conferir o repositório (precisa de Python 3 e Node, só para isso):
 
 ```bash
 python3 auditar_fatias.py --controle   # o portão, com controle negativo
-python3 gerar_indice.py                # regera o index.html a partir das fatias
+python3 gerar_indice.py                # regera o index e a navegação das oito
 ```
 
 Passo a passo por sistema operacional em [`docs/INSTALACAO.md`](docs/INSTALACAO.md).
@@ -52,7 +52,7 @@ a-distancia.html      │
 o-circulo.html        │
 desenrolamento.html   │
 o-encontro.html       ┘
-gerar_indice.py       lê as fatias e escreve o index
+gerar_indice.py       lê as fatias, escreve o index E injeta a navegação
 auditar_fatias.py     o portão: ordem, herança de símbolo, rede, JS
 pharo/                o conhecimento destilado — por que a ordem é essa
 docs/INSTALACAO.md    passo a passo por SO
@@ -159,6 +159,12 @@ O portão cobra:
 python3 auditar_fatias.py --controle
 ```
 
+A **navegação** de cada fatia é gerada da mesma ordem — anterior, posição na
+fila, próxima — e injetada num bloco marcado. Reordenar as fatias reescreve as
+oito de uma vez, e o portão reprova se a posição anunciada divergir do
+manifesto. Ela vai **inline**, e não num `nav.js`, porque cada fatia **abre
+sozinha**: um arquivo solto por e-mail tem de continuar funcionando.
+
 Nenhum símbolo gasto sem vir da própria fatia ou de uma **anterior** — herdar de
 quem vem depois não é herdar, é supor. Nenhum empréstimo sem alguém depois
 pagá-lo. Nenhuma declaração ociosa, que serviria só para silenciar o portão.
@@ -188,6 +194,8 @@ gerado, e a licença por camada.
 
 O que falta, declarado em vez de escondido:
 
+- ~~cada fatia era um beco sem saída~~ — **resolvido em 2026-08-27**: navegação
+  e posição na fila, geradas da mesma ordem que o portão cobra;
 - **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se
   fundirem bem depois. A fusão ainda não aconteceu, e tem uma pergunta aberta:
   a chave *a onda* do `o-circulo` faz o que o `desenrolamento` faz, e dois
