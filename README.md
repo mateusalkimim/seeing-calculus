@@ -36,6 +36,12 @@ Passo a passo por sistema operacional em [`docs/INSTALACAO.md`](docs/INSTALACAO.
 
 ## O que tem aqui
 
+**Uma cor, um papel** — a regra que amarra as oito: *azul = ao longo da
+referência* (`x`, cateto adjacente, cosseno) · *terracota = perpendicular a ela*
+(`y`, cateto oposto, seno, a taxa). As exceções estão declaradas em
+[`pharo/ux-de-explicacao-interativa.md`](pharo/ux-de-explicacao-interativa.md),
+que também traz o levantamento de domínio por trás das decisões de interface.
+
 ```
 index.html            a porta — GERADO por gerar_indice.py, não editar à mão
 par-vira-ponto.html   ┐

@@ -7,7 +7,7 @@
 <title>A taxa — a função descrita pela mudança</title>
 <style>
   :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
-         --f:#78c4ff; --taxa:#e8654f; --area:#4e9d6b; --sec:#a98a55; }
+         --f:#9b8ec4; --taxa:#e8654f; --area:#4e9d6b; --sec:#a98a55; }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fundo);color:var(--creme);
        font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
@@ -139,8 +139,8 @@ no fim da ordem.</p>
   // onde importa — no bico e no salto, que são dois dos casos a mostrar.
   // ═══════════════════════════════════════════════════════════════════════
   const CO={fundo:'#081120',eixo:'#1e3050',zero:'#41638f',fraco:'#5b6b86',
-            creme:'#e8e2d6',ouro:'#c9a266',f:'#78c4ff',taxa:'#e8654f',
-            area:'#4e9d6b',sec:'#a98a55'};
+            creme:'#e8e2d6',ouro:'#c9a266',f:'#9b8ec4',taxa:'#e8654f',
+            area:'#4e9d6b',sec:'#a98a55',adj:'#78c4ff'};
 
   const FUNCOES=[
     {n:'reta constante', f:()=>1.2, d:()=>0,
@@ -283,7 +283,7 @@ no fim da ordem.</p>
       if(isFinite(d)&&Math.abs(d)<24){
         const e=2.8;
         linha(mx(x-e),my(v-d*e),mx(x+e),my(v+d*e),CO.ouro,1.9);
-        linha(mx(x),my(v),mx(x+1),my(v),CO.creme,1.5);
+        linha(mx(x),my(v),mx(x+1),my(v),CO.adj,1.6);   // o cateto ADJACENTE: azul
         linha(mx(x+1),my(v),mx(x+1),my(v+d),CO.taxa,3.2);
         txt('1',mx(x+.5),my(v)+15,CO.fraco,10,'center');
       }

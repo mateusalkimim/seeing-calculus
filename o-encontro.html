@@ -7,7 +7,7 @@
 <title>O encontro — a inclinação é uma tangente</title>
 <style>
   :root{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
-         --curva:#78c4ff; --adj:#78c4ff; --tg:#c9a266; --chao:#41638f; }
+         --curva:#9b8ec4; --adj:#78c4ff; --tg:#c9a266; --chao:#41638f; }
   *{box-sizing:border-box}
   body{margin:0;background:var(--fundo);color:var(--creme);
        font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:22px 26px 40px}
@@ -80,6 +80,12 @@ da direita. Os dois painéis dividem a mesma escala, então isso se confere com 
   curva desce, θ é negativo e o segmento aponta para baixo. A inclinação não é uma metáfora —
   é um ângulo, e ele está desenhado.</p>
 
+  <p style="color:#8fa0b8"><b>Uma cor muda aqui, de propósito.</b> Nas outras fatias o
+  cateto que sobe é <b style="color:#e8654f">terracota</b> — é o componente perpendicular.
+  Nesta ele é <b style="color:#c9a266">dourado</b>, a cor da <b>tangente</b>, porque a tese
+  da fatia é exatamente que ele <i>é</i> o segmento de tangente do círculo. A troca é o
+  argumento, e por isso está declarada em vez de acontecer calada.</p>
+
   <h2>Por que as duas tangentes não são homônimas</h2>
   <p>A reta tangente ganhou o nome por <b>encostar</b>; o comprimento no círculo ganhou o
   nome por ser medido <b>sobre a reta que encosta no círculo</b>. Vêm da mesma palavra latina
@@ -118,7 +124,7 @@ da direita. Os dois painéis dividem a mesma escala, então isso se confere com 
   // metade direita e o segmento de tangente existe sempre.
   // ═══════════════════════════════════════════════════════════════════════
   const CO={fundo:'#081120',eixo:'#22374f',fraco:'#5b6b86',creme:'#e8e2d6',
-            ouro:'#c9a266',curva:'#78c4ff',chao:'#41638f',aux:'#8a94a4'};
+            ouro:'#c9a266',curva:'#9b8ec4',adj:'#78c4ff',chao:'#41638f',aux:'#8a94a4'};
 
   const FUNCOES=[
     {n:'parábola',    f:x=>0.35*x*x-1.15, d:x=>0.7*x},
@@ -199,14 +205,14 @@ da direita. Os dois painéis dividem a mesma escala, então isso se confere com 
     if(isFinite(v)&&Math.abs(v)<LIM){
       const e=1.7;
       linha(mx(x-e),my(v-d*e),mx(x+e),my(v+d*e),CO.ouro,1.9);   // a reta tangente
-      linha(mx(x),my(v),mx(x+1),my(v),CO.curva,1.6);            // anda 1 (o adjacente)
+      linha(mx(x),my(v),mx(x+1),my(v),CO.adj,1.6);              // anda 1: o cateto ADJACENTE
       // O CATETO OPOSTO — o segundo dourado, do MESMO comprimento do primeiro
       linha(mx(x+1),my(v),mx(x+1),my(v+d),CO.ouro,4.0);
       ct.save();ct.strokeStyle=CO.ouro;ct.lineWidth=2.0;ct.beginPath();
       ct.arc(mx(x),my(v),32,0,-th,th>0);ct.stroke();ct.restore();
       txt('θ',mx(x)+40,my(v)-(th>0?10:-18),CO.ouro,14,'left','600');
       if(verNomes){
-        txt('adjacente = 1',mx(x+0.5),my(v)+18,CO.curva,11.5,'center');
+        txt('adjacente = 1',mx(x+0.5),my(v)+18,CO.adj,11.5,'center');
         txt('oposto = f ′(x)',mx(x+1)+11,my(v+d/2),CO.ouro,11.5,'left');
       }
       disco(mx(x),my(v),CO.curva,6);
