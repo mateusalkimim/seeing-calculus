@@ -43,7 +43,22 @@
      linha, que é a faixa confortável. O desenho fica num quadro de 1100 px:
      largo o bastante para a construção caber sem encolher os rótulos,
      estreito o bastante para não engolir a folha. */
-  :root{ --col:620px }
+  :root{ --col:620px; --quadro:658px }   /* --quadro = a largura que este
+     desenho ocupa na tela, 568 px de altura vezes a proporção medida dele */
+  /* Cada fatia tem a proporção do PRÓPRIO desenho, medida no navegador. Por
+     isso o limite é a ALTURA e a largura segue: com width:100% uma folha
+     quase quadrada ficaria mais alta que larga — o defeito de origem com
+     outra roupa. */
+  /* ALTURA FIXA, largura pela proporção. Com width:auto as fatias menores
+     renderizavam 1:1 e as maiores encolhiam, e a folha descia com o
+     desenho mudando de altura a cada passo — 523, 568, 600. Agora a
+     faixa tem sempre a mesma altura e é a LARGURA que conta a forma da
+     composição: quase quadrada nas geométricas, larga nas de gráfico. */
+  canvas{height:568px;width:auto;max-width:1100px;margin:0 auto}
+  /* os controles pertencem ao DESENHO, não à página: sem isto eles
+     espalhavam pelos 1100 px do contêiner enquanto o quadro tinha 658,
+     e a folha ficava com dois alinhamentos brigando. */
+  .painel,#fns,#resp,.leitura{max-width:var(--quadro);margin-left:auto;margin-right:auto}
   body{max-width:1152px;margin:0 auto}
   h1,.sub,.faca,.notas{max-width:var(--col);margin-left:auto;margin-right:auto}
   /* sem isto o título quebra com órfã — a última palavra sozinha na
@@ -98,7 +113,7 @@ reta. Ligue <i>deixar rastro</i> e ande de novo — a curva não estava lá, ela
 
 <div id="fns"></div>
 
-<canvas id="c" width="1240" height="640"></canvas>
+<canvas id="c" width="764" height="660"></canvas>
 
 <div class="painel">
   <label>entra x = <input type="range" id="sl" min="-6" max="6" step="0.005" value="1.4"
@@ -177,6 +192,15 @@ reta. Ligue <i>deixar rastro</i> e ande de novo — a curva não estava lá, ela
   const bR=document.getElementById('bRastro'), bL=document.getElementById('bLimpa');
   let atual=0, rastro=true, pontos=[], rodando=false, ult=0;
 
+  // ── ENQUADRAMENTO, 2026-08-27 ────────────────────────────────────────
+  // O quadro era 1240x640 nas nove. Para uma composição quase quadrada como
+  // esta, isso deixava centenas de pixels de vazio dos dois lados. Agora ele
+  // é 764x660, e não é palpite: um navegador varreu TODOS os controles desta
+  // folha e mediu o que o desenho de fato ocupa; o quadro é esse retângulo
+  // com 28 px de folga. O translate acima centra o CONTEÚDO no quadro — não a
+  // caixa de desenho (W,H), que é outra coisa e continua valendo para o
+  // traçado. Mexeu no desenho? Meça de novo: número de enquadramento
+  // envelhece calado.
   const W=1240,H=640, U=52, ox=560, oy=350;      // origem do plano
   const XMIN=-6,XMAX=6, YMIN=-4.6,YMAX=4.6;
   const mx=x=>ox+U*x, my=y=>oy-U*y;
@@ -208,7 +232,7 @@ reta. Ligue <i>deixar rastro</i> e ande de novo — a curva não estava lá, ela
   // muda a moldura.
   function desenhar(x){
     const F=FUNCOES[atual], y=F.f(x), vale=isFinite(y)&&Math.abs(y)<=YMAX;
-    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(-163.5,3.5);   // enquadramento MEDIDO, ver a nota
 
     // ── A MÁQUINA, no alto: entra um número, sai outro ────────────────────
     const bx=330,by=26,bw=580,bh=52;

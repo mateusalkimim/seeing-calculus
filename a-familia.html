@@ -47,7 +47,22 @@
      linha, que é a faixa confortável. O desenho fica num quadro de 1100 px:
      largo o bastante para a construção caber sem encolher os rótulos,
      estreito o bastante para não engolir a folha. */
-  :root{ --col:620px }
+  :root{ --col:620px; --quadro:1100px }   /* --quadro = a largura que este
+     desenho ocupa na tela, 568 px de altura vezes a proporção medida dele */
+  /* Cada fatia tem a proporção do PRÓPRIO desenho, medida no navegador. Por
+     isso o limite é a ALTURA e a largura segue: com width:100% uma folha
+     quase quadrada ficaria mais alta que larga — o defeito de origem com
+     outra roupa. */
+  /* ALTURA FIXA, largura pela proporção. Com width:auto as fatias menores
+     renderizavam 1:1 e as maiores encolhiam, e a folha descia com o
+     desenho mudando de altura a cada passo — 523, 568, 600. Agora a
+     faixa tem sempre a mesma altura e é a LARGURA que conta a forma da
+     composição: quase quadrada nas geométricas, larga nas de gráfico. */
+  canvas{height:568px;width:auto;max-width:1100px;margin:0 auto}
+  /* os controles pertencem ao DESENHO, não à página: sem isto eles
+     espalhavam pelos 1100 px do contêiner enquanto o quadro tinha 658,
+     e a folha ficava com dois alinhamentos brigando. */
+  .painel,#fns,#resp,.leitura{max-width:var(--quadro);margin-left:auto;margin-right:auto}
   body{max-width:1152px;margin:0 auto}
   h1,.sub,.faca,.notas{max-width:var(--col);margin-left:auto;margin-right:auto}
   /* sem isto o título quebra com órfã — a última palavra sozinha na

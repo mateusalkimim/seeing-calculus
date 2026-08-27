@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 """Confere o layout das fatias num navegador de verdade.
 
-As fatias afirmam três coisas sobre a página: a prosa é uma coluna só, com
-todos os blocos na MESMA borda esquerda; o desenho fica num quadro contido em
-vez de ocupar o monitor; e nada transborda na horizontal. Afirmação sem
+As fatias afirmam quatro coisas sobre a página: a prosa é uma coluna só, com
+todos os blocos na MESMA borda esquerda; o desenho fica num quadro contido, com
+a proporção da própria composição; os controles pertencem ao desenho e ficam
+alinhados com ele, não com a página; e nada transborda na horizontal. Afirmação sem
 instrumento é promessa — este é o instrumento.
 
 O erro que ele existe para não deixar voltar: num monitor de 1900 px o desenho
@@ -23,7 +24,7 @@ import pathlib
 import sys
 
 LARGURA = 1900          # o monitor largo, que é onde o defeito aparecia
-TETO_ALTURA = 700       # o desenho não pode passar disto na tela
+TETO_ALTURA = 620       # o desenho não pode passar disto na tela
 PROSA = ("h1", ".sub", ".faca", ".notas")
 
 
@@ -59,6 +60,8 @@ def main():
                             h:Math.round(r.height)}; };
                   const prosa = {}; sel.forEach(s => { const v=cx(s); if(v) prosa[s]=v; });
                   return {prosa, cv: cx('canvas'),
+                          ctl: ['.painel','#fns','#resp','.leitura']
+                                 .map(s=>[s,cx(s)]).filter(p=>p[1]),
                           rola: document.documentElement.scrollWidth > window.innerWidth+1,
                           janela: window.innerWidth};
                 }""", list(PROSA))
@@ -75,6 +78,11 @@ def main():
                 if abs(cv["l"] - dir_) > 2:
                     achados.append(f"{nome}: o desenho não está centrado "
                                    f"(sobra {cv['l']} à esquerda e {dir_} à direita)")
+                for sel, c in m["ctl"]:
+                    if abs(c["l"] - cv["l"]) > 2 or abs(c["w"] - cv["w"]) > 2:
+                        achados.append(f"{nome}: {sel} está em x={c['l']} com "
+                                       f"{c['w']} px, e o desenho em x={cv['l']} "
+                                       f"com {cv['w']} — controle solto do quadro")
                 if cv["h"] > TETO_ALTURA:
                     achados.append(f"{nome}: o desenho tem {cv['h']} px de altura "
                                    f"(teto {TETO_ALTURA}) — ele volta a engolir a folha")

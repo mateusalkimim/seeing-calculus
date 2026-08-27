@@ -46,7 +46,22 @@
      linha, que é a faixa confortável. O desenho fica num quadro de 1100 px:
      largo o bastante para a construção caber sem encolher os rótulos,
      estreito o bastante para não engolir a folha. */
-  :root{ --col:620px }
+  :root{ --col:620px; --quadro:1064px }   /* --quadro = a largura que este
+     desenho ocupa na tela, 568 px de altura vezes a proporção medida dele */
+  /* Cada fatia tem a proporção do PRÓPRIO desenho, medida no navegador. Por
+     isso o limite é a ALTURA e a largura segue: com width:100% uma folha
+     quase quadrada ficaria mais alta que larga — o defeito de origem com
+     outra roupa. */
+  /* ALTURA FIXA, largura pela proporção. Com width:auto as fatias menores
+     renderizavam 1:1 e as maiores encolhiam, e a folha descia com o
+     desenho mudando de altura a cada passo — 523, 568, 600. Agora a
+     faixa tem sempre a mesma altura e é a LARGURA que conta a forma da
+     composição: quase quadrada nas geométricas, larga nas de gráfico. */
+  canvas{height:568px;width:auto;max-width:1100px;margin:0 auto}
+  /* os controles pertencem ao DESENHO, não à página: sem isto eles
+     espalhavam pelos 1100 px do contêiner enquanto o quadro tinha 658,
+     e a folha ficava com dois alinhamentos brigando. */
+  .painel,#fns,#resp,.leitura{max-width:var(--quadro);margin-left:auto;margin-right:auto}
   body{max-width:1152px;margin:0 auto}
   h1,.sub,.faca,.notas{max-width:var(--col);margin-left:auto;margin-right:auto}
   /* sem isto o título quebra com órfã — a última palavra sozinha na
@@ -98,7 +113,7 @@ se move — ela é sempre o lado oposto ao ângulo reto.</p>
 outro ângulo</i> e veja os nomes pularem de lugar. Depois mexa em <i>o tamanho</i>: todos os
 comprimentos mudam, e nenhuma razão muda — é exatamente por isso que as razões têm nome.</p>
 
-<canvas id="c" width="1240" height="640"></canvas>
+<canvas id="c" width="980" height="523"></canvas>
 
 <div class="painel">
   <label>a forma = <input type="range" id="th" min="0.18" max="1.39" step="0.002" value="0.62"
@@ -182,6 +197,15 @@ comprimentos mudam, e nenhuma razão muda — é exatamente por isso que as raz�
   const th=document.getElementById('th'), hh=document.getElementById('h'),
         bTroca=document.getElementById('bTroca'), bComp=document.getElementById('bComp');
   let noOutro=false, verComp=false;
+  // ── ENQUADRAMENTO, 2026-08-27 ────────────────────────────────────────
+  // O quadro era 1240x640 nas nove. Para uma composição quase quadrada como
+  // esta, isso deixava centenas de pixels de vazio dos dois lados. Agora ele
+  // é 980x523, e não é palpite: um navegador varreu TODOS os controles desta
+  // folha e mediu o que o desenho de fato ocupa; o quadro é esse retângulo
+  // com 28 px de folga. O translate acima centra o CONTEÚDO no quadro — não a
+  // caixa de desenho (W,H), que é outra coisa e continua valendo para o
+  // traçado. Mexeu no desenho? Meça de novo: número de enquadramento
+  // envelhece calado.
   const W=1240,H=560, U=235, Ax=300, Ay=470;
 
   function linha(x1,y1,x2,y2,cor,l,tr){
@@ -202,7 +226,7 @@ comprimentos mudam, e nenhuma razão muda — é exatamente por isso que as raz�
     const t=+th.value, h=+hh.value;
     // O TRIÂNGULO NÃO DEPENDE DE 'noOutro' — é essa a demonstração.
     const A=[Ax,Ay], B=[Ax+U*h*Math.cos(t),Ay], C=[Ax+U*h*Math.cos(t),Ay-U*h*Math.sin(t)];
-    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(-182.5,-21.5);   // enquadramento MEDIDO, ver a nota
 
     // os três lados, pintados pelo PAPEL que têm para o ângulo escolhido
     const corAB = noOutro?CO.op:CO.adj;    // AB: adjacente a A, oposto a C

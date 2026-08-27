@@ -45,7 +45,22 @@
      linha, que é a faixa confortável. O desenho fica num quadro de 1100 px:
      largo o bastante para a construção caber sem encolher os rótulos,
      estreito o bastante para não engolir a folha. */
-  :root{ --col:620px }
+  :root{ --col:620px; --quadro:864px }   /* --quadro = a largura que este
+     desenho ocupa na tela, 568 px de altura vezes a proporção medida dele */
+  /* Cada fatia tem a proporção do PRÓPRIO desenho, medida no navegador. Por
+     isso o limite é a ALTURA e a largura segue: com width:100% uma folha
+     quase quadrada ficaria mais alta que larga — o defeito de origem com
+     outra roupa. */
+  /* ALTURA FIXA, largura pela proporção. Com width:auto as fatias menores
+     renderizavam 1:1 e as maiores encolhiam, e a folha descia com o
+     desenho mudando de altura a cada passo — 523, 568, 600. Agora a
+     faixa tem sempre a mesma altura e é a LARGURA que conta a forma da
+     composição: quase quadrada nas geométricas, larga nas de gráfico. */
+  canvas{height:568px;width:auto;max-width:1100px;margin:0 auto}
+  /* os controles pertencem ao DESENHO, não à página: sem isto eles
+     espalhavam pelos 1100 px do contêiner enquanto o quadro tinha 658,
+     e a folha ficava com dois alinhamentos brigando. */
+  .painel,#fns,#resp,.leitura{max-width:var(--quadro);margin-left:auto;margin-right:auto}
   body{max-width:1152px;margin:0 auto}
   h1,.sub,.faca,.notas{max-width:var(--col);margin-left:auto;margin-right:auto}
   /* sem isto o título quebra com órfã — a última palavra sozinha na
@@ -97,7 +112,7 @@ nasce do triângulo, e aqui dá para ver isso acontecendo.</p>
 <i>a distância exigida r</i> e aperte <i>varrer todos os pontos a essa distância</i>: o círculo
 aparece como <b>resultado</b> da condição, não como traço de lápis.</p>
 
-<canvas id="c" width="1240" height="640"></canvas>
+<canvas id="c" width="974" height="640"></canvas>
 
 <div class="painel">
   <label>x = <input type="range" id="sx" min="-3.2" max="3.2" step="0.005" value="1.6"
@@ -204,6 +219,15 @@ aparece como <b>resultado</b> da condição, não como traço de lápis.</p>
         sr=document.getElementById('sr'), bt=document.getElementById('play'),
         bL=document.getElementById('bLimpa');
   let marcas=[], rodando=false, ult=0, ang=0;
+  // ── ENQUADRAMENTO, 2026-08-27 ────────────────────────────────────────
+  // O quadro era 1240x640 nas nove. Para uma composição quase quadrada como
+  // esta, isso deixava centenas de pixels de vazio dos dois lados. Agora ele
+  // é 974x640, e não é palpite: um navegador varreu TODOS os controles desta
+  // folha e mediu o que o desenho de fato ocupa; o quadro é esse retângulo
+  // com 28 px de folga. O translate acima centra o CONTEÚDO no quadro — não a
+  // caixa de desenho (W,H), que é outra coisa e continua valendo para o
+  // traçado. Mexeu no desenho? Meça de novo: número de enquadramento
+  // envelhece calado.
   const W=1240,H=620, U=88, ox=620, oy=310;
   const mx=a=>ox+U*a, my=b=>oy-U*b;
 
@@ -228,7 +252,7 @@ aparece como <b>resultado</b> da condição, não como traço de lápis.</p>
   function desenhar(){
     const x=+sx.value, y=+sy.value, r=+sr.value;
     const d=Math.hypot(x,y), noCirculo=Math.abs(d-r)<0.035;
-    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
+    ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(-31.5,19.0);   // enquadramento MEDIDO, ver a nota
 
     ct.save();ct.strokeStyle=CO.eixo;ct.lineWidth=1;
     for(let k=-3;k<=3;k++){ct.beginPath();ct.moveTo(mx(k),my(-3.3));ct.lineTo(mx(k),my(3.3));

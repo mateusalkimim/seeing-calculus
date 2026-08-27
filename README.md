@@ -251,9 +251,24 @@ O que falta, declarado em vez de escondido:
   diferentes com margem automática dariam bordas esquerdas desalinhadas —, texto
   **justificado e centrado**, e o desenho num quadro de **1100 × 568**. Cada
   folha ganhou um bloco **Faça**, que nomeia um por um os controles que
-  existem nela. O `conferir_layout.py` mede isso num navegador de verdade, com
-  controle negativo: desfazer a largura da página reproduz os 954 px, e ele
-  reprova;
+  existem nela;
+- ~~o quadro do desenho era o mesmo nas nove~~ — **resolvido em 2026-08-27.**
+  Era 1240 × 640 em todas, e para uma composição quase quadrada isso deixava
+  centenas de pixels de vazio dos dois lados. Agora **cada fatia tem a proporção
+  do próprio desenho**, e o número não é palpite: um navegador varre todos os
+  controles de cada folha e mede o que a composição de fato ocupa; o quadro é
+  esse retângulo com 28 px de folga. O vazio caiu de 43% para 15% no
+  `par-vira-ponto`, e de 38% para 16% no `o-triangulo`. Na tela a **altura é
+  fixa** (568 px) e é a largura que conta a forma — de 658 px na mais quadrada a
+  1100 px nas de gráfico —, e os controles ficam alinhados com o quadro, não com
+  a página. A medida também corrigiu duas suposições minhas: o `o-circulo`
+  *parecia* pequeno e na verdade usa 1226 dos 1240 px; e as cinco fatias largas
+  enchem o quadro **por construção**, porque desenham grandezas que vão ao
+  infinito e são cortadas de propósito na borda;
+- o `conferir_layout.py` mede tudo isso num navegador de verdade — coluna,
+  centramento, proporção, controles e transbordo — e tem controle negativo:
+  desfazer a largura da página reproduz os 954 px, e soltar os controles do
+  quadro reprova. Ele nunca devolve "ok" por ausência de prova;
 - **QA visual humano.** Os dois portões medem o que é mecânico. Nenhuma fatia foi
   julgada por olho humano contra uma régua estética, e isso não se automatiza;
 - **nenhum teste de aprendizagem.** Não se mediu se alguém aprende mais com
