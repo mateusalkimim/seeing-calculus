@@ -1,23 +1,58 @@
-# Ver o cálculo
+# Ver o cálculo — `seeing-calculus`
 
-**Oito instrumentos interativos, em ordem.** Cada um mostra *uma* coisa, abre
-sozinho no navegador e funciona **offline** — sem instalação, sem rede, sem
-conta.
+**Oito instrumentos interativos que constroem, em ordem, o chão visual do
+cálculo.** Cada um mostra *uma* coisa, abre com dois cliques no navegador e
+funciona **offline**: são `canvas` e aritmética, **sem biblioteca de terceiro,
+sem rede, sem conta e sem servidor**. Nada sai da sua máquina — não há o que
+sair, porque não há para onde.
 
-No ar em <https://mateusalkimim.github.io/seeing-calculus/>.
+A garantia que interessa: eles não ilustram o que um texto já disse, eles
+deixam a afirmação ser **conferida com a régua**. Quando `o-encontro` diz que a
+derivada é a tangente do ângulo, ele desenha o círculo e a curva **na mesma
+escala e sobre a mesma linha do zero** — e então os dois comprimentos que a
+igualdade compara *são* dois comprimentos iguais em pixels. Medidos: 113 e 111,
+e a diferença é o disco na ponta de um deles.
 
-## O que isto é, e o que não é
+## Início rápido
 
-Não são ilustrações do que um texto já disse. São o lugar onde a afirmação pode
-ser **conferida com a régua**: quando duas coisas têm o mesmo comprimento, elas
-têm o mesmo comprimento na tela, e você mede.
+Não há instalação. Baixe e abra:
 
-Um exemplo do que isso quer dizer na prática. A folha `o-encontro` afirma que a
-derivada é a tangente do ângulo que a reta tangente faz com o eixo. Em vez de
-escrever a igualdade e pedir fé, ela desenha o círculo e a curva **na mesma
-escala e sobre a mesma linha do zero** — e então o segmento de tangente do
-círculo e o cateto do triângulo sobre a curva *são* dois comprimentos iguais em
-pixels. Medidos: 113 e 111, e a diferença é o disco na ponta de um deles.
+```bash
+git clone https://github.com/mateusalkimim/seeing-calculus.git
+cd seeing-calculus
+xdg-open index.html          # Linux · no Windows, duplo clique no index.html
+```
+
+Ou use direto no ar: <https://mateusalkimim.github.io/seeing-calculus/>.
+
+Para conferir o repositório (precisa de Python 3 e Node, só para isso):
+
+```bash
+python3 auditar_fatias.py --controle   # o portão, com controle negativo
+python3 gerar_indice.py                # regera o index.html a partir das fatias
+```
+
+Passo a passo por sistema operacional em [`docs/INSTALACAO.md`](docs/INSTALACAO.md).
+
+## O que tem aqui
+
+```
+index.html            a porta — GERADO por gerar_indice.py, não editar à mão
+par-vira-ponto.html   ┐
+taxa.html             │
+o-angulo.html         │
+o-triangulo.html      ├ as oito fatias, na ordem do manifesto de cada uma
+a-distancia.html      │
+o-circulo.html        │
+desenrolamento.html   │
+o-encontro.html       ┘
+gerar_indice.py       lê as fatias e escreve o index
+auditar_fatias.py     o portão: ordem, herança de símbolo, rede, JS
+pharo/                o conhecimento destilado — por que a ordem é essa
+docs/INSTALACAO.md    passo a passo por SO
+LICENSE               MIT, para o código
+LICENSE-CONTENT       CC BY-SA 4.0, para o conteúdo
+```
 
 ## A ordem, e por que ela não é livre
 
@@ -47,6 +82,44 @@ corrente da medida. **A raiz não é livre.**
 | 6 | `o-circulo` | seno, cosseno e tangente como **comprimentos**, sobre um chão que se escolhe |
 | 7 | `desenrolamento` | o círculo virando gráfico: a altura não muda, a entrada muda de lugar |
 | 8 | `o-encontro` | onde os dois ramos se juntam |
+
+| | fatia | o que mostra |
+|---|---|---|
+| 1 | `par-vira-ponto` | duas retas numéricas viram um plano; o gráfico é o rastro dos encontros |
+| 2 | `taxa` | como a saída muda quando a entrada anda; a secante virando tangente |
+| 3 | `o-angulo` | medir uma abertura; graus, radianos, e de onde cai o π |
+| 4 | `o-triangulo` | oposto e adjacente dependem de **qual** ângulo; daí o *co* de cosseno |
+| 5 | `a-distancia` | o círculo é gerado por uma condição, e a condição é Pitágoras |
+| 6 | `o-circulo` | seno, cosseno e tangente como **comprimentos**, sobre um chão que se escolhe |
+| 7 | `desenrolamento` | o círculo virando gráfico: a altura não muda, a entrada muda de lugar |
+| 8 | `o-encontro` | onde os dois ramos se juntam |
+
+## O lugar no ciclo maior
+
+Estas fatias são material da **Hipátia**, o componente de ensino do sistema
+Ítaca, e nasceram ao lado de uma série de seminários sobre visão computacional
+e geometria da imagem. A **norma** que as governa não mora aqui: é a
+`norma-de-notacao.md` da Hipátia, §0b.7, que declarou instrumento interativo
+como material didático e definiu o que este portão cobra. **O instrumento saiu
+para cá; a regra ficou lá.**
+
+O parente próximo é o
+[math-prerequisite-map](https://github.com/mateusalkimim/math-prerequisite-map),
+de onde vieram o molde deste repositório e a escolha de licença.
+
+## Proveniência e garantias
+
+- **Nada de terceiro aqui dentro.** Nenhuma biblioteca, nenhum framework,
+  nenhum ativo baixado. Cada fatia é HTML, CSS e JavaScript escritos para ela,
+  desenhando em `canvas`.
+- **Zero rede, por contrato e por portão.** O `auditar_fatias.py` reprova
+  qualquer `@import`, `src`, `<link>`, `url()` ou `fetch` externo. Um `<a href>`
+  clicável é permitido — link é coisa que o leitor escolhe seguir, não coisa
+  que a página busca sozinha.
+- **Sem telemetria, sem cookie, sem armazenamento.** As fatias não guardam nem
+  transmitem nada.
+- **Sem dado de cliente, sem material sob NDA, sem segredo.** Não há chave,
+  token nem caminho de máquina versionado aqui.
 
 ## Como isto se verifica
 
@@ -85,8 +158,28 @@ O share-alike protege a *expressão*; não protege a ideia, e não se pretende q
 proteja. O que crava autoria de um método é a publicação datada — e é por isso
 que este repositório existe em vez de uma pasta no disco.
 
+## Estado, e o que falta
+
+O que está de pé: as oito fatias, o portão com controle negativo, o índice
+gerado, e a licença por camada.
+
+O que falta, declarado em vez de escondido:
+
+- **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se
+  fundirem bem depois. A fusão ainda não aconteceu, e tem uma pergunta aberta:
+  a chave *a onda* do `o-circulo` faz o que o `desenrolamento` faz, e dois
+  arquivos desenhando a mesma coisa divergem em silêncio;
+- **o ramo da ordem.** A raiz é fixa; se a `taxa` deve vir antes ou depois da
+  corrente da medida é escolha, e hoje ela vem antes — pagando isso com três
+  empréstimos declarados;
+- **QA visual humano.** O portão mede o que é mecânico. Nenhuma fatia foi
+  julgada por olho humano contra uma régua estética, e isso não se automatiza;
+- **nenhum teste de aprendizagem.** Não se mediu se alguém aprende mais com
+  isto. A afirmação deste repositório é sobre o que as figuras *mostram*, não
+  sobre efeito medido em estudante.
+
 ## Procedência
 
 Nasceu em 2026-08-26/27 como um conjunto de fatias dentro do material da
 Hipátia, e saiu para repositório próprio no mesmo movimento em que ganhou norma
-e portão. Nenhuma delas usa biblioteca de terceiro: são canvas e aritmética.
+e portão.
