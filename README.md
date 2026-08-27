@@ -202,23 +202,29 @@ O que falta, declarado em vez de escondido:
 - ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: moldura de
   640 nas oito, com cada composição centrada e intocada;
 - **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se
-  fundirem bem depois. A fusão começou em 2026-08-27 pela primeira sobreposição:
-  ~~a chave *a onda* do `o-circulo` fazia o que o `desenrolamento` faz~~ —
-  **a onda foi cortada.** Não pela duplicação: ela rodava com o chão forçado em
-  zero, e era o único controle da página que precisava *desligar a tese da
-  página* para funcionar. A regra que ficou, e que decide as próximas: **quando
-  duas fatias afirmam a mesma coisa, fica com quem a afirmação é a tese; perde
-  quem ela é uma chave.** Os próximos contatos a examinar são o triângulo
-  desenhado no `o-circulo` × `o-triangulo`, e a reta tangente, que aparece em três
-  folhas;
-- **o ponto T sai da moldura**, achado em 2026-08-27 pela varredura que
-  recentrou o `o-circulo`. O corte da tangente é `|r·tg| < 2,6`, mas a distância
-  de O até T é `r/|cos θ|`, e é ela que decide se o ponto cabe: com `θ = +0,977`,
-  chão `−2,548` e raio 1,75 o T cai 149 px fora do canvas — e sai em **todo**
-  raio, inclusive no padrão (97 px). O ponto ouro que o item 1b existe para
-  explicar pode não estar na tela. O conserto é trocar o critério de `|r·tg|`
-  para a distância, e ele **encurta o quanto se vê a tangente crescer** — por
-  isso está declarado aqui em vez de aplicado;
+  fundirem bem depois. A primeira sobreposição examinada foi *a onda* do
+  `o-circulo` × o `desenrolamento`. Eu cortei a onda por ela zerar o chão, e o
+  **autor reverteu** — com razão, e por um motivo que a minha análise não
+  alcançava: a onda é **recurso metodológico**, ela forma a imagem mental do
+  fenômeno, e ver a curva *sendo desenhada* enriquece o entendimento. Coerência
+  estrutural não é a única régua de uma folha didática. Ao repor apareceu o que
+  o corte tinha escondido: **a versão antiga nunca desenhou a curva
+  progressivamente** — pintava a senoide inteira de uma vez, e o `rastro` estava
+  declarado e nunca usado, com a prosa afirmando um comportamento que o código
+  não tinha. Agora a curva é traçada de −6,2 até o ângulo de agora: animar
+  desenha, arrastar o ângulo faz o traço avançar e recuar. As duas folhas ficam,
+  e a diferença está dita nas duas: aqui a **imagem** do fenômeno, com o eixo
+  comprimido e declarado; no `desenrolamento`, a mesma passagem **em escala**,
+  com arco e tangente. Os próximos contatos a examinar são o triângulo desenhado
+  no `o-circulo` × `o-triangulo`, e a reta tangente, que aparece em três folhas;
+- ~~o ponto T sai da moldura~~ — **resolvido em 2026-08-27**, e o conserto virou
+  conteúdo. O corte antigo era `|r·tg| < 2,6`: a tangente simplesmente
+  **desaparecia** quando ficava grande, que é exatamente quando ela está fazendo
+  o que a folha quer mostrar. Uma varredura de 73.200 combinações mediu o T fora
+  da moldura em **23% delas** — todas com a tangente sumindo calada. Agora ela é
+  cortada **na borda**, com ponta de seta e o valor à mostra: o corte deixou de
+  esconder a assíntota e passou a mostrá-la. A varredura confirma 0 pontos fora
+  do quadro depois do corte;
 - ~~o ramo da ordem~~ — **resolvido em 2026-08-27.** A taxa desceu de segundo
   para sétimo e as três dívidas declaradas dela zeraram. O que resta é a
   distinção, agora escrita: dependência tem dois ramos, leitura é uma fila;

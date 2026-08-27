@@ -71,6 +71,7 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
          style="width:150px"></label>
   <button id="play">girar</button>
   <button id="bArco">o arco</button>
+  <button id="bOnda">a onda</button>
 </div>
 
 <table class="l">
@@ -98,7 +99,10 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   <p><b>1b. O <span class="c-tg">T</span> não é um ponto solto.</b> A reta fina que passa
   pela origem e pelo ponto P segue em frente e <b>encontra</b> a reta tangente: é esse
   encontro que define o T, e é por isso que o comprimento da tangente cresce sem limite
-  quando o raio se aproxima da perpendicular ao chão — as duas retas vão ficando paralelas.</p>
+  quando o raio se aproxima da perpendicular ao chão — as duas retas vão ficando paralelas.
+  E quando o <b class="c-tg">T</b> passa da moldura ele <b>não some</b>: a tangente é cortada
+  na borda, com ponta de seta e o valor à mostra. Sumir calado esconderia justamente a
+  assíntota — que é o que se veio ver.</p>
 
   <p>E ela paga mais: com essa reta desenhada, os dois triângulos que aparecem —
   o pequeno, de lados <b class="c-cos">cosseno</b> e <b class="c-sen">seno</b>, e o grande,
@@ -121,14 +125,26 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   <span class="deck">Essa desigualdade, obtida sem conta nenhuma, é o que prova o limite que
   fecha a série no C4.</span></p>
 
-  <h2>E daqui para o gráfico</h2>
-  <p>A altura do ponto — o <b class="c-sen">seno</b> — pode ser levada para uma posição
-  horizontal, e o traço que ela deixa é a senoide. É verdadeiro e é bonito, e <b>não é o que
-  esta página vem dizer</b>: aqui seno e cosseno são comprimentos num círculo, medidos a partir
-  de um chão que se pode inclinar. Levar a altura para o gráfico <b>exige o chão na
-  horizontal</b> — exige desligar justamente o que esta página veio mostrar. Por isso essa
-  passagem tem folha própria, a seguinte:
-  <a href="desenrolamento.html">o desenrolamento</a>, onde ela é a tese e não uma chave.</p>
+  <h2>A onda: o círculo escrevendo</h2>
+  <p>Ligue <b>a onda</b> e mande <b>girar</b>. A altura do ponto — o <b class="c-sen">seno</b> —
+  é levada para uma posição, e a curva <b>vai sendo desenhada enquanto o ângulo anda</b>: não é
+  uma senoide que aparece pronta, é o círculo escrevendo uma. Arraste o <b>ângulo</b> com a mão
+  e o traço avança e recua com você. A ligação tracejada é horizontal de propósito — ela afirma
+  uma coisa só: <b>é a mesma altura, em dois lugares</b>.</p>
+
+  <p>Mexa no <b>raio</b> com a onda ligada. A amplitude é o raio — a onda não tem uma altura
+  própria, ela tem a altura do círculo que a gerou.</p>
+
+  <p><b>Por que o chão trava.</b> Ao ligar a onda, o cursor do chão volta a zero à vista e fica
+  travado. Não é enfeite nem descuido: a faixa desenrolada tem quase meio milhar de pixels de
+  comprimento, e não existe como girá-la dentro desta moldura sem que ela saia da tela —
+  medimos. Desenrolar <b>exige escolher um chão</b>, e aqui a escolha é a habitual. Desligue a
+  onda e a sua inclinação volta exatamente como estava.</p>
+
+  <p>O eixo de baixo marca <b>π</b> e <b>2π</b> para você ler a posição, mas está
+  <b>comprimido</b>: ele não está na mesma escala do raio. Esta folha quer a imagem do
+  fenômeno; quem faz a mesma passagem <b>em escala</b>, com o arco e a tangente junto, é a
+  folha seguinte — <a href="desenrolamento.html">o desenrolamento</a>.</p>
 
   <p style="color:#7f8ea4;font-size:12.5px;margin-top:24px">
   Instrumento local, autocontido: sem rede, sem biblioteca externa. Da mesma família de
@@ -141,15 +157,30 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   // TESE DESTA FATIA
   // A TESE, do operador (2026-08-26): mostrar o que sen, cos e tg SÃO —
   // comprimentos de um ângulo EM RELAÇÃO A UM CHÃO DADO, com o raio à vista.
-  // Sem gráfico, e desde 2026-08-27 sem a chave "a onda" — ela foi CORTADA.
-  // Ela desenhava a senoide, e para isso rodava com phi=0: era o único controle
-  // da página que precisava DESLIGAR a tese da página (o chão é uma escolha)
-  // para funcionar. Enfeite ao lado da lição é uma coisa; enfeite que custa a
-  // lição é outra. E a fatia seguinte, o desenrolamento, faz a mesma afirmação
-  // como TESE, com raio 1, tangente e arco. Regra que ficou: quando duas fatias
-  // afirmam a mesma coisa, fica com quem a afirmação é a tese.
-  // Não repor. O ponto que só a onda mostrava — amplitude segue o raio — já
-  // está na tabela, nas colunas comprimento × razão, e diz isso melhor.
+  // A ONDA, e a correção do operador (2026-08-27). Eu a cortei de manhã por
+  // ser enfeite que custava a tese da página (ela zera o chão). O operador
+  // REVERTEU, e a razão não estava no meu argumento: "tem coisas que são
+  // recursos metodológicos, que fazem a pessoa associar uma imagem mental do
+  // fenômeno, e ver essa curva se desenhando enriquece o entendimento".
+  // Imagem mental do fenômeno não é enfeite — é conteúdo, e eu tratei como
+  // decoração porque só media a coerência estrutural da folha.
+  //
+  // Ao repor, apareceu o que o corte tinha escondido: a versão antiga NUNCA
+  // desenhou a curva progressivamente. Ela pintava a senoide inteira de uma
+  // vez, e o `rastro` estava declarado e nunca usado — a prosa afirmava um
+  // comportamento que o código não tinha. O que o operador descreveu era
+  // justamente o que não existia.
+  //
+  // Agora a curva é desenhada de -6,2 até o ângulo de AGORA: animar desenha,
+  // arrastar o ângulo faz o traço avançar e recuar. Sem array de histórico —
+  // o estado é o próprio ângulo, então nada dessincroniza.
+  //
+  // O chão trava em zero POR GEOMETRIA, não por conveniência: a faixa
+  // desenrolada tem ~400px e o conjunto passaria de 300px de raio em torno do
+  // centro, que é a metade da moldura de 640 — uma composição de mil pixels de
+  // largura não gira dentro de uma moldura de 640 de altura. Isso está medido,
+  // e a página diz isso ao leitor em vez de esconder. A inclinação do operador
+  // é GUARDADA e devolvida ao desligar a onda.
   //
   // O CHÃO É INCLINÁVEL de propósito. Todo o aparelho (o zero do ângulo, a
   // projeção do cosseno, a perpendicular do seno, a reta tangente) é definido
@@ -165,13 +196,16 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   const cv=document.getElementById('c'), ct=cv.getContext('2d');
   const th=document.getElementById('th'), ch=document.getElementById('ch'),
         rr=document.getElementById('r'), bt=document.getElementById('play'),
-        bArco=document.getElementById('bArco');
-  let verArco=true, rodando=false, ult=0;
+        bArco=document.getElementById('bArco'), bOnda=document.getElementById('bOnda');
+  let verArco=true, verOnda=false, rodando=false, ult=0, chAntes=0;
 
-  // cx=620 desde 2026-08-27: com a onda cortada, a faixa 760–1190 ficou vazia e
-  // a composição foi recentrada no canvas. O 620 não é palpite — a varredura de
-  // (θ, chão, raio) mede a composição em ±480 px do centro, simétrica.
-  const W=1240,H=620, U=150, cx=620, cy=310;      // U = pixels por unidade de raio
+  // DOIS CENTROS, e nenhum deles é palpite. Sem a onda, a varredura de
+  // (θ, chão, raio) mede a composição em ±480 px do centro: 620 centra no canvas
+  // de 1240. Com a onda ligada o chão está travado em zero, e aí a composição
+  // encolhe para ±345 (o chão) + rótulo: 380 abre a faixa 800–1200 sem encostar.
+  const W=1240,H=620, U=150, cy=310;             // U = pixels por unidade de raio
+  const CX_SO=620, CX_ONDA=370;                  // centro: sozinho, e abrindo a faixa
+  const OX=800, OW=400;                          // a faixa desenrolada
 
   function linha(x1,y1,x2,y2,cor,l,tr){
     ct.save();ct.strokeStyle=cor;ct.lineWidth=l||1;if(tr)ct.setLineDash(tr);
@@ -192,8 +226,31 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   // remexido: H continua sendo a altura da composição, e o translate acima
   // a centra na altura comum. Mudar H aqui move o desenho; mudar o atributo
   // muda a moldura.
+  // ── O QUADRO, e o que faz quando algo sai dele ────────────────────────
+  // Antes, a tangente simplesmente SUMIA quando |r·tg| passava de 2,6 — e some
+  // justamente quando ela está fazendo o que a página quer mostrar: crescendo
+  // sem limite. O ponto ouro saía da moldura (69 px com o chão em zero, 149 px
+  // com ele inclinado) e ninguém via. Agora ela não some: é cortada NA BORDA,
+  // com ponta de seta e o valor à mostra. O corte deixou de esconder a
+  // assíntota e passou a mostrá-la.
+  const DENTRO=(x,y)=>x>=8&&x<=W-8&&y>=-2&&y<=H+2;
+  function ateBorda(x1,y1,x2,y2){        // último ponto do segmento ainda no quadro
+    if(DENTRO(x2,y2))return[x2,y2];
+    let lo=0,hi=1;                       // busca binária: sem caso especial de canto
+    for(let i=0;i<32;i++){const m=(lo+hi)/2;
+      DENTRO(x1+(x2-x1)*m,y1+(y2-y1)*m)?lo=m:hi=m;}
+    return[x1+(x2-x1)*lo,y1+(y2-y1)*lo];
+  }
+  function seta(x1,y1,x2,y2,cor){        // ponta no fim do segmento, apontando p/ fora
+    const a=Math.atan2(y2-y1,x2-x1);
+    ct.save();ct.fillStyle=cor;ct.beginPath();ct.moveTo(x2,y2);
+    ct.lineTo(x2-13*Math.cos(a-0.38),y2-13*Math.sin(a-0.38));
+    ct.lineTo(x2-13*Math.cos(a+0.38),y2-13*Math.sin(a+0.38));
+    ct.closePath();ct.fill();ct.restore();
+  }
+
   function desenhar(){
-    const t=+th.value, phi=+ch.value, r=+rr.value;
+    const t=+th.value, phi=+ch.value, r=+rr.value, cx=verOnda?CX_ONDA:CX_SO;
     ct.setTransform(1,0,0,1,0,0);ct.clearRect(0,0,cv.width,cv.height);ct.fillStyle=CO.fundo;ct.fillRect(0,0,cv.width,cv.height);ct.translate(0,(cv.height-H)/2);
 
     // u = direção do CHÃO; n = perpendicular a ele. Tudo se define a partir daqui.
@@ -213,8 +270,9 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
     const A=P(r,0);                                   // o zero do ângulo, sobre o chão
     const Pt=P(r*Math.cos(t), r*Math.sin(t));         // o ponto no círculo
     const Q=P(r*Math.cos(t), 0);                      // pé de P sobre o chão
-    const tg=Math.tan(t), temTg=Math.abs(Math.cos(t))>0.035 && Math.abs(r*tg)<2.6;
+    const tg=Math.tan(t), temTg=Math.abs(Math.cos(t))>0.035;
     const T=temTg?P(r, r*tg):null;                    // sobre a reta tangente em A
+    const Tvis=temTg&&DENTRO(T[0],T[1]);              // o T cabe no quadro?
 
     // a RETA TANGENTE ao círculo em A — de onde a tangente tira o nome
     linha(...P(r,-2.0),...P(r,2.0),'#3d5f7e',1.2,[5,5]);
@@ -228,13 +286,15 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
       // quando o T existe, a reta TEM de alcançá-lo: o parâmetro dele é
       // r/cos(t), e um teto menor que isso deixaria uma falha visível
       // justamente no ponto que a reta existe para explicar.
-      const L = temTg ? Math.min(Math.abs(r/Math.cos(t))*1.06, 3.2) : 2.0;
-      linha(...P(-L*Math.cos(t),-L*Math.sin(t)),
+      // 6 unidades passam de qualquer canto da moldura; quem encurta é o
+      // corte na borda, então a reta alcança o T mesmo quando ele foge.
+      const L = 6.0;
+      linha(...ateBorda(cx,cy,...P(-L*Math.cos(t),-L*Math.sin(t))),
       // cinza dessaturado DE PROPÓSITO: é linha de construção, e precisa se
       // distinguir do chão (#41638f). Na primeira versão as duas cores eram
       // quase iguais e as linhas se confundiam — numa figura cujo assunto é
       // "qual é a referência", esse é o pior lugar para uma ambiguidade.
-            ...P( L*Math.cos(t), L*Math.sin(t)),'#8a94a4',1.7);
+            ...ateBorda(cx,cy,...P( L*Math.cos(t), L*Math.sin(t))),'#8a94a4',1.7);
     }
 
     if(verArco){                                      // o arco: comprimento r·θ
@@ -242,8 +302,15 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
       ct.beginPath();ct.arc(cx,cy,U*r,-phi,-phi-t,t>0);ct.stroke();ct.restore();
     }
     if(temTg){                                        // a tangente
-      linha(...A,...T,CO.ouro,3.2); disco(...T,CO.ouro,4.5);
-      txt('tangente',T[0]+9,T[1],CO.ouro,11.5);
+      const [ex,ey]=ateBorda(A[0],A[1],T[0],T[1]);
+      linha(...A,ex,ey,CO.ouro,3.2);
+      if(Tvis){ disco(...T,CO.ouro,4.5); txt('tangente',T[0]+9,T[1],CO.ouro,11.5); }
+      else {                                          // o T fugiu: mostrar que fugiu
+        seta(A[0],A[1],ex,ey,CO.ouro);
+        const dx=ex>W-40?-8:9, al=ex>W-40?'right':'left';
+        txt('T saiu do quadro · tg = '+n2(r*tg),ex+dx,
+            ey+(ey<40?26:ey>H-40?-16:-12),CO.ouro,11.5,al);
+      }
     }
     linha(cx,cy,...Pt,CO.creme,1.7);                  // o raio
     linha(cx,cy,...Q,CO.cos,3.4);                     // o cosseno, AO LONGO do chão
@@ -277,6 +344,28 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
     const meio=P(.30*Math.cos(t/2), .30*Math.sin(t/2));
     txt('θ',meio[0]-4,meio[1]+5,CO.ouro,14,'left','600');
 
+    // ── A ONDA: o círculo entregando a altura, traço a traço ──────────────
+    if(verOnda){
+      const ESC=OW/12.4, MX=OX+OW/2;               // px por radiano (comprimido)
+      const gx=a=>MX+ESC*a, gy=a=>cy-U*r*Math.sin(a);
+      linha(OX,cy,OX+OW,cy,CO.chao,1.4);
+      for(const k of [-2,-1,1,2]){
+        const x=gx(k*Math.PI); if(x<OX-2||x>OX+OW+2) continue;
+        linha(x,cy-5,x,cy+5,CO.eixo,1);
+        txt((k<0?'−':'')+(Math.abs(k)>1?Math.abs(k):'')+'π',x,cy+20,CO.fraco,11,'center');
+      }
+      // O TRAÇO JÁ ESCRITO: do início da faixa até o ângulo de AGORA. É isto
+      // que faz a curva "ser desenhada" — e o estado é só o ângulo.
+      const N=Math.max(2,Math.round((t+6.2)/12.4*420));
+      ct.save();ct.strokeStyle=CO.sen;ct.lineWidth=2.4;ct.beginPath();
+      for(let i=0;i<=N;i++){const a=-6.2+(t+6.2)*i/N;
+        i?ct.lineTo(gx(a),gy(a)):ct.moveTo(gx(a),gy(a));}
+      ct.stroke();ct.restore();
+      linha(Pt[0],Pt[1],gx(t),gy(t),CO.sen,1.2,[4,4]);
+      disco(gx(t),gy(t),CO.sen,5.5);
+      txt('a mesma altura, levada para uma posição',MX,cy+U*1.62,CO.fraco,11.5,'center');
+    }
+
     const n=(z,c)=>isFinite(z)?z.toFixed(c===undefined?3:c):'—';
     const S=(id,v)=>document.getElementById(id).textContent=v;
     S('Lc',n(r*Math.cos(t))); S('Rc',n(Math.cos(t)));
@@ -294,6 +383,12 @@ aparelho inteiro gira com ele — a horizontal é hábito, não natureza. Mexa n
   bt.onclick=()=>{rodando=!rodando;ult=0;bt.textContent=rodando?'parar':'girar';
                   bt.classList.toggle('on',rodando);if(rodando)requestAnimationFrame(quadro)};
   bArco.onclick=()=>{verArco=!verArco;bArco.classList.toggle('on',verArco);desenhar()};
+  // ao ligar, o chão vai a zero À VISTA (o cursor anda) e trava; ao desligar,
+  // a inclinação do leitor VOLTA. O desenho lê sempre o cursor — nunca um
+  // valor secreto diferente do que o controle mostra.
+  bOnda.onclick=()=>{verOnda=!verOnda;bOnda.classList.toggle('on',verOnda);
+                     if(verOnda){chAntes=ch.value;ch.value=0;}else{ch.value=chAntes;}
+                     ch.disabled=verOnda;desenhar()};
   th.oninput=ch.oninput=rr.oninput=desenhar;
   bArco.classList.add('on'); desenhar();
 })();
