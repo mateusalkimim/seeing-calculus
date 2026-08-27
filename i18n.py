@@ -494,6 +494,31 @@ _PT_LETRA = re.compile(r"[a-zA-Z][ãõç]|[ãõç][a-zA-Z]")
 _LATEX = re.compile(r"\\\(|\\\[|\\Delta|\\frac|\\pi\\b|\\theta|\\sqrt")
 
 
+# A lingua de CHEGADA. `en` e o padrao; o modulo e o mesmo nas duas direcoes,
+# e quem inverte e quem chama (o README do PERFIL nasce em ingles).
+PARA = "en"
+
+# Palavra-funcao INGLESA sem homografo em portugues -- a sonda espelhada, para
+# quando o alvo e o portugues. Procurar "portugues sobrando" numa traducao PARA
+# o portugues seria acusar o proprio objetivo.
+_EN_SOBRA = re.compile(r"\b(the|and|of|with|that|which|from|this|these|those|"
+                       r"into|about|they|their|there|been|would|should|could|"
+                       r"will|have|has|was|were|when|where|while|through|"
+                       r"between|because|however|therefore)\b", re.I)
+
+
+def sobrou_ingles(texto):
+    """Duas ocorrencias, pela mesma razao da sonda espelhada: nome proprio e
+    termo de oficio que se usa em ingles no Brasil (pipeline, compositing,
+    open-source) aparecem uma vez e ficam."""
+    achados = [m.group(1) for m in _EN_SOBRA.finditer(texto)]
+    return achados[0] if len(achados) >= 2 else None
+
+
+def sobrou_a_lingua_de_partida(texto):
+    return sobrou_ingles(texto) if PARA == "pt" else sobrou_portugues(texto)
+
+
 def sobrou_portugues(texto):
     """O que denuncia portugues num texto que devia estar em ingles.
 
@@ -554,11 +579,11 @@ def qa_bloco(en, pt, tipo):
     # que estava citado e fidelidade, nao britanismo. Palavra que ja existia no
     # original nao e escolha do tradutor.
     gb_pt = set(x.lower() for x in _EN_GB.findall(pt))
-    for g in _EN_GB.finditer(visivel):
+    for g in ([] if PARA == "pt" else _EN_GB.finditer(visivel)):
         if g.group(0).lower() not in gb_pt:
             m.append("en-GB: %s" % g.group(0))
             break
-    p = sobrou_portugues(visivel)
+    p = sobrou_a_lingua_de_partida(visivel)
     if p:
         m.append("sobrou portugues: %s" % p)
     # A razao so vale com texto suficiente: "Conjuntos" -> "Sets" da 0.44x e
@@ -650,7 +675,7 @@ def aplicar(raw, tabela):
             # §7: bloco que JA mede ingles atravessa intocado e nao e pendencia.
             # E o caso da citacao copiada da fonte -- retraduzi-la fabricaria o
             # original, e o conferidor de citacoes deixaria de bater.
-            if ja_em_ingles(texto):
+            if ja_na_lingua_de_chegada(texto):
                 continue
             motivo = tipo
             if b and b.get("qa") not in (None, "ok"):
@@ -773,6 +798,22 @@ _F_EN = re.compile(r"\b(the|and|of|with|that|for|from|which|when|where|"
                    r"this|these|into|about|is|are|it|as|to|in|be|can)\b", re.I)
 
 
+def ja_na_lingua_de_chegada(texto):
+    """O bloco ja esta na lingua para a qual estamos traduzindo?
+
+    O desvio da §7 (citacao atravessa intocada) tem de conhecer a DIRECAO. Ao
+    traduzir para o portugues, "ja esta em ingles" e o oposto de um desvio: e a
+    descricao do trabalho a fazer. Sem esta funcao, 12 dos 25 blocos do README
+    do perfil seriam marcados como "atravessam intocados" -- metade do perfil
+    ficaria em ingles, e o build diria que esta completo.
+    """
+    if PARA == "pt":
+        limpo = re.sub(r"<[^>]+>", " ", texto)
+        pt, en = len(_F_PT.findall(limpo)), len(_F_EN.findall(limpo))
+        return pt >= 3 and pt >= 2 * max(en, 1)
+    return ja_em_ingles(texto)
+
+
 def ja_em_ingles(texto):
     """True so quando o bloco mede ingles COM FOLGA.
 
@@ -869,11 +910,11 @@ def qa_md(en, pt):
     prosa = re.sub(r"`[^`]*`", " ", prosa)
     prosa = re.sub(r"https?://\S+|\S*[./_]\S*", " ", prosa)
     gb_pt = set(x.lower() for x in _EN_GB.findall(pt))
-    for g in _EN_GB.finditer(prosa):
+    for g in ([] if PARA == "pt" else _EN_GB.finditer(prosa)):
         if g.group(0).lower() not in gb_pt:
             m.append("en-GB: %s" % g.group(0))
             break
-    p = sobrou_portugues(prosa)
+    p = sobrou_a_lingua_de_partida(prosa)
     if p:
         m.append("sobrou portugues: %s" % p)
     razao = len(en) / max(len(pt), 1)
@@ -930,7 +971,7 @@ def aplicar_md(raw, tabela):
         if b and b.get("qa") not in (None, "ok"):
             en = None
         if not en:
-            if ja_em_ingles(texto):
+            if ja_na_lingua_de_chegada(texto):
                 continue
             pendentes.append((chave(texto), texto, "md"))
             continue
@@ -942,17 +983,53 @@ def aplicar_md(raw, tabela):
 # GitHub o README aparece embutido, sem HTML nosso e sem JavaScript nenhum, e
 # um link e a unica coisa que funciona ali.
 
+# INGLES PRIMEIRO, PORTUGUES A UM CLIQUE. Decisao do operador em 2026-08-27:
+# o GitHub renderiza `README.md` e e o que qualquer visitante ve -- entao e ali
+# que mora o INGLES, que abre o mundo. O portugues nao fica de fora: ele fica a
+# um clique, no `README.pt-BR.md`, para quem le melhor na propria lingua.
+#
+# O que NAO muda: o portugues continua sendo a FONTE que se escreve, e o ingles
+# continua sendo derivado. O que mudou e qual dos dois ocupa o nome que o
+# GitHub abre sozinho.
+# A TROCA DE IDIOMA E DECLARADA, VISIVEL E INCONFUNDIVEL -- exigencia do
+# operador, e uma linha em italico nao era isso. Aqui ela e um `> [!NOTE]`, o
+# alerta nativo do GitHub: renderiza como caixa com borda colorida e icone, e
+# nao depende de imagem externa nenhuma (badge de terceiro some quando o proxy
+# do GitHub falha, e ai o "botao" vira texto alternativo).
+# Onde o alerta nao e suportado ele degrada para citacao em negrito -- ainda
+# grande, ainda obvio, ainda clicavel.
 MARCA_MD = "<!-- idioma: linha gerada por i18n.py -->"
-_LINHA_MD = {"pt": MARCA_MD + "\n*[Read this in English](%s)*\n",
-             "en": MARCA_MD + "\n*[Leia em português](%s)*\n"}
+_LINHA_MD = {
+    # a pagina em PORTUGUES oferece o ingles, na lingua de quem vai clicar
+    "pt": MARCA_MD + "\n> [!NOTE]\n> ### 🌍 **[Read this page in English →](%s)**\n",
+    # a pagina em INGLES oferece o portugues, em portugues
+    "en": MARCA_MD + "\n> [!NOTE]\n> ### 🇧🇷 **[Leia esta página em português →](%s)**\n",
+}
+
+# SO O README troca de nome. Os outros documentos seguem em `<nome>.en.md`:
+# o pedido foi sobre a pagina que o GitHub abre sozinha, e `docs/INSTALACAO.md`
+# ainda por cima e exigido por esse nome pelo protocolo de distribuicao.
+NOME_EN = {"README.pt-BR.md": "README.md"}
+
+
+def nome_em_ingles(caminho):
+    base = os.path.basename(caminho)
+    return NOME_EN.get(base, base[:-3] + ".en.md")
 
 
 def sem_troca_idioma(raw):
+    """Tira o bloco de troca de idioma: da marca ate a linha em branco.
+
+    Contar LINHAS era fragil -- o bloco tinha duas, virou tres ao virar
+    callout, e um bloco de tres removido pela metade se acumularia a cada
+    build. A fronteira e a linha em branco, que nao muda com o desenho.
+    """
     if MARCA_MD not in raw:
         return raw
     i = raw.index(MARCA_MD)
-    fim = raw.find("\n", raw.find("\n", i) + 1)
-    return raw[:i] + raw[(len(raw) if fim == -1 else fim + 1):]
+    m = re.search(r"\n[ \t]*\n", raw[i:])
+    fim = i + m.end() if m else len(raw)
+    return raw[:i] + raw[fim:]
 
 
 def troca_idioma_md(raw, idioma, vizinho=None):

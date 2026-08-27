@@ -76,28 +76,29 @@ def main():
     # README, os markdown da RAIZ (o relativity-paradox-lab guarda a
     # `FUNDAMENTACAO-CIENTIFICA.md` la) e `docs/`. Varrer so README e docs/
     # deixaria um documento publicado de fora, sem ninguem acusar.
-    docs = [os.path.join(AQUI, "README.md")]
+    # A FONTE e o portugues; o gerado nunca entra como fonte. Desde 2026-08-27
+    # o README em ingles ocupa `README.md` (e o que o GitHub abre sozinho) e a
+    # fonte em portugues mora em `README.pt-BR.md`.
+    docs = []
     for f in sorted(glob.glob(os.path.join(AQUI, "*.md"))
                     + glob.glob(os.path.join(AQUI, "docs", "*.md"))):
-        if (f.endswith(".en.md") or f in docs
-                or os.path.basename(f).startswith("LICENSE")):
+        if f.endswith(".en.md") or os.path.basename(f).startswith("LICENSE"):
             continue
         docs.append(f)
-    em_ingles = {}
+    gerados = {os.path.join(os.path.dirname(d), i18n.nome_em_ingles(d)) for d in docs}
+    docs = [d for d in docs if d not in gerados]
+    docs.sort(key=lambda d: (0 if "README" in os.path.basename(d) else 1, d))
+    em_ingles, corpos = {}, {}
     for doc in docs:
         if not os.path.exists(doc):
             continue
         rel = os.path.relpath(doc, AQUI)
         raw = open(doc, encoding="utf-8").read()
-        # basename, igual ao tradutor: nomear a tabela de um jeito aqui e de
-        # outro la faria o build procurar um arquivo que o tradutor nunca
-        # escreveu, e reprovar por "sem traducao" o que estava traduzido.
         tab = i18n.ler_tabela(i18n.caminho_tabela(doc, a.traducao))
         if not tab.get("blocos"):
             # DOCUMENTO SEM TABELA E PENDENCIA, NAO AUSENCIA. Pular calado fez
             # o `docs/INSTALACAO.md` de um repositorio ficar so em portugues
-            # sem que o build dissesse uma palavra -- o arquivo existe, o
-            # leitor de ingles chega nele, e nada acusava.
+            # sem que o build dissesse uma palavra.
             total_pend += 1
             print("%-24s SEM TRADUCAO (nenhum bloco na tabela)" % rel)
             continue
@@ -108,29 +109,28 @@ def main():
             for k, pt, tipo in pend[:4]:
                 print("   %s  %s" % (k, pt.strip()[:64].replace("\n", " ")))
             continue
-        alvo = doc[:-3] + ".en.md"
+        alvo = os.path.join(os.path.dirname(doc), i18n.nome_em_ingles(doc))
         em_ingles[rel] = os.path.relpath(alvo, AQUI)
+        corpos[doc] = (alvo, raw, en_md, cercas)
+
+    # O REAPONTAMENTO VEM ANTES DO BOTAO DE IDIOMA. Ele troca `](X.md)` pelo
+    # vizinho em ingles -- e, feito depois, trocava tambem o link DENTRO do
+    # botao, que e justamente o unico que tem de continuar apontando para o
+    # portugues. O ingles passou a oferecer "leia em portugues" apontando para
+    # si mesmo, nos cinco repositorios.
+    for doc, (alvo, raw, en_md, cercas) in corpos.items():
+        for outro, outro_en in em_ingles.items():
+            if outro != outro_en:
+                en_md = en_md.replace("](%s)" % outro.replace(os.sep, "/"),
+                                      "](%s)" % outro_en.replace(os.sep, "/"))
         open(alvo, "w", encoding="utf-8").write(
             i18n.troca_idioma_md(en_md, "en", os.path.basename(doc)))
         open(doc, "w", encoding="utf-8").write(
             i18n.troca_idioma_md(raw, "pt", os.path.basename(alvo)))
-        # conta so a cerca que AINDA mede portugues -- avisar sobre toda
-        # cerca, inclusive as ja traduzidas, e ruido que ensina a ignorar o
-        # aviso.
         sobrando = sum(1 for _, _, mio in i18n.cercas_traduziveis(en_md))
         print("%s%s" % (os.path.relpath(alvo, AQUI),
                         "  [%d cerca(s) ainda em portugues: realinhe a mao]"
                         % sobrando if sobrando else ""))
-    # o documento em ingles aponta para o VIZINHO em ingles, quando ele existe.
-    # Sem isto o leitor de ingles e mandado de volta para o portugues no 1o
-    # clique, e a traducao vale so ate a borda do arquivo.
-    for rel, ing in em_ingles.items():
-        alvo = os.path.join(AQUI, ing)
-        t = open(alvo, encoding="utf-8").read()
-        for outro, outro_en in em_ingles.items():
-            t = t.replace("](%s)" % outro.replace(os.sep, "/"),
-                          "](%s)" % outro_en.replace(os.sep, "/"))
-        open(alvo, "w", encoding="utf-8").write(t)
 
     if total_pend and not a.permitir_pendente:
         print("\nREPROVADO: %d bloco(s) sem traducao. O ingles nao foi "

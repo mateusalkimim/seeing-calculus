@@ -199,17 +199,14 @@ def conferir_markdown(raiz):
     """
     achados = []
     pares = []
-    for base in [os.path.join(raiz, "README.md")] + sorted(
-            glob.glob(os.path.join(raiz, "*.md"))
-            + glob.glob(os.path.join(raiz, "docs", "*.md"))):
-        if os.path.basename(base) in ("README.md",) and base != os.path.join(raiz, "README.md"):
-            continue
-        if os.path.basename(base).startswith("LICENSE"):
+    for base in sorted(glob.glob(os.path.join(raiz, "*.md"))
+                       + glob.glob(os.path.join(raiz, "docs", "*.md"))):
+        if base.endswith(".en.md") or os.path.basename(base).startswith("LICENSE"):
             continue
         if base.endswith(".en.md"):
             continue
-        ing = base[:-3] + ".en.md"
-        if os.path.exists(ing):
+        ing = os.path.join(os.path.dirname(base), i18n.nome_em_ingles(base))
+        if ing != base and os.path.exists(ing):
             pares.append((base, ing))
     if not pares:
         # SILENCIO NAO E APROVACAO. Se ha tabela de traducao e nao ha par

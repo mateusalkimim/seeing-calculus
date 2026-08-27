@@ -1,5 +1,6 @@
 <!-- idioma: linha gerada por i18n.py -->
-*[Leia em português](INSTALACAO.md)*
+> [!NOTE]
+> ### 🇧🇷 **[Leia esta página em português →](INSTALACAO.md)**
 
 # Installation
 
