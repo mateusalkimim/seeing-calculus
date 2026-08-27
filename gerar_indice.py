@@ -41,6 +41,10 @@ CORRENTE = {
 COR = {"raiz": "#c9a266", "função": "#78c4ff", "medida": "#e8654f", "encontro": "#6fbf6a"}
 
 
+
+POR_EXTENSO = {6: 'seis', 7: 'sete', 8: 'oito', 9: 'nove', 10: 'dez',
+               11: 'onze', 12: 'doze'}
+
 def ler_fatias():
     fatias = []
     for arq in sorted(os.listdir(AQUI)):
@@ -73,7 +77,7 @@ TEMPLATE = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ver o cálculo — oito instrumentos, em ordem</title>
+<title>Ver o cálculo — {quantas} instrumentos, em ordem</title>
 <style>
   :root{{ --fundo:#0a1424; --creme:#e8e2d6; --fraco:#5b6b86; --ouro:#c9a266;
          --cartao:#0d1c30; --borda:#1e3050; }}
@@ -81,11 +85,11 @@ TEMPLATE = """<!doctype html>
   body{{margin:0;background:var(--fundo);color:var(--creme);
        font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;
        padding:44px 26px 60px;line-height:1.6}}
-  .caixa{{max-width:980px;margin:0 auto}}
+  .caixa{{max-width:820px;margin:0 auto}}
   h1{{font-family:Cormorant,Georgia,"Times New Roman",serif;font-weight:600;
      font-size:44px;margin:0 0 6px;letter-spacing:.2px}}
-  .lede{{color:#b9c4d4;font-size:16px;max-width:760px;margin:0 0 6px}}
-  .nota{{color:var(--fraco);font-size:13.5px;max-width:760px;margin:14px 0 0}}
+  .lede{{color:#b9c4d4;font-size:16px;max-width:760px;margin:0 0 6px;text-align:justify;hyphens:auto}}
+  .nota{{color:var(--fraco);font-size:13.5px;max-width:760px;margin:14px 0 0;text-align:justify;hyphens:auto}}
   h2{{font-family:Cormorant,Georgia,serif;font-size:25px;margin:44px 0 10px;
      font-weight:600}}
   ol{{list-style:none;padding:0;margin:18px 0 0;counter-reset:f}}
@@ -112,7 +116,7 @@ TEMPLATE = """<!doctype html>
 <div class="caixa">
 
 <h1>Ver o cálculo</h1>
-<p class="lede">Oito instrumentos, em ordem. Cada um mostra <b>uma</b> coisa, e cada um
+<p class="lede">{Quantas} instrumentos, em ordem. Cada um mostra <b>uma</b> coisa, e cada um
 abre sozinho no navegador — sem instalação, sem rede, sem conta.</p>
 <p class="lede">Não são ilustrações do que um texto já disse. São o lugar onde a
 afirmação pode ser <b>conferida com a régua</b>: quando duas coisas têm o mesmo
@@ -185,7 +189,7 @@ ARVORE = """   ORDEM DE LEITURA — uma fila
 
 NAV_CSS = """
 <style>
-  nav.fila{display:flex;align-items:center;gap:14px;max-width:980px;margin:0 auto 26px;
+  nav.fila{display:flex;align-items:center;gap:14px;max-width:1100px;margin:0 auto 26px;
            padding:0 0 12px;border-bottom:1px solid #1e3050;font-size:12.5px;
            font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif}
   nav.fila a{color:#5b6b86;text-decoration:none;transition:color .12s}
@@ -202,7 +206,7 @@ NAV_CSS = """
 def bloco_nav(fatias, i):
     """A navegação de UMA fatia, derivada da ORDEM dos manifestos.
 
-    Injetada em bloco marcado: reordenar as fatias reescreve as oito de uma vez.
+    Injetada em bloco marcado: reordenar as fatias reescreve todas de uma vez.
     Vai inline, e não num nav.js, porque cada fatia abre SOZINHA — é propriedade
     declarada no README, e um arquivo solto por e-mail tem de continuar
     funcionando.
@@ -222,7 +226,7 @@ def bloco_nav(fatias, i):
             f"{NAV_CSS}\n"
             f'<nav class="fila">{esq}'
             f'<span class="meio"><span class="passos">{passos}</span>'
-            f'<a class="onde" href="index.html">{i+1} de {n} · as oito fatias</a>'
+            f'<a class="onde" href="index.html">{i+1} de {n} · as {POR_EXTENSO.get(n, n)} fatias</a>'
             f'</span>{dir_}</nav>\n'
             f"<!-- /nav -->")
 
@@ -268,7 +272,10 @@ def main():
             f'<div class="chamada">{html.escape(f["chamada"])}</div></div></a></li>')
 
     with open(SAIDA, "w", encoding="utf-8") as fh:
-        fh.write(TEMPLATE.format(cartoes="\n".join(cartoes), arvore=html.escape(ARVORE)))
+        q = POR_EXTENSO.get(len(fatias), str(len(fatias)))
+        fh.write(TEMPLATE.format(cartoes="\n".join(cartoes),
+                                 arvore=html.escape(ARVORE),
+                                 quantas=q, Quantas=q.capitalize()))
     n = injetar_nav(fatias)
     print(f"index.html gerado — {len(fatias)} fatias, ordem 1..{len(fatias)}")
     print(f"navegação injetada em {n} fatia(s), derivada da mesma ordem")

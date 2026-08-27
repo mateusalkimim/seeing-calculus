@@ -55,6 +55,7 @@ o-encontro.html       │
 a-familia.html        ┘
 gerar_indice.py       lê as fatias, escreve o index E injeta a navegação
 auditar_fatias.py     o portão: ordem, herança de símbolo, rede, JS
+conferir_layout.py    o outro portão: a coluna, o quadro do desenho, o transbordo
 pharo/                o conhecimento destilado — por que a ordem é essa
 docs/INSTALACAO.md    passo a passo por SO
 LICENSE               MIT, para o código
@@ -241,7 +242,19 @@ O que falta, declarado em vez de escondido:
 - ~~o ramo da ordem~~ — **resolvido em 2026-08-27.** A taxa desceu de segundo
   para sétimo e as três dívidas declaradas dela zeraram. O que resta é a
   distinção, agora escrita: dependência tem dois ramos, leitura é uma fila;
-- **QA visual humano.** O portão mede o que é mecânico. Nenhuma fatia foi
+- ~~a folha ocupava o monitor inteiro~~ — **resolvido em 2026-08-27**, e a
+  correção veio do autor com a tela na mão. Num monitor de 1900 px o desenho
+  abria com **1848 × 954** e o título e o texto viravam legenda de uma figura
+  gigante; o texto de cima dizia a tese e parava, sem dizer o que fazer com as
+  mãos. Agora quem manda é a prosa: uma medida só (`--col`, 620 px, cerca de 80
+  caracteres por linha) para o título e todos os blocos de texto — larguras
+  diferentes com margem automática dariam bordas esquerdas desalinhadas —, texto
+  **justificado e centrado**, e o desenho num quadro de **1100 × 568**. Cada
+  folha ganhou um bloco **Faça**, que nomeia um por um os controles que
+  existem nela. O `conferir_layout.py` mede isso num navegador de verdade, com
+  controle negativo: desfazer a largura da página reproduz os 954 px, e ele
+  reprova;
+- **QA visual humano.** Os dois portões medem o que é mecânico. Nenhuma fatia foi
   julgada por olho humano contra uma régua estética, e isso não se automatiza;
 - **nenhum teste de aprendizagem.** Não se mediu se alguém aprende mais com
   isto. A afirmação deste repositório é sobre o que as figuras *mostram*, não

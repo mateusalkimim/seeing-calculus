@@ -32,6 +32,40 @@
   .notas b{color:var(--creme)}
   code{background:#132440;padding:1px 6px;border-radius:3px;font-size:13px;color:var(--ouro)}
   .deck{color:#7f8ea4;font-size:12.5px}
+
+  /* ── LAYOUT, 2026-08-27 ────────────────────────────────────────────────
+     Correção do operador, com a tela na mão: a folha ocupava o monitor
+     inteiro. Num monitor largo o desenho abria com mais de 1800 px de
+     largura e quase 1000 px de altura, e aí o título e o texto viravam
+     legenda de uma figura gigante — a prosa perdia a importância que tem.
+
+     Agora quem manda é a PROSA. Uma medida só, --col, para o título e para
+     todos os blocos de texto: larguras diferentes com margem automática
+     dariam bordas esquerdas desalinhadas. A largura sai da LEITURA, não do
+     monitor — 620 px com corpo de 15,5 px dá cerca de 80 caracteres por
+     linha, que é a faixa confortável. O desenho fica num quadro de 1100 px:
+     largo o bastante para a construção caber sem encolher os rótulos,
+     estreito o bastante para não engolir a folha. */
+  :root{ --col:620px }
+  body{max-width:1152px;margin:0 auto}
+  h1,.sub,.faca,.notas{max-width:var(--col);margin-left:auto;margin-right:auto}
+  /* sem isto o título quebra com órfã — a última palavra sozinha na
+     segunda linha. `balance` reparte as linhas em vez de encher a
+     primeira até o fim. */
+  h1{text-wrap:balance;font-size:28px;line-height:1.22}
+  .sub{font-size:15.5px;line-height:1.68;color:#a8b4c6;
+       text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  .notas{font-size:15.5px;line-height:1.72}
+  .notas p{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+  /* O GANCHO. O texto de cima dizia a tese e parava — não dizia o que fazer
+     com as mãos, e a pessoa chegava no desenho sem saber por onde pegar.
+     Esta faixa nomeia, um por um, os controles que EXISTEM nesta folha. */
+  .faca{margin-bottom:20px;background:#0d1c30;border-left:3px solid var(--ouro);
+        border-radius:0 5px 5px 0;padding:12px 16px;color:#b9c4d4;
+        font-size:14px;line-height:1.68}
+  .faca b{color:var(--ouro)}
+  .faca i{color:var(--creme);font-style:normal;background:#132440;
+          padding:1px 6px;border-radius:3px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -39,7 +73,7 @@
 <!-- nav: GERADO por gerar_indice.py · não editar à mão -->
 
 <style>
-  nav.fila{display:flex;align-items:center;gap:14px;max-width:980px;margin:0 auto 26px;
+  nav.fila{display:flex;align-items:center;gap:14px;max-width:1100px;margin:0 auto 26px;
            padding:0 0 12px;border-bottom:1px solid #1e3050;font-size:12.5px;
            font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif}
   nav.fila a{color:#5b6b86;text-decoration:none;transition:color .12s}
@@ -51,14 +85,18 @@
   nav.fila .onde{color:#7f8ea4;font-variant-numeric:tabular-nums}
   nav.fila .vazio{visibility:hidden}
 </style>
-<nav class="fila"><a href="o-angulo.html">← O ângulo</a><span class="meio"><span class="passos"><i title="1. O par vira ponto"></i><i title="2. O ângulo"></i><i class="aqui" title="O triângulo"></i><i title="4. A distância"></i><i title="5. O círculo"></i><i title="6. O desenrolamento"></i><i title="7. A taxa"></i><i title="8. O encontro"></i><i title="9. A família"></i></span><a class="onde" href="index.html">3 de 9 · as oito fatias</a></span><a href="a-distancia.html">A distância →</a></nav>
+<nav class="fila"><a href="o-angulo.html">← O ângulo</a><span class="meio"><span class="passos"><i title="1. O par vira ponto"></i><i title="2. O ângulo"></i><i class="aqui" title="O triângulo"></i><i title="4. A distância"></i><i title="5. O círculo"></i><i title="6. O desenrolamento"></i><i title="7. A taxa"></i><i title="8. O encontro"></i><i title="9. A família"></i></span><a class="onde" href="index.html">3 de 9 · as nove fatias</a></span><a href="a-distancia.html">A distância →</a></nav>
 <!-- /nav -->
 
 <h1>O triângulo</h1>
-<p class="sub"><b>Oposto</b> e <b>adjacente</b> não são propriedades dos lados — são
-propriedades da <b>relação entre o lado e o ângulo que você escolheu</b>. Um triângulo
-retângulo tem dois ângulos agudos; troque de ângulo e os dois nomes trocam de lado. A
-hipotenusa é a única que não se move: ela é sempre o lado oposto ao ângulo reto.</p>
+<p class="sub">Oposto e adjacente parecem nomes dos <i>lados</i>. Não são: são nomes da
+<b>relação</b> entre um lado e o ângulo que você escolheu olhar. Troque de ângulo e os dois
+nomes trocam de lado, sem que o triângulo se mexa um milímetro. A hipotenusa é a única que não
+se move — ela é sempre o lado oposto ao ângulo reto.</p>
+
+<p class="faca"><b>Faça:</b> mude <i>a forma</i> e veja os três lados mudarem juntos. Aperte <i>olhar do
+outro ângulo</i> e veja os nomes pularem de lugar. Depois mexa em <i>o tamanho</i>: todos os
+comprimentos mudam, e nenhuma razão muda — é exatamente por isso que as razões têm nome.</p>
 
 <canvas id="c" width="1240" height="640"></canvas>
 
