@@ -721,14 +721,14 @@ def extrair_de(raw):
 MARCA_FAIXA = "<!-- faixa-idioma: gerada por i18n.py, nao editar -->"
 
 _FAIXA = MARCA_FAIXA + """
-<div id="faixa-idioma" hidden style="position:fixed;top:0;left:0;right:0;
+<div id="faixa-idioma" style="display:none;position:fixed;top:0;left:0;right:0;
  z-index:99;background:#c9a266;color:#0a1424;font:13px/1.4 Inter,system-ui,
- sans-serif;padding:7px 12px;display:flex;gap:10px;justify-content:center;
+ sans-serif;padding:7px 12px;gap:10px;justify-content:center;
  align-items:center">
 <span>%(convite)s</span>
 <a href="%(alvo)s" style="color:#0a1424;font-weight:600">%(acao)s</a>
-<button onclick="this.parentNode.hidden=true" aria-label="%(fechar)s"
- style="background:none;border:0;color:#0a1424;cursor:pointer;font-size:15px">&times;</button>
+<button onclick="this.parentNode.style.display='none'" aria-label="%(fechar)s"
+ style="background:none;border:0;color:#0a1424;cursor:pointer;font-size:15px;padding:2px 6px;line-height:1">&times;</button>
 </div>
 <script>%(marca)s
 (function(){try{
@@ -738,7 +738,7 @@ _FAIXA = MARCA_FAIXA + """
         :[navigator.language||''];
   var pt=false; for(var i=0;i<L.length;i++){ if(/^pt/i.test(L[i])){pt=true;break;} }
   if(f!=='%(outro)s' && pt!==%(quer)s)return;
-  document.getElementById('faixa-idioma').hidden=false;
+  document.getElementById('faixa-idioma').style.display='flex';
 }catch(e){}})();
 document.querySelector('#faixa-idioma a').addEventListener('click',function(){
   try{localStorage.setItem('sc-lang','%(outro)s');}catch(e){}
