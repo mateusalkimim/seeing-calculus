@@ -60,7 +60,11 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 # --------------------------------------------------------------------------
 LEXICO = [
     # -- papeis da casa -----------------------------------------------------
-    ("papel", r"\bo operador\b(?!\s+(?:linear|diferencial|adjunto|identidade|de deriva))",
+    # A forma contraida ("d" + "o papel") nao casava em `\bo <papel>\b`: o "o"
+    # colado no "d" nao tem fronteira de palavra antes. Duas notas de producao
+    # ficaram publicadas dentro do CSS de uma pagina por causa disso.
+    ("papel", r"\b(?:o|do|ao|pelo|no|meu) operador\b"
+              r"(?!\s+(?:linear|diferencial|adjunto|identidade|de deriva))",
      "papel da casa (se for operador matematico, declare a excecao)"),
     ("papel", r"\bthe operator\b(?!\s+(?:that|which|is|acts|takes|maps|\w+\s+operator))",
      "papel da casa (se for operador matematico, declare a excecao)"),
@@ -199,6 +203,25 @@ def _vazio_preservando_linhas(m):
     return "\n" * m.group(0).count("\n")
 
 
+def comentarios_embutidos(bruto):
+    """Comentario dentro de <style> e <script> da propria pagina.
+
+    Buraco medido em 2026-08-28: a pagina publicada trazia, no CSS embutido,
+    duas notas de producao com o papel interno dentro. O portao removia
+    <style> e <script> inteiros para nao ler codigo, e junto ia o comentario
+    — que e publicado, aparece em "ver codigo-fonte" e nao e menos publico por
+    estar entre chaves.
+    """
+    out = []
+    for m in re.finditer(r"(?is)<(script|style)\b[^>]*>(.*?)</\1>", bruto):
+        linha0 = bruto[:m.start()].count("\n") + 1
+        corpo = m.group(2)
+        for c in re.finditer(r"/\*(.*?)\*/|//(.*?)$", corpo, re.S | re.M):
+            txt = c.group(1) or c.group(2) or ""
+            out.append((linha0 + corpo[:c.start()].count("\n"), " ".join(txt.split())))
+    return out
+
+
 def texto_de_html(bruto):
     s = re.sub(r"(?is)<script\b.*?</script>", _vazio_preservando_linhas, bruto)
     s = re.sub(r"(?is)<style\b.*?</style>", _vazio_preservando_linhas, s)
@@ -284,6 +307,7 @@ def superficies(raiz):
                 continue
             if ext == ".html":
                 out.append((rel, "tela", texto_de_html(bruto)))
+                out.append((rel, "codigo", comentarios_embutidos(bruto)))
             elif ext in (".md", ".txt"):
                 out.append((rel, "tela", texto_de_md(bruto)))
             elif ext == ".py":

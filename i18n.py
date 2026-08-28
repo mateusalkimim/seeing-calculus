@@ -470,7 +470,7 @@ def _simbolos(t):
     return sorted(re.findall(r"[\u03b1-\u03c9\u0391-\u03a9\u221a\u00b0\u00d7\u00b7\u2212\u2192\u2260\u2264\u2265\u222b\u2211]", t))
 
 
-# en-US e requisito declarado do operador -- e as duas sondas abaixo sao LISTAS
+# en-US e requisito declarado do autor -- e as duas sondas abaixo sao LISTAS
 # FECHADAS porque a versao por PADRAO acusou ingles correto:
 #   · `\w+ise` casou com **raise**, **otherwise**, **precise**, **exercise**;
 #   · a lista de palavra-funcao portuguesa casou com **no** ("no side moves"),
@@ -1049,7 +1049,7 @@ def aplicar_md(raw, tabela):
 # GitHub o README aparece embutido, sem HTML nosso e sem JavaScript nenhum, e
 # um link e a unica coisa que funciona ali.
 
-# INGLES PRIMEIRO, PORTUGUES A UM CLIQUE. Decisao do operador em 2026-08-27:
+# INGLES PRIMEIRO, PORTUGUES A UM CLIQUE. Decisao do autor em 2026-08-27:
 # o GitHub renderiza `README.md` e e o que qualquer visitante ve -- entao e ali
 # que mora o INGLES, que abre o mundo. O portugues nao fica de fora: ele fica a
 # um clique, no `README.pt-BR.md`, para quem le melhor na propria lingua.
