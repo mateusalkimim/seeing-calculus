@@ -188,7 +188,14 @@ _ACENTO = re.compile(r"[áéíóúâêôãõçÁÉÍÓÚÂÊÔÃÕÇ]")
 _CODIGO = (
     re.compile(r"^#[0-9a-fA-F]{3,8}$"),           # cor
     re.compile(r"^(rgba?|hsla?)\("),
-    re.compile(r"^[.#][\w-]+$"),                  # seletor
+    re.compile(r"^[.#][\w-]+$"),                  # seletor de classe/id
+    # Seletor de ATRIBUTO. Faltava, e o buraco custou caro: `"[data-acao]"` foi
+    # traduzido para `"[data-action]"` — traducao impecavel de uma cadeia que e
+    # CSS. O seletor deixou de casar, os cinco instrumentos ficaram sem ouvinte
+    # e a pagina em ingles abriu com todos os botoes mudos, sem erro nenhum no
+    # console. Nenhuma sonda de TEXTO acha isso; achou o portao que CLICA.
+    re.compile(r"^\[[\w-]+(?:[~^$*|]?=[\"']?[^\]]*)?\]$"),
+    re.compile(r"\[data-[\w-]+"),                  # seletor de atributo composto
     re.compile(r"://"),                           # url
     re.compile(r"\.(html|js|css|json|png|svg|woff2?)$", re.I),
     re.compile(r"^\d[\d\s.,:%-]*(px|em|rem|deg|s|ms|fr|vh|vw)?$"),
@@ -223,6 +230,14 @@ def _ids_do_html(raw):
     ids = set(re.findall(r'\bid="([^"]+)"', raw))
     for c in re.findall(r'\bclass="([^"]+)"', raw):
         ids.update(c.split())
+    # Valor de `data-*` e GANCHO, nunca texto de tela: e para isso que o
+    # atributo existe, e texto visivel mora no conteudo do elemento. Levantado
+    # nos repositorios da casa em 2026-08-27: `data-acao` na escada, `data-de`
+    # no mapa das materias, nenhum no seeing-calculus — todos identificadores.
+    # Sem esta linha o tradutor verteu "modo"->"mode" e "pulso"->"pulse", que
+    # sao traducoes CORRETAS de identificadores, e por isso passaram no QA
+    # inteiras enquanto deixavam cinco botoes mudos na pagina em ingles.
+    ids.update(re.findall(r'\bdata-[a-z-]+="([^"]+)"', raw))
     return ids
 
 
