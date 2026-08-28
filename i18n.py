@@ -734,6 +734,7 @@ def extrair_de(raw):
 # recurso externo, e com razao: elas abrem offline por contrato).
 
 MARCA_FAIXA = "<!-- faixa-idioma: gerada por i18n.py, nao editar -->"
+MARCA_PERMANENTE = "<!-- trocar-idioma: gerado por i18n.py, nao editar -->"
 
 _FAIXA = MARCA_FAIXA + """
 <div id="faixa-idioma" style="display:none;position:fixed;top:0;left:0;right:0;
@@ -760,23 +761,68 @@ document.querySelector('#faixa-idioma a').addEventListener('click',function(){
 });
 </script>"""
 
+# O BOTAO PERMANENTE. A faixa acima e CONDICIONAL: ela so aparece quando o
+# idioma do navegador difere do da pagina, e some quando coincidem. Resultado
+# medido em 2026-08-27, nos tres sitios da casa (24 paginas): quem chega no
+# idioma "certo" nao tem NENHUM caminho para o outro — o unico link do sitio
+# morava dentro da faixa escondida. E quem fecha a faixa no x perde o caminho
+# tambem.
+#
+# Os README ja resolviam isso com um botao FIXO no topo. As paginas nao tinham
+# equivalente. Este e o equivalente: sempre visivel, sem condicao nenhuma.
+# Some apenas enquanto a faixa esta na tela, porque ai os dois diriam a mesma
+# coisa no mesmo lugar.
+_PERMANENTE = MARCA_PERMANENTE + """
+<style>
+#trocar-idioma{position:fixed;top:11px;right:13px;z-index:98;
+  background:#132440;color:#c9a266;border:1px solid #2b4767;border-radius:14px;
+  padding:5px 13px;font:12.5px/1.3 Inter,system-ui,sans-serif;
+  text-decoration:none}
+/* No telefone o alvo de toque tem de ter 44px. Com padding de 5px o botao
+   media 28 — e quem pegou isso foi o portao de layout do seeing-calculus,
+   depois de eu ja ter dado o conserto por pronto. */
+@media (max-width:820px){
+  #trocar-idioma{padding:13px 18px;border-radius:22px;font-size:13px}
+}
+</style>
+<a id="trocar-idioma" href="%(alvo)s" hreflang="%(outro)s" lang="%(outro)s"
+   title="%(acao)s">%(curto)s</a>
+<script>
+(function(){try{
+  var a=document.getElementById('trocar-idioma');
+  a.addEventListener('click',function(){
+    try{localStorage.setItem('sc-lang','%(outro)s');}catch(e){}
+  });
+  // enquanto a faixa estiver na tela os dois dizem a mesma coisa; o botao
+  // reaparece assim que ela sai (inclusive quando o leitor fecha no x).
+  var f=document.getElementById('faixa-idioma');
+  if(!f)return;
+  var ver=function(){
+    a.style.display=(getComputedStyle(f).display==='none')?'':'none';
+  };
+  ver();
+  new MutationObserver(ver).observe(f,{attributes:true,
+    attributeFilter:['style','hidden']});
+}catch(e){}})();
+</script>"""
+
 _TEXTOS = {
     "pt": {"convite": "This page is in Portuguese.", "acao": "Read in English",
            "fechar": "close", "alvo": "../en/%s", "este": "pt", "outro": "en",
-           "quer": "false"},
+           "quer": "false", "curto": "EN"},
     "en": {"convite": "Esta pagina esta em ingles.", "acao": "Ler em portugues",
            "fechar": "fechar", "alvo": "../pt/%s", "este": "en", "outro": "pt",
-           "quer": "true"},
+           "quer": "true", "curto": "PT"},
 }
 
 
 def injetar_faixa(raw, idioma, arquivo):
-    """Poe (ou repoe) a faixa logo depois do <body>. Idempotente."""
+    """Poe (ou repoe) a faixa E o botao permanente. Idempotente."""
     raw = remover_faixa(raw)
     t = dict(_TEXTOS[idioma])
     t["alvo"] = t["alvo"] % arquivo
     t["marca"] = ""
-    bloco = _FAIXA % t
+    bloco = _FAIXA % t + "\n" + _PERMANENTE % t
     # ANTES de </body>, nao depois de <body>: posta no topo, ela punha o
     # <script> dela na frente do script da fatia, e o portao [10] procura o
     # marcador `TESE DESTA FATIA` no topo do PRIMEIRO <script> -- as nove
@@ -789,13 +835,18 @@ def injetar_faixa(raw, idioma, arquivo):
 
 
 def remover_faixa(raw):
-    i = raw.find(MARCA_FAIXA)
-    if i == -1:
-        return raw
-    fim = raw.find("</script>", i)
-    if fim == -1:
-        return raw
-    return raw[:i].rstrip("\n") + raw[fim + len("</script>"):]
+    """Tira a faixa E o botao permanente, nesta ordem. Um `remover` que so
+    tirasse metade faria o `injetar` empilhar copias do botao a cada rodada."""
+    for marca in (MARCA_FAIXA, MARCA_PERMANENTE):
+        while True:
+            i = raw.find(marca)
+            if i == -1:
+                break
+            fim = raw.find("</script>", i)
+            if fim == -1:
+                break
+            raw = raw[:i].rstrip("\n") + raw[fim + len("</script>"):]
+    return raw
 
 
 # --------------------------- o que JA esta em ingles ---------------------------
