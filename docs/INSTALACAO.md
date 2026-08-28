@@ -45,13 +45,13 @@ Só quem for **editar** as fatias precisa disto.
 
 | Ferramenta | Para quê | Versão testada |
 |---|---|---|
-| Python 3 | rodar o portão e o gerador do índice | 3.12 |
-| Node | o portão usa `node --check` para validar o JS de cada fatia | 24 |
+| Python 3 | rodar a verificação e o gerador do índice | 3.12 |
+| Node | a verificação usa `node --check` para validar o JS de cada fatia | 24 |
 
 Nenhum pacote de terceiro: os dois scripts usam só a biblioteca padrão.
 
 ```bash
-python3 auditar_fatias.py --controle   # o portão + o controle negativo
+python3 auditar_fatias.py --controle   # a verificação + o controle negativo
 python3 gerar_indice.py                # regera o index.html
 ```
 
@@ -75,6 +75,6 @@ o atalho: a próxima geração apaga.
 4. `python3 auditar_fatias.py --controle` — tem de dar **PASSA**;
 5. `python3 gerar_indice.py`.
 
-O portão reprova se a fatia gastar símbolo que nenhuma fatia anterior declarou,
+A verificação reprova se a fatia gastar símbolo que nenhuma fatia anterior declarou,
 se um empréstimo nunca for pago, se houver declaração ociosa, se algo carregar
 recurso externo, ou se o JavaScript não compilar.

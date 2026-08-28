@@ -71,7 +71,7 @@ def main():
     # No GitHub o README e a porta de entrada, e num repositorio SEM Pages ele
     # e a unica pagina que existe. `docs/` vai junto porque o README aponta
     # para la -- mandar o leitor de ingles para uma pagina em portugues e o
-    # mesmo defeito, uma casa adiante. `pharo/` NAO entra: e material interno
+    # mesmo defeito, uma casa adiante. `pesquisa/` NAO entra: e material interno
     # de pesquisa, e traduzi-lo e outra decisao, do autor.
     # README, os markdown da RAIZ (o relativity-paradox-lab guarda a
     # `FUNDAMENTACAO-CIENTIFICA.md` la) e `docs/`. Varrer so README e docs/

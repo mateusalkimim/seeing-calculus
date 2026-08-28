@@ -79,7 +79,7 @@ def main():
 
     raiz = pathlib.Path(__file__).parent
     # As fatias saíram da raiz quando o sítio virou bilíngue: na raiz ficaram a
-    # porta e os stubs. Sem esta linha o portão mediria os STUBS — páginas de
+    # porta e os stubs. Sem esta linha a verificação mediria os STUBS — páginas de
     # três linhas que passam em tudo e não dizem nada sobre a fatia.
     d = "pt"
     if "--dir" in sys.argv:
@@ -138,7 +138,7 @@ def main():
             print(f"  {nome:<18} prosa em x={esq[0] if esq else '—'} · "
                   f"desenho {cv['w'] if cv else '—'}x{cv['h'] if cv else '—'}")
 
-        # ---- o TELEFONE, que este portão nunca tinha olhado ----
+        # ---- o TELEFONE, que este verificação nunca tinha olhado ----
         # A régua acima mede um monitor de 1900 px. O defeito de telefone é
         # outro e foi medido em 2026-08-27: num viewport de 360 a página ia a
         # 842–1126 px, porque `canvas{height:568px;width:auto}` mantém a altura

@@ -151,6 +151,24 @@ SEVERIDADE = {
 IGNORAR_DIRS = {".git", "node_modules", "__pycache__", ".venv", "venv", ".github"}
 
 
+def janela(txt, ini, fim, largura=110):
+    """O entorno do TERMO, nao o comeco da linha.
+
+    Numa pagina gerada uma linha pode carregar a folha inteira: imprimir os
+    primeiros 150 caracteres mostra um texto que nada tem a ver com o achado,
+    e o veredito sai errado por falta de contexto.
+    """
+    txt = " ".join(txt.split())
+    # a posicao muda com a normalizacao: reacha o termo pelo conteudo
+    termo = " ".join(txt[ini:fim].split()) if fim <= len(txt) else ""
+    pos = txt.find(termo) if termo else -1
+    if pos < 0:
+        return txt[:largura * 2]
+    a = max(0, pos - largura // 2)
+    b = min(len(txt), pos + len(termo) + largura)
+    return ("…" if a else "") + txt[a:b] + ("…" if b < len(txt) else "")
+
+
 def sha(termo, trecho):
     return hashlib.sha1(
         (termo.strip().lower() + "|" + " ".join(trecho.split()).lower()
@@ -251,7 +269,7 @@ def superficies(raiz):
     """[(caminho_relativo, classe, [(linha, texto)])] -- norma §1."""
     out = []
     for base, dirs, arqs in os.walk(raiz):
-        dirs[:] = [d for d in dirs if d not in IGNORAR_DIRS]
+        dirs[:] = [d for d in dirs if d not in IGNORAR_DIRS and not d.startswith(".")]
         for a in sorted(arqs):
             p = os.path.join(base, a)
             rel = os.path.relpath(p, raiz)
@@ -314,21 +332,22 @@ def varrer_linhas(linhas, classe, origem, excecoes):
         for cat, rx, o_que in LEXICO:
             for m in rx.finditer(txt):
                 termo = m.group(0)
-                h = sha(termo, txt)
+                ctx = janela(txt, m.start(), m.end())
+                h = sha(termo, ctx)
                 if h in excecoes or (origem, n, h) in vistos:
                     continue
                 vistos.add((origem, n, h))
                 achados.append({
                     "arquivo": origem, "linha": n, "categoria": cat,
                     "severidade": SEVERIDADE[classe][cat], "termo": termo,
-                    "o_que": o_que, "sha": h, "trecho": " ".join(txt.split())[:150],
+                    "o_que": o_que, "sha": h, "trecho": ctx,
                 })
         # §3 depreciacao: o par na MESMA frase
         for frase in re.split(r"(?<=[.!?])\s+", txt):
             viz = VIZINHO.search(frase)
             dfx = DEFEITO.search(frase)
             if viz and dfx:
-                h = sha(viz.group(1), frase)
+                h = sha(viz.group(1), janela(frase, viz.start(), viz.end()))
                 if h in excecoes:
                     continue
                 achados.append({
@@ -336,7 +355,7 @@ def varrer_linhas(linhas, classe, origem, excecoes):
                     "severidade": SEVERIDADE[classe]["deprecia"],
                     "termo": "%s + '%s'" % (viz.group(1), dfx.group(0)),
                     "o_que": "afirma defeito de projeto irmao (§3)",
-                    "sha": h, "trecho": " ".join(frase.split())[:150],
+                    "sha": h, "trecho": janela(frase, viz.start(), viz.end()),
                 })
     return achados
 

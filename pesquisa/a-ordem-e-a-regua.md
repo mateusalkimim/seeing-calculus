@@ -59,6 +59,6 @@ figura a afirmar alguma coisa?** A primeira diz que ela não pode gastar o que o
 leitor ainda não tem. A segunda, que o que ela gasta tem de estar verificável no
 próprio desenho.
 
-O portão deste repositório mecaniza a primeira — herança de símbolo, ordem sem
+A verificação deste repositório mecaniza a primeira — herança de símbolo, ordem sem
 buraco, empréstimo pago. A segunda **não se mecaniza**: ela é julgamento, e por
 isso está aqui, escrita, e não numa medida automática.

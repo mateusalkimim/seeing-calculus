@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# texto retirado por decisao de registro — auditavel, nao publicado
+.purgado/

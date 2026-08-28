@@ -1,19 +1,11 @@
 {
- "atualizado_em": "2026-08-27 17:01:56",
+ "atualizado_em": "2026-08-28 11:35:38",
  "blocos": {
   "0a5c82562c": {
    "en": "# Installation",
    "modelo": "phi-4",
    "orfao": false,
    "pt": "# Instalação",
-   "qa": "ok",
-   "tipo": "md"
-  },
-  "2d6ffe767f": {
-   "en": "The gate rejects if a slice uses a symbol that no previous slice declared, if a loan is never paid back, if there is idle declaration, if it loads an external resource, or if the JavaScript doesn't compile.",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "O portão reprova se a fatia gastar símbolo que nenhuma fatia anterior declarou,\nse um empréstimo nunca for pago, se houver declaração ociosa, se algo carregar\nrecurso externo, ou se o JavaScript não compilar.\n",
    "qa": "ok",
    "tipo": "md"
   },
@@ -73,19 +65,20 @@
    "qa": "ok",
    "tipo": "md"
   },
+  "7050a4ec55": {
+   "en": "| Tool | For What | Version Tested |\n|---|---|---|\n| Python 3 | run the check and the index generator | 3.12 |\n| Node | the check uses `node --check` to validate the JS of each slice | 24 |",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "| Ferramenta | Para quê | Versão testada |\n|---|---|---|\n| Python 3 | rodar a verificação e o gerador do índice | 3.12 |\n| Node | a verificação usa `node --check` para validar o JS de cada fatia | 24 |",
+   "qa": "ok",
+   "reaproveitado_de": "| Ferramenta | Para quê | Versão testada | |---|---|---| | P",
+   "tipo": "md"
+  },
   "7d8718ed10": {
    "en": "There is no installation to **use**. The nine slices are self-contained HTML pages:  \ndownload the repository and open the `index.html`. They work offline, without a server  \nand without dependencies.",
    "modelo": "phi-4",
    "orfao": false,
    "pt": "Não há instalação para **usar**. As nove fatias são páginas HTML autocontidas:\nbaixe o repositório e abra o `index.html`. Elas funcionam offline, sem servidor\ne sem dependência.",
-   "qa": "ok",
-   "tipo": "md"
-  },
-  "7daed19f83": {
-   "en": "| Tool | For What | Version Tested |\n|---|---|---|\n| Python 3 | run the gate and the index generator | 3.12 |\n| Node | the gate uses `node --check` to validate the JS of each slice | 24 |",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "| Ferramenta | Para quê | Versão testada |\n|---|---|---|\n| Python 3 | rodar o portão e o gerador do índice | 3.12 |\n| Node | o portão usa `node --check` para validar o JS de cada fatia | 24 |",
    "qa": "ok",
    "tipo": "md"
   },
@@ -145,19 +138,19 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "c2bf7f0c6a": {
-   "en": "python3 auditar_fatias.py --controle   # the gate + the negative control  \npython3 gerar_indice.py                # regenerates the index.html",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "python3 auditar_fatias.py --controle   # o portão + o controle negativo\npython3 gerar_indice.py                # regera o index.html",
-   "qa": "ok",
-   "tipo": "cerca"
-  },
   "c821ada6be": {
    "en": "### Windows",
    "modelo": "phi-4",
    "orfao": false,
    "pt": "### Windows",
+   "qa": "ok",
+   "tipo": "md"
+  },
+  "cb5614907b": {
+   "en": "The check fails if a slice spends a symbol that no earlier slice declared, if a loan is never repaid, if there is an idle declaration, if anything loads an external resource, or if the JavaScript does not compile.",
+   "modelo": "claude-opus-5",
+   "orfao": false,
+   "pt": "A verificação reprova se a fatia gastar símbolo que nenhuma fatia anterior declarou,\nse um empréstimo nunca for pago, se houver declaração ociosa, se algo carregar\nrecurso externo, ou se o JavaScript não compilar.\n",
    "qa": "ok",
    "tipo": "md"
   },
@@ -169,13 +162,14 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "cce2628881": {
-   "en": "There is no installation to **use**. The eight slices are self-contained HTML pages:  \ndownload the repository and open the `index.html`. They work offline, without a server  \nand without dependencies.",
+  "d6a6f5c4a7": {
+   "en": "python3 auditar_fatias.py --controle   # the check + the negative control  \npython3 gerar_indice.py                # regenerates the index.html",
    "modelo": "phi-4",
-   "orfao": true,
-   "pt": "Não há instalação para **usar**. As oito fatias são páginas HTML autocontidas:\nbaixe o repositório e abra o `index.html`. Elas funcionam offline, sem servidor\ne sem dependência.",
+   "orfao": false,
+   "pt": "python3 auditar_fatias.py --controle   # a verificação + o controle negativo\npython3 gerar_indice.py                # regera o index.html",
    "qa": "ok",
-   "tipo": "md"
+   "reaproveitado_de": "python3 auditar_fatias.py --controle # o portão + o controle",
+   "tipo": "cerca"
   },
   "fcaedea705": {
    "en": "## Develop",

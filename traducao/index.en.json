@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 17:04:12",
+ "atualizado_em": "2026-08-28 11:36:01",
  "blocos": {
   "071f276798": {
    "en": "Distance",
@@ -154,6 +154,15 @@
    "reparo": "diagrama ASCII realinhado a mao: as caixas de desenho foram posicionadas para a largura dos rotulos em portugues, e traduzir os rotulos desalinha a arvore. Traducao automatica de arte ASCII quebra o artefato mesmo quando cada palavra esta certa.",
    "tipo": "prosa"
   },
+  "4cf94eaf0b": {
+   "en": "This wasn't theory: with the rate in second, it was the <b>only slice with  \ndeclared debt</b> at the check — spending sine, cosine, and π before anyone was  \ndefined. Descending to seventh, the debt zeroed out. The gate saw what the argument  \ndidn't.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Isso não foi teoria: com a taxa em segundo, ela era a <b>única fatia com\ndívida declarada</b> na verificação — gastava seno, cosseno e π antes de qualquer um ser\ndefinido. Descendo para sétimo, a dívida zerou. A verificação viu o que o argumento não tinha\nvisto.",
+   "qa": "ok",
+   "reaproveitado_de": "Isso não foi teoria: com a taxa em segundo, ela era a <b>úni",
+   "tipo": "prosa"
+  },
   "4f469ece14": {
    "en": "<a class=\"fatia\" href=\"o-encontro.html\" style=\"border-left-color:#6fbf6a\"><div class=\"corpo\"><div class=\"nome\">The Encounter</div><div class=\"explica\">the slope is a tangent</div><div class=\"chamada\">The word tangent names two different things: a length measured in the circle and the line that touches a curve.</div></div></a>",
    "modelo": "phi-4",
@@ -231,14 +240,6 @@
    "modelo": "phi-4",
    "orfao": false,
    "pt": "O encontro",
-   "qa": "ok",
-   "tipo": "prosa"
-  },
-  "7bd743ef21": {
-   "en": "This wasn't theory: with the rate in second, it was the <b>only slice with  \ndeclared debt</b> at the gate — spending sine, cosine, and π before anyone was  \ndefined. Descending to seventh, the debt zeroed out. The gate saw what the argument  \ndidn't.",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "Isso não foi teoria: com a taxa em segundo, ela era a <b>única fatia com\ndívida declarada</b> no portão — gastava seno, cosseno e π antes de qualquer um ser\ndefinido. Descendo para sétimo, a dívida zerou. O portão viu o que o argumento não tinha\nvisto.",
    "qa": "ok",
    "tipo": "prosa"
   },
@@ -354,20 +355,21 @@
    "qa": "ok",
    "tipo": "prosa"
   },
-  "bfa3f0f7ba": {
-   "en": "Each slice declares, in a machine-readable manifesto, its order and the symbols it responds to. The `<code>auditar_fatias.py</code>` checks: no symbol used without coming from the slice itself or a <b>previous</b> one; no borrowing without someone repaying it later; no idle declaration; no network request. It runs with <b>negative control</b> — injects defects and demands they be caught, because zero findings only mean something if the gate proves it can disprove.",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "Cada fatia declara, num manifesto legível por máquina, a sua ordem e os\nsímbolos pelos quais responde. O <code>auditar_fatias.py</code> cobra: nenhum símbolo\ngasto sem vir da própria fatia ou de uma <b>anterior</b>; nenhum empréstimo sem alguém\ndepois pagá-lo; nenhuma declaração ociosa; nenhum pedido de rede. E roda com\n<b>controle negativo</b> — injeta defeitos e exige que sejam pegos, porque zero achados\nsó significa alguma coisa se o portão provar que sabe reprovar.",
-   "qa": "ok",
-   "tipo": "prosa"
-  },
   "c66bc80916": {
    "en": "An angle does not have its own size.",
    "modelo": "phi-4",
    "orfao": false,
    "pt": "Um ângulo não tem tamanho próprio.",
    "qa": "ok",
+   "tipo": "prosa"
+  },
+  "cbfac33bc7": {
+   "en": "Each slice declares, in a machine-readable manifesto, its order and the symbols it responds to. The `<code>auditar_fatias.py</code>` checks: no symbol used without coming from the slice itself or a <b>previous</b> one; no borrowing without someone repaying it later; no idle declaration; no network request. It runs with <b>negative control</b> — injects defects and demands they be caught, because zero findings only mean something if the check proves it can disprove.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Cada fatia declara, num manifesto legível por máquina, a sua ordem e os\nsímbolos pelos quais responde. O <code>auditar_fatias.py</code> cobra: nenhum símbolo\ngasto sem vir da própria fatia ou de uma <b>anterior</b>; nenhum empréstimo sem alguém\ndepois pagá-lo; nenhuma declaração ociosa; nenhum pedido de rede. E roda com\n<b>controle negativo</b> — injeta defeitos e exige que sejam pegos, porque zero achados\nsó significa alguma coisa se a verificação provar que sabe reprovar.",
+   "qa": "ok",
+   "reaproveitado_de": "Cada fatia declara, num manifesto legível por máquina, a sua",
    "tipo": "prosa"
   },
   "d88f53c73d": {
@@ -383,14 +385,6 @@
    "modelo": "phi-4",
    "orfao": true,
    "pt": "<a class=\"fatia\" href=\"desenrolamento.html\" style=\"border-left-color:#e8654f\"><div class=\"corpo\"><div class=\"nome\">O desenrolamento</div><div class=\"explica\">do círculo ao gráfico</div><div class=\"chamada\">A folha do círculo deixa uma pergunta no ar: eu conheço o seno como uma onda — o que ele tem a ver com este círculo?</div></div></a>",
-   "qa": "ok",
-   "tipo": "prosa"
-  },
-  "e08a5a0a66": {
-   "en": "rule: no symbol  \nspent without coming from the slice itself or a <b>previous</b> one; no borrowing without someone  \nrepaying later; no idle statement; no network request. And it runs with  \n<b>negative control</b> — injects defects and requires them to be caught, because zero findings  \nonly mean something if the gate proves it can reject.",
-   "modelo": "phi-4",
-   "orfao": true,
-   "pt": " cobra: nenhum símbolo\ngasto sem vir da própria fatia ou de uma <b>anterior</b>; nenhum empréstimo sem alguém\ndepois pagá-lo; nenhuma declaração ociosa; nenhum pedido de rede. E roda com\n<b>controle negativo</b> — injeta defeitos e exige que sejam pegos, porque zero achados\nsó significa alguma coisa se o portão provar que sabe reprovar.",
    "qa": "ok",
    "tipo": "prosa"
   },

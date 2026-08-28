@@ -6,13 +6,13 @@ precisa ser verificado contra fonte.
 
 ## Proveniência — leia isto antes do resto
 
-Marcas, no molde da `norma-de-notacao.md` da Hipátia:
+Marcas, no molde da norma de notação que o autor mantém:
 
-- `(m)` **medido nesta casa** — número obtido do próprio repositório;
+- `(m)` **medido aqui** — número obtido do próprio repositório;
 - `(b)` **síntese** — inferência a partir do que está medido;
 - `(c)` **a verificar** — afirmação que eu sustento de conhecimento, e que
-  **não foi conferida contra fonte nesta casa**. O Mouseion não tem estante de
-  educação nem de interação humano-computador.
+  **não foi conferida contra fonte**. O acervo de que disponho não tem estante
+  de educação nem de interação humano-computador.
 
 ⚠️ **Toda a seção bibliográfica é `(c)`.** Ela é útil como mapa de onde
 procurar, e **não** como warrant. Este repositório publica figuras cuja
@@ -21,7 +21,7 @@ padrão menor. A lista do fim diz o que verificaria cada ponto.
 
 ---
 
-## 1. O que a medida desta casa diz `(m)`
+## 1. O que a medida daqui diz `(m)`
 
 Levantado em 2026-08-27, sobre as oito fatias:
 
@@ -85,7 +85,7 @@ de Papert, e chegar no mesmo lugar por conta própria é sinal de que o caminho
 
 ## 3. A literatura da restrição — e por que ela importa mais aqui `(c)`
 
-A exigência do operador foi: *"nada muito chamativo, nada que roube a atenção
+A exigência do autor foi: *"nada muito chamativo, nada que roube a atenção
 do que está sendo ensinado"*.
 
 **Isso não é preferência estética: é a conclusão empírica da área**, e tem
@@ -122,7 +122,7 @@ exatamente isso** `(b)` — o olho vai e volta, e o percurso não ensina nada.
    espacial não manda abolir tabela, manda não usar tabela para o que é
    rótulo;
 3. **navegação e posição na fila** em cada fatia — hoje cada uma é um beco sem
-   saída, e a ordem que o portão garante não chega ao leitor;
+   saída, e a ordem que a verificação garante não chega ao leitor;
 4. ~~altura de canvas constante~~ — **feita em 2026-08-27**. As oito passam a
    ter moldura de **640** (a maior das composições, para nenhuma ser cortada), e
    **nenhuma coordenada de desenho foi tocada**: cada composição mantém a
@@ -176,7 +176,7 @@ quem usar os dois junto precisa saber.
 
 ## 5. A matemática como interface — o jeito certo e o errado `(b)`
 
-Ideia do operador: usar os conceitos do próprio cálculo como material de
+Ideia do autor: usar os conceitos do próprio cálculo como material de
 interação, para que no fim o aluno perceba *"então era isso que estava
 acontecendo na minha tela"*.
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""O portão das FATIAS — os instrumentos interativos sob a norma de notação.
+"""A verificação das FATIAS — os instrumentos interativos sob a norma de notação.
 
 A `norma-de-notacao.md` §0b.7 (emenda ratificada em 2026-08-27) pôs os
-instrumentos interativos sob a norma e declarou, na mesma frase, que **o portão
+instrumentos interativos sob a norma e declarou, na mesma frase, que **a verificação
 de um instrumento ainda não existe**. Este é ele.
 
 O que ele NÃO faz, e é decisão da emenda: não mede margem, CPL nem subocupação.
@@ -27,7 +27,7 @@ O que ele mede:
                 alguma fatia posterior. Empréstimo que ninguém paga é buraco.
                 Falha dura.
   [6] OCIOSO    símbolo declarado e não gasto. Declarar a mais silencia o
-                portão sem melhorar a fatia. Falha dura.
+                verificação sem melhorar a fatia. Falha dura.
   [7] REDE      nenhum recurso EXTERNO carregado — @import, src, <link>, url()
                 em CSS, fetch. As fatias abrem offline por contrato. Um
                 `<a href>` para fora NÃO conta: link é coisa que o leitor
@@ -37,18 +37,18 @@ O que ele mede:
   [9] NAV       a fatia carrega o bloco de navegação GERADO, e a posição que
                 ele anuncia bate com a `ordem` do manifesto. A nav é derivada
                 (gerar_indice.py a injeta); se alguém apagá-la ou editá-la à
-                mão, a fila que o portão garante deixa de chegar ao leitor — e
+                mão, a fila que a verificação garante deixa de chegar ao leitor — e
                 é quebra silenciosa, porque a página continua abrindo. Falha
                 dura.
   [10] TESE      o topo do <script> traz o marcador `TESE DESTA FATIA`, seguido
-                do que ela existe para dizer e do que a destruiria. O portão NÃO
+                do que ela existe para dizer e do que a destruiria. A verificação NÃO
                 julga a tese — ele verifica que existe uma, sob um marcador
                 fixo. Medir a palavra não é medir a coisa; o que este item mede
                 é conformidade com a convenção, e é só isso que ele promete.
                 Aviso, não falha.
 
 CONTROLE NEGATIVO (§0b.5 da norma de rótulos, que vale aqui sem emenda): zero
-achados só conta se o portão provar que sabe reprovar. `--controle` injeta um
+achados só conta se a verificação provar que sabe reprovar. `--controle` injeta um
 defeito de cada classe numa cópia em memória e exige que cada um seja pego.
 
 Roda:  python3 auditar_fatias.py            # audita as fatias
@@ -65,7 +65,7 @@ import tempfile
 AQUI = os.path.dirname(os.path.abspath(__file__))
 # As fatias saíram da raiz quando o sítio virou bilíngue: `pt/` é a fonte, `en/`
 # é derivado, e na raiz ficaram a porta e os stubs das URLs antigas. Sem esta
-# linha o portão auditava os STUBS — e reprovava as nove por "sem manifesto",
+# linha a verificação auditava os STUBS — e reprovava as nove por "sem manifesto",
 # que é verdade sobre um stub de redirect e não diz nada sobre a fatia.
 # `--dir` permite auditar o inglês: `python3 auditar_fatias.py --dir en`.
 _ARG = None
@@ -85,12 +85,12 @@ BANIDOS = {
     r"\in ": "\\in",
 }
 
-# Os símbolos que o portão sabe procurar, com FRONTEIRA DE PALAVRA. O padrão
+# Os símbolos que a verificação sabe procurar, com FRONTEIRA DE PALAVRA. O padrão
 # ingênuo `sen` casa dentro de "desenho" e "desenrolamento" — foi assim que a
 # primeira auditoria à mão inflou a dívida, em 2026-08-27.
 # A tabela conhece as DUAS grafias. `sen` é a grafia portuguesa do seno e `sin`
 # a inglesa — o mesmo símbolo, e trocá-lo é notação, não tradução (norma de
-# tradução §8). Sem as chaves inglesas o portão reprovava a fatia derivada por
+# tradução §8). Sem as chaves inglesas a verificação reprovava a fatia derivada por
 # "declara 'sin' e não gasta", com `sin θ` escrito na figura: defeito do
 # instrumento, não da página.
 SIMBOLOS = {
@@ -217,7 +217,7 @@ def auditar(arquivos, checar_js=True):
                             f"gasta {s!r} sem declarar, e nenhuma fatia anterior o declara"))
         for s in sorted((f["declara"] | f["empresta"]) - f["gasta"]):
             achados.append((f["arquivo"], "OCIOSO",
-                            f"declara {s!r} e não gasta — declarar a mais só silencia o portão"))
+                            f"declara {s!r} e não gasta — declarar a mais só silencia a verificação"))
         disponivel |= f["declara"]
 
     for i, f in enumerate(fatias):
@@ -229,7 +229,7 @@ def auditar(arquivos, checar_js=True):
 
 
 def controle_negativo():
-    """O portão sabe reprovar? Injeta um defeito de cada classe e exige o achado."""
+    """A verificação sabe reprovar? Injeta um defeito de cada classe e exige o achado."""
     base = open(os.path.join(FATIAS, "o-triangulo.html"), encoding="utf-8").read()
     casos = [
         ("R5", base.replace("<h1>O triângulo</h1>",
@@ -240,13 +240,13 @@ def controle_negativo():
         ("OCIOSO", re.sub(r"(declara:[^|]*)", r"\1 ∞ ", base, count=1)),
         ("NAV", re.sub(r'(class="onde"[^>]*>)\d+', r"\g<1>99", base, count=1)),
     ]
-    print("\ncontrole negativo — o portão precisa REPROVAR cada um destes:")
+    print("\ncontrole negativo — a verificação precisa REPROVAR cada um destes:")
     ok = True
     for codigo, corrompido in casos:
         ach, _ = auditar([(f"<controle {codigo}>", corrompido)], checar_js=(codigo == "JS"))
         pegou = any(a[1] == codigo for a in ach)
         print(f"   {'✓' if pegou else '✗'} {codigo:10s} "
-              f"{'pego' if pegou else 'PASSOU DESPERCEBIDO — o portão não vale'}")
+              f"{'pego' if pegou else 'PASSOU DESPERCEBIDO — a verificação não vale'}")
         ok &= pegou
     return ok
 
@@ -261,7 +261,7 @@ def main():
                 for n in nomes]
     achados, fatias = auditar(arquivos)
 
-    print(f"portão das fatias — {len(fatias)} instrumento(s) sob a norma-de-notacao §0b.7\n")
+    print(f"verificação das fatias — {len(fatias)} instrumento(s) sob a norma-de-notacao §0b.7\n")
     print(f"  {'ordem':>5}  {'fatia':22s} {'declara':22s} {'empresta':16s} gasta")
     for f in fatias:
         j = lambda s: " ".join(sorted(s)) or "—"

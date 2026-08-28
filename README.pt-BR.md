@@ -32,7 +32,7 @@ Ou use direto no ar: <https://mateusalkimim.github.io/seeing-calculus/>.
 Para conferir o repositório (precisa de Python 3 e Node, só para isso):
 
 ```bash
-python3 auditar_fatias.py --controle   # o portão, com controle negativo
+python3 auditar_fatias.py --controle   # a verificação, com controle negativo
 python3 gerar_indice.py                # regera o index e a navegação das nove
 ```
 
@@ -43,7 +43,7 @@ Passo a passo por sistema operacional em [`docs/INSTALACAO.md`](docs/INSTALACAO.
 **Uma cor, um papel** — a regra que amarra as nove: *azul = ao longo da
 referência* (`x`, cateto adjacente, cosseno) · *terracota = perpendicular a ela*
 (`y`, cateto oposto, seno, a taxa). As exceções estão declaradas em
-[`pharo/ux-de-explicacao-interativa.md`](pharo/ux-de-explicacao-interativa.md),
+[`pesquisa/ux-de-explicacao-interativa.md`](pesquisa/ux-de-explicacao-interativa.md),
 que também traz o levantamento de domínio por trás das decisões de interface.
 
 ```
@@ -58,9 +58,9 @@ desenrolamento.html   │
 o-encontro.html       │
 a-familia.html        ┘
 gerar_indice.py       lê as fatias, escreve o index E injeta a navegação
-auditar_fatias.py     o portão: ordem, herança de símbolo, rede, JS
-conferir_layout.py    o outro portão: a coluna, o quadro do desenho, o transbordo
-pharo/                o conhecimento destilado — por que a ordem é essa
+auditar_fatias.py     a verificação: ordem, herança de símbolo, rede, JS
+conferir_layout.py    o outro verificação: a coluna, o quadro do desenho, o transbordo
+pesquisa/                o conhecimento destilado — por que a ordem é essa
 docs/INSTALACAO.md    passo a passo por SO
 LICENSE               MIT, para o código
 LICENSE-CONTENT       CC BY-SA 4.0, para o conteúdo
@@ -97,9 +97,9 @@ DEPENDÊNCIA — dois ramos, e só aqui a árvore existe
 ```
 
 Isto não foi decidido por argumento: com a taxa em segundo, ela era a **única
-fatia com dívida declarada** no portão — gastava seno, cosseno e π antes de
+fatia com dívida declarada** na verificação — gastava seno, cosseno e π antes de
 qualquer um ser definido. Descendo para sétimo, a dívida zerou, e nenhuma fatia
-deve nada a quem vem depois. **O portão viu o que o argumento não tinha visto.**
+deve nada a quem vem depois. **A verificação viu o que o argumento não tinha visto.**
 
 | | fatia | o que mostra |
 |---|---|---|
@@ -125,12 +125,11 @@ deve nada a quem vem depois. **O portão viu o que o argumento não tinha visto.
 
 ## O lugar no ciclo maior
 
-Estas fatias são material da **Hipátia**, o componente de ensino do sistema
-Ítaca, e nasceram ao lado de uma série de seminários sobre visão computacional
-e geometria da imagem. A **norma** que as governa não mora aqui: é a
-`norma-de-notacao.md` da Hipátia, §0b.7, que declarou instrumento interativo
-como material didático e definiu o que este portão cobra. **O instrumento saiu
-para cá; a regra ficou lá.**
+Estas fatias nasceram ao lado de uma série de seminários sobre visão
+computacional e geometria da imagem, como material de ensino. A **norma** que
+as governa não mora aqui: é uma norma de notação do autor, que declarou o
+instrumento interativo como material didático e definiu o que esta verificação
+cobra. **O instrumento saiu para cá; a regra ficou lá.**
 
 O parente próximo é o
 [math-prerequisite-map](https://github.com/mateusalkimim/math-prerequisite-map),
@@ -141,7 +140,7 @@ de onde vieram o molde deste repositório e a escolha de licença.
 - **Nada de terceiro aqui dentro.** Nenhuma biblioteca, nenhum framework,
   nenhum ativo baixado. Cada fatia é HTML, CSS e JavaScript escritos para ela,
   desenhando em `canvas`.
-- **Zero rede, por contrato e por portão.** O `auditar_fatias.py` reprova
+- **Zero rede, por contrato e por verificação.** O `auditar_fatias.py` reprova
   qualquer `@import`, `src`, `<link>`, `url()` ou `fetch` externo. Um `<a href>`
   clicável é permitido — link é coisa que o leitor escolhe seguir, não coisa
   que a página busca sozinha.
@@ -159,7 +158,7 @@ pelos quais responde:
 <!-- fatia: o-triangulo | ordem: 4 | declara: θ tg sen cos | empresta: — -->
 ```
 
-O portão cobra:
+A verificação cobra:
 
 ```bash
 python3 auditar_fatias.py --controle
@@ -167,14 +166,14 @@ python3 auditar_fatias.py --controle
 
 A **navegação** de cada fatia é gerada da mesma ordem — anterior, posição na
 fila, próxima — e injetada num bloco marcado. Reordenar as fatias reescreve as
-nove de uma vez, e o portão reprova se a posição anunciada divergir do
+nove de uma vez, e a verificação reprova se a posição anunciada divergir do
 manifesto. Ela vai **inline**, e não num `nav.js`, porque cada fatia **abre
 sozinha**: um arquivo solto por e-mail tem de continuar funcionando.
 
 Nenhum símbolo gasto sem vir da própria fatia ou de uma **anterior** — herdar de
 quem vem depois não é herdar, é supor. Nenhum empréstimo sem alguém depois
-pagá-lo. Nenhuma declaração ociosa, que serviria só para silenciar o portão.
-Nenhum pedido de rede. E **controle negativo**: o portão injeta defeitos numa
+pagá-lo. Nenhuma declaração ociosa, que serviria só para silenciar a verificação.
+Nenhum pedido de rede. E **controle negativo**: a verificação injeta defeitos numa
 cópia e exige que sejam pegos, porque zero achados só significa alguma coisa se
 ele provar que sabe reprovar.
 
@@ -195,7 +194,7 @@ que este repositório existe em vez de uma pasta no disco.
 
 ## Estado, e o que falta
 
-O que está de pé: as **nove** fatias, o portão com controle negativo, o índice
+O que está de pé: as **nove** fatias, a verificação com controle negativo, o índice
 gerado, e a licença por camada.
 
 A nona, **a família** (2026-08-27), fecha um par com a **taxa**: aquela vai de
@@ -213,7 +212,7 @@ C2, que paga o item v do registro da §1.2b da norma de notação.
 O que falta, declarado em vez de escondido:
 
 - ~~cada fatia era um beco sem saída~~ — **resolvido em 2026-08-27**: navegação
-  e posição na fila, geradas da mesma ordem que o portão cobra;
+  e posição na fila, geradas da mesma ordem que a verificação cobra;
 - ~~rótulos vivendo só na tabela~~ — **resolvido em 2026-08-27** no
   `o-circulo`, o único caso: cosseno, seno e arco passaram a ter nome colado no
   traço;
@@ -274,7 +273,7 @@ O que falta, declarado em vez de escondido:
   centramento, proporção, controles e transbordo — e tem controle negativo:
   desfazer a largura da página reproduz os 954 px, e soltar os controles do
   quadro reprova. Ele nunca devolve "ok" por ausência de prova;
-- **QA visual humano.** Os dois portões medem o que é mecânico. Nenhuma fatia foi
+- **QA visual humano.** Os dois verificações medem o que é mecânico. Nenhuma fatia foi
   julgada por olho humano contra uma régua estética, e isso não se automatiza;
 - **nenhum teste de aprendizagem.** Não se mediu se alguém aprende mais com
   isto. A afirmação deste repositório é sobre o que as figuras *mostram*, não
@@ -282,6 +281,6 @@ O que falta, declarado em vez de escondido:
 
 ## Procedência
 
-Nasceu em 2026-08-26/27 como um conjunto de fatias dentro do material da
-Hipátia, e saiu para repositório próprio no mesmo movimento em que ganhou norma
-e portão.
+Nasceu em 2026-08-26/27 como um conjunto de fatias dentro de um material de
+ensino maior, e saiu para repositório próprio no mesmo movimento em que ganhou
+norma e verificação.

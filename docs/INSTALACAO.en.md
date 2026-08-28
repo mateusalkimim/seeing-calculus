@@ -45,13 +45,13 @@ Only those who are **editing** the slices need this.
 
 | Tool | For What | Version Tested |
 |---|---|---|
-| Python 3 | run the gate and the index generator | 3.12 |
-| Node | the gate uses `node --check` to validate the JS of each slice | 24 |
+| Python 3 | run the check and the index generator | 3.12 |
+| Node | the check uses `node --check` to validate the JS of each slice | 24 |
 
 No third-party packages: both scripts use only the standard library.
 
 ```bash
-python3 auditar_fatias.py --controle   # the gate + the negative control  
+python3 auditar_fatias.py --controle   # the check + the negative control  
 python3 gerar_indice.py                # regenerates the index.html
 ```
 
@@ -72,4 +72,4 @@ python3 gerar_indice.py                # regenerates the index.html
 4. `python3 auditar_fatias.py --controle` — it must give **PASS**;  
 5. `python3 gerar_indice.py`.
 
-The gate rejects if a slice uses a symbol that no previous slice declared, if a loan is never paid back, if there is idle declaration, if it loads an external resource, or if the JavaScript doesn't compile.
+The check fails if a slice spends a symbol that no earlier slice declared, if a loan is never repaid, if there is an idle declaration, if anything loads an external resource, or if the JavaScript does not compile.

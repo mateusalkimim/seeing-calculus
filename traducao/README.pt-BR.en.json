@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-08-27 17:01:20",
+ "atualizado_em": "2026-08-28 11:35:38",
  "blocos": {
   "0e299539fe": {
    "en": "The closest relative is the  \n[math-prerequisite-map](https://github.com/mateusalkimim/math-prerequisite-map),  \nfrom where this repository's template and license choice originated.",
@@ -33,6 +33,15 @@
    "qa": "ok",
    "tipo": "md"
   },
+  "2474cd4a97": {
+   "en": "This was not decided by argument: with the rate in second, it was the **only  \nslice with declared debt** at the check — it spent sine, cosine, and π before  \nanyone was defined. Descending to seventh, the debt zeroed out, and no slice  \nowes anything to those that come after. **The gate saw what the argument did  \nnot see.**",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Isto não foi decidido por argumento: com a taxa em segundo, ela era a **única\nfatia com dívida declarada** na verificação — gastava seno, cosseno e π antes de\nqualquer um ser definido. Descendo para sétimo, a dívida zerou, e nenhuma fatia\ndeve nada a quem vem depois. **A verificação viu o que o argumento não tinha visto.**",
+   "qa": "ok",
+   "reaproveitado_de": "Isto não foi decidido por argumento: com a taxa em segundo, ",
+   "tipo": "md"
+  },
   "25fecda7a6": {
    "en": "One dimension has only position — there's nowhere to curve. It's the second that  \nunlocks form, and that's why **the pair becomes a point** is the root and not just  \nanother beginning: even an angle needs two dimensions to exist.",
    "modelo": "phi-4",
@@ -57,6 +66,15 @@
    "qa": "ok",
    "tipo": "md"
   },
+  "33913d17c6": {
+   "en": "No symbol spent without coming from the slice itself or a **previous** one — inheriting from what comes after is not inheriting, it's assuming. No borrowing without someone to repay it later. No idle statement that would serve only to silence the check. No network request. And **negative control**: the check injects defects into a copy and demands they be caught, because zero findings only mean something if it proves it can disprove.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Nenhum símbolo gasto sem vir da própria fatia ou de uma **anterior** — herdar de\nquem vem depois não é herdar, é supor. Nenhum empréstimo sem alguém depois\npagá-lo. Nenhuma declaração ociosa, que serviria só para silenciar a verificação.\nNenhum pedido de rede. E **controle negativo**: a verificação injeta defeitos numa\ncópia e exige que sejam pegos, porque zero achados só significa alguma coisa se\nele provar que sabe reprovar.",
+   "qa": "ok",
+   "reaproveitado_de": "Nenhum símbolo gasto sem vir da própria fatia ou de uma **an",
+   "tipo": "md"
+  },
   "34231d81a5": {
    "en": "**Nine interactive instruments that build, in order, the visual foundation of calculus.** Each one shows *one* thing, opens with two clicks in the browser, and works **offline**: they are `canvas` and arithmetic, **without third-party libraries, without network, without account, and without server**. Nothing leaves your machine — there's nothing to leave, because there's nowhere to go.",
    "modelo": "phi-4",
@@ -73,13 +91,22 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "42c12dc9f7": {
-   "en": "- ~~each slice was a dead end~~ — **resolved on 2026-08-27**: navigation and position in the queue, generated in the same order as the gate collects;\n- ~~labels living only in the table~~ — **resolved on 2026-08-27** in the `o-circulo`, the only case: cosine, sine, and arc passed to have their names attached to the stroke;\n- ~~the page jumped between slices~~ — **resolved on 2026-08-27**: a common height of 568 px on the screen for the nine, with each composition centered in its own frame and untouched;\n- **the fusion.** The nine are slices by design — small and sharp, to blend well afterward. The first overlap examined was *the wave* of the `o-circulo` × the `desenrolamento`. I cut the wave because it touched the ground, and the **author reverted** — rightly, for a reason my analysis did not reach: the wave is a **methodological tool**, it forms the mental image of the phenomenon, and seeing the curve *being drawn* enriches understanding. Structural coherence is not the only rule for a didactic sheet. Upon restoration, what the cut had hidden appeared: **the old version never drew the curve progressively** — it painted the entire sine wave at once, and the `rastro` was declared and never used, with the prose asserting a behavior that the code did not have. Now the curve is traced from −6.2 to the current angle: animating draws, dragging the angle makes the stroke advance and retreat. Both sheets remain, and the difference is stated in both: here the **image** of the phenomenon, with the axis compressed and declared; in `desenrolamento`, the same passage **at scale**, with arc and tangent. The next contacts to examine are the triangle drawn in the `o-circulo` × `o-triangulo`, and the tangent line, which appears in three sheets;\n- ~~the point T goes out of frame~~ — **resolved on 2026-08-27**, and the fix became content. The old cut was `|r·tg| < 2.6`: the simple tangent **disappeared** when it became large, which is exactly when it is doing what the sheet wants to show. A sweep of 73,200 combinations measured T out of frame in **23% of them** — all with the tangent disappearing silently. Now it is cut **at the edge**, with an arrowhead and the value displayed: the cut stopped hiding the asymptote and started showing it. The sweep confirms 0 points out of frame after the cut;\n- ~~the branch of order~~ — **resolved on 2026-08-27.** The rate dropped from second to seventh and the three declared debts of it zeroed out. What remains is the distinction, now written: dependence has two branches, reading is a queue;\n- ~~the sheet occupied the entire monitor~~ — **resolved on 2026-08-27**, and the correction came from the author with the screen in hand. On a monitor of 1900 px the drawing opened with **1848 × 954** and the title and text turned into a caption of a giant figure; the text at the top stated the thesis and stopped, without saying what to do with the hands. Now prose is in charge: a single measure (`--col`, 620 px, about 80 characters per line) for the title and all text blocks — different widths with automatic margin would give misaligned left edges —, text **justified and centered**, and the drawing in a frame of **1100 × 568**. Each sheet gained a **Do** block, which names one by one the controls that exist in it;\n- ~~the frame of the drawing was the same in the nine~~ — **resolved on 2026-08-27.** It was 1240 × 640 in all, and for a composition almost square that left hundreds of pixels of empty space on both sides. Now **each slice has the proportion of its own drawing**, and the number is not a guess: a browser sweeps all controls of each sheet and measures what the composition actually occupies; the frame is this rectangle with 28 px of leeway. The emptiness fell from 43% to 15% in `par-vira-ponto`, and from 38% to 16% in `o-triangulo`. On the screen the **height is fixed** (568 px) and it is the width that tells the shape — from 658 px in the most square to 1100 px in the graph ones —, and the controls are aligned with the frame, not with the page. The measurement also corrected two of my assumptions: the `o-circulo` *seemed* small and in fact uses 1226 of the 1240 px; and the five wide slices fill the frame **by construction**, because they draw magnitudes that go to infinity and are purposefully cut at the edge;\n- the `conferir_layout.py` measures all this in a real browser — column, centering, proportion, controls, and overflow — and has negative control: undoing the width of the page reproduces the 954 px, and letting the controls out of the frame disapproves. It never returns \"ok\" for lack of proof;\n- **human visual QA.** The two gates measure what is mechanical. No slice was judged by human eye against an aesthetic ruler, and that does not automate;\n- **no learning test.** It was not measured if someone learns more from this. The assertion of this repository is about what the figures *show*, not about an effect measured in a student.",
-   "modelo": "phi-4",
+  "40e931e5b5": {
+   "en": "**One color, one role** — the rule that ties the nine together: *blue = along the reference* (`x`, adjacent side, cosine) · *terracotta = perpendicular to it* (`y`, opposite side, sine, the rate). The exceptions are declared in [`pesquisa/ux-de-explicacao-interativa.md`](pesquisa/ux-de-explicacao-interativa.md), which also carries the domain survey behind the interface decisions.",
+   "modelo": "claude-opus-5",
    "orfao": false,
-   "pt": "- ~~cada fatia era um beco sem saída~~ — **resolvido em 2026-08-27**: navegação\n  e posição na fila, geradas da mesma ordem que o portão cobra;\n- ~~rótulos vivendo só na tabela~~ — **resolvido em 2026-08-27** no\n  `o-circulo`, o único caso: cosseno, seno e arco passaram a ter nome colado no\n  traço;\n- ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: altura comum\n  de 568 px na tela para as nove, com cada composição centrada na própria\n  moldura e intocada;\n- **a fusão.** As nove são fatias de propósito — pequenas e nítidas, para se\n  fundirem bem depois. A primeira sobreposição examinada foi *a onda* do\n  `o-circulo` × o `desenrolamento`. Eu cortei a onda por ela zerar o chão, e o\n  **autor reverteu** — com razão, e por um motivo que a minha análise não\n  alcançava: a onda é **recurso metodológico**, ela forma a imagem mental do\n  fenômeno, e ver a curva *sendo desenhada* enriquece o entendimento. Coerência\n  estrutural não é a única régua de uma folha didática. Ao repor apareceu o que\n  o corte tinha escondido: **a versão antiga nunca desenhou a curva\n  progressivamente** — pintava a senoide inteira de uma vez, e o `rastro` estava\n  declarado e nunca usado, com a prosa afirmando um comportamento que o código\n  não tinha. Agora a curva é traçada de −6,2 até o ângulo de agora: animar\n  desenha, arrastar o ângulo faz o traço avançar e recuar. As duas folhas ficam,\n  e a diferença está dita nas duas: aqui a **imagem** do fenômeno, com o eixo\n  comprimido e declarado; no `desenrolamento`, a mesma passagem **em escala**,\n  com arco e tangente. Os próximos contatos a examinar são o triângulo desenhado\n  no `o-circulo` × `o-triangulo`, e a reta tangente, que aparece em três folhas;\n- ~~o ponto T sai da moldura~~ — **resolvido em 2026-08-27**, e o conserto virou\n  conteúdo. O corte antigo era `|r·tg| < 2,6`: a tangente simplesmente\n  **desaparecia** quando ficava grande, que é exatamente quando ela está fazendo\n  o que a folha quer mostrar. Uma varredura de 73.200 combinações mediu o T fora\n  da moldura em **23% delas** — todas com a tangente sumindo calada. Agora ela é\n  cortada **na borda**, com ponta de seta e o valor à mostra: o corte deixou de\n  esconder a assíntota e passou a mostrá-la. A varredura confirma 0 pontos fora\n  do quadro depois do corte;\n- ~~o ramo da ordem~~ — **resolvido em 2026-08-27.** A taxa desceu de segundo\n  para sétimo e as três dívidas declaradas dela zeraram. O que resta é a\n  distinção, agora escrita: dependência tem dois ramos, leitura é uma fila;\n- ~~a folha ocupava o monitor inteiro~~ — **resolvido em 2026-08-27**, e a\n  correção veio do autor com a tela na mão. Num monitor de 1900 px o desenho\n  abria com **1848 × 954** e o título e o texto viravam legenda de uma figura\n  gigante; o texto de cima dizia a tese e parava, sem dizer o que fazer com as\n  mãos. Agora quem manda é a prosa: uma medida só (`--col`, 620 px, cerca de 80\n  caracteres por linha) para o título e todos os blocos de texto — larguras\n  diferentes com margem automática dariam bordas esquerdas desalinhadas —, texto\n  **justificado e centrado**, e o desenho num quadro de **1100 × 568**. Cada\n  folha ganhou um bloco **Faça**, que nomeia um por um os controles que\n  existem nela;\n- ~~o quadro do desenho era o mesmo nas nove~~ — **resolvido em 2026-08-27.**\n  Era 1240 × 640 em todas, e para uma composição quase quadrada isso deixava\n  centenas de pixels de vazio dos dois lados. Agora **cada fatia tem a proporção\n  do próprio desenho**, e o número não é palpite: um navegador varre todos os\n  controles de cada folha e mede o que a composição de fato ocupa; o quadro é\n  esse retângulo com 28 px de folga. O vazio caiu de 43% para 15% no\n  `par-vira-ponto`, e de 38% para 16% no `o-triangulo`. Na tela a **altura é\n  fixa** (568 px) e é a largura que conta a forma — de 658 px na mais quadrada a\n  1100 px nas de gráfico —, e os controles ficam alinhados com o quadro, não com\n  a página. A medida também corrigiu duas suposições minhas: o `o-circulo`\n  *parecia* pequeno e na verdade usa 1226 dos 1240 px; e as cinco fatias largas\n  enchem o quadro **por construção**, porque desenham grandezas que vão ao\n  infinito e são cortadas de propósito na borda;\n- o `conferir_layout.py` mede tudo isso num navegador de verdade — coluna,\n  centramento, proporção, controles e transbordo — e tem controle negativo:\n  desfazer a largura da página reproduz os 954 px, e soltar os controles do\n  quadro reprova. Ele nunca devolve \"ok\" por ausência de prova;\n- **QA visual humano.** Os dois portões medem o que é mecânico. Nenhuma fatia foi\n  julgada por olho humano contra uma régua estética, e isso não se automatiza;\n- **nenhum teste de aprendizagem.** Não se mediu se alguém aprende mais com\n  isto. A afirmação deste repositório é sobre o que as figuras *mostram*, não\n  sobre efeito medido em estudante.",
+   "pt": "**Uma cor, um papel** — a regra que amarra as nove: *azul = ao longo da\nreferência* (`x`, cateto adjacente, cosseno) · *terracota = perpendicular a ela*\n(`y`, cateto oposto, seno, a taxa). As exceções estão declaradas em\n[`pesquisa/ux-de-explicacao-interativa.md`](pesquisa/ux-de-explicacao-interativa.md),\nque também traz o levantamento de domínio por trás das decisões de interface.",
    "qa": "ok",
    "tipo": "md"
+  },
+  "51e357e02b": {
+   "en": "index.html            the door — GENERATED by gerar_indice.py, do not edit by hand\npar-vira-ponto.html   ┐\ntaxa.html             │\no-angulo.html         │\no-triangulo.html      ├ the nine slices, in the order of each one's manifesto\na-distancia.html      │\no-circulo.html        │\ndesenrolamento.html   │\no-encontro.html       │\na-familia.html        ┘\ngerar_indice.py       reads the slices, writes the index AND injects the navigation\nauditar_fatias.py     the check: order, symbol inheritance, network, JS\nconferir_layout.py    the other gate: the column, the drawing frame, the overflow\npesquisa/                the distilled knowledge — why the order is what it is\ndocs/INSTALACAO.md    step by step by OS\nLICENSE               MIT, for the code\nLICENSE-CONTENT       CC BY-SA 4.0, for the content",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "index.html            a porta — GERADO por gerar_indice.py, não editar à mão\npar-vira-ponto.html   ┐\ntaxa.html             │\no-angulo.html         │\no-triangulo.html      ├ as nove fatias, na ordem do manifesto de cada uma\na-distancia.html      │\no-circulo.html        │\ndesenrolamento.html   │\no-encontro.html       │\na-familia.html        ┘\ngerar_indice.py       lê as fatias, escreve o index E injeta a navegação\nauditar_fatias.py     a verificação: ordem, herança de símbolo, rede, JS\nconferir_layout.py    o outro verificação: a coluna, o quadro do desenho, o transbordo\npesquisa/                o conhecimento destilado — por que a ordem é essa\ndocs/INSTALACAO.md    passo a passo por SO\nLICENSE               MIT, para o código\nLICENSE-CONTENT       CC BY-SA 4.0, para o conteúdo",
+   "qa": "ok",
+   "reaproveitado_de": "index.html a porta — GERADO por gerar_indice.py, não editar ",
+   "tipo": "cerca"
   },
   "52d3830f90": {
    "en": "DEPENDENCY — two branches, and only here does the tree exist\n\n                    pair-to-point\n              ┌───────────┴───────────┐\n           the rate    the angle → the triangle → the distance → the circle\n              │                  → the unwinding\n              └───────────┬───────────┘\n                     the meeting",
@@ -98,20 +125,21 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "572475d0dc": {
-   "en": "Born on 2026-08-26/27 as a set of slices within the material of Hypatia, and  \nmoved to its own repository at the same time it gained standardization and a gateway.",
-   "modelo": "phi-4",
+  "5627533693": {
+   "en": "These slices were born alongside a series of seminars on computer vision and image geometry, as teaching material. The **standard** that governs them does not live here: it is a notation standard kept by the author, which declared the interactive instrument to be teaching material and defined what this check enforces. **The instrument moved here; the rule stayed there.**",
+   "modelo": "claude-opus-5",
    "orfao": false,
-   "pt": "Nasceu em 2026-08-26/27 como um conjunto de fatias dentro do material da\nHipátia, e saiu para repositório próprio no mesmo movimento em que ganhou norma\ne portão.\n",
+   "pt": "Estas fatias nasceram ao lado de uma série de seminários sobre visão\ncomputacional e geometria da imagem, como material de ensino. A **norma** que\nas governa não mora aqui: é uma norma de notação do autor, que declarou o\ninstrumento interativo como material didático e definiu o que esta verificação\ncobra. **O instrumento saiu para cá; a regra ficou lá.**",
    "qa": "ok",
    "tipo": "md"
   },
-  "5cfcede643": {
-   "en": "- ~~each slice was a dead end~~ — **resolved on 2026-08-27**: navigation and position in the queue, generated in the same order as the gate collects;\n- ~~labels living only in the table~~ — **resolved on 2026-08-27** in the `o-circulo`, the only case: cosine, sine, and arc had their names attached to the stroke;\n- ~~the page jumped between slices~~ — **resolved on 2026-08-27**: a frame of 640 in the first eight, with each composition centered and untouched;\n- **the fusion.** The eight are slices on purpose — small and sharp, to blend well afterwards. The first overlap examined was *the wave* of the `o-circulo` × the `unrolling`. I cut the wave because it touched the ground, and the **author reverted** — rightly, and for a reason my analysis did not reach: the wave is a **methodological resource**, it forms the mental image of the phenomenon, and seeing the curve *being drawn* enriches understanding. Structural coherence is not the only rule for a didactic sheet. Upon restoring, what the cut had hidden appeared: **the old version never drew the curve progressively** — it painted the entire sine wave at once, and the `trace` was declared and never used, with the prose affirming a behavior that the code did not have. Now the curve is drawn from −6.2 to the current angle: animating draws, dragging the angle makes the stroke advance and retreat. The two sheets remain, and the difference is stated in both: here the **image** of the phenomenon, with the axis compressed and declared; in `unrolling`, the same passage **in scale**, with arc and tangent. The next contacts to examine are the triangle drawn in the `o-circulo` × `o-triangulo`, and the tangent line, which appears in three sheets;\n- ~~the point T goes out of frame~~ — **resolved on 2026-08-27**, and the fix became content. The old cut was `|r·tg| < 2.6`: the tangent simply **disappeared** when it became large, which is exactly when it is doing what the sheet wants to show. A sweep of 73,200 combinations measured T out of frame in **23% of them** — all with the tangent disappearing silently. Now it is cut **at the edge**, with an arrowhead and the value displayed: the cut stopped hiding the asymptote and started showing it. The sweep confirms 0 points out of frame after the cut;\n- ~~the branch of order~~ — **resolved on 2026-08-27.** The rate dropped from second to seventh and the three declared debts of it zeroed out. What remains is the distinction, now written: dependence has two branches, reading is a queue;\n- ~~the sheet occupied the entire monitor~~ — **resolved on 2026-08-27**, and the correction came from the author with the screen in hand. On a monitor of 1900 px the drawing opened with **1848 × 954** and the title and text turned into a caption of a giant figure; the text at the top stated the thesis and stopped, without saying what to do with the hands. Now prose is in charge: a single measure (`--col`, 620 px, about 80 characters per line) for the title and all text blocks — different widths with automatic margin would give misaligned left edges —, text **justified and centered**, and the drawing in a frame of **1100 × 568**. Each sheet gained a **Do** block, which names one by one the controls that exist in it;\n- ~~the drawing frame was the same in all nine~~ — **resolved on 2026-08-27.** It was 1240 × 640 in all, and for a nearly square composition that left hundreds of pixels of empty space on both sides. Now **each slice has the proportion of its own drawing**, and the number is not a guess: a browser scans all controls of each sheet and measures what the composition actually occupies; the frame is that rectangle with 28 px of leeway. The emptiness fell from 43% to 15% in `par-vira-ponto`, and from 38% to 16% in `o-triangulo`. On the screen the **height is fixed** (568 px) and it is the width that tells the shape — from 658 px in the most square to 1100 px in the graph ones —, and the controls align with the frame, not with the page. The measurement also corrected two of my assumptions: the `o-circulo` *seemed* small and actually uses 1226 of the 1240 px; and the five wide slices fill the frame **by construction**, because they draw magnitudes that go to infinity and are purposefully cut at the edge;\n- the `conferir_layout.py` measures all this in a real browser — column, centering, proportion, controls, and overflow — and has negative control: undoing the page width reproduces the 954 px, and releasing the controls from the frame disapproves. It never returns \"ok\" for lack of proof;\n- **human visual QA.** The two gates measure what is mechanical. No slice was judged by human eye against an aesthetic ruler, and that does not automate;\n- **no learning test.** It was not measured if someone learns more from this. The assertion of this repository is about what the figures *show*, not about an effect measured in a student.",
+  "59d3fb033b": {
+   "en": "- ~~each slice was a dead end~~ — **resolved on 2026-08-27**: navigation and position in the queue, generated in the same order as the check collects;\n- ~~labels living only in the table~~ — **resolved on 2026-08-27** in the `o-circulo`, the only case: cosine, sine, and arc passed to have their names attached to the stroke;\n- ~~the page jumped between slices~~ — **resolved on 2026-08-27**: a common height of 568 px on the screen for the nine, with each composition centered in its own frame and untouched;\n- **the fusion.** The nine are slices by design — small and sharp, to blend well afterward. The first overlap examined was *the wave* of the `o-circulo` × the `desenrolamento`. I cut the wave because it touched the ground, and the **author reverted** — rightly, for a reason my analysis did not reach: the wave is a **methodological tool**, it forms the mental image of the phenomenon, and seeing the curve *being drawn* enriches understanding. Structural coherence is not the only rule for a didactic sheet. Upon restoration, what the cut had hidden appeared: **the old version never drew the curve progressively** — it painted the entire sine wave at once, and the `rastro` was declared and never used, with the prose asserting a behavior that the code did not have. Now the curve is traced from −6.2 to the current angle: animating draws, dragging the angle makes the stroke advance and retreat. Both sheets remain, and the difference is stated in both: here the **image** of the phenomenon, with the axis compressed and declared; in `desenrolamento`, the same passage **at scale**, with arc and tangent. The next contacts to examine are the triangle drawn in the `o-circulo` × `o-triangulo`, and the tangent line, which appears in three sheets;\n- ~~the point T goes out of frame~~ — **resolved on 2026-08-27**, and the fix became content. The old cut was `|r·tg| < 2.6`: the simple tangent **disappeared** when it became large, which is exactly when it is doing what the sheet wants to show. A sweep of 73,200 combinations measured T out of frame in **23% of them** — all with the tangent disappearing silently. Now it is cut **at the edge**, with an arrowhead and the value displayed: the cut stopped hiding the asymptote and started showing it. The sweep confirms 0 points out of frame after the cut;\n- ~~the branch of order~~ — **resolved on 2026-08-27.** The rate dropped from second to seventh and the three declared debts of it zeroed out. What remains is the distinction, now written: dependence has two branches, reading is a queue;\n- ~~the sheet occupied the entire monitor~~ — **resolved on 2026-08-27**, and the correction came from the author with the screen in hand. On a monitor of 1900 px the drawing opened with **1848 × 954** and the title and text turned into a caption of a giant figure; the text at the top stated the thesis and stopped, without saying what to do with the hands. Now prose is in charge: a single measure (`--col`, 620 px, about 80 characters per line) for the title and all text blocks — different widths with automatic margin would give misaligned left edges —, text **justified and centered**, and the drawing in a frame of **1100 × 568**. Each sheet gained a **Do** block, which names one by one the controls that exist in it;\n- ~~the frame of the drawing was the same in the nine~~ — **resolved on 2026-08-27.** It was 1240 × 640 in all, and for a composition almost square that left hundreds of pixels of empty space on both sides. Now **each slice has the proportion of its own drawing**, and the number is not a guess: a browser sweeps all controls of each sheet and measures what the composition actually occupies; the frame is this rectangle with 28 px of leeway. The emptiness fell from 43% to 15% in `par-vira-ponto`, and from 38% to 16% in `o-triangulo`. On the screen the **height is fixed** (568 px) and it is the width that tells the shape — from 658 px in the most square to 1100 px in the graph ones —, and the controls are aligned with the frame, not with the page. The measurement also corrected two of my assumptions: the `o-circulo` *seemed* small and in fact uses 1226 of the 1240 px; and the five wide slices fill the frame **by construction**, because they draw magnitudes that go to infinity and are purposefully cut at the edge;\n- the `conferir_layout.py` measures all this in a real browser — column, centering, proportion, controls, and overflow — and has negative control: undoing the width of the page reproduces the 954 px, and letting the controls out of the frame disapproves. It never returns \"ok\" for lack of proof;\n- **human visual QA.** The two checks measure what is mechanical. No slice was judged by human eye against an aesthetic ruler, and that does not automate;\n- **no learning test.** It was not measured if someone learns more from this. The assertion of this repository is about what the figures *show*, not about an effect measured in a student.",
    "modelo": "phi-4",
-   "orfao": true,
-   "pt": "- ~~cada fatia era um beco sem saída~~ — **resolvido em 2026-08-27**: navegação\n  e posição na fila, geradas da mesma ordem que o portão cobra;\n- ~~rótulos vivendo só na tabela~~ — **resolvido em 2026-08-27** no\n  `o-circulo`, o único caso: cosseno, seno e arco passaram a ter nome colado no\n  traço;\n- ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: moldura de\n  640 nas oito primeiras, com cada composição centrada e intocada;\n- **a fusão.** As oito são fatias de propósito — pequenas e nítidas, para se\n  fundirem bem depois. A primeira sobreposição examinada foi *a onda* do\n  `o-circulo` × o `desenrolamento`. Eu cortei a onda por ela zerar o chão, e o\n  **autor reverteu** — com razão, e por um motivo que a minha análise não\n  alcançava: a onda é **recurso metodológico**, ela forma a imagem mental do\n  fenômeno, e ver a curva *sendo desenhada* enriquece o entendimento. Coerência\n  estrutural não é a única régua de uma folha didática. Ao repor apareceu o que\n  o corte tinha escondido: **a versão antiga nunca desenhou a curva\n  progressivamente** — pintava a senoide inteira de uma vez, e o `rastro` estava\n  declarado e nunca usado, com a prosa afirmando um comportamento que o código\n  não tinha. Agora a curva é traçada de −6,2 até o ângulo de agora: animar\n  desenha, arrastar o ângulo faz o traço avançar e recuar. As duas folhas ficam,\n  e a diferença está dita nas duas: aqui a **imagem** do fenômeno, com o eixo\n  comprimido e declarado; no `desenrolamento`, a mesma passagem **em escala**,\n  com arco e tangente. Os próximos contatos a examinar são o triângulo desenhado\n  no `o-circulo` × `o-triangulo`, e a reta tangente, que aparece em três folhas;\n- ~~o ponto T sai da moldura~~ — **resolvido em 2026-08-27**, e o conserto virou\n  conteúdo. O corte antigo era `|r·tg| < 2,6`: a tangente simplesmente\n  **desaparecia** quando ficava grande, que é exatamente quando ela está fazendo\n  o que a folha quer mostrar. Uma varredura de 73.200 combinações mediu o T fora\n  da moldura em **23% delas** — todas com a tangente sumindo calada. Agora ela é\n  cortada **na borda**, com ponta de seta e o valor à mostra: o corte deixou de\n  esconder a assíntota e passou a mostrá-la. A varredura confirma 0 pontos fora\n  do quadro depois do corte;\n- ~~o ramo da ordem~~ — **resolvido em 2026-08-27.** A taxa desceu de segundo\n  para sétimo e as três dívidas declaradas dela zeraram. O que resta é a\n  distinção, agora escrita: dependência tem dois ramos, leitura é uma fila;\n- ~~a folha ocupava o monitor inteiro~~ — **resolvido em 2026-08-27**, e a\n  correção veio do autor com a tela na mão. Num monitor de 1900 px o desenho\n  abria com **1848 × 954** e o título e o texto viravam legenda de uma figura\n  gigante; o texto de cima dizia a tese e parava, sem dizer o que fazer com as\n  mãos. Agora quem manda é a prosa: uma medida só (`--col`, 620 px, cerca de 80\n  caracteres por linha) para o título e todos os blocos de texto — larguras\n  diferentes com margem automática dariam bordas esquerdas desalinhadas —, texto\n  **justificado e centrado**, e o desenho num quadro de **1100 × 568**. Cada\n  folha ganhou um bloco **Faça**, que nomeia um por um os controles que\n  existem nela;\n- ~~o quadro do desenho era o mesmo nas nove~~ — **resolvido em 2026-08-27.**\n  Era 1240 × 640 em todas, e para uma composição quase quadrada isso deixava\n  centenas de pixels de vazio dos dois lados. Agora **cada fatia tem a proporção\n  do próprio desenho**, e o número não é palpite: um navegador varre todos os\n  controles de cada folha e mede o que a composição de fato ocupa; o quadro é\n  esse retângulo com 28 px de folga. O vazio caiu de 43% para 15% no\n  `par-vira-ponto`, e de 38% para 16% no `o-triangulo`. Na tela a **altura é\n  fixa** (568 px) e é a largura que conta a forma — de 658 px na mais quadrada a\n  1100 px nas de gráfico —, e os controles ficam alinhados com o quadro, não com\n  a página. A medida também corrigiu duas suposições minhas: o `o-circulo`\n  *parecia* pequeno e na verdade usa 1226 dos 1240 px; e as cinco fatias largas\n  enchem o quadro **por construção**, porque desenham grandezas que vão ao\n  infinito e são cortadas de propósito na borda;\n- o `conferir_layout.py` mede tudo isso num navegador de verdade — coluna,\n  centramento, proporção, controles e transbordo — e tem controle negativo:\n  desfazer a largura da página reproduz os 954 px, e soltar os controles do\n  quadro reprova. Ele nunca devolve \"ok\" por ausência de prova;\n- **QA visual humano.** Os dois portões medem o que é mecânico. Nenhuma fatia foi\n  julgada por olho humano contra uma régua estética, e isso não se automatiza;\n- **nenhum teste de aprendizagem.** Não se mediu se alguém aprende mais com\n  isto. A afirmação deste repositório é sobre o que as figuras *mostram*, não\n  sobre efeito medido em estudante.",
+   "orfao": false,
+   "pt": "- ~~cada fatia era um beco sem saída~~ — **resolvido em 2026-08-27**: navegação\n  e posição na fila, geradas da mesma ordem que a verificação cobra;\n- ~~rótulos vivendo só na tabela~~ — **resolvido em 2026-08-27** no\n  `o-circulo`, o único caso: cosseno, seno e arco passaram a ter nome colado no\n  traço;\n- ~~a página saltava entre fatias~~ — **resolvido em 2026-08-27**: altura comum\n  de 568 px na tela para as nove, com cada composição centrada na própria\n  moldura e intocada;\n- **a fusão.** As nove são fatias de propósito — pequenas e nítidas, para se\n  fundirem bem depois. A primeira sobreposição examinada foi *a onda* do\n  `o-circulo` × o `desenrolamento`. Eu cortei a onda por ela zerar o chão, e o\n  **autor reverteu** — com razão, e por um motivo que a minha análise não\n  alcançava: a onda é **recurso metodológico**, ela forma a imagem mental do\n  fenômeno, e ver a curva *sendo desenhada* enriquece o entendimento. Coerência\n  estrutural não é a única régua de uma folha didática. Ao repor apareceu o que\n  o corte tinha escondido: **a versão antiga nunca desenhou a curva\n  progressivamente** — pintava a senoide inteira de uma vez, e o `rastro` estava\n  declarado e nunca usado, com a prosa afirmando um comportamento que o código\n  não tinha. Agora a curva é traçada de −6,2 até o ângulo de agora: animar\n  desenha, arrastar o ângulo faz o traço avançar e recuar. As duas folhas ficam,\n  e a diferença está dita nas duas: aqui a **imagem** do fenômeno, com o eixo\n  comprimido e declarado; no `desenrolamento`, a mesma passagem **em escala**,\n  com arco e tangente. Os próximos contatos a examinar são o triângulo desenhado\n  no `o-circulo` × `o-triangulo`, e a reta tangente, que aparece em três folhas;\n- ~~o ponto T sai da moldura~~ — **resolvido em 2026-08-27**, e o conserto virou\n  conteúdo. O corte antigo era `|r·tg| < 2,6`: a tangente simplesmente\n  **desaparecia** quando ficava grande, que é exatamente quando ela está fazendo\n  o que a folha quer mostrar. Uma varredura de 73.200 combinações mediu o T fora\n  da moldura em **23% delas** — todas com a tangente sumindo calada. Agora ela é\n  cortada **na borda**, com ponta de seta e o valor à mostra: o corte deixou de\n  esconder a assíntota e passou a mostrá-la. A varredura confirma 0 pontos fora\n  do quadro depois do corte;\n- ~~o ramo da ordem~~ — **resolvido em 2026-08-27.** A taxa desceu de segundo\n  para sétimo e as três dívidas declaradas dela zeraram. O que resta é a\n  distinção, agora escrita: dependência tem dois ramos, leitura é uma fila;\n- ~~a folha ocupava o monitor inteiro~~ — **resolvido em 2026-08-27**, e a\n  correção veio do autor com a tela na mão. Num monitor de 1900 px o desenho\n  abria com **1848 × 954** e o título e o texto viravam legenda de uma figura\n  gigante; o texto de cima dizia a tese e parava, sem dizer o que fazer com as\n  mãos. Agora quem manda é a prosa: uma medida só (`--col`, 620 px, cerca de 80\n  caracteres por linha) para o título e todos os blocos de texto — larguras\n  diferentes com margem automática dariam bordas esquerdas desalinhadas —, texto\n  **justificado e centrado**, e o desenho num quadro de **1100 × 568**. Cada\n  folha ganhou um bloco **Faça**, que nomeia um por um os controles que\n  existem nela;\n- ~~o quadro do desenho era o mesmo nas nove~~ — **resolvido em 2026-08-27.**\n  Era 1240 × 640 em todas, e para uma composição quase quadrada isso deixava\n  centenas de pixels de vazio dos dois lados. Agora **cada fatia tem a proporção\n  do próprio desenho**, e o número não é palpite: um navegador varre todos os\n  controles de cada folha e mede o que a composição de fato ocupa; o quadro é\n  esse retângulo com 28 px de folga. O vazio caiu de 43% para 15% no\n  `par-vira-ponto`, e de 38% para 16% no `o-triangulo`. Na tela a **altura é\n  fixa** (568 px) e é a largura que conta a forma — de 658 px na mais quadrada a\n  1100 px nas de gráfico —, e os controles ficam alinhados com o quadro, não com\n  a página. A medida também corrigiu duas suposições minhas: o `o-circulo`\n  *parecia* pequeno e na verdade usa 1226 dos 1240 px; e as cinco fatias largas\n  enchem o quadro **por construção**, porque desenham grandezas que vão ao\n  infinito e são cortadas de propósito na borda;\n- o `conferir_layout.py` mede tudo isso num navegador de verdade — coluna,\n  centramento, proporção, controles e transbordo — e tem controle negativo:\n  desfazer a largura da página reproduz os 954 px, e soltar os controles do\n  quadro reprova. Ele nunca devolve \"ok\" por ausência de prova;\n- **QA visual humano.** Os dois verificações medem o que é mecânico. Nenhuma fatia foi\n  julgada por olho humano contra uma régua estética, e isso não se automatiza;\n- **nenhum teste de aprendizagem.** Não se mediu se alguém aprende mais com\n  isto. A afirmação deste repositório é sobre o que as figuras *mostram*, não\n  sobre efeito medido em estudante.",
    "qa": "ok",
+   "reaproveitado_de": "- ~~cada fatia era um beco sem saída~~ — **resolvido em 2026",
    "tipo": "md"
   },
   "5e34f29bd6": {
@@ -131,12 +159,13 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "6a410a23c0": {
-   "en": "python3 auditar_fatias.py --controle   # the gate, with negative control  \npython3 gerar_indice.py                # regenerates the index and navigation of the nine",
+  "6758ffee5e": {
+   "en": "python3 auditar_fatias.py --controle   # the check, with negative control  \npython3 gerar_indice.py                # regenerates the index and navigation of the nine",
    "modelo": "phi-4",
    "orfao": false,
-   "pt": "python3 auditar_fatias.py --controle   # o portão, com controle negativo\npython3 gerar_indice.py                # regera o index e a navegação das nove",
+   "pt": "python3 auditar_fatias.py --controle   # a verificação, com controle negativo\npython3 gerar_indice.py                # regera o index e a navegação das nove",
    "qa": "ok",
+   "reaproveitado_de": "python3 auditar_fatias.py --controle # o portão, com control",
    "tipo": "cerca"
   },
   "6dcb5bd1f6": {
@@ -155,20 +184,13 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "7085ca57a9": {
-   "en": "<!-- language: line generated by i18n.py -->  \n*[Read this in English](README.en.md)*",
-   "modelo": "phi-4",
-   "orfao": true,
-   "pt": "<!-- idioma: linha gerada por i18n.py -->\n*[Read this in English](README.en.md)*",
-   "qa": "ok",
-   "tipo": "md"
-  },
-  "75021e4e49": {
-   "en": "This was not decided by argument: with the rate in second, it was the **only  \nslice with declared debt** at the gate — it spent sine, cosine, and π before  \nanyone was defined. Descending to seventh, the debt zeroed out, and no slice  \nowes anything to those that come after. **The gate saw what the argument did  \nnot see.**",
+  "6f85a0fea1": {
+   "en": "What stands: the **nine** slices, the check with negative control, the generated index, and the layered license.",
    "modelo": "phi-4",
    "orfao": false,
-   "pt": "Isto não foi decidido por argumento: com a taxa em segundo, ela era a **única\nfatia com dívida declarada** no portão — gastava seno, cosseno e π antes de\nqualquer um ser definido. Descendo para sétimo, a dívida zerou, e nenhuma fatia\ndeve nada a quem vem depois. **O portão viu o que o argumento não tinha visto.**",
+   "pt": "O que está de pé: as **nove** fatias, a verificação com controle negativo, o índice\ngerado, e a licença por camada.",
    "qa": "ok",
+   "reaproveitado_de": "O que está de pé: as **nove** fatias, o portão com controle ",
    "tipo": "md"
   },
   "7b2c262f7c": {
@@ -177,6 +199,15 @@
    "orfao": false,
    "pt": "**Dependência e ordem de leitura não são a mesma coisa**, e separá-las é o que\nfaz esta fila ser honesta. A **taxa** não *depende* da trigonometria — inclinação\nexiste sem ângulo nenhum, e o grafo de dependência a mantém num ramo próprio.\nMas ela **gasta a palavra tangente**, que nomeia dois objetos, e essa ambiguidade\nprecisa estar desfeita antes. Por isso a fila a põe em sétimo.",
    "qa": "ok",
+   "tipo": "md"
+  },
+  "7cd2996be1": {
+   "en": "The **navigation** of each slice is generated in the same order — previous, position in the queue, next — and injected into a marked block. Reordering the slices rewrites the nine at once, and the check disapproves if the announced position diverges from the manifesto. It goes **inline**, and not in a `nav.js`, because each slice **opens alone**: a loose file sent by email has to keep functioning.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "A **navegação** de cada fatia é gerada da mesma ordem — anterior, posição na\nfila, próxima — e injetada num bloco marcado. Reordenar as fatias reescreve as\nnove de uma vez, e a verificação reprova se a posição anunciada divergir do\nmanifesto. Ela vai **inline**, e não num `nav.js`, porque cada fatia **abre\nsozinha**: um arquivo solto por e-mail tem de continuar funcionando.",
+   "qa": "ok",
+   "reaproveitado_de": "A **navegação** de cada fatia é gerada da mesma ordem — ante",
    "tipo": "md"
   },
   "7fb0f48aa3": {
@@ -203,35 +234,11 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "85cd7664fc": {
-   "en": "**Eight interactive instruments that build, in order, the visual foundation of calculus.** Each one shows *one* thing, opens with two clicks in the browser, and works **offline**: they are `canvas` and arithmetic, **without third-party libraries, without network, without account, and without server**. Nothing leaves your machine — there's nothing to leave, because there's nowhere to go.",
-   "modelo": "phi-4",
-   "orfao": true,
-   "pt": "**Oito instrumentos interativos que constroem, em ordem, o chão visual do\ncálculo.** Cada um mostra *uma* coisa, abre com dois cliques no navegador e\nfunciona **offline**: são `canvas` e aritmética, **sem biblioteca de terceiro,\nsem rede, sem conta e sem servidor**. Nada sai da sua máquina — não há o que\nsair, porque não há para onde.",
-   "qa": "ok",
-   "tipo": "md"
-  },
   "891e1f9c2c": {
    "en": "Or use it directly online: <https://mateusalkimim.github.io/seeing-calculus/>.",
    "modelo": "phi-4",
    "orfao": false,
    "pt": "Ou use direto no ar: <https://mateusalkimim.github.io/seeing-calculus/>.",
-   "qa": "ok",
-   "tipo": "md"
-  },
-  "8b6cf2312e": {
-   "en": "- **Nothing from third parties here.** No libraries, no frameworks, no external assets downloaded. Each slice is HTML, CSS, and JavaScript written for it, drawing on `canvas`.  \n- **Zero network, by contract and by gate.** The `audit_slices.py` rejects any `@import`, `src`, `<link>`, `url()`, or `fetch` external. A clickable `<a href>` is allowed — a link is something the reader chooses to follow, not something the page fetches on its own.  \n- **No telemetry, no cookies, no storage.** The slices do not store or transmit anything.  \n- **No client data, no material under NDA, no secrets.** There are no keys, tokens, or machine paths versioned here.",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "- **Nada de terceiro aqui dentro.** Nenhuma biblioteca, nenhum framework,\n  nenhum ativo baixado. Cada fatia é HTML, CSS e JavaScript escritos para ela,\n  desenhando em `canvas`.\n- **Zero rede, por contrato e por portão.** O `auditar_fatias.py` reprova\n  qualquer `@import`, `src`, `<link>`, `url()` ou `fetch` externo. Um `<a href>`\n  clicável é permitido — link é coisa que o leitor escolhe seguir, não coisa\n  que a página busca sozinha.\n- **Sem telemetria, sem cookie, sem armazenamento.** As fatias não guardam nem\n  transmitem nada.\n- **Sem dado de cliente, sem material sob NDA, sem segredo.** Não há chave,\n  token nem caminho de máquina versionado aqui.",
-   "qa": "ok",
-   "tipo": "md"
-  },
-  "8d1907ec56": {
-   "en": "These slices are material from **Hypatia**, the teaching component of the Ítaca system, and were born alongside a series of seminars on computer vision and image geometry. The **norm** that governs them does not reside here: it is the `notation-norm.md` of Hypatia, §0b.7, which declared interactive instrument as educational material and defined what this gate demands. **The instrument went out here; the rule stayed there.**",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "Estas fatias são material da **Hipátia**, o componente de ensino do sistema\nÍtaca, e nasceram ao lado de uma série de seminários sobre visão computacional\ne geometria da imagem. A **norma** que as governa não mora aqui: é a\n`norma-de-notacao.md` da Hipátia, §0b.7, que declarou instrumento interativo\ncomo material didático e definiu o que este portão cobra. **O instrumento saiu\npara cá; a regra ficou lá.**",
    "qa": "ok",
    "tipo": "md"
   },
@@ -283,20 +290,29 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "b8b46a8f35": {
-   "en": "**One color, one paper** — the rule that ties the nine: *blue = along the reference* (`x`, adjacent leg, cosine) · *terracotta = perpendicular to it* (`y`, opposite leg, sine, the rate). The exceptions are declared in  \n[`pharo/ux-de-explicacao-interativa.md`](pharo/ux-de-explicacao-interativa.md), which also brings the domain lift behind the interface decisions.",
-   "modelo": "phi-4",
+  "b5af5e6150": {
+   "en": "The check enforces:",
+   "modelo": "claude-opus-5",
    "orfao": false,
-   "pt": "**Uma cor, um papel** — a regra que amarra as nove: *azul = ao longo da\nreferência* (`x`, cateto adjacente, cosseno) · *terracota = perpendicular a ela*\n(`y`, cateto oposto, seno, a taxa). As exceções estão declaradas em\n[`pharo/ux-de-explicacao-interativa.md`](pharo/ux-de-explicacao-interativa.md),\nque também traz o levantamento de domínio por trás das decisões de interface.",
+   "pt": "A verificação cobra:",
    "qa": "ok",
    "tipo": "md"
   },
-  "d01e5ad906": {
-   "en": "The **navigation** of each slice is generated in the same order — previous, position in the queue, next — and injected into a marked block. Reordering the slices rewrites the nine at once, and the gate disapproves if the announced position diverges from the manifesto. It goes **inline**, and not in a `nav.js`, because each slice **opens alone**: a loose file sent by email has to keep functioning.",
+  "b8b46a8f35": {
+   "en": "**One color, one paper** — the rule that ties the nine: *blue = along the reference* (`x`, adjacent leg, cosine) · *terracotta = perpendicular to it* (`y`, opposite leg, sine, the rate). The exceptions are declared in  \n[`pesquisa/ux-de-explicacao-interativa.md`](pesquisa/ux-de-explicacao-interativa.md), which also brings the domain lift behind the interface decisions.",
    "modelo": "phi-4",
    "orfao": false,
-   "pt": "A **navegação** de cada fatia é gerada da mesma ordem — anterior, posição na\nfila, próxima — e injetada num bloco marcado. Reordenar as fatias reescreve as\nnove de uma vez, e o portão reprova se a posição anunciada divergir do\nmanifesto. Ela vai **inline**, e não num `nav.js`, porque cada fatia **abre\nsozinha**: um arquivo solto por e-mail tem de continuar funcionando.",
+   "pt": "**Uma cor, um papel** — a regra que amarra as nove: *azul = ao longo da\nreferência* (`x`, cateto adjacente, cosseno) · *terracota = perpendicular a ela*\n(`y`, cateto oposto, seno, a taxa). As exceções estão declaradas em\n[`pesquisa/ux-de-explicacao-interativa.md`](pesquisa/ux-de-explicacao-interativa.md),\nque também traz o levantamento de domínio por trás das decisões de interface.",
    "qa": "ok",
+   "tipo": "md"
+  },
+  "ca3ed63b92": {
+   "en": "Born on 2026-08-26/27 as a set of slices within the material of Hypatia, and  \nmoved to its own repository at the same time it gained standardization and a checkway.",
+   "modelo": "phi-4",
+   "orfao": false,
+   "pt": "Nasceu em 2026-08-26/27 como um conjunto de fatias dentro de um material de\nensino maior, e saiu para repositório próprio no mesmo movimento em que ganhou\nnorma e verificação.\n",
+   "qa": "ok",
+   "reaproveitado_de": "Nasceu em 2026-08-26/27 como um conjunto de fatias dentro do",
    "tipo": "md"
   },
   "d67560d038": {
@@ -315,14 +331,6 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "e5d6231a59": {
-   "en": "The gate charges:",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "O portão cobra:",
-   "qa": "ok",
-   "tipo": "md"
-  },
   "f1d6da28ce": {
    "en": "## The Place in the Larger Cycle",
    "modelo": "phi-4",
@@ -331,30 +339,14 @@
    "qa": "ok",
    "tipo": "md"
   },
-  "f5affeb688": {
-   "en": "What stands: the **nine** slices, the gate with negative control, the generated index, and the layered license.",
+  "f6b8396c1b": {
+   "en": "- **Nothing from third parties here.** No libraries, no frameworks, no external assets downloaded. Each slice is HTML, CSS, and JavaScript written for it, drawing on `canvas`.  \n- **Zero network, by contract and by gate.** The `audit_slices.py` rejects any `@import`, `src`, `<link>`, `url()`, or `fetch` external. A clickable `<a href>` is allowed — a link is something the reader chooses to follow, not something the page fetches on its own.  \n- **No telemetry, no cookies, no storage.** The slices do not store or transmit anything.  \n- **No client data, no material under NDA, no secrets.** There are no keys, tokens, or machine paths versioned here.",
    "modelo": "phi-4",
    "orfao": false,
-   "pt": "O que está de pé: as **nove** fatias, o portão com controle negativo, o índice\ngerado, e a licença por camada.",
+   "pt": "- **Nada de terceiro aqui dentro.** Nenhuma biblioteca, nenhum framework,\n  nenhum ativo baixado. Cada fatia é HTML, CSS e JavaScript escritos para ela,\n  desenhando em `canvas`.\n- **Zero rede, por contrato e por verificação.** O `auditar_fatias.py` reprova\n  qualquer `@import`, `src`, `<link>`, `url()` ou `fetch` externo. Um `<a href>`\n  clicável é permitido — link é coisa que o leitor escolhe seguir, não coisa\n  que a página busca sozinha.\n- **Sem telemetria, sem cookie, sem armazenamento.** As fatias não guardam nem\n  transmitem nada.\n- **Sem dado de cliente, sem material sob NDA, sem segredo.** Não há chave,\n  token nem caminho de máquina versionado aqui.",
    "qa": "ok",
+   "reaproveitado_de": "- **Nada de terceiro aqui dentro.** Nenhuma biblioteca, nenh",
    "tipo": "md"
-  },
-  "f6158fa41f": {
-   "en": "No symbol spent without coming from the slice itself or a **previous** one — inheriting from what comes after is not inheriting, it's assuming. No borrowing without someone to repay it later. No idle statement that would serve only to silence the gate. No network request. And **negative control**: the gate injects defects into a copy and demands they be caught, because zero findings only mean something if it proves it can disprove.",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "Nenhum símbolo gasto sem vir da própria fatia ou de uma **anterior** — herdar de\nquem vem depois não é herdar, é supor. Nenhum empréstimo sem alguém depois\npagá-lo. Nenhuma declaração ociosa, que serviria só para silenciar o portão.\nNenhum pedido de rede. E **controle negativo**: o portão injeta defeitos numa\ncópia e exige que sejam pegos, porque zero achados só significa alguma coisa se\nele provar que sabe reprovar.",
-   "qa": "ok",
-   "tipo": "md"
-  },
-  "fb755feb42": {
-   "en": "index.html            the door — GENERATED by gerar_indice.py, do not edit by hand\npar-vira-ponto.html   ┐\ntaxa.html             │\no-angulo.html         │\no-triangulo.html      ├ the nine slices, in the order of each one's manifesto\na-distancia.html      │\no-circulo.html        │\ndesenrolamento.html   │\no-encontro.html       │\na-familia.html        ┘\ngerar_indice.py       reads the slices, writes the index AND injects the navigation\nauditar_fatias.py     the gate: order, symbol inheritance, network, JS\nconferir_layout.py    the other gate: the column, the drawing frame, the overflow\npharo/                the distilled knowledge — why the order is what it is\ndocs/INSTALACAO.md    step by step by OS\nLICENSE               MIT, for the code\nLICENSE-CONTENT       CC BY-SA 4.0, for the content",
-   "modelo": "phi-4",
-   "orfao": false,
-   "pt": "index.html            a porta — GERADO por gerar_indice.py, não editar à mão\npar-vira-ponto.html   ┐\ntaxa.html             │\no-angulo.html         │\no-triangulo.html      ├ as nove fatias, na ordem do manifesto de cada uma\na-distancia.html      │\no-circulo.html        │\ndesenrolamento.html   │\no-encontro.html       │\na-familia.html        ┘\ngerar_indice.py       lê as fatias, escreve o index E injeta a navegação\nauditar_fatias.py     o portão: ordem, herança de símbolo, rede, JS\nconferir_layout.py    o outro portão: a coluna, o quadro do desenho, o transbordo\npharo/                o conhecimento destilado — por que a ordem é essa\ndocs/INSTALACAO.md    passo a passo por SO\nLICENSE               MIT, para o código\nLICENSE-CONTENT       CC BY-SA 4.0, para o conteúdo",
-   "qa": "ok",
-   "reparo": "espacos de fim de linha e duas escolhas de palavra",
-   "tipo": "cerca"
   },
   "fdeb790a22": {
    "en": "## State, and what is missing\n```",
